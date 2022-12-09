@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "508452694273",
+    "project_id": "abcd-23057",
+    "storage_bucket": "abcd-23057.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508452694273:android:85be344b4b63f72b561300",
+        "android_client_info": {
+          "package_name": "com.app.abcdapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "508452694273-oa0j5bsqdev2f1em77sgc4qugsdb615d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC44UKkoXIYBLSAebB8cxpQ_w1FgLmA0t8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "508452694273-oa0j5bsqdev2f1em77sgc4qugsdb615d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

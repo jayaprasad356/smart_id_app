@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.WalletFragment"
+    >
+
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginVertical="@dimen/_10sdp"
+
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/_20sdp"
+
+            >
+
+            <TextView
+                android:id="@+id/tvBalance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Available Balance = ₹0"
+                android:textAllCaps="true"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Minimum Redeem = 250"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"
+                />
+
+
+            <Button
+                android:id="@+id/btnWithdrawal"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Withdrawal"
+                android:layout_marginTop="@dimen/_10sdp"
+                />
+
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_below="@+id/card1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+
+
+
+
+</RelativeLayout>

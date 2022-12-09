@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/wallet_list_bg"
+        android:paddingVertical="@dimen/_14sdp"
+        >
+
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_centerVertical="true"
+            android:id="@+id/ivRupeesimple"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:backgroundTint="@color/primaryLightColor"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            >
+
+
+            <ImageView
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:background="@drawable/ic_rupee_symbol_black"
+                android:backgroundTint="@color/white"
+                android:layout_gravity="center"
+                />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <LinearLayout
+            android:layout_toRightOf="@+id/ivRupeesimple"
+            android:layout_toLeftOf="@+id/tvAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            >
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Amount Credited For Qr Code"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sdp"
+                />
+
+            <TextView
+                android:id="@+id/tvDateTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="12-11-2022 | 11:34:50 AM"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_8sdp"
+
+                />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tvAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:background="@drawable/amt_bg"
+            android:padding="@dimen/_3sdp"
+            android:text="+ 0.17₹"
+            android:textColor="#388E3C"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold" />
+
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
