@@ -9,13 +9,13 @@
     <color name="white">#FFFFFFFF</color>
 
 
-    <color name="primaryColor">#4d4a75</color>
+    <color name="primaryColor">#032c60</color>
     <color name="green">#388E3C</color>
     <color name="red">#D32F2F</color>
 
     <color name="primaryLightColor">#0288D1</color>
 
-    <color name="primaryDarkColor">#353250</color>
+    <color name="primaryDarkColor">#021D40</color>
 
     <color name="secondaryColor">#ff6d00</color>
 

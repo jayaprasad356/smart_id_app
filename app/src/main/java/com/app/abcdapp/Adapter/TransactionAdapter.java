@@ -43,6 +43,8 @@ public class TransactionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             holder.tvTitle.setText(wallet.getCodes() + " Codes added by admin");
         }else if (wallet.getType().equals("cancelled")){
             holder.tvTitle.setText("Cancelled withdrawal amount credited");
+        }else if (wallet.getType().equals("admin_credit_balance")){
+            holder.tvTitle.setText("Amount credited by admin");
         }else {
             holder.tvTitle.setText("Amount credited For Qr Code");
         }

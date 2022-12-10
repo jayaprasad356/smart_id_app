@@ -15,9 +15,9 @@ import java.util.Locale;
 import java.util.UUID;
 
 public class Constant {
-    public static final String MainBaseUrl = "https://appadmin.abcdapp.in/";
+    public static final String MainBaseUrl = "https://admin.fortuneapp.in/";
     //public static final String MainBaseUrl = "https://abcd.greymatterworks.in/";
-    //public static final String MainBaseUrl = "http://192.168.43.38/abcd/";
+    //public static final String MainBaseUrl = "http://192.168.43.38/fortune/";
     public static final String BaseUrl = MainBaseUrl + "api/";
     public static final String LOGIN_URL = BaseUrl + "login.php";
     public static final String IMPORT_DATA_URL = BaseUrl + "import_data.php";
@@ -80,6 +80,7 @@ public class Constant {
     public static final String DOB = "dob";
 
     public static final String AMOUNT = "amount";
+    public static final String TYPE = "type";
     public static final String ORGANIZER_ID = "organizer_id";
     public static final String CITY = "city";
     public static final String PINCCODE = "pincode";

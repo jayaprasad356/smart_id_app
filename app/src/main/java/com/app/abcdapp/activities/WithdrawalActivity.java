@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +46,8 @@ public class WithdrawalActivity extends AppCompatActivity {
     TextView tvBalance;
     Session session;
     EditText etAmount;
+    String type = "bank_transfer";
+    RadioButton rbBanktransfer,rbCash;
 
 
     @Override
@@ -60,6 +63,8 @@ public class WithdrawalActivity extends AppCompatActivity {
         tvBalance = findViewById(R.id.tvBalance);
         btnWithdrawal = findViewById(R.id.btnWithdrawal);
         etAmount = findViewById(R.id.etAmount);
+        rbBanktransfer = findViewById(R.id.rbBanktransfer);
+        rbCash = findViewById(R.id.rbCash);
 
         tvBalance.setText("Available Balance = ₹"+session.getData(Constant.BALANCE));
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity);
@@ -91,6 +96,11 @@ public class WithdrawalActivity extends AppCompatActivity {
                     Toast.makeText(activity, "insuffcient balance", Toast.LENGTH_SHORT).show();
 
                 }else {
+                    if (rbBanktransfer.isChecked()){
+                        type = "bank_transfer";
+                    }else {
+                        type = "cash_payment";
+                    }
                     withdrawalApi();
 
                 }
@@ -104,6 +114,7 @@ public class WithdrawalActivity extends AppCompatActivity {
         Map<String, String> params = new HashMap<>();
         params.put(Constant.USER_ID,session.getData(Constant.USER_ID));
         params.put(Constant.AMOUNT,etAmount.getText().toString().trim());
+        params.put(Constant.TYPE,type);
         ApiConfig.RequestToVolley((result, response) -> {
             if (result) {
                 try {

@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">ABCD App</string>
+    <string name="app_name">Fortune App</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="refertext">Refer your friend and family members and earn ₹ 300 Bonus + ₹ 250 Refund + 1000 codes ( ₹ 170) Totally ₹ 720/- instantly in wallet</string>
+    <string name="refertext">Refer your friend and family members and earn ₹ 500 Bonus + 1000 codes ( ₹ 170) Totally ₹ 670/- instantly in wallet</string>
     <string name="make_payment"><u>Make Payment</u></string>
 </resources>
