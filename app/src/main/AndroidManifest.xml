@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.app.abcdapp">
+    package="com.app.fortuneapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -11,7 +11,7 @@
         tools:ignore="ProtectedPermissions" />
 
     <application
-        android:name=".helper.ApiConfig"
+        android:name="com.app.fortuneapp.helper.ApiConfig"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -22,19 +22,19 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".activities.NotificaionActivity"
+            android:name="com.app.fortuneapp.activities.NotificaionActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.UpdateBankActivity"
+            android:name="com.app.fortuneapp.activities.UpdateBankActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.ImportDataActivity"
+            android:name="com.app.fortuneapp.activities.ImportDataActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.GenrateQRActivity"
+            android:name="com.app.fortuneapp.activities.GenrateQRActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.SplashActivity"
+            android:name="com.app.fortuneapp.activities.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,33 +43,33 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.UpdateProfileActivity"
+            android:name="com.app.fortuneapp.activities.UpdateProfileActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".activities.ReferEarnActivity"
+            android:name="com.app.fortuneapp.activities.ReferEarnActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".activities.WithdrawalActivity"
+            android:name="com.app.fortuneapp.activities.WithdrawalActivity"
             android:exported="true" />
         <activity
-            android:name=".activities.LoginActivity"
+            android:name="com.app.fortuneapp.activities.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".activities.SignUpActivity"
+            android:name="com.app.fortuneapp.activities.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.MainActivity"
+            android:name="com.app.fortuneapp.activities.MainActivity"
             android:exported="true" />
         <service
-            android:name=".helper.MyFirebaseMessagingService"
+            android:name="com.app.fortuneapp.helper.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

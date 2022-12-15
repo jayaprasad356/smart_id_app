@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "508452694273",
-    "project_id": "abcd-23057",
-    "storage_bucket": "abcd-23057.appspot.com"
+    "project_number": "346353815179",
+    "project_id": "fortune-app-bc835",
+    "storage_bucket": "fortune-app-bc835.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:508452694273:android:85be344b4b63f72b561300",
+        "mobilesdk_app_id": "1:346353815179:android:118712344b9560d752ce8e",
         "android_client_info": {
-          "package_name": "com.app.abcdapp"
+          "package_name": "com.app.fortuneapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "508452694273-oa0j5bsqdev2f1em77sgc4qugsdb615d.apps.googleusercontent.com",
+          "client_id": "346353815179-uv6btblpa38jcithonep8g0aenslqtl7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC44UKkoXIYBLSAebB8cxpQ_w1FgLmA0t8"
+          "current_key": "AIzaSyB30tN1lTUsJWgszt2w6VO4yRvJPr-lEWg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "508452694273-oa0j5bsqdev2f1em77sgc4qugsdb615d.apps.googleusercontent.com",
+              "client_id": "346353815179-uv6btblpa38jcithonep8g0aenslqtl7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

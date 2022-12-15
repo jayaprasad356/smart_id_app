@@ -65,7 +65,7 @@
         android:layout_below="@+id/tv1"
         android:layout_marginTop="@dimen/_20sdp"
         android:gravity="center"
-        android:text="Refer And Earn Rs. 720 Instantly"
+        android:text="Refer And Earn Rs. 670 Instantly"
         android:textColor="@color/textcolor"
         android:textSize="@dimen/_18sdp"
         android:textStyle="bold" />
