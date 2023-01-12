@@ -17,6 +17,7 @@ public class Constant {
     //public static final String MainBaseUrl = "https://abcd.greymatterworks.in/";
     //public static final String MainBaseUrl = "http://192.168.43.38/fortune/";
     public static final String BaseUrl = MainBaseUrl + "api/";
+    public static final String SEND_ADMIN_NOTIFY_URL = BaseUrl + "sendadminnotify.php";
     public static final String LOGIN_URL = BaseUrl + "login.php";
     public static final String IMPORT_DATA_URL = BaseUrl + "import_data.php";
     public static final String REGISTER_URL = BaseUrl + "register.php";
@@ -31,6 +32,8 @@ public class Constant {
     public static final String APPUPDATE_URL = BaseUrl + "appupdate.php";
     public static final String TRNSACTION_LIST_URL = BaseUrl + "transaction_lists.php";
     public static final String BANK_DETAILS_URL = BaseUrl + "bank_details.php";
+    public static final String SETTINGS_URL = BaseUrl + "settings.php";
+
 
 
 
@@ -114,6 +117,15 @@ public class Constant {
     public static final String AD_SHOW_TIME = "ad_show_time";
     public static final String FETCH_TIME = "fetch_time";
     public static final String AD_REWARD_ID = "ad_reward_id";
+
+
+    public static final String LAST_UPDATED_SETTINGS_DATE = "last_updated_settings_date";
+    public static final String LAST_UPDATED_DATE_SETTINGS = "last_updated_date_settings";
+    public static final String RISE_TICKET_STATUS = "rise_ticket_status";
+    public static final String LAST_UPDATED_DATE_AD = "last_updated_date";
+    public static final String LAST_UPDATED_DATE_STATUS_AD = "last_updated_date_status";
+    public static final String SUPPORT = "support";
+    public static final String TIMESTAMP = "timestamp";
 
     @SuppressLint("HardwareIds")
     public static final  String getDeviceId(Activity activity) {

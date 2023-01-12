@@ -1,7 +1,73 @@
 <resources>
+    <string name="cDescription" />
     <string name="app_name">Fortune App</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="refertext">Refer your friend and family members and earn ₹ 500 Bonus + 1000 codes ( ₹ 170) Totally ₹ 670/- instantly in wallet</string>
     <string name="make_payment"><u>Make Payment</u></string>
+    <string-array name="categories">
+        <item>I want to refer friend</item>
+        <item>App issue</item>
+        <item>Withdrawal not received</item>
+        <item>Refer bonus not received</item>
+        <item>Others</item>
+    </string-array>
+    <string name="strUsername">USERNAME</string>
+
+    <string name="staticDate">01–01–2000</string>
+    <string name="lblImage">Image</string>
+    <string name="lblAudio">Audio</string>
+    <string name="lblVideo">Video</string>
+    <string name="lblDocument">Document</string>
+    <string name="lblContact">Contact</string>
+    <string name="lblLocation">Location</string>
+    <string name="lblVoiceRecording">Voice recording</string>
+    <string name="msgNoMessage">No message!</string>
+    <string name="terms"><u>I have read and agreed to the job details and terms &amp; conditions.</u></string>
+    <string name="admob_app_id">ca-app-pub-7994561209093816~7613407342</string>
+
+    <string name="strAboutStatus">Hey! How are you?</string>
+    <string name="strTypeYourMessage">Type your message</string>
+    <string name="strSlideToCancel">Slide To Cancel</string>
+    <string name="only_admin_can_send_messages"><![CDATA[Only <strong><font color=#2196F3>admin</font></strong> can send messages]]></string>
+    <string name="staticTime">01:01 AM</string>
+    <string name="staticJPG">JPG</string>
+    <string name="msgInvalidOrCorruptFile">Document File</string>
+    <string name="lblInvite">Invite</string>
+    <string name="staticSize">123 KB</string>
+    <string name="strZeroTimer">00:00:00 / 00:00:00</string>
+    <string name="staticTimeZero">00:00</string>
+    <string name="msgFileNotFound">File not found!</string>
+
+    <string name="strTyping">typing…</string>
+    <string name="msgFailedToUpload">Failed to upload!</string>
+    <string name="msgNoImageSelected">No Image selected!</string>
+    <string name="msg_image_upload">Uploading…</string>
+    <string name="msgChooseFileFromOtherLocation">Kindly choose file from proper location</string>
+    <string name="strOnline">Online</string>
+    <string name="strOffline">Offline</string>
+    <string name="recording_cancelled">Recording cancelled</string>
+    <string name="choose_contact">Select a contact</string>
+    <string name="choose_file">Select a file</string>
+    <string name="strYouHaveNoChat">Looks like you haven\'t initiated a conversion</string>
+    <string name="strOneCount">9</string>
+    <string name="strUsernameSmall">Username</string>
+    <string name="authority">Authority</string>
+    <string name="default_notification_channel_id">fcm_default_channel</string>
+    <string name="key_maps"></string>
+    <string name="strShareContent">I would like to share Amazing App with you. You can download this application from playstore easily.</string>
+
+    <string name="strChats">Chats</string>
+    <string name="strYou">You</string>
+    <string name="strNoChatCreated">No messages yet!</string>
+    <string name="msgUploadInProgress">Upload in progress!</string>
+    <string name="msgWaitingForFile">Please wait to receive file…</string>
+    <string name="strPhotoSent">Tap to view photo sent by %1$s</string>
+    <string name="msgFileTooBig">File is too big (max = %1$dMB)</string>
+    <string name="lblZeroPercentage">0 %</string>
+    <string name="strNewMessage">New Message</string>
+    <string name="recording">Recording…</string>
+    <string name="msgDownloadingStarted">Downloading started</string>
+    <string name="msgDownloadFile">Downloading %1$s</string>
+    <string name="strEmptyMsg">You can\'t send empty message</string>
 </resources>

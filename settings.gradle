@@ -11,10 +11,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        jcenter()
         maven { url 'https://jitpack.io' }
     }
     rootProject.name = "Fortune App"
-    include ':app'
-
+    include ':app',':record-view'
 
 }

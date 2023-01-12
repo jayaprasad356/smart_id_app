@@ -4,10 +4,18 @@
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
+    <color name="green_500">#4caf50</color>
+    <color name="offline">#bfbfbf</color>
+    <color name="timingBGColorWhite">#21FFFFFF</color>
+    <color name="timingBGColorBlue">#2003A9F4</color>
+    <color name="grey_10">#e6e6e6</color>
+    <color name="deep_orange_500">#ff5722</color>
+
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="online">@color/green_500</color>
 
     <color name="primaryColor">#032c60</color>
     <color name="green">#388E3C</color>
@@ -41,5 +49,23 @@
     <color name="grayDarkColor">#62757f</color>
 
     <color name="grayTextColor">#000000</color>
+    <color name="black_50">#40000000</color>
+    <color name="colorAccent">#2196F3</color>
+    <color name="grey_600">#757575</color>
+    <color name="red_500">#f44336</color>
+    <color name="grey_500">#9e9e9e</color>
+    <color name="colorGray">#E6E6E6</color>
+    <color name="green_900">#1b5e20</color>
+    <color name="red_900">#b71c1c</color>
+
+
+
+    <color name="colorPrimaryDark">#353250</color>
+    <color name="colorBlack">#000000</color>
+    <color name="yellow_900">#F57C00</color>
+    <color name="greyText">@color/grey_600</color>
+    <color name="grey_400">#bdbdbd</color>
+    <color name="yellow_50">#fffde7</color>
+
 
 </resources>

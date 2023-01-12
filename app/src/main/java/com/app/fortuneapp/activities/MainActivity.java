@@ -20,10 +20,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.fortuneapp.R;
+import com.app.fortuneapp.chat.TicketFragment;
 import com.app.fortuneapp.fragment.FindMissingFragment;
 import com.app.fortuneapp.fragment.HomeFragment;
 import com.app.fortuneapp.fragment.ProfileFragment;
-import com.app.fortuneapp.fragment.TicketFragment;
 import com.app.fortuneapp.fragment.WalletFragment;
 import com.app.fortuneapp.helper.ApiConfig;
 import com.app.fortuneapp.helper.Constant;
