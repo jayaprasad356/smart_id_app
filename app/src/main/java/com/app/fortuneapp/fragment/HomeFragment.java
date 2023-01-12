@@ -3,12 +3,15 @@ package com.app.fortuneapp.fragment;
 import static com.app.fortuneapp.helper.Constant.getHistoryDays;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,15 +28,17 @@ import com.app.fortuneapp.helper.Session;
 import com.app.fortuneapp.java.GenericTextWatcher;
 import com.app.fortuneapp.R;
 import com.app.fortuneapp.model.GenerateCodes;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 import java.util.ArrayList;
 
 
 public class HomeFragment extends Fragment {
 
-    TextView tvName,tvPincode,tvCity, tvId,tvTodayCodes,tvTotalCodes,tvHistorydays;
+    TextView tvName,tvPincode,tvCity, tvId,tvTodayCodes,tvTotalCodes,tvHistorydays,tvCodes,tvBalance;
     EditText edName,edPincode,edCity;
-    Button btnGenerate;
+    Button btnGenerate,btnsyncNow;
+    CircularProgressIndicator cbCodes;
 
 
     EditText otp_textbox_one, otp_textbox_two, otp_textbox_three, otp_textbox_four,otp_textbox_five,otp_textbox_six,otp_textbox_seven,otp_textbox_eight,otp_textbox_nine,otp_textbox_ten;
@@ -92,7 +97,10 @@ public class HomeFragment extends Fragment {
         btnGenerate = root.findViewById(R.id.btnGenerate);
         frame = root.findViewById(R.id.frame);
         llWaiting = root.findViewById(R.id.llWaiting);
-
+        tvCodes = root.findViewById(R.id.tvCodes);
+        cbCodes = root.findViewById(R.id.cbCodes);
+        btnsyncNow = root.findViewById(R.id.btnsyncNow);
+        tvBalance = root.findViewById(R.id.tvBalance);
 
         otp_textbox_one = root.findViewById(R.id.otp_edit_box1);
         otp_textbox_two = root.findViewById(R.id.otp_edit_box2);
@@ -120,7 +128,7 @@ public class HomeFragment extends Fragment {
         otp_textbox_nine.addTextChangedListener(new GenericTextWatcher(otp_textbox_nine, edit));
         otp_textbox_ten.addTextChangedListener(new GenericTextWatcher(otp_textbox_ten, edit));
         generateCodes = databaseHelper.getAllCodes();
-
+        setCodeValue();
         btnGenerate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -186,7 +194,39 @@ public class HomeFragment extends Fragment {
 
         return root;
     }
+    private void setCodeValue() {
+        if (session.getInt(Constant.CODES) >= session.getInt(Constant.SYNC_CODES)){
+            btnsyncNow.setBackground(ContextCompat.getDrawable(activity, R.drawable.syncbg));
+            btnsyncNow.setEnabled(true);
 
+        }else {
+            btnsyncNow.setBackground(ContextCompat.getDrawable(activity, R.drawable.syncbg_disabled));
+            btnsyncNow.setEnabled(false);
+
+        }
+        tvCodes.setText(session.getInt(Constant.CODES)+"");
+        cbCodes.setProgress(session.getInt(Constant.CODES));
+        cbCodes.setMax(session.getInt(Constant.SYNC_CODES));
+        try {
+            tvTodayCodes.setText(session.getInt(Constant.TODAY_CODES) + " + " + session.getInt(Constant.CODES));
+            tvTotalCodes.setText(session.getInt(Constant.TOTAL_CODES) +  " + " + session.getInt(Constant.CODES));
+            double current_bal = (double) (session.getInt(Constant.CODES) * 0.17);
+            tvBalance.setText(session.getData(Constant.BALANCE) + " + "+String.format("%.2f", current_bal)+"");
+        }catch (Exception e){
+            int Todaycodes = Integer.parseInt(session.getData(Constant.TODAY_CODES));
+            int Totalcodes = Integer.parseInt(session.getData(Constant.TOTAL_CODES));
+            SharedPreferences spreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+            SharedPreferences.Editor editor = spreferences.edit();
+            editor.remove(Constant.TODAY_CODES);
+            editor.remove(Constant.TOTAL_CODES);
+            editor.commit();
+            session.setInt(Constant.TODAY_CODES,Todaycodes);
+            session.setInt(Constant.TOTAL_CODES,Totalcodes);
+            setCodeValue();
+        }
+        tvHistorydays.setText(getHistoryDays(session.getData(Constant.JOINED_DATE)));
+
+    }
 
     private void GotoActivity()
     {

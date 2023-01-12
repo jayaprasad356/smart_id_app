@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Constant {
-    public static final String MainBaseUrl = "https://admin.fortuneapp.in/";
+    public static final String MainBaseUrl = "https://fortune.greymatterworks.in/";
     //public static final String MainBaseUrl = "https://abcd.greymatterworks.in/";
     //public static final String MainBaseUrl = "http://192.168.43.38/fortune/";
     public static final String BaseUrl = MainBaseUrl + "api/";
@@ -29,6 +29,8 @@ public class Constant {
     public static final String NOTIFICATION_LIST_URL = BaseUrl + "notification_lists.php";
     public static final String CHANGE_DEVICE_LIST_URL = BaseUrl + "change_device.php";
     public static final String APPUPDATE_URL = BaseUrl + "appupdate.php";
+    public static final String TRNSACTION_LIST_URL = BaseUrl + "transaction_lists.php";
+    public static final String BANK_DETAILS_URL = BaseUrl + "bank_details.php";
 
 
 
@@ -56,6 +58,7 @@ public class Constant {
     public static final String LAST_UPDATED_DATE_STATUS = "last_updated_date_status";
     public static final String RUN_API = "run_api";
     public static final String FCM_ID = "fcm_id";
+    public static final String WORK_ACTIVITY = "work_activity";
 
     public static final String EMAIL = "email";
     public static final String NAME = "name";
@@ -94,6 +97,23 @@ public class Constant {
     public static final String JOINED_DATE = "joined_date";
     public static final String WITHDRAWAL_STATUS = "withdrawal_status";
     public static final String SYNC_TIME = "sync_time";
+
+
+    public static final String CHECKIN = "checkin";
+    public static final String WHATSAPP = "whatsapp";
+    public static final String JOB_DETAILS_LINK = "job_details_link";
+    public static final String CHAT_SUPPORT = "chat_support";
+    public static final String PENDING_TICKET = "pending_ticket";
+    public static final String CLOSED_TICKET = "closed_ticket";
+    public static final String TITLE = "title";
+    public static final String CATEGORY = "category";
+    public static final String SYNC_CODES = "sync_codes";
+    public static final String MIN_WITHDRAWAL = "min_withdrawal";
+    public static final String AD_STATUS = "ad_status";
+    public static final String REWARD = "reward";
+    public static final String AD_SHOW_TIME = "ad_show_time";
+    public static final String FETCH_TIME = "fetch_time";
+    public static final String AD_REWARD_ID = "ad_reward_id";
 
     @SuppressLint("HardwareIds")
     public static final  String getDeviceId(Activity activity) {

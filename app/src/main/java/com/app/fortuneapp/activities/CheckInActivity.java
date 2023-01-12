@@ -6,16 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.PopupMenu;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.fortuneapp.R;
@@ -30,74 +21,30 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+public class CheckInActivity extends AppCompatActivity {
 
-    Button btnSignUp;
-    EditText EtPhoneNumber,EtPassword;
-    Button btnLogin;
-    Session session;
-    Activity activity;
     String Mobile,Password;
-    ImageView imgMenu;
-    LinearLayout whatsppjoin;
+    Activity activity;
+    Session session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
-        activity = LoginActivity.this;
+        setContentView(R.layout.activity_check_in);
+        activity = CheckInActivity.this;
         session = new Session(activity);
+        Mobile = session.getData(Constant.MOBILE);
+        Password = session.getData(Constant.PASSWORD);
 
-        btnLogin = findViewById(R.id.btnLogin);
-        EtPhoneNumber = findViewById(R.id.EtPhoneNumber);
-        EtPassword = findViewById(R.id.EtPassword);
-        btnSignUp = findViewById(R.id.btnSignUp);
-        imgMenu=findViewById(R.id.imgMenu);
-        whatsppjoin = findViewById(R.id.whatsppjoin);
-
-        imgMenu.setOnClickListener(view -> showpopup(view));
-        whatsppjoin.setOnClickListener(view -> openWhatsApp());
-        btnSignUp.setOnClickListener(v -> {
-            Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
-            startActivity(intent);
-        });
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(EtPhoneNumber.getText().toString().trim().equals("") ){
-                    Toast.makeText(LoginActivity.this, "Phone Number is empty", Toast.LENGTH_SHORT).show();
-                }
-                else if (EtPassword.getText().toString().trim().equals("")){
-                    Toast.makeText(LoginActivity.this, "Password is empty", Toast.LENGTH_SHORT).show();
-                }
-                else{
-
-
-                    Login();
-                }
-            }
-        });
-
-    }
-    private void openWhatsApp() {
-        String url = "https://api.whatsapp.com/send?phone="+"91"+session.getData(Constant.WHATSAPP);
-        Intent i = new Intent(Intent.ACTION_VIEW);
-        i.setData(Uri.parse(url));
-        startActivity(i);
+        Login();
     }
     private void Login() {
-        Mobile = EtPhoneNumber.getText().toString().trim();
-        Password = EtPassword.getText().toString().trim();
-
         Map<String, String> params = new HashMap<>();
-        params.put(Constant.MOBILE,EtPhoneNumber.getText().toString().trim());
-        params.put(Constant.PASSWORD,EtPassword.getText().toString().trim());
+        params.put(Constant.MOBILE,Mobile);
+        params.put(Constant.PASSWORD,Password);
         params.put(Constant.DEVICE_ID,Constant.getDeviceId(activity));
         ApiConfig.RequestToVolley((result, response) -> {
             if (result) {
-                clearFields();
-
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     if (jsonObject.getBoolean(Constant.SUCCESS)) {
@@ -115,12 +62,14 @@ public class LoginActivity extends AppCompatActivity implements PopupMenu.OnMenu
                                 session.setData(Constant.FETCH_TIME,setArray.getJSONObject(0).getString(Constant.FETCH_TIME));
                                 session.setData(Constant.AD_REWARD_ID,setArray.getJSONObject(0).getString(Constant.AD_REWARD_ID));
 
+
                                 if (setArray.getJSONObject(0).getString(Constant.CODE_GENERATE).equals("1")){
                                     codegenerate = userArray.getJSONObject(0).getString(Constant.CODE_GENERATE);
                                 }
                                 if (setArray.getJSONObject(0).getString(Constant.WITHDRAWAL_STATUS).equals("1")){
                                     withdrawal_status = userArray.getJSONObject(0).getString(Constant.WITHDRAWAL_STATUS);
                                 }
+                                session.setBoolean(Constant.CHECKIN,false);
 
                                 Toast.makeText(this, ""+jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show();
                                 session.setUserData(userArray.getJSONObject(0).getString(Constant.ID),
@@ -148,11 +97,11 @@ public class LoginActivity extends AppCompatActivity implements PopupMenu.OnMenu
                                         withdrawal_status);
                                 if (session.getBoolean(Constant.IMPORT_DATA)){
                                     session.setBoolean("is_logged_in", true);
-                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                    startActivity(new Intent(activity, MainActivity.class));
                                     finish();
 
                                 }else {
-                                    startActivity(new Intent(LoginActivity.this, ImportDataActivity.class));
+                                    startActivity(new Intent(activity, ImportDataActivity.class));
                                     finish();
                                 }
 
@@ -183,22 +132,10 @@ public class LoginActivity extends AppCompatActivity implements PopupMenu.OnMenu
 
             }
             //pass url
-        }, LoginActivity.this, Constant.LOGIN_URL, params,true);
+        }, activity, Constant.LOGIN_URL, params,true);
 
 
 
-    }
-
-    private void clearFields() {
-        EtPhoneNumber.getText().clear();
-        EtPassword.getText().clear();
-    }
-    private void showpopup(View v) {
-
-        PopupMenu popup = new PopupMenu(activity,v);
-      popup.setOnMenuItemClickListener(this);
-        popup.inflate(R.menu.login_popup);
-        popup.show();
     }
     private void showAlertdialog() {
 
@@ -221,7 +158,6 @@ public class LoginActivity extends AppCompatActivity implements PopupMenu.OnMenu
 
 
     }
-
     private void changeDeviceApi(DialogInterface dialog)
     {
         Map<String, String> params = new HashMap<>();
@@ -272,22 +208,5 @@ public class LoginActivity extends AppCompatActivity implements PopupMenu.OnMenu
 
 
 
-    }
-
-    @Override
-    public boolean onMenuItemClick(MenuItem menuItem) {
-        if (menuItem.getItemId() == R.id.payment){
-            try {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                intent.setData(Uri.parse(session.getData(Constant.PAYMENT_LINK)));
-                startActivity(intent);
-            }catch (Exception e){
-
-            }
-        }
-
-        return false;
     }
 }

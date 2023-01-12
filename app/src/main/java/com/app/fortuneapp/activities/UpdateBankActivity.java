@@ -1,5 +1,7 @@
 package com.app.fortuneapp.activities;
 
+import static com.app.fortuneapp.helper.Constant.SUCCESS;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -51,6 +53,9 @@ public class UpdateBankActivity extends AppCompatActivity {
         etBankname.setText(session.getData(Constant.BANK));
         etBranch.setText(session.getData(Constant.BRANCH));
         etIFSC.setText(session.getData(Constant.IFSC));
+
+        bankDetailsApi();
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,7 +108,7 @@ public class UpdateBankActivity extends AppCompatActivity {
             if (result) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    if (jsonObject.getBoolean(Constant.SUCCESS)) {
+                    if (jsonObject.getBoolean(SUCCESS)) {
                         Toast.makeText(this, ""+jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show();
                         JSONArray bankArray = jsonObject.getJSONArray(Constant.DATA);
                         session.setData(Constant.ACCOUNT_NUM,bankArray.getJSONObject(0).getString(Constant.ACCOUNT_NUM));
@@ -121,6 +126,29 @@ public class UpdateBankActivity extends AppCompatActivity {
         }, activity, Constant.UPDATE_BANK_URL, params, true);
 
 
+
+    }
+    private void bankDetailsApi() {
+        Map<String, String> params = new HashMap<>();
+        params.put(Constant.USER_ID,session.getData(Constant.USER_ID));
+        ApiConfig.RequestToVolley((result, response) -> {
+            if (result) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.getBoolean(SUCCESS)) {
+                        JSONArray jsonArray = jsonObject.getJSONArray(Constant.DATA);
+                        etAccountnum.setText(jsonArray.getJSONObject(0).getString(Constant.ACCOUNT_NUM));
+                        etHolderName.setText(jsonArray.getJSONObject(0).getString(Constant.HOLDER_NAME));
+                        etBankname.setText(jsonArray.getJSONObject(0).getString(Constant.BANK));
+                        etBranch.setText(jsonArray.getJSONObject(0).getString(Constant.BRANCH));
+                        etIFSC.setText(jsonArray.getJSONObject(0).getString(Constant.IFSC));
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, activity, Constant.BANK_DETAILS_URL, params, true);
 
     }
 }

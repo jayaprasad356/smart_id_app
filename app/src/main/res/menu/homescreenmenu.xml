@@ -14,4 +14,8 @@
         android:id="@+id/Wallet"
         android:icon="@drawable/ic_baseline_wallet_24"
         android:title="wallet" />
+    <item
+        android:id="@+id/Support"
+        android:icon="@drawable/supp"
+        android:title="Support"/>
 </menu>

@@ -43,7 +43,7 @@ public class WithdrawalActivity extends AppCompatActivity {
     RedeemedAdapter redeemedAdapter;
     Activity activity;
     Button btnUpdateBank,btnWithdrawal;
-    TextView tvBalance;
+    TextView tvBalance,tvminiwithdrawal;
     Session session;
     EditText etAmount;
     String type = "bank_transfer";
@@ -65,8 +65,9 @@ public class WithdrawalActivity extends AppCompatActivity {
         etAmount = findViewById(R.id.etAmount);
         rbBanktransfer = findViewById(R.id.rbBanktransfer);
         rbCash = findViewById(R.id.rbCash);
-
+        tvminiwithdrawal = findViewById(R.id.tvminumumRedeem);
         tvBalance.setText("Available Balance = ₹"+session.getData(Constant.BALANCE));
+        tvminiwithdrawal.setText("Minimum Redeem =  ₹"+session.getData(Constant.MIN_WITHDRAWAL));
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(activity);
         recycler.setLayoutManager(linearLayoutManager);
         redeemlist();
@@ -90,7 +91,7 @@ public class WithdrawalActivity extends AppCompatActivity {
                     etAmount.setError("enter amount");
                     etAmount.requestFocus();
                 }else if (Double.parseDouble(etAmount.getText().toString().trim()) < 250) {
-                    Toast.makeText(activity, "minimum 250 balance required", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, "minimum "+session.getData(Constant.MIN_WITHDRAWAL)+" balance required", Toast.LENGTH_SHORT).show();
 
                 }else if (Double.parseDouble(etAmount.getText().toString().trim()) > Double.parseDouble(session.getData(Constant.BALANCE))) {
                     Toast.makeText(activity, "insuffcient balance", Toast.LENGTH_SHORT).show();
@@ -121,7 +122,7 @@ public class WithdrawalActivity extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
                     if (jsonObject.getBoolean(SUCCESS)) {
                         Toast.makeText(this, ""+jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show();
-                        session.setData(Constant.ACCOUNT_NUM,jsonObject.getString(Constant.BALANCE));
+                        session.setData(Constant.BALANCE,jsonObject.getString(Constant.BALANCE));
                         startActivity(new Intent(activity, MainActivity.class));
                         finish();
                     }else {
@@ -171,9 +172,6 @@ public class WithdrawalActivity extends AppCompatActivity {
                 }
             }
         }, activity, Constant.WITHDRAWAL_LIST_URL, params, true);
-
-
-
 
 
     }
