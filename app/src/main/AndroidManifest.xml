@@ -9,7 +9,12 @@
     <uses-permission
         android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"
         tools:ignore="ProtectedPermissions" />
-
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.Manifest.permission.READ_PHONE_STATE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -76,6 +81,9 @@
                 android:value="" />
         </activity>
         <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" /> <!-- optional (needed if default theme has no action bar) -->
+        <activity
             android:name=".activities.WithdrawalActivity"
             android:exported="true" />
         <activity
@@ -87,6 +95,19 @@
         <activity
             android:name=".activities.MainActivity"
             android:exported="true" />
+        <activity
+            android:name=".chat.ImageViewerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".chat.ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".chat.BaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".chat.MessageActivity"
+            android:exported="false" />
+
 
         <service
             android:name="com.app.fortuneapp.helper.MyFirebaseMessagingService"

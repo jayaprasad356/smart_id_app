@@ -1,10 +1,10 @@
 package com.app.fortuneapp.chat;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
-
-
 import static com.app.fortuneapp.chat.constants.IConstants.BROADCAST_DOWNLOAD_EVENT;
+import static com.app.fortuneapp.chat.constants.IConstants.CATEGORY;
+import static com.app.fortuneapp.chat.constants.IConstants.CLOSED_TICKET;
+import static com.app.fortuneapp.chat.constants.IConstants.CURRENT_ID;
 import static com.app.fortuneapp.chat.constants.IConstants.DELAY_ONE_SEC;
 import static com.app.fortuneapp.chat.constants.IConstants.DOWNLOAD_DATA;
 import static com.app.fortuneapp.chat.constants.IConstants.EMPTY;
@@ -17,6 +17,7 @@ import static com.app.fortuneapp.chat.constants.IConstants.EXTRA_ATTACH_SIZE;
 import static com.app.fortuneapp.chat.constants.IConstants.EXTRA_ATTACH_TYPE;
 import static com.app.fortuneapp.chat.constants.IConstants.EXTRA_DATETIME;
 import static com.app.fortuneapp.chat.constants.IConstants.EXTRA_IMGPATH;
+import static com.app.fortuneapp.chat.constants.IConstants.EXTRA_MESSAGE;
 import static com.app.fortuneapp.chat.constants.IConstants.EXTRA_RECEIVER;
 import static com.app.fortuneapp.chat.constants.IConstants.EXTRA_SEEN;
 import static com.app.fortuneapp.chat.constants.IConstants.EXTRA_SENDER;
@@ -24,12 +25,15 @@ import static com.app.fortuneapp.chat.constants.IConstants.EXTRA_TYPE;
 import static com.app.fortuneapp.chat.constants.IConstants.EXTRA_TYPING;
 import static com.app.fortuneapp.chat.constants.IConstants.EXTRA_TYPINGWITH;
 import static com.app.fortuneapp.chat.constants.IConstants.EXTRA_TYPING_DELAY;
+import static com.app.fortuneapp.chat.constants.IConstants.EXTRA_USER_ID;
 import static com.app.fortuneapp.chat.constants.IConstants.EXT_MP3;
 import static com.app.fortuneapp.chat.constants.IConstants.EXT_VCF;
 import static com.app.fortuneapp.chat.constants.IConstants.FALSE;
 import static com.app.fortuneapp.chat.constants.IConstants.FCM_URL;
+import static com.app.fortuneapp.chat.constants.IConstants.NAME;
 import static com.app.fortuneapp.chat.constants.IConstants.ONE;
 import static com.app.fortuneapp.chat.constants.IConstants.OPENED_TICKET;
+import static com.app.fortuneapp.chat.constants.IConstants.PENDING_TICKET;
 import static com.app.fortuneapp.chat.constants.IConstants.PERMISSION_AUDIO;
 import static com.app.fortuneapp.chat.constants.IConstants.PERMISSION_CONTACT;
 import static com.app.fortuneapp.chat.constants.IConstants.PERMISSION_DOCUMENT;
@@ -38,6 +42,7 @@ import static com.app.fortuneapp.chat.constants.IConstants.REF_CHATS;
 import static com.app.fortuneapp.chat.constants.IConstants.REF_CHAT_ATTACHMENT;
 import static com.app.fortuneapp.chat.constants.IConstants.REF_CHAT_PHOTO_UPLOAD;
 import static com.app.fortuneapp.chat.constants.IConstants.REF_OTHERS;
+import static com.app.fortuneapp.chat.constants.IConstants.REF_TOKENS;
 import static com.app.fortuneapp.chat.constants.IConstants.REF_USERS;
 import static com.app.fortuneapp.chat.constants.IConstants.REF_VIDEO_THUMBS;
 import static com.app.fortuneapp.chat.constants.IConstants.REPLY;
@@ -49,18 +54,14 @@ import static com.app.fortuneapp.chat.constants.IConstants.STATUS_ONLINE;
 import static com.app.fortuneapp.chat.constants.IConstants.TICKET_ID;
 import static com.app.fortuneapp.chat.constants.IConstants.TRUE;
 import static com.app.fortuneapp.chat.constants.IConstants.TWO;
+import static com.app.fortuneapp.chat.constants.IConstants.TYPE;
 import static com.app.fortuneapp.chat.constants.IConstants.TYPE_CONTACT;
 import static com.app.fortuneapp.chat.constants.IConstants.TYPE_IMAGE;
 import static com.app.fortuneapp.chat.constants.IConstants.TYPE_RECORDING;
 import static com.app.fortuneapp.chat.constants.IConstants.TYPE_TEXT;
 import static com.app.fortuneapp.chat.constants.IConstants.VIBRATE_HUNDRED;
 import static com.app.fortuneapp.chat.constants.IConstants.ZERO;
-import static com.app.fortuneapp.helper.Constant.CATEGORY;
-import static com.app.fortuneapp.helper.Constant.CLOSED_TICKET;
 import static com.app.fortuneapp.helper.Constant.DESCRIPTION;
-import static com.app.fortuneapp.helper.Constant.NAME;
-import static com.app.fortuneapp.helper.Constant.PENDING_TICKET;
-import static com.app.fortuneapp.helper.Constant.TYPE;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -89,15 +90,18 @@ import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -115,13 +119,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.fortuneapp.R;
-
 import com.app.fortuneapp.chat.adapters.MessageAdapters;
 import com.app.fortuneapp.chat.async.BaseTask;
 import com.app.fortuneapp.chat.async.TaskRunner;
 import com.app.fortuneapp.chat.constants.IConstants;
 import com.app.fortuneapp.chat.fcm.APIService;
 import com.app.fortuneapp.chat.fcm.RetroClient;
+import com.app.fortuneapp.chat.fcmmodels.Data;
+import com.app.fortuneapp.chat.fcmmodels.MyResponse;
+import com.app.fortuneapp.chat.fcmmodels.Sender;
+import com.app.fortuneapp.chat.fcmmodels.Token;
 import com.app.fortuneapp.chat.files.FileUtils;
 import com.app.fortuneapp.chat.files.MediaFile;
 import com.app.fortuneapp.chat.files.PickerManager;
@@ -137,7 +144,6 @@ import com.app.fortuneapp.chat.models.User;
 import com.app.fortuneapp.chat.views.SingleClickListener;
 import com.app.fortuneapp.helper.ApiConfig;
 import com.app.fortuneapp.helper.Constant;
-
 import com.devlomi.record_view.OnRecordListener;
 import com.devlomi.record_view.RecordButton;
 import com.devlomi.record_view.RecordView;
@@ -163,7 +169,6 @@ import com.wafflecopter.multicontactpicker.ContactResult;
 import com.wafflecopter.multicontactpicker.LimitColumn;
 import com.wafflecopter.multicontactpicker.MultiContactPicker;
 
-
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -180,6 +185,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MessageActivity extends BaseActivity implements View.OnClickListener, PickerManagerCallbacks {
 
@@ -291,7 +300,7 @@ public class MessageActivity extends BaseActivity implements View.OnClickListene
         layoutManager.setStackFromEnd(true);
         mRecyclerView.setLayoutManager(layoutManager);
         btnGoToBottom.setVisibility(View.GONE);
-        if (type.equals(CLOSED_TICKET)){
+        if (type.equals(Constant.CLOSED_TICKET)){
             bottomChatLayout.setVisibility(View.GONE);
         }
 
@@ -1693,7 +1702,7 @@ public class MessageActivity extends BaseActivity implements View.OnClickListene
     protected void onStart() {
         super.onStart();
         Utils.readStatus(STATUS_ONLINE);
-        if (type.equals(PENDING_TICKET)){
+        if (type.equals(Constant.PENDING_TICKET)){
             reference = FirebaseDatabase.getInstance().getReference(REF_CHATS).child(strSender);
             reference.keepSynced(true);
             reference.addValueEventListener(new ValueEventListener() {

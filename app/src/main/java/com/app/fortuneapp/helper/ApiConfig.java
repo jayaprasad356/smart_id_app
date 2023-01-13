@@ -16,6 +16,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.database.FirebaseDatabase;
+import com.vanniktech.emoji.EmojiManager;
+import com.vanniktech.emoji.ios.IosEmojiProvider;
 
 import java.util.Map;
 
@@ -128,7 +131,8 @@ public class ApiConfig extends Application {
     public void onCreate() {
         super.onCreate();
         mInstance = this;
-
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        EmojiManager.install(new IosEmojiProvider());
 
     }
     public RequestQueue getRequestQueue() {

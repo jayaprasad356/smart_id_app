@@ -95,7 +95,7 @@ public class ProfileFragment extends Fragment implements PopupMenu.OnMenuItemCli
                     shareIntent.setType("text/plain");
                     shareIntent.putExtra(Intent.EXTRA_SUBJECT, "My application name");
                     String shareMessage= "\nDOWNLOAD THE APP AND GET UNLIMITED EARNING .you can also Download App from below link and enter referral code while login-"+"\n"+text+"\n";
-                    shareMessage = shareMessage +"\n\n";
+                    shareMessage = shareMessage +"\nhttps://play.google.com/store/apps/details?id=com.app.fortuneapp \n\n";
                     shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
                     startActivity(Intent.createChooser(shareIntent, "choose one"));
                 } catch(Exception e) {

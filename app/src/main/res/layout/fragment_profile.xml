@@ -113,6 +113,7 @@
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="@dimen/_50sdp"
                     app:cardElevation="@dimen/_5sdp"
+                    android:visibility="gone"
                     android:layout_margin="@dimen/_5sdp"
                     app:cardCornerRadius="@dimen/_5sdp">
                     <LinearLayout
@@ -143,6 +144,7 @@
                 </androidx.cardview.widget.CardView>
                 <Space
                     android:layout_width="@dimen/_20sdp"
+                    android:visibility="gone"
                     android:layout_height="wrap_content"/>
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView1"

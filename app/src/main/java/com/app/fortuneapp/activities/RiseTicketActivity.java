@@ -103,8 +103,8 @@ public class RiseTicketActivity extends AppCompatActivity {
                     long elapsedHours = different / hoursInMilli;
                     long elapsedMinutue = different / minutesInMilli;
 
-                    if (elapsedMinutue >= Long.parseLong("3")){
-
+//                    if (elapsedMinutue >= Long.parseLong("3")){
+if (true){
                         session.setBoolean(Constant.LAST_UPDATED_DATE_SETTINGS,false);
                         riseTicketCheck();
 
@@ -135,7 +135,7 @@ public class RiseTicketActivity extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
                     if (jsonObject.getBoolean(Constant.SUCCESS)) {
                         JSONArray setArray = jsonObject.getJSONArray(Constant.DATA);
-                        if (setArray.getJSONObject(0).getString(Constant.CHAT_SUPPORT).equals("1")){
+                        if (setArray.getJSONObject(0).getString(Constant.CHAT_SUPPORT).equals("0")){
                             session.setBoolean(Constant.RISE_TICKET_STATUS,false);
                             riseTicket();
                         }else {
