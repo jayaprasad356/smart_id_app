@@ -48,7 +48,11 @@ public class SplashActivity extends AppCompatActivity {
 
     private void checkVersion() {
         Map<String, String> params = new HashMap<>();
+        params.put(Constant.USER_ID,session.getData(Constant.USER_ID));
+        params.put(Constant.FCM_ID,session.getData(Constant.FCM_ID));
+        params.put(Constant.DEVICE_ID,Constant.getDeviceId(activity));
         ApiConfig.RequestToVolley((result, response) -> {
+            Log.d("SPLASH_VER",response);
 
             if (result) {
                 try {
@@ -57,8 +61,6 @@ public class SplashActivity extends AppCompatActivity {
                         String codegenerate = "0", withdrawal_status = "0";
                         JSONArray jsonArray = jsonObject.getJSONArray(Constant.DATA);
                         JSONArray jsonArray2 = jsonObject.getJSONArray(Constant.SETTINGS);
-
-
                         session.setData(Constant.PAYMENT_LINK, jsonArray2.getJSONObject(0).getString(Constant.PAYMENT_LINK));
                         session.setData(Constant.WHATSAPP, jsonArray2.getJSONObject(0).getString(Constant.WHATSAPP));
                         session.setData(Constant.JOB_DETAILS_LINK, jsonArray2.getJSONObject(0).getString(Constant.JOB_DETAILS_LINK));

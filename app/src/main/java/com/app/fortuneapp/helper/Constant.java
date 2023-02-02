@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Constant {
-    public static final String MainBaseUrl = "https://fortune.greymatterworks.in/";
+    public static final String MainBaseUrl = "https://admin.fortuneapp.in/";
     //public static final String MainBaseUrl = "https://abcd.greymatterworks.in/";
     //public static final String MainBaseUrl = "http://192.168.43.38/fortune/";
     public static final String BaseUrl = MainBaseUrl + "api/";

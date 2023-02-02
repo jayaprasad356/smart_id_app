@@ -1,16 +1,17 @@
 package com.app.fortuneapp.model;
 
 public class Notification {
-    String id,title,description,datetime;
+    String id,title,description,datetime,link;
     public Notification(){
 
     }
 
-    public Notification(String id, String title, String description, String datetime) {
+    public Notification(String id, String title, String description, String datetime, String link) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.datetime = datetime;
+        this.link = link;
     }
 
     public String getId() {
@@ -43,6 +44,14 @@ public class Notification {
 
     public void setDatetime(String datetime) {
         this.datetime = datetime;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 }
 
