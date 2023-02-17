@@ -37,7 +37,7 @@ public class Session {
     public void setUserData(String id,String name, String mobile, String password, String dob,String email,String city,String referred_by,
                             String earn,String withdrawal,String total_referrals,int today_codes,int total_codes,String balance,
                             String device_id,String status,String refer_code,String refer_bonus_sent,String code_generate,
-                            String code_generate_time,String last_updated,String joined_date,String withdrawal_status) {
+                            String code_generate_time,String last_updated,String joined_date,String withdrawal_status,String security) {
         editor.putString(Constant.USER_ID, id);
         editor.putString(Constant.NAME, name);
         editor.putString(Constant.MOBILE, mobile);
@@ -62,6 +62,7 @@ public class Session {
         editor.putString(Constant.LAST_UPDATED, last_updated);
         editor.putString(Constant.JOINED_DATE, joined_date);
         editor.putString(Constant.WITHDRAWAL_STATUS, withdrawal_status);
+        editor.putString(Constant.SECURITY,security);
         editor.commit();
     }
     public String getData(String id) {

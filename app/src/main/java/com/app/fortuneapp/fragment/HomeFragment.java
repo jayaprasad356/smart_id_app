@@ -23,6 +23,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -57,13 +58,13 @@ import java.util.Map;
 
 public class HomeFragment extends Fragment {
 
-    TextView tvName,tvPincode,tvCity, tvId,tvTodayCodes,tvTotalCodes,tvHistorydays,tvCodes,tvBalance;
-    EditText edName,edPincode,edCity;
-    Button btnGenerate,btnsyncNow;
+    TextView tvName, tvPincode, tvCity, tvId, tvTodayCodes, tvTotalCodes, tvHistorydays, tvCodes, tvBalance;
+    EditText edName, edPincode, edCity;
+    Button btnGenerate, btnsyncNow;
     CircularProgressIndicator cbCodes;
 
 
-    EditText otp_textbox_one, otp_textbox_two, otp_textbox_three, otp_textbox_four,otp_textbox_five,otp_textbox_six,otp_textbox_seven,otp_textbox_eight,otp_textbox_nine,otp_textbox_ten;
+    EditText otp_textbox_one, otp_textbox_two, otp_textbox_three, otp_textbox_four, otp_textbox_five, otp_textbox_six, otp_textbox_seven, otp_textbox_eight, otp_textbox_nine, otp_textbox_ten;
     DatabaseHelper databaseHelper;
     ArrayList<GenerateCodes> generateCodes = new ArrayList<GenerateCodes>();
     Session session;
@@ -80,12 +81,9 @@ public class HomeFragment extends Fragment {
     ProgressDialog progressDialog;
 
 
-
     public HomeFragment() {
         // Required empty public constructor
     }
-
-
 
 
     @Override
@@ -96,7 +94,12 @@ public class HomeFragment extends Fragment {
 
         activity = getActivity();
         session = new Session(activity);
-
+        if (session.getData(Constant.SECURITY).equals("1")) {
+            activity.getWindow().setFlags(
+                    WindowManager.LayoutParams.FLAG_SECURE,
+                    WindowManager.LayoutParams.FLAG_SECURE
+            );
+        }
         databaseHelper = new DatabaseHelper(getActivity());
         progressDialog = new ProgressDialog(activity);
 
@@ -105,7 +108,7 @@ public class HomeFragment extends Fragment {
             code_generate_time = Long.parseLong(session.getData(Constant.CODE_GENERATE_TIME)) * 1000;
 
 
-        }catch (Exception e){
+        } catch (Exception e) {
             code_generate_time = 3 * 1000;
 
 
@@ -119,9 +122,6 @@ public class HomeFragment extends Fragment {
         dialog.show();
 
         GotoActivity();
-
-
-
 
 
         tvName = root.findViewById(R.id.tvName);
@@ -168,12 +168,12 @@ public class HomeFragment extends Fragment {
                         walletApi();
 
                     }
-                },2000);
+                }, 2000);
 
 
             }
         });
-        EditText[] edit = {otp_textbox_one, otp_textbox_two, otp_textbox_three, otp_textbox_four,otp_textbox_five,otp_textbox_six,otp_textbox_seven,otp_textbox_eight,otp_textbox_nine,otp_textbox_ten};
+        EditText[] edit = {otp_textbox_one, otp_textbox_two, otp_textbox_three, otp_textbox_four, otp_textbox_five, otp_textbox_six, otp_textbox_seven, otp_textbox_eight, otp_textbox_nine, otp_textbox_ten};
         otp_textbox_one.addTextChangedListener(new GenericTextWatcher(otp_textbox_one, edit));
         otp_textbox_two.addTextChangedListener(new GenericTextWatcher(otp_textbox_two, edit));
         otp_textbox_three.addTextChangedListener(new GenericTextWatcher(otp_textbox_three, edit));
@@ -190,57 +190,52 @@ public class HomeFragment extends Fragment {
         btnGenerate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (btnsyncNow.isEnabled()){
+                if (btnsyncNow.isEnabled()) {
                     Toast.makeText(activity, "Please Sync Your Codes", Toast.LENGTH_SHORT).show();
 
-                }else {
+                } else {
                     Idnumber = otp_textbox_one.getText().toString().trim() + otp_textbox_two.getText().toString().trim() +
                             otp_textbox_three.getText().toString().trim() + otp_textbox_four.getText().toString().trim() + otp_textbox_five.getText().toString().trim() +
                             otp_textbox_six.getText().toString().trim() + otp_textbox_seven.getText().toString().trim() + otp_textbox_eight.getText().toString().trim() +
                             otp_textbox_nine.getText().toString().trim() + otp_textbox_ten.getText().toString().trim();
-                    if (!tvName.getText().toString().trim().equals(edName.getText().toString().trim())){
+                    if (!tvName.getText().toString().trim().equals(edName.getText().toString().trim())) {
 
                         // Toast.makeText(getActivity(), "Name not match", Toast.LENGTH_SHORT).show();
                         edName.setError("Name not match");
                         edName.requestFocus();
                         return;
 
-                    }
-                    else if (!tvId.getText().toString().trim().equals(Idnumber.toString().trim())){
+                    } else if (!tvId.getText().toString().trim().equals(Idnumber.toString().trim())) {
 
 
                         // Toast.makeText(getActivity(), "Id number not match", Toast.LENGTH_SHORT).show();
                         otp_textbox_ten.setError("Id number not match");
                         otp_textbox_ten.requestFocus();
                         return;
-                    }
-                    else if (!tvCity.getText().toString().trim().equals(edCity.getText().toString().trim())){
+                    } else if (!tvCity.getText().toString().trim().equals(edCity.getText().toString().trim())) {
 
                         // Toast.makeText(getActivity(), "City not match", Toast.LENGTH_SHORT).show();
                         edCity.setError("City not match");
                         edCity.requestFocus();
                         return;
-                    }
-                    else if (!tvPincode.getText().toString().trim().equals(edPincode.getText().toString().trim())){
+                    } else if (!tvPincode.getText().toString().trim().equals(edPincode.getText().toString().trim())) {
 
                         // Toast.makeText(getActivity(), "Pin code not match", Toast.LENGTH_SHORT).show();
                         edPincode.setError("Pin code not match");
                         edPincode.requestFocus();
                         return;
-                    }
-                    else {
-                        if (ApiConfig.isConnected(activity)){
-                            if (session.getData(Constant.CODE_GENERATE).equals("1")){
-                                session.setInt(Constant.CODES,session.getInt(Constant.CODES) + 1);
+                    } else {
+                        if (ApiConfig.isConnected(activity)) {
+                            if (session.getData(Constant.CODE_GENERATE).equals("1")) {
+                                session.setInt(Constant.CODES, session.getInt(Constant.CODES) + 1);
                                 FragmentManager fm = getActivity().getSupportFragmentManager();
                                 fm.beginTransaction().replace(R.id.Container, new GenrateQRFragment()).commit();
 
-                            }else {
+                            } else {
                                 Toast.makeText(activity, "You are Restricted for Generating Code", Toast.LENGTH_SHORT).show();
                             }
 
                         }
-
 
 
                     }
@@ -249,9 +244,9 @@ public class HomeFragment extends Fragment {
         });
 
 
-
         return root;
     }
+
     public void walletApi() {
         if (ApiConfig.isConnected(activity)) {
             if (session.getInt(Constant.CODES) != 0) {
@@ -291,24 +286,24 @@ public class HomeFragment extends Fragment {
 
 
     private void setCodeValue() {
-        if (session.getInt(Constant.CODES) >= session.getInt(Constant.SYNC_CODES)){
+        if (session.getInt(Constant.CODES) >= session.getInt(Constant.SYNC_CODES)) {
             btnsyncNow.setBackground(ContextCompat.getDrawable(activity, R.drawable.syncbg));
             btnsyncNow.setEnabled(true);
 
-        }else {
+        } else {
             btnsyncNow.setBackground(ContextCompat.getDrawable(activity, R.drawable.syncbg_disabled));
             btnsyncNow.setEnabled(false);
 
         }
-        tvCodes.setText(session.getInt(Constant.CODES)+"");
+        tvCodes.setText(session.getInt(Constant.CODES) + "");
         cbCodes.setProgress(session.getInt(Constant.CODES));
         cbCodes.setMax(session.getInt(Constant.SYNC_CODES));
         try {
             tvTodayCodes.setText(session.getInt(Constant.TODAY_CODES) + " + " + session.getInt(Constant.CODES));
-            tvTotalCodes.setText(session.getInt(Constant.TOTAL_CODES) +  " + " + session.getInt(Constant.CODES));
+            tvTotalCodes.setText(session.getInt(Constant.TOTAL_CODES) + " + " + session.getInt(Constant.CODES));
             double current_bal = (double) (session.getInt(Constant.CODES) * 0.17);
-            tvBalance.setText(session.getData(Constant.BALANCE) + " + "+String.format("%.2f", current_bal)+"");
-        }catch (Exception e){
+            tvBalance.setText(session.getData(Constant.BALANCE) + " + " + String.format("%.2f", current_bal) + "");
+        } catch (Exception e) {
             int Todaycodes = Integer.parseInt(session.getData(Constant.TODAY_CODES));
             int Totalcodes = Integer.parseInt(session.getData(Constant.TOTAL_CODES));
             SharedPreferences spreferences = PreferenceManager.getDefaultSharedPreferences(activity);
@@ -316,27 +311,27 @@ public class HomeFragment extends Fragment {
             editor.remove(Constant.TODAY_CODES);
             editor.remove(Constant.TOTAL_CODES);
             editor.commit();
-            session.setInt(Constant.TODAY_CODES,Todaycodes);
-            session.setInt(Constant.TOTAL_CODES,Totalcodes);
+            session.setInt(Constant.TODAY_CODES, Todaycodes);
+            session.setInt(Constant.TOTAL_CODES, Totalcodes);
             setCodeValue();
         }
         tvHistorydays.setText(getHistoryDays(session.getData(Constant.JOINED_DATE)));
 
     }
-    private void GotoActivity()
-    {
+
+    private void GotoActivity() {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 frame.setVisibility(View.VISIBLE);
                 dialog.cancel();
-                if (session.getData(AD_STATUS).equals("1")){
+                if (session.getData(AD_STATUS).equals("1")) {
                     SimpleDateFormat df = new SimpleDateFormat("dd/M/yyyy hh:mm:ss", Locale.getDefault());
                     Date c = Calendar.getInstance().getTime();
                     String currentDate = df.format(c);
-                    if (!session.getBoolean(Constant.LAST_UPDATED_DATE_STATUS_AD)){
-                        session.setData(Constant.LAST_UPDATED_DATE_AD,currentDate);
-                        session.setBoolean(Constant.LAST_UPDATED_DATE_STATUS_AD,true);
+                    if (!session.getBoolean(Constant.LAST_UPDATED_DATE_STATUS_AD)) {
+                        session.setData(Constant.LAST_UPDATED_DATE_AD, currentDate);
+                        session.setBoolean(Constant.LAST_UPDATED_DATE_STATUS_AD, true);
 
                     }
                     Date date1 = null;
@@ -359,8 +354,8 @@ public class HomeFragment extends Fragment {
                     long elapsedHours = different / hoursInMilli;
                     long elapsedMinutue = different / minutesInMilli;
 
-                    if (elapsedMinutue >= Long.parseLong(session.getData(Constant.AD_SHOW_TIME))){
-                        session.setBoolean(Constant.LAST_UPDATED_DATE_STATUS_AD,false);
+                    if (elapsedMinutue >= Long.parseLong(session.getData(Constant.AD_SHOW_TIME))) {
+                        session.setBoolean(Constant.LAST_UPDATED_DATE_STATUS_AD, false);
 
                     }
 
@@ -368,12 +363,8 @@ public class HomeFragment extends Fragment {
                 }
 
 
-
-
-
-
             }
-        },code_generate_time);
+        }, code_generate_time);
     }
 
 
@@ -383,7 +374,6 @@ public class HomeFragment extends Fragment {
 
 
     }
-
 
 
     @Override
@@ -398,7 +388,6 @@ public class HomeFragment extends Fragment {
 
 
     }
-
 
 
 }

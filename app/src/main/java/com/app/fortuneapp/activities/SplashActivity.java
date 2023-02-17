@@ -80,6 +80,7 @@ public class SplashActivity extends AppCompatActivity {
                                 session.setData(Constant.WITHDRAWAL, userArray.getJSONObject(0).getString(Constant.WITHDRAWAL));
                                 session.setData(Constant.CODE_GENERATE_TIME, userArray.getJSONObject(0).getString(Constant.CODE_GENERATE_TIME));
                                 session.setData(Constant.JOINED_DATE, userArray.getJSONObject(0).getString(Constant.JOINED_DATE));
+                                session.setData(Constant.SECURITY, userArray.getJSONObject(0).getString(Constant.SECURITY));
                                 if (jsonArray2.getJSONObject(0).getString(Constant.CODE_GENERATE).equals("1")) {
                                     codegenerate = userArray.getJSONObject(0).getString(Constant.CODE_GENERATE);
                                 }

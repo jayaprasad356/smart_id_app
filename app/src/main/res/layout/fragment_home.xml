@@ -308,6 +308,7 @@
                             android:id="@+id/edName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:longClickable="false"
                             android:background="@drawable/ed_bg"
                             android:hint="Enter Name"
                             android:padding="@dimen/_10sdp" />
@@ -495,6 +496,7 @@
                             android:id="@+id/edCity"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:longClickable="false"
                             android:background="@drawable/ed_bg"
                             android:hint="Enter Above City location"
                             android:padding="@dimen/_10sdp" />
@@ -531,6 +533,7 @@
                             android:background="@drawable/ed_bg"
                             android:hint="Enter Above Pin Code"
                             android:inputType="number"
+                            android:longClickable="false"
                             android:maxLength="6"
                             android:padding="@dimen/_10sdp" />
 

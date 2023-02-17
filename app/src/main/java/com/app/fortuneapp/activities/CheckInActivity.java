@@ -94,7 +94,7 @@ public class CheckInActivity extends AppCompatActivity {
                                         userArray.getJSONObject(0).getString(Constant.CODE_GENERATE_TIME),
                                         userArray.getJSONObject(0).getString(Constant.LAST_UPDATED),
                                         userArray.getJSONObject(0).getString(Constant.JOINED_DATE),
-                                        withdrawal_status);
+                                        withdrawal_status, userArray.getJSONObject(0).getString(Constant.SECURITY));
                                 if (session.getBoolean(Constant.IMPORT_DATA)){
                                     session.setBoolean("is_logged_in", true);
                                     startActivity(new Intent(activity, MainActivity.class));

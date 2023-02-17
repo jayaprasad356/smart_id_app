@@ -68,6 +68,7 @@
         android:layout_height="wrap_content"
         android:hint="Phone"
         android:textSize="@dimen/_12sdp"
+        android:longClickable="false"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:inputType="number"

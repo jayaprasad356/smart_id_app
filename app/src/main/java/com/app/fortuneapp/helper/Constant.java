@@ -126,6 +126,7 @@ public class Constant {
     public static final String LAST_UPDATED_DATE_STATUS_AD = "last_updated_date_status";
     public static final String SUPPORT = "support";
     public static final String TIMESTAMP = "timestamp";
+    public static final String 	SECURITY = "security";
 
     @SuppressLint("HardwareIds")
     public static final  String getDeviceId(Activity activity) {
