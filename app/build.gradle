@@ -47,6 +47,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage'
 
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
+    implementation 'com.google.android.gms:play-services-ads:19.3.0'
+    implementation 'com.github.delight-im:Android-AdvancedWebView:v3.2.1'
 
 
     implementation 'com.intuit.sdp:sdp-android:1.0.6'

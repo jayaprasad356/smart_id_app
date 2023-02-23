@@ -33,8 +33,11 @@ public class Constant {
     public static final String TRNSACTION_LIST_URL = BaseUrl + "transaction_lists.php";
     public static final String BANK_DETAILS_URL = BaseUrl + "bank_details.php";
     public static final String SETTINGS_URL = BaseUrl + "settings.php";
+    public static final String CHAMPION_TASK_TRIAL = BaseUrl + "championtask_trial.php";
 
+    public static final String SWITCH_CHAMPIONTASK = BaseUrl + "switch_championtask.php";
 
+    public static final String URLS_LIST_URL = BaseUrl + "urls_list.php";
 
 
     public static final String ID = "id";
@@ -118,7 +121,20 @@ public class Constant {
     public static final String FETCH_TIME = "fetch_time";
     public static final String AD_REWARD_ID = "ad_reward_id";
 
+    public static final String URL = "url";
+    public static final String CHAMPION_CODES = "champion_codes";
+    public static final String TASK_TYPE = "task_type";
+    public static final String CHAMPION_DEMO_LINK = "champion_demo_link";
+    public static final String CHAMPION = "champion";
+    public static final String CHAMPION_SEARCH_COUNT = "champion_search_count";
+    public static final String 	TRIAL_COUNT = "trial_count";
+    public static final String 	MCG_TIMER = "mcg_timer";
+    public static final String 	CHAMPION_TRIAL_COUNT = "champion_trial_count";
+    public static final String JOINING_TICKET = "joining_ticket";
+    public static final String TRIAL_EXPIRED = "trial_expired";
 
+    public static final String AD_TYPE = "ad_type";
+    public static final String AD_AVAILABLE = "ad_available";
     public static final String LAST_UPDATED_SETTINGS_DATE = "last_updated_settings_date";
     public static final String LAST_UPDATED_DATE_SETTINGS = "last_updated_date_settings";
     public static final String RISE_TICKET_STATUS = "rise_ticket_status";
