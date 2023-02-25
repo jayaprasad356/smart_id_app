@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.fortuneapp.R;
+import com.app.fortuneapp.activities.NotificaionActivity;
 import com.app.fortuneapp.model.Notification;
 
 import java.util.ArrayList;
@@ -47,6 +48,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             holder.btnOpen.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    ((NotificaionActivity)activity).sendorder(notification.getTitle());
                     String url = notification.getLink();
                     Intent i = new Intent(Intent.ACTION_VIEW);
                     i.setData(Uri.parse(url));

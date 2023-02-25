@@ -53,6 +53,41 @@ public class NotificaionActivity extends AppCompatActivity {
             }
         });
     }
+    public void sendorder(String name)
+    {
+        Map<String, String> params = new HashMap<>();
+        ApiConfig.RequestToVolley((result, response) -> {
+            if (result) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.getBoolean(Constant.SUCCESS)) {
+                        JSONObject object = new JSONObject(response);
+                        JSONArray jsonArray = object.getJSONArray(Constant.DATA);
+                        Gson g = new Gson();
+                        ArrayList<Notification> notifications = new ArrayList<>();
+
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+
+                            if (jsonObject1 != null) {
+                                Notification group = g.fromJson(jsonObject1.toString(), Notification.class);
+                                notifications.add(group);
+                            } else {
+                                break;
+                            }
+                        }
+                        notificationAdapter = new NotificationAdapter(activity, notifications);
+                        recyclerView.setAdapter(notificationAdapter);
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, activity, Constant.NOTIFICATION_LIST_URL, params, true);
+
+    }
 
 
     private void notificationList()
