@@ -283,7 +283,30 @@
 
 
                     </LinearLayout>
-
+                    <LinearLayout
+                        android:id="@+id/ll_champion"
+                        android:visibility="visible"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tvHightlight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Take a trail of champion task"
+                            android:textStyle="bold"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:textColor="#FFC6FD"/>
+                        <Button
+                            android:id="@+id/btnChampiontask"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:backgroundTint="@null"
+                            android:layout_gravity="center"
+                            android:background="@drawable/bg_gra"
+                            android:text="Champion Task"/>
+                    </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

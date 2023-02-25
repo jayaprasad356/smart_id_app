@@ -45,6 +45,9 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/admob_app_id" />
         <activity
             android:name=".activities.NotificaionActivity"
             android:exported="false" />

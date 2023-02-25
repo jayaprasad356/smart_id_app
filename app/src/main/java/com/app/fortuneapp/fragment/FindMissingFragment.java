@@ -239,7 +239,7 @@ public class FindMissingFragment extends Fragment {
         tvTrialPeriod.setText("Trial Period " + session.getData(Constant.TRIAL_COUNT) + "/10");
 
 
-        tvInfo.setText("Champions Earn " + session.getData(Constant.CHAMPION_CODES) + " codes \nfor Generating 1 QR Code = " + (Double.parseDouble(session.getData(Constant.CHAMPION_CODES)) * 0.17) + " Paise.");
+       // tvInfo.setText("Champions Earn " + session.getData(Constant.CHAMPION_CODES) + " codes \nfor Generating 1 QR Code = " + (Double.parseDouble(session.getData(Constant.CHAMPION_CODES)) * 0.17) + " Paise.");
 
         if (session.getData(Constant.TASK_TYPE).equals(Constant.CHAMPION)) {
             lTrial.setVisibility(View.GONE);

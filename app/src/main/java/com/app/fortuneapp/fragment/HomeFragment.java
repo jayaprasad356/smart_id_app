@@ -60,7 +60,7 @@ public class HomeFragment extends Fragment {
 
     TextView tvName, tvPincode, tvCity, tvId, tvTodayCodes, tvTotalCodes, tvHistorydays, tvCodes, tvBalance;
     EditText edName, edPincode, edCity;
-    Button btnGenerate, btnsyncNow;
+    Button btnGenerate, btnsyncNow,btnChampionTask;
     CircularProgressIndicator cbCodes;
 
 
@@ -140,6 +140,7 @@ public class HomeFragment extends Fragment {
         tvCodes = root.findViewById(R.id.tvCodes);
         cbCodes = root.findViewById(R.id.cbCodes);
         btnsyncNow = root.findViewById(R.id.btnsyncNow);
+        btnChampionTask=root.findViewById(R.id.btnChampiontask);
         tvBalance = root.findViewById(R.id.tvBalance);
 
         otp_textbox_one = root.findViewById(R.id.otp_edit_box1);
@@ -186,7 +187,13 @@ public class HomeFragment extends Fragment {
         otp_textbox_ten.addTextChangedListener(new GenericTextWatcher(otp_textbox_ten, edit));
         generateCodes = databaseHelper.getAllCodes();
 
-
+        btnChampionTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                fm.beginTransaction().replace(R.id.Container, new FindMissingFragment()).commit();
+            }
+        });
         btnGenerate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
