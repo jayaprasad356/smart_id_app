@@ -13,9 +13,10 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Constant {
-    public static final String MainBaseUrl = "https://admin.fortuneapp.in/";
+    //public static final String MainBaseUrl = "https://admin.fortuneapp.in/";
     //public static final String MainBaseUrl = "https://abcd.greymatterworks.in/";
     //public static final String MainBaseUrl = "http://192.168.43.38/fortune/";
+    public static final String MainBaseUrl = "https://demofortune.graymatterworks.com/";
     public static final String BaseUrl = MainBaseUrl + "api/";
     public static final String SEND_ADMIN_NOTIFY_URL = BaseUrl + "sendadminnotify.php";
     public static final String LOGIN_URL = BaseUrl + "login.php";
@@ -120,15 +121,25 @@ public class Constant {
     public static final String AD_SHOW_TIME = "ad_show_time";
     public static final String FETCH_TIME = "fetch_time";
     public static final String AD_REWARD_ID = "ad_reward_id";
-
+    public static final String JOIN_CODES = "join_codes";
+    public static final String REFER_BONUS_CODES = "refer_bonus_codes";
+    public static final String REFER_BONUS_AMOUNT = "refer_bonus_amount";
+    public static final String REFER_DESCRIPTION = "refer_description";
+    public static final String CHAMPION_TASK = "champion_task";
     public static final String URL = "url";
     public static final String CHAMPION_CODES = "champion_codes";
     public static final String TASK_TYPE = "task_type";
     public static final String CHAMPION_DEMO_LINK = "champion_demo_link";
     public static final String CHAMPION = "champion";
+    public static final String MAIN_CONTENT = "main_content";
+    public static final String 	CLOSED_JOINING = "closed_joining";
+    public static final String 	FOLLOWUP_TICKET = "followup_ticket";
+
     public static final String CHAMPION_SEARCH_COUNT = "champion_search_count";
     public static final String 	TRIAL_COUNT = "trial_count";
     public static final String 	MCG_TIMER = "mcg_timer";
+    public static final String CHAMPION_TASK_ELIGIBLE = "champion_task_eligible";
+
     public static final String 	CHAMPION_TRIAL_COUNT = "champion_trial_count";
     public static final String JOINING_TICKET = "joining_ticket";
     public static final String TRIAL_EXPIRED = "trial_expired";
@@ -143,6 +154,15 @@ public class Constant {
     public static final String SUPPORT = "support";
     public static final String TIMESTAMP = "timestamp";
     public static final String 	SECURITY = "security";
+    public static final String ONGOING_SA_BALANCE = "ongoing_sa_balance";
+    public static final String SALARY_ADVANCE_BALANCE = "salary_advance_balance";
+    public static final String SA_REFER_COUNT = "sa_refer_count";
+    public static final String 	REGULAR_TRIAL_COUNT = "regular_trial_count";
+    public static final String REGULAR = "regular";
+    public static final String FAQ_LIST = BaseUrl + "faq_list.php";
+    public static final String 	CHECK_NOTIFICATION = "check_notification";
+    public static final String IMPORT_URLS = "import_urls";
+    public static final String EXPLORE_URL = BaseUrl + "explore.php";
 
     @SuppressLint("HardwareIds")
     public static final  String getDeviceId(Activity activity) {

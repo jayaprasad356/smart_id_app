@@ -1,6 +1,7 @@
 package com.app.fortuneapp.helper;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -21,6 +22,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_CODES = "tblcodes";
     public static final String KEY_ID = "pid";
     final String ID = "id";
+    final String UID = "id";
+    final String URL = "url";
+    final String SEEN = "seen";
+    public static final String TABLE_URLS= "tblurls";
+
     final String STUDENT_NAME = "student_name";
     final String ID_NUMBER = "id_number";
     final String ECITY = "ecity";
@@ -120,8 +126,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         activity.deleteDatabase(DATABASE_NAME);
 
     }
+    public ArrayList<GenerateCodes> getLimitCodes() {
+        final ArrayList<GenerateCodes> generateCodes = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_CODES + " ORDER BY RANDOM() LIMIT 1", null);
+        if (cursor.moveToFirst()) {
+            do {
+                GenerateCodes generateCodes1 = new GenerateCodes(cursor.getString(cursor.getColumnIndexOrThrow(ID)),cursor.getString(cursor.getColumnIndexOrThrow(STUDENT_NAME))
+                        ,cursor.getString(cursor.getColumnIndexOrThrow(ID_NUMBER)),cursor.getString(cursor.getColumnIndexOrThrow(ECITY)),cursor.getString(cursor.getColumnIndexOrThrow(PIN_CODE)));
+                //@SuppressLint("Range") String count = cursor.getString(cursor.getColumnIndex(QTY));
+                generateCodes.add(generateCodes1);
+            } while (cursor.moveToNext());
 
+        }
+        cursor.close();
+        db.close();
+        return generateCodes;
+    }
+    public void deleteUrls() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_URLS);
+        db.close();
+    }
+    public void AddtoUrl(String uid, String url, String seen) {
+        try {
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put(UID, uid);
+            values.put(URL, url);
+            values.put(SEEN, seen);
+            db.insert(TABLE_URLS, null, values);
+            db.close();
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public ArrayList<GenerateCodes> getMissingCodes(int number) {
         final ArrayList<GenerateCodes> generateCodes = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();

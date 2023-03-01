@@ -89,8 +89,70 @@
                     android:padding="@dimen/_10sdp"
                     android:background="@drawable/bg_stroke"
                     >
+                    <LinearLayout
+                        android:id="@+id/lTrial"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tvInfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:textColor="#FFC6FD"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="Get Rs 500 for 3000 codes"/>
+
+                        <TextView
+                            android:id="@+id/tvTrialPeriod"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_margin="@dimen/_5sdp"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:visibility="visible"
+                            android:text=""/>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnChampionTaskNav"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_30sdp"
+                                android:textAllCaps="false"
+                                app:icon="@drawable/ic_arrow_back"
+                                android:textColor="@color/white"
+                                app:iconTint="@color/white"
+                                android:textSize="@dimen/_8sdp"
+                                app:iconSize="@dimen/_8sdp"
+                                style="@style/Widget.MaterialComponents.Button.TextButton"
+                                android:text="Champion Task"/>
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnDemoVideo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_30sdp"
+                                android:textAllCaps="false"
+                                android:visibility="gone"
+                                android:textColor="@color/white"
+                                app:iconTint="@color/white"
+                                android:textSize="@dimen/_8sdp"
+                                app:iconSize="@dimen/_8sdp"
+                                android:layout_alignParentEnd="true"
+                                android:backgroundTint="@color/secondaryLightColor"
+                                style="@style/Widget.MaterialComponents.Button.TextButton"
+                                android:text="Watch Demo Video"/>
+
+                        </RelativeLayout>
+                    </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/llPayed"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"

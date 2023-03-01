@@ -61,7 +61,10 @@ import static com.app.fortuneapp.chat.constants.IConstants.TYPE_RECORDING;
 import static com.app.fortuneapp.chat.constants.IConstants.TYPE_TEXT;
 import static com.app.fortuneapp.chat.constants.IConstants.VIBRATE_HUNDRED;
 import static com.app.fortuneapp.chat.constants.IConstants.ZERO;
+import static com.app.fortuneapp.helper.Constant.CLOSED_JOINING;
 import static com.app.fortuneapp.helper.Constant.DESCRIPTION;
+import static com.app.fortuneapp.helper.Constant.FOLLOWUP_TICKET;
+import static com.app.fortuneapp.helper.Constant.JOINING_TICKET;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -119,6 +122,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.fortuneapp.R;
+import com.app.fortuneapp.activities.MainActivity;
 import com.app.fortuneapp.chat.adapters.MessageAdapters;
 import com.app.fortuneapp.chat.async.BaseTask;
 import com.app.fortuneapp.chat.async.TaskRunner;
@@ -144,6 +148,7 @@ import com.app.fortuneapp.chat.models.User;
 import com.app.fortuneapp.chat.views.SingleClickListener;
 import com.app.fortuneapp.helper.ApiConfig;
 import com.app.fortuneapp.helper.Constant;
+import com.app.fortuneapp.helper.Session;
 import com.devlomi.record_view.OnRecordListener;
 import com.devlomi.record_view.RecordButton;
 import com.devlomi.record_view.RecordView;
@@ -244,6 +249,7 @@ public class MessageActivity extends BaseActivity implements View.OnClickListene
     private TextView txtUsername;
     RelativeLayout bottomChatLayout;
     String type,description;
+    Session session;
 
 
     @Override
@@ -252,6 +258,7 @@ public class MessageActivity extends BaseActivity implements View.OnClickListene
         setContentView(R.layout.activity_message);
 
         mActivity = this;
+        session = new Session(mActivity);
 
 
         apiService = RetroClient.getClient(FCM_URL).create(APIService.class);
@@ -400,6 +407,7 @@ public class MessageActivity extends BaseActivity implements View.OnClickListene
         bottomChatLayout = findViewById(R.id.bottomChatLayout);
         attachmentBGView.setVisibility(View.GONE);
         attachmentBGView.setOnClickListener(this);
+
 
         imgAttachmentEmoji = findViewById(R.id.imgAttachmentEmoji);
         imgAddAttachment.setOnClickListener(this);
@@ -777,6 +785,25 @@ public class MessageActivity extends BaseActivity implements View.OnClickListene
         final String receiver = userId;
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+
+
+        if (TicketType.equals(CLOSED_JOINING)) {
+            HashMap<String, Object> hashMap2 = new HashMap<>();
+            hashMap2.put(TYPE, FOLLOWUP_TICKET);
+            hashMap2.put(REPLY, "true");
+            reference.child(JOINING_TICKET).child(session.getData(Constant.MOBILE)).updateChildren(hashMap2).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        // Data updated successfully
+                    } else {
+                        // Handle error
+                    }
+                }
+            });
+
+        }
+
         HashMap<String, Object> hashMap = new HashMap<>();
 
         hashMap.put(EXTRA_SENDER, sender);
@@ -833,6 +860,12 @@ public class MessageActivity extends BaseActivity implements View.OnClickListene
             HashMap<String, Object> hashMap2 = new HashMap<>();
             hashMap2.put(REPLY, "true");
             reference.child(OPENED_TICKET).child(ticketId).updateChildren(hashMap2);
+
+        }
+        if (TicketType.equals(JOINING_TICKET) ||TicketType.equals(FOLLOWUP_TICKET)){
+            HashMap<String, Object> hashMap2 = new HashMap<>();
+            hashMap2.put(REPLY, "true");
+            reference.child(JOINING_TICKET).child(session.getData(Constant.MOBILE)).updateChildren(hashMap2);
 
         }
 
@@ -903,6 +936,39 @@ public class MessageActivity extends BaseActivity implements View.OnClickListene
 
         });
     }
+    public void moveToFollowUp(DatabaseReference fromPath, final DatabaseReference toPath) {
+        fromPath.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                toPath.setValue(dataSnapshot.getValue(), new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                        if (error != null) {
+                            System.out.println("Copy failed");
+                        } else {
+                            HashMap<String, Object> hashMap = new HashMap<>();
+                            hashMap.put(TYPE, FOLLOWUP_TICKET);
+                            toPath.updateChildren(hashMap);
+                            DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference().child(CLOSED_JOINING).child(session.getData(Constant.MOBILE));
+                            ref1.removeValue();
+
+                        }
+
+
+                    }
+
+
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+        });
+    }
+
     private void sendNotification(String msg)
     {
         Map<String, String> params = new HashMap<>();
@@ -1770,8 +1836,8 @@ public class MessageActivity extends BaseActivity implements View.OnClickListene
         if (mainAttachmentLayout.getVisibility() == View.VISIBLE) {
             hideAttachmentView();
         } else {
+            startActivity(new Intent(MessageActivity.this, MainActivity.class));
             finish();
-            super.onBackPressed();
         }
     }
 
@@ -1790,4 +1856,6 @@ public class MessageActivity extends BaseActivity implements View.OnClickListene
         } catch (Exception ignored) {
         }
     }
+
+
 }

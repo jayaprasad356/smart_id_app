@@ -198,7 +198,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         params.put(Constant.PASSWORD, EtPassword.getText().toString().trim());
         params.put(Constant.DOB, edDOB.getText().toString().trim());
         ApiConfig.RequestToVolley((result, response) -> {
-            if (result) {
+            if (result)  {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     if (jsonObject.getBoolean(Constant.SUCCESS)) {
@@ -223,12 +223,20 @@ public class UpdateProfileActivity extends AppCompatActivity {
                                 userArray.getJSONObject(0).getString(Constant.STATUS),
                                 userArray.getJSONObject(0).getString(Constant.REFER_CODE),
                                 userArray.getJSONObject(0).getString(Constant.REFER_BONUS_SENT),
-                                userArray.getJSONObject(0).getString(Constant.CODE_GENERATE),
+                                session.getData(Constant.CODE_GENERATE),
                                 userArray.getJSONObject(0).getString(Constant.CODE_GENERATE_TIME),
                                 userArray.getJSONObject(0).getString(Constant.LAST_UPDATED),
                                 userArray.getJSONObject(0).getString(Constant.JOINED_DATE),
                                 userArray.getJSONObject(0).getString(Constant.WITHDRAWAL_STATUS),
-                                userArray.getJSONObject(0).getString(Constant.SECURITY));
+                                userArray.getJSONObject(0).getString(Constant.TASK_TYPE),
+                                userArray.getJSONObject(0).getString(Constant.TRIAL_EXPIRED),
+                                userArray.getJSONObject(0).getString(Constant.CHAMPION_TASK_ELIGIBLE),
+                                userArray.getJSONObject(0).getString(Constant.TRIAL_COUNT),
+                                userArray.getJSONObject(0).getString(Constant.MCG_TIMER),
+                                userArray.getJSONObject(0).getString(Constant.SECURITY),
+                                userArray.getJSONObject(0).getString(Constant.ONGOING_SA_BALANCE),
+                                userArray.getJSONObject(0).getString(Constant.SALARY_ADVANCE_BALANCE),
+                                userArray.getJSONObject(0).getString(Constant.SA_REFER_COUNT));
 
                         startActivity(new Intent(activity, MainActivity.class));
                         finish();

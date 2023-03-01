@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class CheckInActivity extends AppCompatActivity {
 
-    String Mobile,Password;
+    String Mobile, Password;
     Activity activity;
     Session session;
 
@@ -38,40 +38,48 @@ public class CheckInActivity extends AppCompatActivity {
 
         Login();
     }
+
     private void Login() {
         Map<String, String> params = new HashMap<>();
-        params.put(Constant.MOBILE,Mobile);
-        params.put(Constant.PASSWORD,Password);
-        params.put(Constant.DEVICE_ID,Constant.getDeviceId(activity));
+        params.put(Constant.MOBILE, Mobile);
+        params.put(Constant.PASSWORD, Password);
+        params.put(Constant.DEVICE_ID, Constant.getDeviceId(activity));
         ApiConfig.RequestToVolley((result, response) -> {
             if (result) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     if (jsonObject.getBoolean(Constant.SUCCESS)) {
-                        if (jsonObject.getBoolean(Constant.USER_VERIFY)){
-                            if (jsonObject.getBoolean(Constant.DEVICE_VERIFY)){
-                                String codegenerate = "0",withdrawal_status = "0";
+                        if (jsonObject.getBoolean(Constant.USER_VERIFY)) {
+                            if (jsonObject.getBoolean(Constant.DEVICE_VERIFY)) {
+                                String codegenerate = "0", withdrawal_status = "0";
                                 JSONArray userArray = jsonObject.getJSONArray(Constant.DATA);
                                 JSONArray setArray = jsonObject.getJSONArray(Constant.SETTINGS);
-                                session.setData(Constant.SYNC_TIME,setArray.getJSONObject(0).getString(Constant.SYNC_TIME));
-                                session.setInt(Constant.SYNC_CODES,Integer.parseInt(setArray.getJSONObject(0).getString(Constant.SYNC_CODES)));
-                                session.setData(Constant.REWARD,setArray.getJSONObject(0).getString(Constant.REWARD));
-                                session.setData(Constant.AD_SHOW_TIME,setArray.getJSONObject(0).getString(Constant.AD_SHOW_TIME));
-                                session.setData(Constant.MIN_WITHDRAWAL,setArray.getJSONObject(0).getString(Constant.MIN_WITHDRAWAL));
-                                session.setData(Constant.AD_STATUS,setArray.getJSONObject(0).getString(Constant.AD_STATUS));
-                                session.setData(Constant.FETCH_TIME,setArray.getJSONObject(0).getString(Constant.FETCH_TIME));
-                                session.setData(Constant.AD_REWARD_ID,setArray.getJSONObject(0).getString(Constant.AD_REWARD_ID));
+                                session.setData(Constant.SYNC_TIME, setArray.getJSONObject(0).getString(Constant.SYNC_TIME));
+                                session.setInt(Constant.SYNC_CODES, Integer.parseInt(setArray.getJSONObject(0).getString(Constant.SYNC_CODES)));
+                                session.setData(Constant.REWARD, setArray.getJSONObject(0).getString(Constant.REWARD));
+                                session.setData(Constant.AD_SHOW_TIME, setArray.getJSONObject(0).getString(Constant.AD_SHOW_TIME));
+                                session.setData(Constant.MIN_WITHDRAWAL, setArray.getJSONObject(0).getString(Constant.MIN_WITHDRAWAL));
+                                session.setData(Constant.AD_STATUS, setArray.getJSONObject(0).getString(Constant.AD_STATUS));
+                                session.setData(Constant.FETCH_TIME, setArray.getJSONObject(0).getString(Constant.FETCH_TIME));
+                                session.setData(Constant.AD_REWARD_ID, setArray.getJSONObject(0).getString(Constant.AD_REWARD_ID));
+                                session.setData(Constant.JOIN_CODES, setArray.getJSONObject(0).getString(Constant.JOIN_CODES));
+                                session.setData(Constant.REFER_BONUS_CODES, setArray.getJSONObject(0).getString(Constant.REFER_BONUS_CODES));
+                                session.setData(Constant.REFER_BONUS_AMOUNT, setArray.getJSONObject(0).getString(Constant.REFER_BONUS_AMOUNT));
+                                session.setData(Constant.REFER_DESCRIPTION, setArray.getJSONObject(0).getString(Constant.REFER_DESCRIPTION));
+                                session.setData(Constant.CHAMPION_TASK, setArray.getJSONObject(0).getString(Constant.CHAMPION_TASK));
+                                session.setData(Constant.CHAMPION_CODES, setArray.getJSONObject(0).getString(Constant.CHAMPION_CODES));
+                                session.setData(Constant.CHAMPION_SEARCH_COUNT, setArray.getJSONObject(0).getString(Constant.CHAMPION_SEARCH_COUNT));
+                                session.setData(Constant.CHAMPION_DEMO_LINK, setArray.getJSONObject(0).getString(Constant.CHAMPION_DEMO_LINK));
 
-
-                                if (setArray.getJSONObject(0).getString(Constant.CODE_GENERATE).equals("1")){
+                                if (setArray.getJSONObject(0).getString(Constant.CODE_GENERATE).equals("1")) {
                                     codegenerate = userArray.getJSONObject(0).getString(Constant.CODE_GENERATE);
                                 }
-                                if (setArray.getJSONObject(0).getString(Constant.WITHDRAWAL_STATUS).equals("1")){
+                                if (setArray.getJSONObject(0).getString(Constant.WITHDRAWAL_STATUS).equals("1")) {
                                     withdrawal_status = userArray.getJSONObject(0).getString(Constant.WITHDRAWAL_STATUS);
                                 }
-                                session.setBoolean(Constant.CHECKIN,false);
+                                session.setBoolean(Constant.CHECKIN, false);
 
-                                Toast.makeText(this, ""+jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, "" + jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show();
                                 session.setUserData(userArray.getJSONObject(0).getString(Constant.ID),
                                         userArray.getJSONObject(0).getString(Constant.NAME),
                                         userArray.getJSONObject(0).getString(Constant.MOBILE),
@@ -94,49 +102,54 @@ public class CheckInActivity extends AppCompatActivity {
                                         userArray.getJSONObject(0).getString(Constant.CODE_GENERATE_TIME),
                                         userArray.getJSONObject(0).getString(Constant.LAST_UPDATED),
                                         userArray.getJSONObject(0).getString(Constant.JOINED_DATE),
-                                        withdrawal_status, userArray.getJSONObject(0).getString(Constant.SECURITY));
-                                if (session.getBoolean(Constant.IMPORT_DATA)){
+                                        withdrawal_status, userArray.getJSONObject(0).getString(Constant.TASK_TYPE),
+                                        userArray.getJSONObject(0).getString(Constant.TRIAL_EXPIRED),
+                                        userArray.getJSONObject(0).getString(Constant.CHAMPION_TASK_ELIGIBLE),
+                                        userArray.getJSONObject(0).getString(Constant.TRIAL_COUNT),
+                                        userArray.getJSONObject(0).getString(Constant.MCG_TIMER),
+                                        userArray.getJSONObject(0).getString(Constant.SECURITY),
+                                        userArray.getJSONObject(0).getString(Constant.ONGOING_SA_BALANCE),
+                                        userArray.getJSONObject(0).getString(Constant.SALARY_ADVANCE_BALANCE),
+                                        userArray.getJSONObject(0).getString(Constant.SA_REFER_COUNT));
+                                if (session.getBoolean(Constant.IMPORT_DATA)) {
                                     session.setBoolean("is_logged_in", true);
                                     startActivity(new Intent(activity, MainActivity.class));
                                     finish();
 
-                                }else {
+                                } else {
                                     startActivity(new Intent(activity, ImportDataActivity.class));
                                     finish();
                                 }
 
-                            }
-                            else {
+                            } else {
 
                                 showAlertdialog();
                             }
 
-                        }else {
+                        } else {
                             ApprovalAlertdialog(jsonObject.getString(Constant.MESSAGE));
                         }
 
 
+                    } else {
+                        Toast.makeText(this, "" + jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show();
                     }
-                    else {
-                        Toast.makeText(this, ""+jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show();
-                    }
-                } catch (JSONException e){
+
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
 
-
-            }
-            else {
-                Toast.makeText(this, String.valueOf(response) +String.valueOf(result), Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, String.valueOf(response) + String.valueOf(result), Toast.LENGTH_SHORT).show();
 
             }
             //pass url
-        }, activity, Constant.LOGIN_URL, params,true);
-
+        }, activity, Constant.LOGIN_URL, params, true);
 
 
     }
+
     private void showAlertdialog() {
 
 
@@ -156,38 +169,34 @@ public class CheckInActivity extends AppCompatActivity {
         alertDialog.show();
 
 
-
     }
-    private void changeDeviceApi(DialogInterface dialog)
-    {
+
+    private void changeDeviceApi(DialogInterface dialog) {
         Map<String, String> params = new HashMap<>();
-        params.put(Constant.MOBILE,Mobile);
-        params.put(Constant.PASSWORD,Password);
-        params.put(Constant.DEVICE_ID,Constant.getDeviceId(activity));
+        params.put(Constant.MOBILE, Mobile);
+        params.put(Constant.PASSWORD, Password);
+        params.put(Constant.DEVICE_ID, Constant.getDeviceId(activity));
         ApiConfig.RequestToVolley((result, response) -> {
             if (result) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     if (jsonObject.getBoolean(Constant.SUCCESS)) {
-                        Toast.makeText(this, ""+jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "" + jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show();
                         dialog.cancel();
 
-                    }
-                    else {
-                        Toast.makeText(this, ""+jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(this, "" + jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show();
                     }
 
-                } catch (JSONException e){
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
-            }
-            else {
-                Toast.makeText(this, String.valueOf(response) +String.valueOf(result), Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, String.valueOf(response) + String.valueOf(result), Toast.LENGTH_SHORT).show();
 
             }
             //pass url
-        }, activity, Constant.CHANGE_DEVICE_LIST_URL, params,true);
-
+        }, activity, Constant.CHANGE_DEVICE_LIST_URL, params, true);
 
 
     }
@@ -205,7 +214,6 @@ public class CheckInActivity extends AppCompatActivity {
         });
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-
 
 
     }
