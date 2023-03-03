@@ -2,9 +2,8 @@ package com.app.fortuneapp.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
@@ -22,6 +21,7 @@ import android.widget.TextView;
 import com.app.fortuneapp.R;
 import com.app.fortuneapp.activities.NotificaionActivity;
 import com.app.fortuneapp.activities.ReferEarnActivity;
+import com.app.fortuneapp.activities.ReferDetailsActivity;
 import com.app.fortuneapp.activities.UpdateProfileActivity;
 import com.app.fortuneapp.helper.Constant;
 import com.app.fortuneapp.helper.Session;
@@ -35,10 +35,10 @@ public class ProfileFragment extends Fragment implements PopupMenu.OnMenuItemCli
     Activity activity;
     Button btncopy;
 
-    private ClipboardManager myClipboard;
-    private ClipData myClip;
 
-    TextView tvName,tvMobile,tvEarn,tvWithdrawal,tvCodes,tvBalance,tvRefercode,tvTotalRefer;
+    Button btnReferDetails;
+
+    TextView tvName,tvMobile,tvEarn,tvWithdrawal,tvCodes,tvBalance,tvRefercode,tvTotalRefer,tvReferDescription;
 
 
     public ProfileFragment() {
@@ -68,6 +68,8 @@ public class ProfileFragment extends Fragment implements PopupMenu.OnMenuItemCli
         btncopy = root.findViewById(R.id.btncopy);
         tvRefercode = root.findViewById(R.id.tvRefercode);
         tvTotalRefer = root.findViewById(R.id.tvTotalRefer);
+        tvReferDescription = root.findViewById(R.id.tvReferDescription);
+        btnReferDetails = root.findViewById(R.id.btnReferDetails);
 
         tvName.setText(session.getData(Constant.NAME));
         tvMobile.setText(session.getData(Constant.MOBILE));
@@ -76,11 +78,20 @@ public class ProfileFragment extends Fragment implements PopupMenu.OnMenuItemCli
         tvCodes.setText(session.getInt(Constant.TOTAL_CODES) + "");
         tvBalance.setText(session.getData(Constant.BALANCE));
         tvTotalRefer.setText(session.getData(Constant.TOTAL_REFERRALS));
+        tvReferDescription.setText(session.getData(Constant.REFER_DESCRIPTION));
         cardView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ReferEarnActivity.class);
                 startActivity(intent);
+            }
+        });
+        btnReferDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ReferDetailsActivity.class);
+                startActivity(intent);
+
             }
         });
 
@@ -95,7 +106,7 @@ public class ProfileFragment extends Fragment implements PopupMenu.OnMenuItemCli
                     shareIntent.setType("text/plain");
                     shareIntent.putExtra(Intent.EXTRA_SUBJECT, "My application name");
                     String shareMessage= "\nDOWNLOAD THE APP AND GET UNLIMITED EARNING .you can also Download App from below link and enter referral code while login-"+"\n"+text+"\n";
-                    shareMessage = shareMessage +"\nhttps://play.google.com/store/apps/details?id=com.app.fortuneapp \n\n";
+                    shareMessage = shareMessage +"\n https://play.google.com/store/apps/details?id=com.app.abcdapp \n\n";
                     shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
                     startActivity(Intent.createChooser(shareIntent, "choose one"));
                 } catch(Exception e) {
@@ -150,6 +161,13 @@ public class ProfileFragment extends Fragment implements PopupMenu.OnMenuItemCli
         else if (item.getItemId() == R.id.Uptdatepofile){
 
             Intent intent = new Intent(activity, UpdateProfileActivity.class);
+            startActivity(intent);
+
+        }
+        else if (item.getItemId() == R.id.jobDetails){
+
+            Uri uri = Uri.parse(""+session.getData(Constant.JOB_DETAILS_LINK)); // missing 'http://' will cause crashed
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
 
         }

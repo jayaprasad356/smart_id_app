@@ -14,7 +14,9 @@
     <item android:id="@+id/ReferEarn"
         android:title="Refer Earn">
     </item>
-
+    <item android:id="@+id/jobDetails"
+        android:title="Job Details">
+    </item>
 
 
     <item android:id="@+id/logoutitem"

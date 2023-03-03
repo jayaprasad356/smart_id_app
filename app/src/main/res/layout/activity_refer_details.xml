@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ReferDetailsActivity">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_5sdp"
+        android:id="@+id/toolbar"
+        android:background="@color/white"
+
+        >
+
+
+        <ImageButton
+            android:id="@+id/imgBack"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:background="@drawable/ic_arrow_back"
+            android:backgroundTint="@color/black"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Referral Income"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:text="Referral income will be updated every 30 mins." />
+    <LinearLayout
+        android:layout_below="@+id/head"
+        android:id="@+id/totalincome"
+        android:padding="@dimen/_5sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="Total Referral Income: "
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp"
+            />
+
+
+        <TextView
+            android:id="@+id/tvTotalIncome"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:textColor="@color/green"
+            android:textSize="@dimen/_16sdp"
+            />
+
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/totalincome">
+        <LinearLayout
+            android:padding="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="On Going Income: "
+                android:textSize="@dimen/_10sdp"
+                />
+
+
+            <TextView
+                android:id="@+id/tvOngoingIncome"
+                android:layout_gravity="right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:gravity="center_vertical"
+                android:textStyle="bold"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_13sdp"
+                />
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_alignParentEnd="true"
+            android:id="@+id/btnAddtoWallet"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:text="Add to wallet ₹0"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_8sdp" />
+
+    </RelativeLayout>
+
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_below="@+id/r1"
+        android:layout_width="match_parent"
+        android:padding="@dimen/_10sdp"
+        android:background="@color/emoji_gray20"
+        android:layout_height="wrap_content"/>
+
+
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:background="@color/white"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:id="@+id/recyclerView"
+        android:layout_below="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/referearn_layout"
+        />
+
+
+
+
+
+
+
+</RelativeLayout>

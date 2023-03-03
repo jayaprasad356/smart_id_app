@@ -40,6 +40,9 @@ public class Constant {
 
     public static final String URLS_LIST_URL = BaseUrl + "urls_list.php";
 
+    public static final String REFERALSLIST = BaseUrl + "referalslist.php";
+    public static final String ADD_WALLET = BaseUrl + "add-wallet.php";
+
 
     public static final String ID = "id";
     public static final String PROFILE = "profile";
@@ -134,7 +137,9 @@ public class Constant {
     public static final String MAIN_CONTENT = "main_content";
     public static final String 	CLOSED_JOINING = "closed_joining";
     public static final String 	FOLLOWUP_TICKET = "followup_ticket";
-
+    public static final String REFER_INCOME = "refer_income";
+    public static final String REFER_LIST_DATA = "refer_list_data";
+    public static final String SYNC_REFER_WALLET = "sync_refer_wallet";
     public static final String CHAMPION_SEARCH_COUNT = "champion_search_count";
     public static final String 	TRIAL_COUNT = "trial_count";
     public static final String 	MCG_TIMER = "mcg_timer";

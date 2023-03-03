@@ -32,6 +32,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activities.ReferDetailsActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".activities.RiseTicketActivity"
             android:exported="false">
             <meta-data
@@ -45,9 +49,11 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/admob_app_id" />
+
         <activity
             android:name=".activities.NotificaionActivity"
             android:exported="false" />
@@ -110,7 +116,6 @@
         <activity
             android:name=".chat.MessageActivity"
             android:exported="false" />
-
 
         <service
             android:name="com.app.fortuneapp.helper.MyFirebaseMessagingService"

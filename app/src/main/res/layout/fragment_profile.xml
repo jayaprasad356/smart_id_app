@@ -50,12 +50,13 @@
             android:layout_height="wrap_content">
 
             <RelativeLayout
+                android:id="@+id/r2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_290sdp"
+                    android:layout_height="@dimen/_240sdp"
                     android:layout_marginHorizontal="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_50sdp"
                     app:cardCornerRadius="@dimen/_5sdp"
@@ -65,12 +66,7 @@
 
 
             </RelativeLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
 
-            </LinearLayout>
             <LinearLayout
                 android:id="@+id/l1"
                 android:layout_width="wrap_content"
@@ -95,6 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="+91 8847374373"
+                    android:visibility="gone"
                     android:textSize="@dimen/_10sdp"
                     android:layout_gravity="center"/>
 
@@ -113,8 +110,8 @@
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="@dimen/_50sdp"
                     app:cardElevation="@dimen/_5sdp"
-                    android:visibility="gone"
                     android:layout_margin="@dimen/_5sdp"
+                    android:visibility="gone"
                     app:cardCornerRadius="@dimen/_5sdp">
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -122,14 +119,16 @@
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:padding="@dimen/_10sdp"
+
                         android:orientation="vertical">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Total Earned"
-                            android:textStyle="bold"
                             android:textColor="@color/primaryDarkColor"
-                            android:textSize="@dimen/_8sdp"/>
+                            android:textSize="@dimen/_8sdp"
+                            android:textStyle="bold" />
                         <TextView
                             android:id="@+id/tvEarn"
                             android:layout_width="wrap_content"
@@ -144,10 +143,12 @@
                 </androidx.cardview.widget.CardView>
                 <Space
                     android:layout_width="@dimen/_20sdp"
-                    android:visibility="gone"
                     android:layout_height="wrap_content"/>
+
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView1"
+                    android:visibility="gone"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="@dimen/_50sdp"
                     app:cardElevation="@dimen/_5sdp"
@@ -193,27 +194,30 @@
                     app:cardElevation="@dimen/_5sdp"
                     android:layout_margin="@dimen/_5sdp"
                     app:cardCornerRadius="@dimen/_5sdp">
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:gravity="center"
-                        android:padding="@dimen/_8sdp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="@dimen/_8sdp">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Total Withdrawal"
-                            android:textStyle="bold"
                             android:textColor="@color/primaryDarkColor"
-                            android:textSize="@dimen/_8sdp"/>
+                            android:textSize="@dimen/_8sdp"
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/tvWithdrawal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_10sdp"/>
+                            android:textSize="@dimen/_10sdp" />
 
                     </LinearLayout>
 
@@ -255,11 +259,31 @@
 
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
+            <Button
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/l3"
+                android:id="@+id/btnReferDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/primaryColor"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="My Referral Earning"/>
+            <TextView
+                android:id="@+id/head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnReferDetails"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_8sdp"
+                android:layout_centerHorizontal="true"
+                android:text="Click above to see your 6% earnings." />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/l3"
+                android:layout_below="@+id/btnReferDetails"
                 android:gravity="center"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:visibility="gone"
                 android:layout_marginStart="@dimen/_35sdp"
                 android:layout_marginEnd="@dimen/_35sdp"
                 android:orientation="horizontal">
@@ -344,6 +368,7 @@
 
 
                 <TextView
+                    android:id="@+id/tvReferDescription"
                     android:layout_width="@dimen/_200sdp"
                     android:layout_height="wrap_content"
                     android:text="@string/refertext"
