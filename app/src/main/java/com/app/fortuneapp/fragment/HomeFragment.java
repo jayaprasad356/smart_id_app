@@ -482,12 +482,6 @@ public class HomeFragment extends Fragment {
             progressDialog.setMessage("Please wait...");
             progressDialog.setCancelable(false);
             progressDialog.show();
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    progressDialog.dismiss();
-                }
-            }, 2000);
             if (session.getInt(Constant.CODES) != 0) {
                 Map<String, String> params = new HashMap<>();
                 params.put(Constant.USER_ID, session.getData(Constant.USER_ID));
@@ -504,12 +498,23 @@ public class HomeFragment extends Fragment {
                                 session.setData(Constant.BALANCE, jsonObject.getString(Constant.BALANCE));
                                 session.setData(Constant.STATUS, jsonObject.getString(Constant.STATUS));
                                 setCodeValue();
-
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        progressDialog.dismiss();
+                                    }
+                                }, 2000);
 
                             } else {
                                 btnsyncNow.setBackground(ContextCompat.getDrawable(activity, R.drawable.syncbg));
                                 btnsyncNow.setEnabled(true);
                                 Toast.makeText(activity, "" + jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show();
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        progressDialog.dismiss();
+                                    }
+                                }, 2000);
                             }
 
 
