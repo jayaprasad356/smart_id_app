@@ -70,4 +70,12 @@
     <string name="msgDownloadingStarted">Downloading started</string>
     <string name="msgDownloadFile">Downloading %1$s</string>
     <string name="strEmptyMsg">You can\'t send empty message</string>
+    <string name="repayment_list">Repayment List</string>
+
+    <string-array name="my_spinner_values">
+        <item>Select Amount</item>
+        <item>2000</item>
+        <item>3000</item>
+        <item>5000</item>
+    </string-array>
 </resources>

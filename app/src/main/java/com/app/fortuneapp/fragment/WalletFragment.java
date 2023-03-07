@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.app.fortuneapp.Adapter.TransactionAdapter;
 import com.app.fortuneapp.R;
+import com.app.fortuneapp.activities.SalaryAdvanceActivity;
 import com.app.fortuneapp.activities.WithdrawalActivity;
 import com.app.fortuneapp.helper.ApiConfig;
 import com.app.fortuneapp.helper.Constant;
@@ -38,7 +39,7 @@ import java.util.Map;
 
 public class WalletFragment extends Fragment {
 
-    Button btnWithdrawal;
+    Button btnWithdrawal,btnWithdrawalSalaryAdvance;
     RecyclerView recycler;
     TransactionAdapter transactionAdapter;
     Activity activity;
@@ -60,6 +61,8 @@ public class WalletFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_wallet, container, false);
         btnWithdrawal = root.findViewById(R.id.btnWithdrawal);
+        btnWithdrawalSalaryAdvance = root.findViewById(R.id.btnWithdrawalSalaryAdvance);
+
         recycler = root.findViewById(R.id.recycler);
         tvBalance = root.findViewById(R.id.tvBalance);
         tvminiwithdrawal=root.findViewById(R.id.tvminumumRedeem);
@@ -79,6 +82,14 @@ public class WalletFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), WithdrawalActivity.class);
                 startActivity(intent);
                 
+            }
+        });
+        btnWithdrawalSalaryAdvance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(requireActivity(), SalaryAdvanceActivity.class);
+                startActivity(intent);
+
             }
         });
         return root;

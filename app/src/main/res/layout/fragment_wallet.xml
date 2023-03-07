@@ -59,6 +59,18 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 />
 
+            <Button
+                android:id="@+id/btnWithdrawalSalaryAdvance"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/yellow"
+                android:text="Withdrawal advance salary"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:visibility="visible"
+                />
+
+
 
 
         </LinearLayout>

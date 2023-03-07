@@ -32,9 +32,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activities.RepayListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.SalaryAdvanceActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.ReferDetailsActivity"
             android:exported="false" />
-
         <activity
             android:name=".activities.RiseTicketActivity"
             android:exported="false">

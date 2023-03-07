@@ -107,7 +107,10 @@ public class Constant {
     public static final String JOINED_DATE = "joined_date";
     public static final String WITHDRAWAL_STATUS = "withdrawal_status";
     public static final String SYNC_TIME = "sync_time";
+    public static final String MY_REPAYMENT_LIST_URL = BaseUrl + "my_repayment_list.php";
+    public static final String SA_WITHDRAWAL_URL = BaseUrl + "sa_withdrawal.php";
 
+    public static final String MY_SA_TRANSLIST_URL = BaseUrl + "my_sa_translist.php";
 
     public static final String CHECKIN = "checkin";
     public static final String WHATSAPP = "whatsapp";
