@@ -72,6 +72,16 @@ public class SplashActivity extends AppCompatActivity {
                         session.setData(Constant.AD_STATUS, jsonArray2.getJSONObject(0).getString(Constant.AD_STATUS));
                         session.setData(Constant.FETCH_TIME, jsonArray2.getJSONObject(0).getString(Constant.FETCH_TIME));
                         session.setData(Constant.AD_REWARD_ID, jsonArray2.getJSONObject(0).getString(Constant.AD_REWARD_ID));
+                        session.setData(Constant.JOIN_CODES, jsonArray2.getJSONObject(0).getString(Constant.JOIN_CODES));
+                        session.setData(Constant.REFER_BONUS_CODES, jsonArray2.getJSONObject(0).getString(Constant.REFER_BONUS_CODES));
+                        session.setData(Constant.REFER_BONUS_AMOUNT, jsonArray2.getJSONObject(0).getString(Constant.REFER_BONUS_AMOUNT));
+                        session.setData(Constant.REFER_DESCRIPTION, jsonArray2.getJSONObject(0).getString(Constant.REFER_DESCRIPTION));
+                        session.setData(Constant.AD_TYPE, jsonArray2.getJSONObject(0).getString(Constant.AD_TYPE));
+                        session.setData(Constant.CHAMPION_TASK,jsonArray2.getJSONObject(0).getString(Constant.CHAMPION_TASK));
+                        session.setData(Constant.CHAMPION_CODES,jsonArray2.getJSONObject(0).getString(Constant.CHAMPION_CODES));
+                        session.setData(Constant.CHAMPION_SEARCH_COUNT,jsonArray2.getJSONObject(0).getString(Constant.CHAMPION_SEARCH_COUNT));
+                        session.setData(Constant.CHAMPION_DEMO_LINK,jsonArray2.getJSONObject(0).getString(Constant.CHAMPION_DEMO_LINK));
+                        session.setData(Constant.MAIN_CONTENT,jsonArray2.getJSONObject(0).getString(Constant.MAIN_CONTENT));
                         if (jsonObject.has(Constant.USER_DETAILS)) {
                             JSONArray userArray = jsonObject.getJSONArray(Constant.USER_DETAILS);
                             if (userArray.length() != 0) {
@@ -80,7 +90,17 @@ public class SplashActivity extends AppCompatActivity {
                                 session.setData(Constant.WITHDRAWAL, userArray.getJSONObject(0).getString(Constant.WITHDRAWAL));
                                 session.setData(Constant.CODE_GENERATE_TIME, userArray.getJSONObject(0).getString(Constant.CODE_GENERATE_TIME));
                                 session.setData(Constant.JOINED_DATE, userArray.getJSONObject(0).getString(Constant.JOINED_DATE));
+                                session.setData(Constant.TASK_TYPE, userArray.getJSONObject(0).getString(Constant.TASK_TYPE));
+                                session.setData(Constant.TRIAL_COUNT, userArray.getJSONObject(0).getString(Constant.TRIAL_COUNT));
+                                session.setData(Constant.TRIAL_EXPIRED, userArray.getJSONObject(0).getString(Constant.TRIAL_EXPIRED));
+                                session.setData(Constant.CHAMPION_TASK_ELIGIBLE, userArray.getJSONObject(0).getString(Constant.CHAMPION_TASK_ELIGIBLE));
+                                session.setData(Constant.MCG_TIMER, userArray.getJSONObject(0).getString(Constant.MCG_TIMER));
                                 session.setData(Constant.SECURITY, userArray.getJSONObject(0).getString(Constant.SECURITY));
+                                session.setData(Constant.ONGOING_SA_BALANCE, userArray.getJSONObject(0).getString(Constant.ONGOING_SA_BALANCE));
+                                session.setData(Constant.SALARY_ADVANCE_BALANCE, userArray.getJSONObject(0).getString(Constant.SALARY_ADVANCE_BALANCE));
+                                session.setData(Constant.SA_REFER_COUNT, userArray.getJSONObject(0).getString(Constant.SA_REFER_COUNT));
+
+
                                 if (jsonArray2.getJSONObject(0).getString(Constant.CODE_GENERATE).equals("1")) {
                                     codegenerate = userArray.getJSONObject(0).getString(Constant.CODE_GENERATE);
                                 }

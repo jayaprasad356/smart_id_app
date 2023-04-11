@@ -1,17 +1,9 @@
 package com.app.fortuneapp.model;
 
 public class Redeem {
-    String id,user_id,amount,datetime,status;
+    String id,user_id,amount,datetime,status,type;
     public Redeem(){
 
-    }
-
-    public Redeem(String id, String user_id, String amount, String datetime, String status) {
-        this.id = id;
-        this.user_id = user_id;
-        this.amount = amount;
-        this.datetime = datetime;
-        this.status = status;
     }
 
     public String getId() {
@@ -52,5 +44,13 @@ public class Redeem {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

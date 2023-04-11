@@ -106,7 +106,7 @@ public class ProfileFragment extends Fragment implements PopupMenu.OnMenuItemCli
                     shareIntent.setType("text/plain");
                     shareIntent.putExtra(Intent.EXTRA_SUBJECT, "My application name");
                     String shareMessage= "\nDOWNLOAD THE APP AND GET UNLIMITED EARNING .you can also Download App from below link and enter referral code while login-"+"\n"+text+"\n";
-                    shareMessage = shareMessage +"\n https://play.google.com/store/apps/details?id=com.app.abcdapp \n\n";
+                    shareMessage = shareMessage +"\n https://play.google.com/store/apps/details?id=com.app.fortuneapp \n\n";
                     shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
                     startActivity(Intent.createChooser(shareIntent, "choose one"));
                 } catch(Exception e) {
@@ -166,9 +166,14 @@ public class ProfileFragment extends Fragment implements PopupMenu.OnMenuItemCli
         }
         else if (item.getItemId() == R.id.jobDetails){
 
-            Uri uri = Uri.parse(""+session.getData(Constant.JOB_DETAILS_LINK)); // missing 'http://' will cause crashed
-            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-            startActivity(intent);
+            try {
+                Uri uri = Uri.parse("" + session.getData(Constant.JOB_DETAILS_LINK)); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+
+            }catch (Exception e){
+
+            }
 
         }
         return false;

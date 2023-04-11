@@ -13,10 +13,11 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Constant {
-    //public static final String MainBaseUrl = "https://admin.fortuneapp.in/";
+    public static final String MainBaseUrl = "https://admin.fortuneapp.in/";
     //public static final String MainBaseUrl = "https://abcd.greymatterworks.in/";
     //public static final String MainBaseUrl = "http://192.168.43.38/fortune/";
-    public static final String MainBaseUrl = "https://demofortune.graymatterworks.com/";
+    //public static final String MainBaseUrl = "https://demofortune.graymatterworks.com/";
+    //public static final String MainBaseUrl = "https://demo.fortuneapp.in/";
     public static final String BaseUrl = MainBaseUrl + "api/";
     public static final String SEND_ADMIN_NOTIFY_URL = BaseUrl + "sendadminnotify.php";
     public static final String LOGIN_URL = BaseUrl + "login.php";

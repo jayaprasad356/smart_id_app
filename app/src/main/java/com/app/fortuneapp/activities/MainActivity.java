@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         } else {
-            if (session.getData(Constant.STATUS).equals("0")) {
+             if (session.getData(Constant.STATUS).equals("0")) {
                 fm.beginTransaction().replace(R.id.Container, new InFoFragment()).commitAllowingStateLoss();
             } else {
                 if (session.getData(Constant.TASK_TYPE).equals("champion")) {

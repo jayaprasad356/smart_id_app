@@ -45,6 +45,7 @@ public class RedeemedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
         holder.tvStatus.setText(redeem.getStatus());
         holder.tvDateTime.setText(redeem.getDatetime());
+        holder.tvType.setText(redeem.getType());
 
     }
 
@@ -56,12 +57,13 @@ public class RedeemedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     static class ItemHolder extends RecyclerView.ViewHolder {
 
-        final TextView tvAmount,tvStatus,tvDateTime;
+        final TextView tvAmount,tvStatus,tvDateTime,tvType;
         public ItemHolder(@NonNull View itemView) {
             super(itemView);
             tvAmount = itemView.findViewById(R.id.tvAmount);
             tvStatus = itemView.findViewById(R.id.tvStatus);
             tvDateTime = itemView.findViewById(R.id.tvDateTime);
+            tvType = itemView.findViewById(R.id.tvType);
 
 
 

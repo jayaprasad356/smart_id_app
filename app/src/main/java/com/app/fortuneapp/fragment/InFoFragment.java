@@ -59,9 +59,15 @@ public class InFoFragment extends Fragment {
         btnDownloadDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Uri uri = Uri.parse("" + session.getData(Constant.JOB_DETAILS_LINK)); // missing 'http://' will cause crashed
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
+                try {
+                    Uri uri = Uri.parse("" + session.getData(Constant.JOB_DETAILS_LINK)); // missing 'http://' will cause crashed
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    startActivity(intent);
+
+                }catch (Exception e){
+
+                }
+
             }
         });
 //        tvDashboard.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +90,7 @@ public class InFoFragment extends Fragment {
         btnDemoVideoRegular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Uri uri = Uri.parse("https://youtu.be/SIQOM_ALnDI"); // missing 'http://' will cause crashed
+                Uri uri = Uri.parse("https://www.youtube.com/watch?v=Y4wP0uWUO3M"); // missing 'http://' will cause crashed
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }

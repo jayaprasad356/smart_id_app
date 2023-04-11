@@ -179,16 +179,17 @@ public class ReferDetailsActivity extends AppCompatActivity {
     }
 
     private void referearn() {
-        long currentTime = System.currentTimeMillis();
-        long lastReferearnTime = getLastReferearnTime();
-        if (currentTime - lastReferearnTime < 30 * 60 * 1000) { // 30 minutes
-            return;
-        }
-
-        setLastReferearnTime(currentTime);
+//        long currentTime = System.currentTimeMillis();
+//        long lastReferearnTime = getLastReferearnTime();
+//        if (currentTime - lastReferearnTime < 30 * 60 * 1000) { // 30 minutes
+//            return;
+//        }
+//
+//        setLastReferearnTime(currentTime);
         Map<String, String> params = new HashMap<>();
         params.put(Constant.USER_ID,session.getData(Constant.USER_ID));
         ApiConfig.RequestToVolley((result, response) -> {
+            Log.d("REFER_DETAILS_RESPONSE",response);
 
             if (result) {
                 try {
