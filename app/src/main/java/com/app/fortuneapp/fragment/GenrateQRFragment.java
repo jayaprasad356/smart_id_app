@@ -32,6 +32,7 @@ public class GenrateQRFragment extends Fragment {
     Handler handler;
     Session session;
     Activity activity;
+    String tasktype = "regular";
 
 
     public GenrateQRFragment() {
@@ -49,7 +50,10 @@ public class GenrateQRFragment extends Fragment {
         activity = getActivity();
         session = new Session(activity);
 
+        if(getArguments() != null){
+            tasktype = getArguments().getString(Constant.TASK_TYPE);
 
+        }
         handler = new Handler();
 //        SimpleDateFormat df = new SimpleDateFormat("dd/M/yyyy hh:mm:ss", Locale.getDefault());
 //        Date c = Calendar.getInstance().getTime();
@@ -130,18 +134,19 @@ public class GenrateQRFragment extends Fragment {
 
     private void GotoActivity()
     {
-        handler.postDelayed(() -> {
-            if (session.getData(Constant.WORK_ACTIVITY).equals("Find Missing")){
-                MainActivity.fm.beginTransaction().replace(R.id.Container, new FindMissingFragment()).commitAllowingStateLoss();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (session.getData(Constant.TASK_TYPE).equals(Constant.CHAMPION) || tasktype.equals(Constant.CHAMPION)){
+                    MainActivity.fm.beginTransaction().replace(R.id.Container, new FindMissingFragment()).commitAllowingStateLoss();
+
+                }else {
+                    MainActivity.fm.beginTransaction().replace(R.id.Container, new HomeFragment()).commitAllowingStateLoss();
 
 
-
-            }else {
-                MainActivity.fm.beginTransaction().replace(R.id.Container, new HomeFragment()).commitAllowingStateLoss();
-
+                }
 
             }
-
         },1000);
     }
 }
