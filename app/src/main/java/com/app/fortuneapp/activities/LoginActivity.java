@@ -15,7 +15,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.fortuneapp.R;
@@ -154,6 +153,7 @@ public class LoginActivity extends AppCompatActivity implements PopupMenu.OnMenu
                                         userArray.getJSONObject(0).getString(Constant.CODE_GENERATE_TIME),
                                         userArray.getJSONObject(0).getString(Constant.LAST_UPDATED),
                                         userArray.getJSONObject(0).getString(Constant.JOINED_DATE),
+                                        userArray.getJSONObject(0).getString(Constant.PER_CODE_VAL),
 
                                         withdrawal_status,userArray.getJSONObject(0).getString(Constant.TASK_TYPE),
                                         userArray.getJSONObject(0).getString(Constant.TRIAL_EXPIRED),
@@ -163,7 +163,7 @@ public class LoginActivity extends AppCompatActivity implements PopupMenu.OnMenu
                                         userArray.getJSONObject(0).getString(Constant.SECURITY),
                                         userArray.getJSONObject(0).getString(Constant.ONGOING_SA_BALANCE),
                                         userArray.getJSONObject(0).getString(Constant.SALARY_ADVANCE_BALANCE),
-                                        userArray.getJSONObject(0).getString(Constant.SA_REFER_COUNT));
+                                        userArray.getJSONObject(0).getString(Constant.SA_REFER_COUNT), userArray.getJSONObject(0).getString(Constant.SA_REFER_COUNT), userArray.getJSONObject(0).getString(Constant.SA_REFER_COUNT), userArray.getJSONObject(0).getString(Constant.SA_REFER_COUNT));
                                 if (session.getBoolean(Constant.IMPORT_DATA)){
                                     session.setBoolean("is_logged_in", true);
                                     startActivity(new Intent(LoginActivity.this, MainActivity.class));

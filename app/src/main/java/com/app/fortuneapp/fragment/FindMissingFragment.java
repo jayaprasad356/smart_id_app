@@ -11,6 +11,7 @@ import static com.app.fortuneapp.helper.Constant.AD_STATUS;
 import static com.app.fortuneapp.helper.Constant.AD_TYPE;
 import static com.app.fortuneapp.helper.Constant.CHAMPION_CODES;
 import static com.app.fortuneapp.helper.Constant.DESCRIPTION;
+import static com.app.fortuneapp.helper.Constant.PER_CODE_VAL;
 import static com.app.fortuneapp.helper.Constant.SUCCESS;
 import static com.app.fortuneapp.helper.Constant.TASK_TYPE;
 import static com.app.fortuneapp.helper.Constant.getHistoryDays;
@@ -392,7 +393,7 @@ public class FindMissingFragment extends Fragment {
                         if (session.getData(Constant.TASK_TYPE).equals("champion")) {
                             if (ApiConfig.isConnected(activity)) {
                                 if (session.getData(Constant.CODE_GENERATE).equals("1")) {
-                                    session.setInt(Constant.CODES, session.getInt(Constant.CODES) + Integer.parseInt(session.getData(CHAMPION_CODES)));
+                                    session.setInt(Constant.CODES, session.getInt(Constant.CODES) + Integer.parseInt(session.getData(PER_CODE_VAL)));
                                     Bundle bundle = new Bundle();
                                     bundle.putInt(Constant.MCG_TIMER, positiveValue);
                                     bundle.putString(Constant.TASK_TYPE, TASK_TYPE);

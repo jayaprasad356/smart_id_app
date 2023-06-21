@@ -38,8 +38,8 @@ public class Session {
                             String earn, String withdrawal, String total_referrals, int today_codes, int total_codes, String balance,
                             String device_id, String status, String refer_code, String refer_bonus_sent, String code_generate,
                             String code_generate_time, String last_updated, String joined_date, String withdrawal_status, String task_type,
-                            String trial_expired,String champion_task_eligible,String trial_count,String mcg_timer,String security,
-                            String ongoing_sa_balance,String salary_advance_balance,String sa_refer_count) {
+                            String trial_expired, String champion_task_eligible, String trial_count, String mcg_timer, String security,
+                            String ongoing_sa_balance, String salary_advance_balance, String sa_refer_count, String string, String s, String string1, String s1) {
         editor.putString(Constant.USER_ID, id);
         editor.putString(Constant.NAME, name);
         editor.putString(Constant.MOBILE, mobile);

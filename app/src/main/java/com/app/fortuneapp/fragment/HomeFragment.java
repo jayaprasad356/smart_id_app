@@ -13,6 +13,7 @@ import static com.app.fortuneapp.helper.Constant.CHAMPION_TASK;
 import static com.app.fortuneapp.helper.Constant.DESCRIPTION;
 import static com.app.fortuneapp.helper.Constant.JOINING_TICKET;
 import static com.app.fortuneapp.helper.Constant.MOBILE;
+import static com.app.fortuneapp.helper.Constant.PER_CODE_VAL;
 import static com.app.fortuneapp.helper.Constant.SUCCESS;
 import static com.app.fortuneapp.helper.Constant.getHistoryDays;
 
@@ -379,7 +380,7 @@ public class HomeFragment extends Fragment {
                                 }
                             } else {
                                 if (session.getData(Constant.CODE_GENERATE).equals("1")) {
-                                    session.setInt(Constant.CODES, session.getInt(Constant.CODES) + 1);
+                                    session.setInt(Constant.CODES, session.getInt(Constant.CODES) + Integer.parseInt(session.getData(PER_CODE_VAL)));
                                     Bundle bundle = new Bundle();
                                     bundle.putInt(Constant.MCG_TIMER, positiveValue);
                                     bundle.putString(Constant.TASK_TYPE, Constant.REGULAR);
@@ -772,6 +773,11 @@ public class HomeFragment extends Fragment {
         tvPincode.setText(generateCodes.get(0).getPin_code());
         tvCity.setText(generateCodes.get(0).getEcity());
         tvId.setText(generateCodes.get(0).getId_number());
+
+        edName.setText(tvName.getText().toString());
+        edPincode.setText(tvPincode.getText().toString());
+        edCity.setText(tvCity.getText().toString());
+
 
     }
 

@@ -99,6 +99,9 @@ public class SplashActivity extends AppCompatActivity {
                                 session.setData(Constant.ONGOING_SA_BALANCE, userArray.getJSONObject(0).getString(Constant.ONGOING_SA_BALANCE));
                                 session.setData(Constant.SALARY_ADVANCE_BALANCE, userArray.getJSONObject(0).getString(Constant.SALARY_ADVANCE_BALANCE));
                                 session.setData(Constant.SA_REFER_COUNT, userArray.getJSONObject(0).getString(Constant.SA_REFER_COUNT));
+                                session.setData(Constant.PER_CODE_VAL, userArray.getJSONObject(0).getString(Constant.PER_CODE_VAL));
+                                session.setData(Constant.LEVEL, userArray.getJSONObject(0).getString(Constant.LEVEL));
+
 
 
                                 if (jsonArray2.getJSONObject(0).getString(Constant.CODE_GENERATE).equals("1")) {

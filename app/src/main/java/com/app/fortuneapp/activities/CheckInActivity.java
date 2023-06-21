@@ -110,7 +110,9 @@ public class CheckInActivity extends AppCompatActivity {
                                         userArray.getJSONObject(0).getString(Constant.SECURITY),
                                         userArray.getJSONObject(0).getString(Constant.ONGOING_SA_BALANCE),
                                         userArray.getJSONObject(0).getString(Constant.SALARY_ADVANCE_BALANCE),
-                                        userArray.getJSONObject(0).getString(Constant.SA_REFER_COUNT));
+                                        userArray.getJSONObject(0).getString(Constant.PER_CODE_VAL),
+                                        userArray.getJSONObject(0).getString(Constant.SA_REFER_COUNT), userArray.getJSONObject(0).getString(Constant.SA_REFER_COUNT), userArray.getJSONObject(0).getString(Constant.SA_REFER_COUNT), userArray.getJSONObject(0).getString(Constant.SA_REFER_COUNT));
+
                                 if (session.getBoolean(Constant.IMPORT_DATA)) {
                                     session.setBoolean("is_logged_in", true);
                                     startActivity(new Intent(activity, MainActivity.class));
