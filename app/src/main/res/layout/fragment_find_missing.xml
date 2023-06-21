@@ -92,8 +92,9 @@
                                 app:icon="@drawable/ic_arrow_back"
                                 android:textColor="@color/white"
                                 app:iconTint="@color/white"
-                                android:textSize="@dimen/_8sdp"
-                                app:iconSize="@dimen/_8sdp"
+                                android:gravity="center"
+                                android:textSize="@dimen/_10sdp"
+                                app:iconSize="@dimen/_12sdp"
                                 style="@style/Widget.MaterialComponents.Button.TextButton"
                                 android:text="Regular Task"/>
                             <com.google.android.material.button.MaterialButton

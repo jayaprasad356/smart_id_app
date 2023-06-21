@@ -95,7 +95,7 @@ import java.util.Map;
 
 public class HomeFragment extends Fragment {
 
-    TextView tvName, tvPincode, tvCity, tvId, tvTodayCodes, tvTotalCodes, tvHistorydays, tvTrialPeriod;
+    TextView tvName, tvPincode, tvCity, tvId, tvTodayCodes, tvTotalCodes, tvLevels, tvHistorydays, tvTrialPeriod;
     LinearLayout lTrial;
     EditText edName, edPincode, edCity;
     Button btnGenerate, btnsyncNow;
@@ -113,20 +113,21 @@ public class HomeFragment extends Fragment {
     Handler handler;
     long code_generate_time = 0;
     public static Dialog dialog = null;
-    Button btnFindMissing, btnChampiontask,btnNavChampionTask;
+    Button btnFindMissing, btnChampiontask, btnNavChampionTask;
     TextView tvBalance;
     View root;
     LinearLayout championLayout;
     private String AdId = "";
     TextView tvCodes;
     CircularProgressIndicator cbCodes;
-    TextView tvHightlight,tvInfo;
+    TextView tvHightlight, tvInfo;
     ProgressDialog progressDialog;
     long st_timestamp;
     ClipboardManager clipBoard;
     LinearLayout lltrail, llPayed;
     String RandomId;
     DatabaseReference reference;
+    TextView tvChampionTask;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -189,15 +190,17 @@ public class HomeFragment extends Fragment {
         edPincode = root.findViewById(R.id.edPincode);
         edCity = root.findViewById(R.id.edCity);
         tvTodayCodes = root.findViewById(R.id.tvTodayCodes);
+        tvLevels = root.findViewById(R.id.tvLevels);
         tvTotalCodes = root.findViewById(R.id.tvTotalCodes);
         tvHistorydays = root.findViewById(R.id.tvHistorydays);
+        tvChampionTask = root.findViewById(R.id.tvChampionTask);
         btnGenerate = root.findViewById(R.id.btnGenerate);
         btnFindMissing = root.findViewById(R.id.btnFindMissing);
         btnChampiontask = root.findViewById(R.id.btnChampiontask);
-        btnNavChampionTask =root.findViewById(R.id.btnChampionTaskNav);
+        btnNavChampionTask = root.findViewById(R.id.btnChampionTaskNav);
         frame = root.findViewById(R.id.frame);
         tvHightlight = root.findViewById(R.id.tvHightlight);
-        tvInfo=root.findViewById(R.id.tvInfo);
+        tvInfo = root.findViewById(R.id.tvInfo);
         otp_textbox_one = root.findViewById(R.id.otp_edit_box1);
         otp_textbox_two = root.findViewById(R.id.otp_edit_box2);
         otp_textbox_three = root.findViewById(R.id.otp_edit_box3);
@@ -222,6 +225,25 @@ public class HomeFragment extends Fragment {
         tvHightlight.startAnimation(blink);
         setCodeValue();
 
+
+        tvChampionTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(session.getInt(Constant.CODES) == 0){
+                    session.setData(Constant.MY_TASK,"champion");
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+                    fm.beginTransaction().replace(R.id.Container, new FindMissingFragment()).commit();
+
+                }else {
+                    Toast.makeText(activity, "Sync Codes then Move to Next Task", Toast.LENGTH_SHORT).show();
+                }
+
+
+
+            }
+        });
+
+
         if (session.getData(Constant.STATUS).equals("0")) {
             tvHightlight.setVisibility(View.GONE);
             lltrail.setVisibility(View.VISIBLE);
@@ -245,8 +267,6 @@ public class HomeFragment extends Fragment {
 
             }
         });
-
-
 
 
         EditText[] edit = {otp_textbox_one, otp_textbox_two, otp_textbox_three, otp_textbox_four, otp_textbox_five, otp_textbox_six, otp_textbox_seven, otp_textbox_eight, otp_textbox_nine, otp_textbox_ten};
@@ -398,12 +418,11 @@ public class HomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists()) {
                     joinTicket();
-                }
-                else {
+                } else {
 
                     Ticket user = dataSnapshot.getValue(Ticket.class);
 
-                    sendChat(user.getId(),user.getName(),user.getCategory(),user.getType(),user.getDescription());
+                    sendChat(user.getId(), user.getName(), user.getCategory(), user.getType(), user.getDescription());
 
 
                 }
@@ -417,8 +436,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void joinTicket() {
-        Long tsLong = System.currentTimeMillis()/1000;
-        RandomId = session.getData(Constant.USER_ID) +"_"+ tsLong.toString();
+        Long tsLong = System.currentTimeMillis() / 1000;
+        RandomId = session.getData(Constant.USER_ID) + "_" + tsLong.toString();
         reference = FirebaseDatabase.getInstance().getReference(Constant.JOINING_TICKET).child(session.getData(Constant.MOBILE));
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put(Constant.ID, RandomId);
@@ -621,6 +640,8 @@ public class HomeFragment extends Fragment {
         } catch (Exception e) {
         }
         tvHistorydays.setText(getHistoryDays(session.getData(Constant.JOINED_DATE)));
+        tvLevels.setText(session.getData(Constant.LEVEL));
+
 
     }
 
@@ -753,7 +774,6 @@ public class HomeFragment extends Fragment {
         tvId.setText(generateCodes.get(0).getId_number());
 
     }
-
 
 
 }

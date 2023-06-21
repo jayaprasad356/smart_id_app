@@ -48,6 +48,7 @@ public class Constant {
     public static final String ID = "id";
     public static final String PROFILE = "profile";
     public static final String DEVICE_VERIFY = "device_verify";
+    public static final String LEVEL = "level";
     public static final String USER_VERIFY = "user_verify";
     public static final String USER_ID = "user_id";
     public static final String MOBILE = "mobile";
@@ -87,6 +88,8 @@ public class Constant {
     public static final String LINK = "link";
     public static final String DESCRIPTION = "description";
     public static final String VERSION = "version";
+    public static final String MY_TASK = "my_task";
+
 
     public static final String DATE = "date";
     public static final String DOB = "dob";
