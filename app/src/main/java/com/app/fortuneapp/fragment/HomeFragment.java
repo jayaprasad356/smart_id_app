@@ -793,9 +793,6 @@ public class HomeFragment extends Fragment {
         tvCity.setText(generateCodes.get(0).getEcity());
         tvId.setText(generateCodes.get(0).getId_number());
 
-        edName.setText(tvName.getText().toString());
-        edPincode.setText(tvPincode.getText().toString());
-        edCity.setText(tvCity.getText().toString());
 
 
     }
