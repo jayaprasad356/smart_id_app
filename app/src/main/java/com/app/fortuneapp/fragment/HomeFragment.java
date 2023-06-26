@@ -354,6 +354,7 @@ public class HomeFragment extends Fragment {
                         if (ApiConfig.isConnected(activity)) {
                             if (session.getData(Constant.STATUS).equals("0")) {
                                 if (session.getInt(Constant.REGULAR_TRIAL_COUNT) >= 10) {
+
                                     AlertDialog.Builder builder = new AlertDialog.Builder(activity);
                                     builder.setMessage("Congratulations. You have successfully completed your trail codes. Chat with us to start actual job by purchasing database.")
                                             .setCancelable(false)
@@ -368,14 +369,27 @@ public class HomeFragment extends Fragment {
 
                                 } else {
                                     session.setInt(Constant.REGULAR_TRIAL_COUNT, session.getInt(Constant.REGULAR_TRIAL_COUNT) + 1);
-                                    Bundle bundle = new Bundle();
-                                    bundle.putInt(Constant.MCG_TIMER, positiveValue);
-                                    bundle.putString(Constant.TASK_TYPE, Constant.REGULAR);
-                                    Fragment fragment = new GenrateQRFragment();
-                                    fragment.setArguments(bundle);
-                                    FragmentTransaction ft = getFragmentManager().beginTransaction();
-                                    ft.replace(R.id.Container, fragment);
-                                    ft.commit();
+
+                                    if (session.getInt(Constant.REGULAR_TRIAL_COUNT) >= 10) {
+                                        Bundle bundle = new Bundle();
+                                        bundle.putInt(Constant.MCG_TIMER, positiveValue);
+                                        bundle.putString(Constant.TASK_TYPE, Constant.REGULAR);
+                                        Fragment fragment = new GenrateQRFragment();
+                                        fragment.setArguments(bundle);
+                                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                                        ft.replace(R.id.Container, fragment);
+                                        ft.commit();
+                                    } else {
+                                        Bundle bundle = new Bundle();
+                                        bundle.putInt(Constant.MCG_TIMER, positiveValue);
+                                        bundle.putString(Constant.TASK_TYPE, Constant.REGULAR);
+                                        Fragment fragment = new GenrateQRFragment();
+                                        fragment.setArguments(bundle);
+                                        FragmentTransaction ft = getFragmentManager().beginTransaction();
+                                        ft.replace(R.id.Container, fragment);
+                                        ft.commit();
+
+                                    }
 
                                 }
                             } else {
@@ -502,6 +516,7 @@ public class HomeFragment extends Fragment {
             progressDialog.setMessage("Please wait...");
             progressDialog.setCancelable(false);
             progressDialog.show();
+
             if (session.getInt(Constant.CODES) != 0) {
                 Map<String, String> params = new HashMap<>();
                 params.put(Constant.USER_ID, session.getData(Constant.USER_ID));
@@ -512,10 +527,12 @@ public class HomeFragment extends Fragment {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             if (jsonObject.getBoolean(Constant.SUCCESS)) {
+
                                 session.setInt(Constant.CODES, 0);
                                 session.setInt(Constant.TODAY_CODES, Integer.parseInt(jsonObject.getString(Constant.TODAY_CODES)));
                                 session.setInt(Constant.TOTAL_CODES, Integer.parseInt(jsonObject.getString(Constant.TOTAL_CODES)));
                                 session.setData(Constant.BALANCE, jsonObject.getString(Constant.BALANCE));
+
                                 session.setData(Constant.STATUS, jsonObject.getString(Constant.STATUS));
                                 setCodeValue();
                                 new Handler().postDelayed(new Runnable() {
@@ -528,16 +545,18 @@ public class HomeFragment extends Fragment {
                             } else {
                                 btnsyncNow.setBackground(ContextCompat.getDrawable(activity, R.drawable.syncbg));
                                 btnsyncNow.setEnabled(true);
-                                Toast.makeText(activity, "" + jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show();
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
                                         progressDialog.dismiss();
+                                        try {
+                                            Toast.makeText(activity, "" + jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show();
+                                        } catch (JSONException e) {
+                                            throw new RuntimeException(e);
+                                        }
                                     }
                                 }, 2000);
                             }
-
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
