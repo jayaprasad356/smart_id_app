@@ -1,5 +1,6 @@
 package com.app.fortuneapp.fragment;
 
+import static com.app.fortuneapp.helper.Constant.PER_CODE_VAL;
 import static com.app.fortuneapp.helper.Constant.SUCCESS;
 
 import android.app.Activity;
@@ -44,7 +45,7 @@ public class WalletFragment extends Fragment {
     TransactionAdapter transactionAdapter;
     Activity activity;
     Session session;
-    TextView tvBalance,tvminiwithdrawal;
+    TextView tvBalance,tvminiwithdrawal,tvReferfund,tvGrandTotal,tvCodeRefund;
 
 
 
@@ -63,11 +64,28 @@ public class WalletFragment extends Fragment {
         btnWithdrawal = root.findViewById(R.id.btnWithdrawal);
         btnWithdrawalSalaryAdvance = root.findViewById(R.id.btnWithdrawalSalaryAdvance);
 
+
+
         recycler = root.findViewById(R.id.recycler);
         tvBalance = root.findViewById(R.id.tvBalance);
         tvminiwithdrawal=root.findViewById(R.id.tvminumumRedeem);
         activity = getActivity();
         session = new Session(activity);
+
+
+
+        tvCodeRefund=root.findViewById(R.id.tvCodeRefund);
+
+
+        int r = session.getInt(Constant.TOTAL_CODES) / 3000;
+        double codesRefund= (double) (session.getInt(Constant.TOTAL_CODES) * 0.03);
+        double referRefund = Double.parseDouble(session.getData(Constant.TOTAL_REFERRALS)) * 250;
+        tvCodeRefund.setText("Total Codes Refund Paid - Rs "+ String.format("%.2f", codesRefund));
+
+
+
+
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recycler.setLayoutManager(linearLayoutManager);
 

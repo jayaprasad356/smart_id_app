@@ -226,6 +226,21 @@ public class HomeFragment extends Fragment {
         tvHightlight.startAnimation(blink);
         setCodeValue();
 
+        TextView tvWorkingCodes = root.findViewById(R.id.tvWorkingCodes);
+        TextView tvBonusCodes = root.findViewById(R.id.tvBonusCodes);
+
+        int working_codes  = session.getInt(Constant.TODAY_CODES)  / Integer.parseInt(session.getData(PER_CODE_VAL));
+        int bonus_codes  = session.getInt(Constant.TODAY_CODES)  - working_codes;
+
+
+        Log.d("code_value", String.valueOf(Integer.parseInt(session.getData(PER_CODE_VAL))));
+        Log.d("today_code", String.valueOf(session.getInt(Constant.TODAY_CODES)  / Integer.parseInt(session.getData(PER_CODE_VAL))));
+
+
+        tvWorkingCodes.setText(""+session.getInt(Constant.TODAY_CODES)  / Integer.parseInt(session.getData(PER_CODE_VAL)));
+        tvBonusCodes.setText(""+bonus_codes );
+
+
 
         tvChampionTask.setOnClickListener(new View.OnClickListener() {
             @Override

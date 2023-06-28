@@ -50,6 +50,32 @@
                 />
 
 
+            <LinearLayout
+                android:layout_gravity="center"
+                android:id="@+id/calLi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvCodeRefund"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Codes Refund Paid - Rs"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10sdp"
+                    />
+
+
+
+
+            </LinearLayout>
+
+
+
+
+
             <Button
                 android:id="@+id/btnWithdrawal"
                 android:layout_marginHorizontal="@dimen/_10sdp"
