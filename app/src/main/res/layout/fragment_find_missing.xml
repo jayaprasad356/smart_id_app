@@ -119,7 +119,7 @@
 
                     <LinearLayout
                         android:id="@+id/lSurvey"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -181,33 +181,40 @@
                             android:layout_gravity="center"
                             android:layout_marginHorizontal="@dimen/_10sdp"
                             android:orientation="vertical">
-
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/box"
-                                android:orientation="vertical"
-                                android:padding="@dimen/_5sdp">
-
-                                <TextView
+                                android:orientation="horizontal">
+                                <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:text="Wallet Balance"
-                                    android:textColor="@color/primaryColor"
-                                    android:textSize="@dimen/_10sdp" />
+                                    android:background="@drawable/box"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/_5sdp">
 
-                                <TextView
-                                    android:id="@+id/tvBalance"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:textColor="@color/primaryColor"
-                                    android:textSize="@dimen/_15sdp"
-                                    android:textStyle="bold"
-                                    tools:text="0" />
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:text="Wallet Balance"
+                                        android:textColor="@color/primaryColor"
+                                        android:textSize="@dimen/_10sdp" />
 
+                                    <TextView
+                                        android:id="@+id/tvBalance"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:textColor="@color/primaryColor"
+                                        android:textSize="@dimen/_15sdp"
+                                        android:textStyle="bold"
+                                        tools:text="0" />
+
+                                </LinearLayout>
                             </LinearLayout>
+
+
+
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -246,6 +253,14 @@
                                         android:layout_height="wrap_content"
                                         android:layout_gravity=""
                                         android:text="History Days "
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/_12sdp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity=""
+                                        android:text="Level"
                                         android:textColor="@color/white"
                                         android:textSize="@dimen/_12sdp" />
 
@@ -288,6 +303,15 @@
                                         android:textColor="@color/white"
                                         android:textSize="@dimen/_12sdp" />
 
+                                    <TextView
+                                        android:id="@+id/tvLevels"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="start"
+                                        android:text="0"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/_12sdp" />
+
                                 </LinearLayout>
 
 
@@ -310,6 +334,8 @@
 
 
                     </LinearLayout>
+
+
 
 
                     <LinearLayout
