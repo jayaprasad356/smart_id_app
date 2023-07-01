@@ -510,7 +510,6 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/edittext_curve_bg"
                                 android:gravity="center"
-                                android:inputType="textCapCharacters"
                                 android:layout_marginRight="@dimen/_2sdp"
                                 android:maxLength="1"
                                 android:textSize="@dimen/_20sdp" />
@@ -522,7 +521,6 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/edittext_curve_bg"
                                 android:gravity="center"
-                                android:inputType="textCapCharacters"
                                 android:layout_marginRight="@dimen/_2sdp"
                                 android:maxLength="1"
                                 android:textSize="@dimen/_20sdp" />
@@ -535,7 +533,6 @@
                                 android:background="@drawable/edittext_curve_bg"
                                 android:gravity="center"
                                 android:layout_marginRight="@dimen/_2sdp"
-                                android:inputType="number"
                                 android:maxLength="1"
                                 android:textSize="@dimen/_20sdp" />
 
@@ -546,7 +543,6 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/edittext_curve_bg"
                                 android:gravity="center"
-                                android:inputType="number"
                                 android:maxLength="1"
                                 android:layout_marginRight="@dimen/_2sdp"
                                 android:textSize="@dimen/_20sdp" />
@@ -558,7 +554,6 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/edittext_curve_bg"
                                 android:gravity="center"
-                                android:inputType="number"
                                 android:maxLength="1"
                                 android:layout_marginRight="@dimen/_2sdp"
                                 android:textSize="@dimen/_20sdp" />
@@ -570,7 +565,6 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/edittext_curve_bg"
                                 android:gravity="center"
-                                android:inputType="number"
                                 android:maxLength="1"
                                 android:layout_marginRight="@dimen/_2sdp"
                                 android:textSize="@dimen/_20sdp" />
@@ -582,7 +576,6 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/edittext_curve_bg"
                                 android:gravity="center"
-                                android:inputType="number"
                                 android:maxLength="1"
                                 android:layout_marginRight="@dimen/_2sdp"
                                 android:textSize="@dimen/_20sdp"/>
@@ -594,7 +587,6 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/edittext_curve_bg"
                                 android:gravity="center"
-                                android:inputType="number"
                                 android:maxLength="1"
                                 android:layout_marginRight="@dimen/_2sdp"
                                 android:textSize="@dimen/_20sdp" />
@@ -606,7 +598,6 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/edittext_curve_bg"
                                 android:gravity="center"
-                                android:inputType="number"
                                 android:maxLength="1"
                                 android:layout_marginRight="@dimen/_2sdp"
                                 android:textSize="@dimen/_20sdp" />
@@ -618,7 +609,6 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/edittext_curve_bg"
                                 android:gravity="center"
-                                android:inputType="number"
                                 android:maxLength="1"
                                 android:textSize="@dimen/_20sdp" />
 
