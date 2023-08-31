@@ -10,14 +10,17 @@ import com.app.fortuneapp.R;
 public class GenericTextWatcher implements TextWatcher {
     private final EditText[] editText;
     private View view;
-    public GenericTextWatcher(View view, EditText editText[])
+    private int idcount;
+    public GenericTextWatcher(View view, EditText[] editText, int idcount)
     {
         this.editText = editText;
         this.view = view;
+        this.idcount = idcount;
     }
 
     @Override
     public void afterTextChanged(Editable editable) {
+        idcount = idcount +1;
         String text = editable.toString();
         switch (view.getId()) {
 

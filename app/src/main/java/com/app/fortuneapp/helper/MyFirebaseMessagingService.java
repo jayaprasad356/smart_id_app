@@ -43,6 +43,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             String id = data.getString("id");
             Intent intent = null;
             if (session.getBoolean("is_logged_in")){
+                session.setBoolean(Constant.CHECK_NOTIFICATION, true);
                 intent = new Intent(getApplicationContext(), NotificaionActivity.class);
 
             }else {

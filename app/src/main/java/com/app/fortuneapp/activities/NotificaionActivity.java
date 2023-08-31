@@ -42,6 +42,7 @@ public class NotificaionActivity extends AppCompatActivity {
         session = new Session(activity);
         recyclerView = findViewById(R.id.recyclerView);
         ivBackbtn = findViewById(R.id.backbtn);
+        session.setBoolean(Constant.CHECK_NOTIFICATION,false);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false));
 

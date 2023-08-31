@@ -529,10 +529,13 @@
                                 android:id="@+id/otp_edit_box3"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"
+                                android:layout_marginRight="@dimen/_2sdp"
                                 android:layout_weight="1"
+
                                 android:background="@drawable/edittext_curve_bg"
                                 android:gravity="center"
-                                android:layout_marginRight="@dimen/_2sdp"
+                                android:inputType="number"
+                                android:longClickable="false"
                                 android:maxLength="1"
                                 android:textSize="@dimen/_20sdp" />
 
@@ -540,66 +543,84 @@
                                 android:id="@+id/otp_edit_box4"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"
+                                android:layout_marginRight="@dimen/_2sdp"
                                 android:layout_weight="1"
                                 android:background="@drawable/edittext_curve_bg"
                                 android:gravity="center"
+
+                                android:inputType="number"
+                                android:longClickable="false"
                                 android:maxLength="1"
-                                android:layout_marginRight="@dimen/_2sdp"
                                 android:textSize="@dimen/_20sdp" />
 
                             <EditText
                                 android:id="@+id/otp_edit_box5"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"
+                                android:layout_marginRight="@dimen/_2sdp"
                                 android:layout_weight="1"
                                 android:background="@drawable/edittext_curve_bg"
                                 android:gravity="center"
+
+                                android:inputType="number"
+                                android:longClickable="false"
                                 android:maxLength="1"
-                                android:layout_marginRight="@dimen/_2sdp"
                                 android:textSize="@dimen/_20sdp" />
 
                             <EditText
                                 android:id="@+id/otp_edit_box6"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"
+                                android:layout_marginRight="@dimen/_2sdp"
                                 android:layout_weight="1"
+
                                 android:background="@drawable/edittext_curve_bg"
                                 android:gravity="center"
+                                android:inputType="number"
+                                android:longClickable="false"
                                 android:maxLength="1"
-                                android:layout_marginRight="@dimen/_2sdp"
                                 android:textSize="@dimen/_20sdp" />
 
                             <EditText
                                 android:id="@+id/otp_edit_box7"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"
+                                android:layout_marginRight="@dimen/_2sdp"
                                 android:layout_weight="1"
+
                                 android:background="@drawable/edittext_curve_bg"
                                 android:gravity="center"
+                                android:inputType="number"
+                                android:longClickable="false"
                                 android:maxLength="1"
-                                android:layout_marginRight="@dimen/_2sdp"
-                                android:textSize="@dimen/_20sdp"/>
+                                android:textSize="@dimen/_20sdp" />
 
                             <EditText
                                 android:id="@+id/otp_edit_box8"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"
+                                android:layout_marginRight="@dimen/_2sdp"
                                 android:layout_weight="1"
+
                                 android:background="@drawable/edittext_curve_bg"
                                 android:gravity="center"
+                                android:inputType="number"
+                                android:longClickable="false"
                                 android:maxLength="1"
-                                android:layout_marginRight="@dimen/_2sdp"
                                 android:textSize="@dimen/_20sdp" />
 
                             <EditText
                                 android:id="@+id/otp_edit_box9"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"
+                                android:layout_marginRight="@dimen/_2sdp"
                                 android:layout_weight="1"
+
                                 android:background="@drawable/edittext_curve_bg"
                                 android:gravity="center"
+                                android:inputType="number"
+                                android:longClickable="false"
                                 android:maxLength="1"
-                                android:layout_marginRight="@dimen/_2sdp"
                                 android:textSize="@dimen/_20sdp" />
 
                             <EditText
@@ -609,6 +630,8 @@
                                 android:layout_weight="1"
                                 android:background="@drawable/edittext_curve_bg"
                                 android:gravity="center"
+                                android:inputType="number"
+                                android:longClickable="false"
                                 android:maxLength="1"
                                 android:textSize="@dimen/_20sdp" />
 

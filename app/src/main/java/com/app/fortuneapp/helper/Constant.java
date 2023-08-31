@@ -13,11 +13,11 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Constant {
-    //public static final String MainBaseUrl = "https://admin.fortuneapp.in/";
+    public static final String MainBaseUrl = "https://admin.fortuneapp.in/";
     //public static final String MainBaseUrl = "https://abcd.greymatterworks.in/";
     //public static final String MainBaseUrl = "http://192.168.43.38/fortune/";
     //public static final String MainBaseUrl = "https://demofortune.graymatterworks.com/";
-    public static final String MainBaseUrl = "https://demo.fortuneapp.in/";
+    //public static final String MainBaseUrl = "https://demo.fortuneapp.in/";
     public static final String BaseUrl = MainBaseUrl + "api/";
     public static final String SEND_ADMIN_NOTIFY_URL = BaseUrl + "sendadminnotify.php";
     public static final String LOGIN_URL = BaseUrl + "login.php";
@@ -28,6 +28,7 @@ public class Constant {
     public static final String USER_DETAILS_URL = BaseUrl + "userdetails.php";
     public static final String UPDATE_BANK_URL = BaseUrl + "updatebank.php";
     public static final String WITHDRAWAL_URL = BaseUrl + "withdrawal.php";
+    public static final String SUSPECT_CODES_URL = BaseUrl + "suspect_codes.php";
     public static final String WITHDRAWAL_LIST_URL = BaseUrl + "withdrawal_lists.php";
     public static final String NOTIFICATION_LIST_URL = BaseUrl + "notification_lists.php";
     public static final String CHANGE_DEVICE_LIST_URL = BaseUrl + "change_device.php";
@@ -57,6 +58,7 @@ public class Constant {
     public static final String MOBILE = "mobile";
     public static final String STUDENT_NAME = "student_name";
     public static final String ID_NUMBER = "id_number";
+    public static final String BLACK_BOX = "black_box";
     public static final String ECITY = "ecity";
     public static final String PIN_CODE = "pin_code";
     public static final String CODES = "codes";
@@ -118,6 +120,8 @@ public class Constant {
     public static final String SA_WITHDRAWAL_URL = BaseUrl + "sa_withdrawal.php";
 
     public static final String MY_SA_TRANSLIST_URL = BaseUrl + "my_sa_translist.php";
+    public static final String APP_VERSION = "app_version";
+
 
     public static final String CHECKIN = "checkin";
     public static final String WHATSAPP = "whatsapp";

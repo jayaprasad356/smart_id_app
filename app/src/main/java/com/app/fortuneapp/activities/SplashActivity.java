@@ -32,6 +32,8 @@ public class SplashActivity extends AppCompatActivity {
     Session session;
     Activity activity;
     String link, description;
+    String currentversion = "";
+
 
 
     @Override
@@ -43,6 +45,14 @@ public class SplashActivity extends AppCompatActivity {
 
 
         handler = new Handler();
+
+
+        try {
+            PackageInfo pInfo = activity.getPackageManager().getPackageInfo(activity.getPackageName(), 0);
+            currentversion = pInfo.versionCode + "";
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
         checkVersion();
     }
 
@@ -51,6 +61,7 @@ public class SplashActivity extends AppCompatActivity {
         params.put(Constant.USER_ID,session.getData(Constant.USER_ID));
         params.put(Constant.FCM_ID,session.getData(Constant.FCM_ID));
         params.put(Constant.DEVICE_ID,Constant.getDeviceId(activity));
+        params.put(Constant.APP_VERSION, currentversion);
         ApiConfig.RequestToVolley((result, response) -> {
             Log.d("SPLASH_VER",response);
 
@@ -117,13 +128,7 @@ public class SplashActivity extends AppCompatActivity {
                         link = jsonArray.getJSONObject(0).getString(Constant.LINK);
                         description = jsonArray.getJSONObject(0).getString(Constant.DESCRIPTION);
                         String latestversion = jsonArray.getJSONObject(0).getString(Constant.VERSION);
-                        String currentversion = "";
-                        try {
-                            PackageInfo pInfo = activity.getPackageManager().getPackageInfo(activity.getPackageName(), 0);
-                            currentversion = pInfo.versionCode + "";
-                        } catch (PackageManager.NameNotFoundException e) {
-                            e.printStackTrace();
-                        }
+
 
                         if (Integer.parseInt(currentversion) >= Integer.parseInt(latestversion)) {
                             GotoActivity();

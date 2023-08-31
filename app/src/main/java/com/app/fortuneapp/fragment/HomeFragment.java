@@ -35,6 +35,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -130,6 +132,9 @@ public class HomeFragment extends Fragment {
     DatabaseReference reference;
     TextView tvChampionTask;
 
+    int totaltype = 0,totaltext = 0;
+    int namecount = 0,idcount = 0,citycount = 0 , pincodecount = 0;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -150,6 +155,8 @@ public class HomeFragment extends Fragment {
             );
         }
         progressDialog = new ProgressDialog(activity);
+
+        //session.setInt(Constant.CODES,60);
 
         clipBoard = (ClipboardManager) getActivity().getApplicationContext().getSystemService(CLIPBOARD_SERVICE);
 
@@ -229,6 +236,62 @@ public class HomeFragment extends Fragment {
         TextView tvWorkingCodes = root.findViewById(R.id.tvWorkingCodes);
         TextView tvBonusCodes = root.findViewById(R.id.tvBonusCodes);
 
+
+
+        edName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                namecount = namecount + 1;
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        edCity.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                citycount = citycount + 1;
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        edPincode.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                pincodecount = pincodecount + 1;
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
         int working_codes  = session.getInt(Constant.TODAY_CODES)  / Integer.parseInt(session.getData(PER_CODE_VAL));
         int bonus_codes  = session.getInt(Constant.TODAY_CODES)  - working_codes;
 
@@ -286,16 +349,16 @@ public class HomeFragment extends Fragment {
 
 
         EditText[] edit = {otp_textbox_one, otp_textbox_two, otp_textbox_three, otp_textbox_four, otp_textbox_five, otp_textbox_six, otp_textbox_seven, otp_textbox_eight, otp_textbox_nine, otp_textbox_ten};
-        otp_textbox_one.addTextChangedListener(new GenericTextWatcher(otp_textbox_one, edit));
-        otp_textbox_two.addTextChangedListener(new GenericTextWatcher(otp_textbox_two, edit));
-        otp_textbox_three.addTextChangedListener(new GenericTextWatcher(otp_textbox_three, edit));
-        otp_textbox_four.addTextChangedListener(new GenericTextWatcher(otp_textbox_four, edit));
-        otp_textbox_five.addTextChangedListener(new GenericTextWatcher(otp_textbox_five, edit));
-        otp_textbox_six.addTextChangedListener(new GenericTextWatcher(otp_textbox_six, edit));
-        otp_textbox_seven.addTextChangedListener(new GenericTextWatcher(otp_textbox_seven, edit));
-        otp_textbox_eight.addTextChangedListener(new GenericTextWatcher(otp_textbox_eight, edit));
-        otp_textbox_nine.addTextChangedListener(new GenericTextWatcher(otp_textbox_nine, edit));
-        otp_textbox_ten.addTextChangedListener(new GenericTextWatcher(otp_textbox_ten, edit));
+        otp_textbox_one.addTextChangedListener(new GenericTextWatcher(otp_textbox_one, edit,idcount));
+        otp_textbox_two.addTextChangedListener(new GenericTextWatcher(otp_textbox_two, edit, idcount));
+        otp_textbox_three.addTextChangedListener(new GenericTextWatcher(otp_textbox_three, edit, idcount));
+        otp_textbox_four.addTextChangedListener(new GenericTextWatcher(otp_textbox_four, edit, idcount));
+        otp_textbox_five.addTextChangedListener(new GenericTextWatcher(otp_textbox_five, edit, idcount));
+        otp_textbox_six.addTextChangedListener(new GenericTextWatcher(otp_textbox_six, edit, idcount));
+        otp_textbox_seven.addTextChangedListener(new GenericTextWatcher(otp_textbox_seven, edit, idcount));
+        otp_textbox_eight.addTextChangedListener(new GenericTextWatcher(otp_textbox_eight, edit, idcount));
+        otp_textbox_nine.addTextChangedListener(new GenericTextWatcher(otp_textbox_nine, edit, idcount));
+        otp_textbox_ten.addTextChangedListener(new GenericTextWatcher(otp_textbox_ten, edit, idcount));
         generateCodes = databaseHelper.getLimitCodes();
 
         //adCheckApi();
@@ -409,7 +472,14 @@ public class HomeFragment extends Fragment {
                                 }
                             } else {
                                 if (session.getData(Constant.CODE_GENERATE).equals("1")) {
+                                    totaltype = tvName.getText().toString().trim().length() + tvId.getText().toString().trim().length() + tvPincode.getText().toString().trim().length() + tvCity.getText().toString().trim().length();
+                                    totaltext = namecount + idcount + citycount + pincodecount;
+
                                     session.setInt(Constant.CODES, session.getInt(Constant.CODES) + Integer.parseInt(session.getData(PER_CODE_VAL)));
+
+                                    if(session.getData(Constant.BLACK_BOX).equals("1") && session.getInt(Constant.CODES) == 60){
+                                        suspectApi();
+                                    }
                                     Bundle bundle = new Bundle();
                                     bundle.putInt(Constant.MCG_TIMER, positiveValue);
                                     bundle.putString(Constant.TASK_TYPE, Constant.REGULAR);
@@ -440,6 +510,31 @@ public class HomeFragment extends Fragment {
 
         return root;
     }
+    private void suspectApi() {
+        Map<String, String> params = new HashMap<>();
+        params.put(Constant.USER_ID, session.getData(Constant.USER_ID));
+        params.put(Constant.CODES, session.getInt(Constant.CODES) + "");
+        params.put("total_text", totaltext + "");
+        params.put("typed_text", totaltype + "");
+        ApiConfig.RequestToVolley((result, response) -> {
+            if (result) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.getBoolean(Constant.SUCCESS)) {
+                        Log.d("TRIAL_COMPLETION", response);
+
+                    } else {
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            } else {
+
+            }
+        }, activity, Constant.SUSPECT_CODES_URL, params, false);
+    }
+
 
     private void checkJoining() {
         reference = FirebaseDatabase.getInstance().getReference(Constant.JOINING_TICKET).child(session.getData(Constant.MOBILE));
@@ -536,6 +631,7 @@ public class HomeFragment extends Fragment {
                 Map<String, String> params = new HashMap<>();
                 params.put(Constant.USER_ID, session.getData(Constant.USER_ID));
                 params.put(Constant.CODES, session.getInt(Constant.CODES) + "");
+                params.put(Constant.BLACK_BOX, session.getData(Constant.BLACK_BOX));
                 ApiConfig.RequestToVolley((result, response) -> {
                     Log.d("WALLET_RES", response);
                     if (result) {
@@ -547,6 +643,7 @@ public class HomeFragment extends Fragment {
                                 session.setInt(Constant.TODAY_CODES, Integer.parseInt(jsonObject.getString(Constant.TODAY_CODES)));
                                 session.setInt(Constant.TOTAL_CODES, Integer.parseInt(jsonObject.getString(Constant.TOTAL_CODES)));
                                 session.setData(Constant.BALANCE, jsonObject.getString(Constant.BALANCE));
+                                session.setData(Constant.BLACK_BOX, jsonObject.getString(Constant.BLACK_BOX));
 
                                 session.setData(Constant.STATUS, jsonObject.getString(Constant.STATUS));
                                 setCodeValue();
