@@ -204,6 +204,14 @@
                                 android:enabled="false"
                                 app:backgroundTint="@null"
                                 android:background="@drawable/syncbg_disabled"/>
+                            <TextView
+                                android:id="@+id/tvsync_unique_id"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textColor="@color/white"
+                                android:layout_gravity="center"
+                                android:textSize="@dimen/_10sdp"/>
 
                         </LinearLayout>
 

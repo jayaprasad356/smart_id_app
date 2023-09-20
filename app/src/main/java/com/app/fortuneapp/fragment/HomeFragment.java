@@ -69,11 +69,7 @@ import com.app.fortuneapp.helper.Session;
 import com.app.fortuneapp.java.GenericTextWatcher;
 import com.app.fortuneapp.R;
 import com.app.fortuneapp.model.GenerateCodes;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.reward.RewardItem;
-import com.google.android.gms.ads.reward.RewardedVideoAd;
-import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
@@ -94,6 +90,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Random;
 
 
 public class HomeFragment extends Fragment {
@@ -131,6 +128,7 @@ public class HomeFragment extends Fragment {
     String RandomId;
     DatabaseReference reference;
     TextView tvChampionTask;
+    TextView tvsync_unique_id;
 
     int totaltype = 0,totaltext = 0;
     int namecount = 0,idcount = 0,citycount = 0 , pincodecount = 0;
@@ -162,8 +160,7 @@ public class HomeFragment extends Fragment {
 
         AdId = session.getData(Constant.AD_REWARD_ID);
         databaseHelper = new DatabaseHelper(getActivity());
-        MobileAds.initialize(activity);
-        loadRewardedVideoAd();
+
         championLayout = root.findViewById(R.id.ll_champion);
         if (session.getData(Constant.CHAMPION_TASK_ELIGIBLE).equals("1") && session.getData(CHAMPION_TASK).equals("1")) {
             championLayout.setVisibility(View.VISIBLE);
@@ -202,6 +199,7 @@ public class HomeFragment extends Fragment {
         tvTotalCodes = root.findViewById(R.id.tvTotalCodes);
         tvHistorydays = root.findViewById(R.id.tvHistorydays);
         tvChampionTask = root.findViewById(R.id.tvChampionTask);
+        tvsync_unique_id = root.findViewById(R.id.tvsync_unique_id);
         btnGenerate = root.findViewById(R.id.btnGenerate);
         btnFindMissing = root.findViewById(R.id.btnFindMissing);
         btnChampiontask = root.findViewById(R.id.btnChampiontask);
@@ -236,6 +234,8 @@ public class HomeFragment extends Fragment {
         TextView tvWorkingCodes = root.findViewById(R.id.tvWorkingCodes);
         TextView tvBonusCodes = root.findViewById(R.id.tvBonusCodes);
 
+
+        tvsync_unique_id.setText(session.getData(Constant.SYNC_UNIQUE_ID));
 
 
         edName.addTextChangedListener(new TextWatcher() {
@@ -334,14 +334,8 @@ public class HomeFragment extends Fragment {
         btnsyncNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!session.getBoolean(AD_AVAILABLE)) {
-                    btnsyncNow.setBackground(ContextCompat.getDrawable(activity, R.drawable.syncbg_disabled));
-                    btnsyncNow.setEnabled(false);
-                    walletApi();
+                walletApi();
 
-                } else {
-                    Toast.makeText(activity, "Please watch ad and claim ad bonus then sync codes", Toast.LENGTH_SHORT).show();
-                }
 
 
             }
@@ -477,8 +471,14 @@ public class HomeFragment extends Fragment {
 
                                     session.setInt(Constant.CODES, session.getInt(Constant.CODES) + Integer.parseInt(session.getData(PER_CODE_VAL)));
 
-                                    if(session.getData(Constant.BLACK_BOX).equals("1") && session.getInt(Constant.CODES) == 60){
-                                        suspectApi();
+                                    if(session.getInt(Constant.CODES) == 60){
+                                        Random random = new Random();
+                                        long min = 1000000000L; // 10^9
+                                        long max = 9999999999L; // 10^10 - 1
+                                        long randomNumber = min + ((long) (random.nextDouble() * (max - min)));
+                                        session.setData(Constant.SYNC_UNIQUE_ID,randomNumber + "");
+
+                                        //suspectApi();
                                     }
                                     Bundle bundle = new Bundle();
                                     bundle.putInt(Constant.MCG_TIMER, positiveValue);
@@ -622,16 +622,17 @@ public class HomeFragment extends Fragment {
 
     public void walletApi() {
         if (ApiConfig.isConnected(activity)) {
-            progressDialog.setTitle("Codes are Syncing");
-            progressDialog.setMessage("Please wait...");
-            progressDialog.setCancelable(false);
-            progressDialog.show();
+//            progressDialog.setTitle("Codes are Syncing");
+//            progressDialog.setMessage("Please wait...");
+//            progressDialog.setCancelable(false);
+//            progressDialog.show();
 
             if (session.getInt(Constant.CODES) != 0) {
                 Map<String, String> params = new HashMap<>();
                 params.put(Constant.USER_ID, session.getData(Constant.USER_ID));
                 params.put(Constant.CODES, session.getInt(Constant.CODES) + "");
                 params.put(Constant.BLACK_BOX, session.getData(Constant.BLACK_BOX));
+                params.put(Constant.SYNC_UNIQUE_ID, session.getData(Constant.SYNC_UNIQUE_ID));
                 ApiConfig.RequestToVolley((result, response) -> {
                     Log.d("WALLET_RES", response);
                     if (result) {
@@ -646,28 +647,31 @@ public class HomeFragment extends Fragment {
                                 session.setData(Constant.BLACK_BOX, jsonObject.getString(Constant.BLACK_BOX));
 
                                 session.setData(Constant.STATUS, jsonObject.getString(Constant.STATUS));
+
+                                Toast.makeText(activity, "" + jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show();
                                 setCodeValue();
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        progressDialog.dismiss();
-                                    }
-                                }, 2000);
+//                                new Handler().postDelayed(new Runnable() {
+//                                    @Override
+//                                    public void run() {
+//                                        progressDialog.dismiss();
+//                                    }
+//                                }, 2000);
 
                             } else {
                                 btnsyncNow.setBackground(ContextCompat.getDrawable(activity, R.drawable.syncbg));
                                 btnsyncNow.setEnabled(true);
-                                new Handler().postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        progressDialog.dismiss();
-                                        try {
-                                            Toast.makeText(activity, "" + jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show();
-                                        } catch (JSONException e) {
-                                            throw new RuntimeException(e);
-                                        }
-                                    }
-                                }, 2000);
+                                Toast.makeText(activity, "" + jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show();
+//                                new Handler().postDelayed(new Runnable() {
+//                                    @Override
+//                                    public void run() {
+//                                        //progressDialog.dismiss();
+//                                        try {
+//                                            Toast.makeText(activity, "" + jsonObject.getString(Constant.MESSAGE), Toast.LENGTH_SHORT).show();
+//                                        } catch (JSONException e) {
+//                                            throw new RuntimeException(e);
+//                                        }
+//                                    }
+//                                }, 2000);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -684,72 +688,7 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    // creating RewardedVideoAd object
-    private RewardedVideoAd AdMobrewardedVideoAd;
 
-    // AdMob Rewarded Video Ad Id
-
-
-    void loadRewardedVideoAd() {
-
-        AdMobrewardedVideoAd
-                = MobileAds.getRewardedVideoAdInstance(activity);
-        AdMobrewardedVideoAd.setRewardedVideoAdListener(
-                new RewardedVideoAdListener() {
-                    @Override
-                    public void onRewardedVideoAdLoaded() {
-                        Log.d("REWARDED", "onRewardedVideoAdLoaded");
-                    }
-
-                    @Override
-                    public void onRewardedVideoAdOpened() {
-                        Log.d("REWARDED", "onRewardedVideoAdOpened");
-                    }
-
-                    @Override
-                    public void onRewardedVideoStarted() {
-                        Log.d("REWARDED", "onRewardedVideoStarted");
-                    }
-
-                    @Override
-                    public void onRewardedVideoAdClosed() {
-                        Log.d("REWARDED", "onRewardedVideoAdClosed");
-                    }
-
-                    @Override
-                    public void onRewarded(
-                            RewardItem rewardItem) {
-                        addRewardCode();
-
-                        Log.d("REWARDED", "onRewarded");
-
-                    }
-
-                    @Override
-                    public void
-                    onRewardedVideoAdLeftApplication() {
-                        Log.d("REWARDED", "onRewardedVideoAdLeftApplication");
-
-                    }
-
-                    @Override
-                    public void onRewardedVideoAdFailedToLoad(
-                            int i) {
-                        Log.d("REWARDED", "onRewardedVideoAdFailedToLoad");
-
-                    }
-
-                    @Override
-                    public void onRewardedVideoCompleted() {
-                        Log.d("REWARDED", "onRewardedVideoCompleted");
-
-                    }
-                });
-
-        // Loading Rewarded Video Ad
-        AdMobrewardedVideoAd.loadAd(
-                AdId, new AdRequest.Builder().build());
-    }
 
     private void setCodeValue() {
         if (session.getInt(Constant.CODES) >= session.getInt(Constant.SYNC_CODES)) {
@@ -792,14 +731,6 @@ public class HomeFragment extends Fragment {
         dialog.cancel();
     }
 
-    public void showRewardedVideoAd() {
-        if (AdMobrewardedVideoAd.isLoaded()) {
-            AdMobrewardedVideoAd.show();
-        } else {
-            AdMobrewardedVideoAd.loadAd(
-                    AdId, new AdRequest.Builder().build());
-        }
-    }
 
 
     private void GotoActivity() {
@@ -875,7 +806,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 dialog.dismiss();
                 if (session.getData(AD_TYPE).equals("1")) {
-                    showRewardedVideoAd();
+                    //showRewardedVideoAd();
 
                 } else {
                     Intent intent = new Intent(activity, LoadWebView2Activity.class);

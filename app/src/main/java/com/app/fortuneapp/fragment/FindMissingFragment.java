@@ -75,11 +75,6 @@ import com.app.fortuneapp.helper.DatabaseHelper;
 import com.app.fortuneapp.helper.Session;
 import com.app.fortuneapp.model.GenerateCodes;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.reward.RewardItem;
-import com.google.android.gms.ads.reward.RewardedVideoAd;
-import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
@@ -159,8 +154,6 @@ public class FindMissingFragment extends Fragment {
         progressDialog = new ProgressDialog(activity);
         databaseHelper = new DatabaseHelper(activity);
         handler = new Handler();
-       // MobileAds.initialize(activity);
-        loadRewardedVideoAd();
         AdId = session.getData(Constant.AD_REWARD_ID);
         frame = root.findViewById(R.id.frame);
 
@@ -453,72 +446,7 @@ public class FindMissingFragment extends Fragment {
         }
     }
 
-    // creating RewardedVideoAd object
-    private RewardedVideoAd AdMobrewardedVideoAd;
 
-    // AdMob Rewarded Video Ad Id
-
-
-    void loadRewardedVideoAd() {
-
-        AdMobrewardedVideoAd
-                = MobileAds.getRewardedVideoAdInstance(activity);
-        AdMobrewardedVideoAd.setRewardedVideoAdListener(
-                new RewardedVideoAdListener() {
-                    @Override
-                    public void onRewardedVideoAdLoaded() {
-                        Log.d("REWARDED", "onRewardedVideoAdLoaded");
-                    }
-
-                    @Override
-                    public void onRewardedVideoAdOpened() {
-                        Log.d("REWARDED", "onRewardedVideoAdOpened");
-                    }
-
-                    @Override
-                    public void onRewardedVideoStarted() {
-                        Log.d("REWARDED", "onRewardedVideoStarted");
-                    }
-
-                    @Override
-                    public void onRewardedVideoAdClosed() {
-                        Log.d("REWARDED", "onRewardedVideoAdClosed");
-                    }
-
-                    @Override
-                    public void onRewarded(
-                            RewardItem rewardItem) {
-                        addRewardCode();
-
-                        Log.d("REWARDED", "onRewarded");
-
-                    }
-
-                    @Override
-                    public void
-                    onRewardedVideoAdLeftApplication() {
-                        Log.d("REWARDED", "onRewardedVideoAdLeftApplication");
-
-                    }
-
-                    @Override
-                    public void onRewardedVideoAdFailedToLoad(
-                            int i) {
-                        Log.d("REWARDED", "onRewardedVideoAdFailedToLoad");
-
-                    }
-
-                    @Override
-                    public void onRewardedVideoCompleted() {
-                        Log.d("REWARDED", "onRewardedVideoCompleted");
-
-                    }
-                });
-
-        // Loading Rewarded Video Ad
-        AdMobrewardedVideoAd.loadAd(
-                AdId, new AdRequest.Builder().build());
-    }
 
     @SuppressLint("ShowToast")
     private void addRewardCode() {
@@ -608,7 +536,7 @@ public class FindMissingFragment extends Fragment {
             public void onClick(View view) {
                 dialog.dismiss();
                 if (session.getData(AD_TYPE).equals("1")) {
-                    showRewardedVideoAd();
+                    //showRewardedVideoAd();
 
                 }
 
@@ -618,14 +546,6 @@ public class FindMissingFragment extends Fragment {
 
     }
 
-    public void showRewardedVideoAd() {
-        if (AdMobrewardedVideoAd.isLoaded()) {
-            AdMobrewardedVideoAd.show();
-        } else {
-            AdMobrewardedVideoAd.loadAd(
-                    AdId, new AdRequest.Builder().build());
-        }
-    }
 
 
     private void registerGeneration() {

@@ -120,7 +120,14 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.Profile:
-                        fm.beginTransaction().replace(R.id.Container, new ProfileFragment()).commitAllowingStateLoss();
+                        if (session.getInt(Constant.CODES) < session.getInt(Constant.SYNC_CODES)){
+                            fm.beginTransaction().replace(R.id.Container, new ProfileFragment()).commitAllowingStateLoss();
+
+                        }
+                        else {
+                            Toast.makeText(activity, "Please Sync Codes", Toast.LENGTH_SHORT).show();
+                        }
+
                         break;
                     case R.id.Home:
                         if (session.getData(Constant.STATUS).equals("0")) {
@@ -133,23 +140,35 @@ public class MainActivity extends AppCompatActivity {
                         }
                         break;
                     case R.id.Wallet:
-                        try {
-                            fetch_time = Long.parseLong(session.getData(Constant.FETCH_TIME)) * 1000;
-                        } catch (Exception e) {
-                            fetch_time = 5 * 1000;
+                        if (session.getInt(Constant.CODES) < session.getInt(Constant.SYNC_CODES)){
+                            try {
+                                fetch_time = Long.parseLong(session.getData(Constant.FETCH_TIME)) * 1000;
+                            } catch (Exception e) {
+                                fetch_time = 5 * 1000;
 
 
+                            }
+                            showWallet();
                         }
-                        showWallet();
+                        else {
+                            Toast.makeText(activity, "Please Sync Codes", Toast.LENGTH_SHORT).show();
+                        }
+
 
                         break;
 
                     case R.id.Support:
-                        if (session.getData(Constant.STATUS).equals("0")) {
-                            checkJoining();
-                        } else {
-                            fm.beginTransaction().replace(R.id.Container, new FaqFragment()).commitAllowingStateLoss();
+                        if (session.getInt(Constant.CODES) < session.getInt(Constant.SYNC_CODES)){
+                            if (session.getData(Constant.STATUS).equals("0")) {
+                                checkJoining();
+                            } else {
+                                fm.beginTransaction().replace(R.id.Container, new FaqFragment()).commitAllowingStateLoss();
+                            }
                         }
+                        else {
+                            Toast.makeText(activity, "Please Sync Codes", Toast.LENGTH_SHORT).show();
+                        }
+
                         break;
                 }
                 return true;
