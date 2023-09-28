@@ -47,6 +47,15 @@ public class Constant {
 
     public static final String PER_CODE_VAL = "per_code_val";
 
+    public static final String APPLY_LEAVE_URL = BaseUrl + "applyleave.php";
+    public static final String MYLEAVES_LIST_URL = BaseUrl + "myleaves_list.php";
+
+
+
+    public static final String LEAVE_DATE = "leave_date";
+    public static final String REASON = "reason";
+
+    public static final String TOTAL_LEAVES = "total_leaves";
 
 
     public static final String ID = "id";

@@ -67,6 +67,9 @@
 
             </RelativeLayout>
 
+
+
+
             <LinearLayout
                 android:id="@+id/l1"
                 android:layout_width="wrap_content"
@@ -325,6 +328,18 @@
 
 
         </RelativeLayout>
+
+
+        <Button
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/card1"
+            android:id="@+id/btnApplyLeave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primaryLightColor"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textAllCaps="false"
+            android:text="Apply Leave"/>
 
 
         <androidx.cardview.widget.CardView

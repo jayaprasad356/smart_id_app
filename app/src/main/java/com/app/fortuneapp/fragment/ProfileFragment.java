@@ -17,8 +17,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.app.fortuneapp.R;
+import com.app.fortuneapp.activities.ApplyLeaveActivity;
 import com.app.fortuneapp.activities.NotificaionActivity;
 import com.app.fortuneapp.activities.ReferEarnActivity;
 import com.app.fortuneapp.activities.ReferDetailsActivity;
@@ -33,7 +35,7 @@ public class ProfileFragment extends Fragment implements PopupMenu.OnMenuItemCli
     ImageView imgMenu;
     Session session;
     Activity activity;
-    Button btncopy;
+    Button btncopy,btnApplyLeave;
 
 
     Button btnReferDetails;
@@ -70,6 +72,7 @@ public class ProfileFragment extends Fragment implements PopupMenu.OnMenuItemCli
         tvTotalRefer = root.findViewById(R.id.tvTotalRefer);
         tvReferDescription = root.findViewById(R.id.tvReferDescription);
         btnReferDetails = root.findViewById(R.id.btnReferDetails);
+        btnApplyLeave = root.findViewById(R.id.btnApplyLeave);
 
         tvName.setText(session.getData(Constant.NAME));
         tvMobile.setText(session.getData(Constant.MOBILE));
@@ -94,6 +97,22 @@ public class ProfileFragment extends Fragment implements PopupMenu.OnMenuItemCli
 
             }
         });
+
+
+        btnApplyLeave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (session.getData(Constant.STATUS).equals("1")){
+                    Intent intent = new Intent(activity, ApplyLeaveActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(activity, "Only for Verfied Users", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
 
 
         tvRefercode.setText(" Your Refer Code : "+session.getData(Constant.REFER_CODE));
