@@ -1,6 +1,6 @@
 <resources>
     <string name="cDescription" />
-    <string name="app_name">Fortune App</string>
+    <string name="app_name">Smart ID maker</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="refertext">Refer your friend and family members and earn ₹ 500 Bonus + 1000 codes ( ₹ 170) Totally ₹ 670/- instantly in wallet</string>
@@ -13,6 +13,7 @@
         <item>Others</item>
     </string-array>
     <string name="strUsername">USERNAME</string>
+    <string name="create_new_account"><u>Create new account</u></string>
 
     <string name="staticDate">01–01–2000</string>
     <string name="lblImage">Image</string>

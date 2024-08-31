@@ -17,13 +17,14 @@
 
     <color name="online">@color/green_500</color>
 
-    <color name="primaryColor">#032c60</color>
+    <color name="primaryColor">#ff5d8f</color>
     <color name="green">#388E3C</color>
     <color name="red">#D32F2F</color>
 
     <color name="primaryLightColor">#0288D1</color>
 
     <color name="primaryDarkColor">#021D40</color>
+    <color name="primaryLightestColor">#ffe5ec</color>
 
     <color name="secondaryColor">#ff6d00</color>
 
@@ -66,6 +67,7 @@
     <color name="greyText">@color/grey_600</color>
     <color name="grey_400">#bdbdbd</color>
     <color name="yellow_50">#fffde7</color>
+    <color name="san_marino">#4371AF</color>
 
 
 </resources>

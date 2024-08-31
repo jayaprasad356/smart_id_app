@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MainActivity">
+    tools:context=".Activity.MainActivity">
     <FrameLayout
         android:id="@+id/Container"
         android:layout_above="@+id/bottomNavigation"
@@ -12,16 +12,20 @@
         android:layout_height="match_parent"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:background="@drawable/bottomnav"
+        android:layout_margin="@dimen/_10sdp"
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50sdp"
         android:layout_alignParentBottom="true"
         app:elevation="@dimen/_7sdp"
         app:itemIconSize="@dimen/_25sdp"
-        app:itemRippleColor="@color/primaryColor"
-        app:itemTextColor="@color/primaryColor"
+        app:itemIconTint="@drawable/bottom_navigation_item_selector"
+        app:itemTextColor="@drawable/bottom_navigation_item_selector"
         app:labelVisibilityMode="selected"
-        app:menu="@menu/homescreenmenu"></com.google.android.material.bottomnavigation.BottomNavigationView>
+        app:menu="@menu/homescreenmenu">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
 

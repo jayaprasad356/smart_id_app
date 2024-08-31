@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+
+    <!-- Custom style for a button -->
+
+    <!-- Custom style for calendar date -->
+
+    <!-- Custom style for calendar week day -->
+
+    <!-- Theme overlay for TextInputEditText Outlined style -->
+    <style name="ThemeOverlay.AppTheme.TextInputEditText.Outlined" parent="">
+        <item name="colorControlActivated">@color/primaryColor</item>
+        <item name="android:enabled">@color/primaryColor</item>
+
+
+    </style>
+
+</resources>

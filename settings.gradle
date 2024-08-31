@@ -14,7 +14,7 @@ dependencyResolutionManagement {
         jcenter()
         maven { url 'https://jitpack.io' }
     }
-    rootProject.name = "Fortune App"
+    rootProject.name = "Smart ID maker"
     include ':app',':record-view'
 
 }

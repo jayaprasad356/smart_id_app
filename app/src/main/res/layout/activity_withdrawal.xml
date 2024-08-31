@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.WithdrawalActivity"
+    tools:context=".Activity.WithdrawalActivity"
     android:background="#EAE9E9"
 
     >
@@ -24,7 +24,7 @@
                 android:background="@color/primaryColor"
                 android:orientation="horizontal">
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/back"
                     android:layout_width="@dimen/_35sdp"
                     android:layout_height="@dimen/_35sdp"
@@ -117,6 +117,7 @@
                 </LinearLayout>
 
                 <RadioGroup
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_10sdp"
