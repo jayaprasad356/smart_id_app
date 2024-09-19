@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/BGColorBlue"
+    tools:context=".fragment.JobFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:visibility="visible"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:layout_marginTop="@dimen/_14sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    app:cardElevation="@dimen/_4sdp"
+                    android:elevation="@dimen/_4sdp"
+                    app:cardBackgroundColor="@color/light_pink"
+                    app:cardUseCompatPadding="false">
+
+                    <TextView
+                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/abcd_40_days_plan_2999"
+                        android:textAlignment="center"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp"
+                        android:includeFontPadding="false"/>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    app:cardElevation="@dimen/_4sdp"
+                    android:elevation="@dimen/_4sdp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardUseCompatPadding="false">
+
+                    <LinearLayout
+                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:baselineAligned="false"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    tools:ignore="UselessParent">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="@string/per_code"
+                                        android:textAlignment="center"
+                                        android:fontFamily="@font/poppins_semibold"
+                                        android:textColor="@color/textColor"
+                                        android:textSize="@dimen/_8sdp"
+                                        android:includeFontPadding="false" />
+
+                                    <TextView
+                                        android:id="@+id/tvPerCode"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="0.15"
+                                        android:textAlignment="center"
+                                        android:fontFamily="@font/poppins_bold"
+                                        android:textColor="@color/light_pink"
+                                        android:textSize="@dimen/_12sdp"
+                                        android:includeFontPadding="false" />
+
+                                </LinearLayout>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="@string/per_day_earning"
+                                        android:textAlignment="center"
+                                        android:fontFamily="@font/poppins_semibold"
+                                        android:textColor="@color/textColor"
+                                        android:textSize="@dimen/_8sdp"
+                                        android:includeFontPadding="false" />
+
+                                    <TextView
+                                        android:id="@+id/tvDayEarning"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="₹225"
+                                        android:textAlignment="center"
+                                        android:fontFamily="@font/poppins_bold"
+                                        android:textColor="@color/light_pink"
+                                        android:textSize="@dimen/_12sdp"
+                                        android:includeFontPadding="false" />
+
+                                </LinearLayout>
+
+
+                            </RelativeLayout>
+
+                            <!--                                <RelativeLayout-->
+                            <!--                                    android:layout_width="1dp"-->
+                            <!--                                    android:layout_height="match_parent"-->
+                            <!--                                    android:background="@color/black" />-->
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="@string/daily_target"
+                                        android:textAlignment="center"
+                                        android:fontFamily="@font/poppins_semibold"
+                                        android:textColor="@color/textColor"
+                                        android:textSize="@dimen/_8sdp"
+                                        android:includeFontPadding="false" />
+
+                                    <TextView
+                                        android:id="@+id/tvDailyTarget"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="1,500"
+                                        android:textAlignment="center"
+                                        android:fontFamily="@font/poppins_bold"
+                                        android:textColor="@color/light_pink"
+                                        android:textSize="@dimen/_12sdp"
+                                        android:includeFontPadding="false" />
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:layout_marginHorizontal="@dimen/_30sdp"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:id="@+id/btActivatePlan"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:text="@string/activate_plan"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12sdp"
+                            android:textAllCaps="false"
+                            android:enabled="false"
+                            app:backgroundTint="@null"
+                            android:background="@drawable/pink_button_bg"/>
+
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>
