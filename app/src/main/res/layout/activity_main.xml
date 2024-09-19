@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.MainActivity">
+    android:background="@color/BGColorBlue"
+    tools:context=".activities.MainActivity">
     <FrameLayout
         android:id="@+id/Container"
         android:layout_above="@+id/bottomNavigation"
@@ -22,7 +23,7 @@
         app:itemIconSize="@dimen/_25sdp"
         app:itemIconTint="@drawable/bottom_navigation_item_selector"
         app:itemTextColor="@drawable/bottom_navigation_item_selector"
-        app:labelVisibilityMode="selected"
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/homescreenmenu">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>

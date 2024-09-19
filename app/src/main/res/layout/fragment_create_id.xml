@@ -1,6 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/BGColorBlue"
+    tools:context=".fragment.CreateIDFragment">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rlSync">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_350sdp"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:layout_marginTop="@dimen/_14sdp"
+                    android:layout_marginBottom="@dimen/_25sdp"
+                    app:cardElevation="@dimen/_4sdp"
+                    android:elevation="@dimen/_4sdp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardUseCompatPadding="false">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/_10sdp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="TODO"
+                            android:src="@drawable/id_bg"
+                            android:adjustViewBounds="true" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            >
+
+                            <TextView
+                                android:layout_marginTop="@dimen/_30sdp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/abcd_high_school"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_14sdp"
+                                android:layout_gravity="center"
+                                android:includeFontPadding="false"/>
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="@dimen/_100sdp"
+                                android:layout_height="@dimen/_100sdp"
+                                android:layout_marginHorizontal="@dimen/_14sdp"
+                                android:layout_marginTop="@dimen/_14sdp"
+                                android:layout_marginBottom="@dimen/_10sdp"
+                                app:cardElevation="@dimen/_10sdp"
+                                android:elevation="@dimen/_10sdp"
+                                app:cardCornerRadius="@dimen/_100sdp"
+                                app:cardBackgroundColor="@color/secondaryLightColor"
+                                app:cardUseCompatPadding="false">
+
+                                <ImageView
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:layout_margin="@dimen/_2sdp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/profile_im"
+                                    android:adjustViewBounds="true" />
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/student_name"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textColor="@color/textColor"
+                                android:textSize="@dimen/_8sdp"
+                                android:includeFontPadding="false"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="NANDHA"
+                                android:fontFamily="@font/poppins_bold"
+                                android:textColor="@color/textColor"
+                                android:textSize="@dimen/_12sdp"
+                                android:layout_marginBottom="@dimen/_6sdp"
+                                android:includeFontPadding="false"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/roll_number"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textColor="@color/textColor"
+                                android:textSize="@dimen/_8sdp"
+                                android:includeFontPadding="false"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="123456"
+                                android:fontFamily="@font/poppins_bold"
+                                android:textColor="@color/textColor"
+                                android:textSize="@dimen/_12sdp"
+                                android:layout_marginBottom="@dimen/_6sdp"
+                                android:includeFontPadding="false"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/date_of_birth"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textColor="@color/textColor"
+                                android:textSize="@dimen/_8sdp"
+                                android:includeFontPadding="false"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="12.12.2000"
+                                android:fontFamily="@font/poppins_bold"
+                                android:textColor="@color/textColor"
+                                android:textSize="@dimen/_12sdp"
+                                android:layout_marginBottom="@dimen/_6sdp"
+                                android:includeFontPadding="false"/>
+
+                        </LinearLayout>
+                    </FrameLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:contentDescription="TODO"
+                android:src="@drawable/success_im"
+                android:adjustViewBounds="true" />
+
+            <TextView
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/id_card_created_successfully"
+                android:textAlignment="center"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginBottom="@dimen/_6sdp"
+                android:includeFontPadding="false"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_marginHorizontal="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginBottom="@dimen/_24sdp"
+                android:id="@+id/btBack"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:text="@string/back"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sdp"
+                android:textAllCaps="false"
+                app:backgroundTint="@null"
+                android:background="@drawable/button_bg"/>
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>

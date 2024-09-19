@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/BGColorBlue">
 
 
     <RelativeLayout
@@ -13,344 +13,341 @@
 
 
         <RelativeLayout
-            android:id="@+id/rlHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-            <RelativeLayout
-                android:id="@+id/rlMyTeam"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/primaryColor"
-                android:paddingHorizontal="@dimen/_14sdp"
-                android:paddingBottom="@dimen/_14sdp">
-
-
-                <TextView
-                    android:id="@+id/tvTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_medium"
-                    android:gravity="center"
-                    android:text="Profile"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_12sdp" />
-
-
-                <LinearLayout
-                    android:id="@+id/llProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tvTitle"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:orientation="vertical">
-
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/_20sdp">
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/ivProfile"
-                            android:layout_width="@dimen/_50sdp"
-                            android:layout_height="@dimen/_50sdp"
-                            android:background="@drawable/profile" />
-
-                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:layout_toRightOf="@+id/ivProfile"
-                            android:orientation="vertical">
+                            android:id="@+id/rlHeader">
 
-
-                            <TextView
-                                android:id="@+id/tvName"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:fontFamily="@font/poppins_medium"
-                                android:text=""
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_12sdp" />
-
-                            <TextView
-                                android:id="@+id/tvMobile"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tvName"
-                                android:fontFamily="@font/poppins_medium"
-                                android:text=""
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_10sdp" />
-
-
-                        </LinearLayout>
-
-                    </RelativeLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="3">
-
-
-                        <RelativeLayout
+                        <com.google.android.material.card.MaterialCardView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1">
+                            android:layout_marginHorizontal="@dimen/_14sdp"
+                            android:layout_marginTop="@dimen/_14sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            app:cardBackgroundColor="@color/white"
+                            app:cardUseCompatPadding="false">
+
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:padding="@dimen/_5sdp">
 
-                                <TextView
-                                    android:id="@+id/tvTotalIncome"
+                                <LinearLayout
+                                    android:id="@+id/llProfile"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="@font/inter_semibold"
-                                    android:gravity="center"
-                                    android:text=""
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/_12sdp" />
+                                    android:layout_below="@+id/tvTitle"
+                                    android:orientation="vertical">
 
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/poppins_regular"
-                                    android:gravity="center"
-                                    android:text="Total income"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_10sdp" />
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="@dimen/_10sdp">
+
+                                        <de.hdodenhof.circleimageview.CircleImageView
+                                            android:id="@+id/ivProfile"
+                                            android:layout_width="@dimen/_30sdp"
+                                            android:layout_height="@dimen/_30sdp"
+                                            android:background="@drawable/profile"
+                                            android:layout_centerVertical="true"/>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="@dimen/_10sdp"
+                                            android:layout_toRightOf="@+id/ivProfile"
+                                            android:orientation="vertical">
+
+
+                                            <TextView
+                                                android:id="@+id/tvName"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:fontFamily="@font/poppins_medium"
+                                                android:text=""
+                                                android:textColor="@color/textColor"
+                                                android:textSize="@dimen/_12sdp" />
+
+                                            <TextView
+                                                android:id="@+id/tvMobile"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_below="@+id/tvName"
+                                                android:fontFamily="@font/poppins_medium"
+                                                android:text=""
+                                                android:textColor="@color/textColor"
+                                                android:textSize="@dimen/_10sdp" />
+
+
+                                        </LinearLayout>
+
+                                    </RelativeLayout>
+
+                                    <com.google.android.material.card.MaterialCardView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@color/primaryColor"
+                                        app:cardBackgroundColor="@color/white"
+                                        app:cardUseCompatPadding="false"
+                                        android:padding="@dimen/_10sdp">
+
+                                        <LinearLayout
+                                            android:id="@+id/rlMyTeam"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:background="@color/primaryColor"
+                                            android:orientation="vertical"
+                                            android:padding="@dimen/_10sdp">
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal"
+                                                android:weightSum="3">
+
+
+                                                <RelativeLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="1">
+
+                                                    <LinearLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:orientation="vertical">
+
+                                                        <TextView
+                                                            android:id="@+id/tvTotalIncome"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:fontFamily="@font/poppins_semibold"
+                                                            android:gravity="center"
+                                                            android:text=""
+                                                            android:textColor="@color/black"
+                                                            android:textSize="@dimen/_12sdp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:fontFamily="@font/poppins_regular"
+                                                            android:gravity="center"
+                                                            android:text="Total income"
+                                                            android:textColor="@color/white"
+                                                            android:textSize="@dimen/_10sdp" />
+
+                                                    </LinearLayout>
+
+
+                                                </RelativeLayout>
+
+                                                <RelativeLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="1">
+
+                                                    <LinearLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:orientation="vertical">
+
+                                                        <TextView
+                                                            android:id="@+id/tvTotalRecharge"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:fontFamily="@font/poppins_semibold"
+                                                            android:gravity="center"
+                                                            android:text=""
+                                                            android:textColor="@color/black"
+                                                            android:textSize="@dimen/_12sdp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:fontFamily="@font/poppins_regular"
+                                                            android:gravity="center"
+                                                            android:text="Total recharge"
+                                                            android:textColor="@color/white"
+                                                            android:textSize="@dimen/_10sdp" />
+
+                                                    </LinearLayout>
+
+
+                                                </RelativeLayout>
+
+                                                <!--                                <RelativeLayout-->
+                                                <!--                                    android:layout_width="1dp"-->
+                                                <!--                                    android:layout_height="match_parent"-->
+                                                <!--                                    android:background="@color/black" />-->
+
+                                                <RelativeLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="1">
+
+                                                    <LinearLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:orientation="vertical">
+
+                                                        <TextView
+                                                            android:id="@+id/tvTotalAssests"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:fontFamily="@font/poppins_semibold"
+                                                            android:gravity="center"
+                                                            android:text=""
+                                                            android:textColor="@color/black"
+                                                            android:textSize="@dimen/_12sdp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:fontFamily="@font/poppins_regular"
+                                                            android:gravity="center"
+                                                            android:text="Total assests"
+                                                            android:textColor="@color/white"
+                                                            android:textSize="@dimen/_10sdp" />
+
+                                                    </LinearLayout>
+
+
+                                                </RelativeLayout>
+
+
+                                            </LinearLayout>
+
+                                            <LinearLayout
+                                                android:id="@+id/llWithdraw"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginTop="@dimen/_20sdp"
+                                                android:orientation="horizontal"
+                                                android:weightSum="3">
+
+
+                                                <RelativeLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="1">
+
+                                                    <LinearLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:orientation="vertical">
+
+                                                        <TextView
+                                                            android:id="@+id/tvTotalWithdrawal"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:fontFamily="@font/poppins_semibold"
+                                                            android:gravity="center"
+                                                            android:text=""
+                                                            android:textColor="@color/black"
+                                                            android:textSize="@dimen/_12sdp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:fontFamily="@font/poppins_regular"
+                                                            android:gravity="center"
+                                                            android:text="Total withdraw"
+                                                            android:textColor="@color/white"
+                                                            android:textSize="@dimen/_10sdp" />
+
+                                                    </LinearLayout>
+
+
+                                                </RelativeLayout>
+
+                                                <RelativeLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="1">
+
+                                                    <LinearLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:orientation="vertical">
+
+                                                        <TextView
+                                                            android:id="@+id/tvTodayIncome"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:fontFamily="@font/poppins_semibold"
+                                                            android:gravity="center"
+                                                            android:text=""
+                                                            android:textColor="@color/black"
+                                                            android:textSize="@dimen/_12sdp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:fontFamily="@font/poppins_regular"
+                                                            android:gravity="center"
+                                                            android:text="Today's income"
+                                                            android:textColor="@color/white"
+                                                            android:textSize="@dimen/_10sdp" />
+
+                                                    </LinearLayout>
+
+
+                                                </RelativeLayout>
+
+                                                <RelativeLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="1">
+
+                                                    <LinearLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:orientation="vertical">
+
+                                                        <TextView
+                                                            android:id="@+id/tvTeamIncome"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:fontFamily="@font/poppins_semibold"
+                                                            android:gravity="center"
+                                                            android:text=""
+                                                            android:textColor="@color/black"
+                                                            android:textSize="@dimen/_12sdp" />
+
+                                                        <TextView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:fontFamily="@font/poppins_regular"
+                                                            android:gravity="center"
+                                                            android:text="Team income"
+                                                            android:textColor="@color/white"
+                                                            android:textSize="@dimen/_10sdp" />
+
+                                                    </LinearLayout>
+
+
+                                                </RelativeLayout>
+
+
+                                            </LinearLayout>
+
+                                        </LinearLayout>
+
+                                    </com.google.android.material.card.MaterialCardView>
+
+                                </LinearLayout>
 
                             </LinearLayout>
 
 
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/black" />
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/tvTotalRecharge"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/inter_semibold"
-                                    android:gravity="center"
-                                    android:text=""
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/_12sdp" />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/poppins_regular"
-                                    android:gravity="center"
-                                    android:text="Total recharge"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_10sdp" />
-
-                            </LinearLayout>
-
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/black" />
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/tvTotalAssests"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/inter_semibold"
-                                    android:gravity="center"
-                                    android:text=""
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/_12sdp" />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/poppins_regular"
-                                    android:gravity="center"
-                                    android:text="Total assests"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_10sdp" />
-
-                            </LinearLayout>
-
+                        </com.google.android.material.card.MaterialCardView>
 
                         </RelativeLayout>
 
 
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/llWithdraw"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_20sdp"
-                        android:orientation="horizontal"
-                        android:weightSum="3">
-
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/tvTotalWithdrawal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/inter_semibold"
-                                    android:gravity="center"
-                                    android:text=""
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/_12sdp" />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/poppins_regular"
-                                    android:gravity="center"
-                                    android:text="Total withdraw"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_10sdp" />
-
-                            </LinearLayout>
-
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/black" />
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/tvTodayIncome"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/inter_semibold"
-                                    android:gravity="center"
-                                    android:text=""
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/_12sdp" />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/poppins_regular"
-                                    android:gravity="center"
-                                    android:text="Today's income"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_10sdp" />
-
-                            </LinearLayout>
-
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/black" />
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/tvTeamIncome"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/inter_semibold"
-                                    android:gravity="center"
-                                    android:text=""
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/_12sdp" />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:fontFamily="@font/poppins_regular"
-                                    android:gravity="center"
-                                    android:text="Team income"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_10sdp" />
-
-                            </LinearLayout>
-
-
-                        </RelativeLayout>
-
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-
-            </RelativeLayout>
-
-
-        </RelativeLayout>
-
-
-
-        <ScrollView
-            android:padding="@dimen/_14sdp"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/rlHeader">
@@ -365,7 +362,9 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:layout_marginBottom="@dimen/_24sdp"
                     app:cardBackgroundColor="@color/white"
                     app:cardUseCompatPadding="false">
 
@@ -376,51 +375,46 @@
                         android:orientation="vertical"
                         android:padding="@dimen/_5sdp">
 
-
                         <RelativeLayout
+                            android:gravity="center"
                             android:id="@+id/rlInvite"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp">
 
+                            <LinearLayout
+                                android:gravity="center"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/_4sdp"
+                                    android:background="@drawable/ic_invite" />
 
 
-                            <com.google.android.material.card.MaterialCardView
-                                app:cardCornerRadius="@dimen/_6sdp"
-                                app:cardBackgroundColor="@color/primaryColor"
-                                android:layout_width="@dimen/_30sdp"
-                                android:layout_height="@dimen/_30sdp">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="@dimen/_20sdp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text="Invite Friend"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp" />
 
 
                                 <ImageView
-                                    android:layout_gravity="center"
-                                    android:padding="@dimen/_4sdp"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"
                                     android:layout_centerVertical="true"
-                                    android:background="@drawable/ic_invite"
-                                    />
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/_4sdp" android:background="@drawable/ic_back" />
 
-
-                            </com.google.android.material.card.MaterialCardView>
-
-
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="@dimen/_50sdp"
-                                android:fontFamily="@font/poppins_medium"
-                                android:text="Invite Friend"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_12sdp" />
-
-                            <com.google.android.material.divider.MaterialDivider
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentBottom="true"
-                                app:dividerColor="@color/black"
-                                app:dividerThickness="1dp" />
+                            </LinearLayout>
 
                         </RelativeLayout>
 
@@ -435,44 +429,41 @@
 
 
 
-                            <com.google.android.material.card.MaterialCardView
-                                app:cardCornerRadius="@dimen/_6sdp"
-                                app:cardBackgroundColor="@color/primaryColor"
-                                android:layout_width="@dimen/_30sdp"
-                                android:layout_height="@dimen/_30sdp">
+                            <LinearLayout
+                                android:gravity="center"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp">
 
                                 <ImageView
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"
+                                    android:layout_centerVertical="true"
                                     android:layout_gravity="center"
-                                    android:padding="@dimen/_4sdp"
-                                    android:layout_width="wrap_content"
+                                    android:layout_marginLeft="@dimen/_4sdp"
+                                    android:background="@drawable/withdraw_ic" />
+
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
-                                    android:layout_margin="@dimen/_9sdp"
-                                    android:background="@drawable/withdraw_ic"
-                                    android:backgroundTint="@color/white"
-                                />
-
-                            </com.google.android.material.card.MaterialCardView>
-
+                                    android:layout_marginLeft="@dimen/_20sdp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text="Withdrawal"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp" />
 
 
+                                <ImageView
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/_4sdp"
+                                    android:background="@drawable/ic_back" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="@dimen/_50sdp"
-                                android:fontFamily="@font/poppins_medium"
-                                android:text="Withdrawal"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_12sdp" />
-
-                            <com.google.android.material.divider.MaterialDivider
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentBottom="true"
-                                app:dividerColor="@color/black"
-                                app:dividerThickness="1dp" />
+                            </LinearLayout>
 
                         </RelativeLayout>
 
@@ -486,41 +477,40 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp">
 
-                            <com.google.android.material.card.MaterialCardView
-                                app:cardCornerRadius="@dimen/_6sdp"
-                                app:cardBackgroundColor="@color/primaryColor"
-                                android:layout_width="@dimen/_30sdp"
-                                android:layout_height="@dimen/_30sdp">
+                            <LinearLayout
+                                android:gravity="center"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/_4sdp"
+                                    android:background="@drawable/ic_paper" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="@dimen/_20sdp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text="Withdraw History"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp" />
 
 
                                 <ImageView
-                                    android:layout_gravity="center"
-                                    android:padding="@dimen/_4sdp"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"
                                     android:layout_centerVertical="true"
-                                    android:background="@drawable/ic_paper"
-                                    />
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/_4sdp"
+                                    android:background="@drawable/ic_back" />
 
-
-                            </com.google.android.material.card.MaterialCardView>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="@dimen/_50sdp"
-                                android:fontFamily="@font/poppins_medium"
-                                android:text="Withdraw History"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_12sdp" />
-
-                            <com.google.android.material.divider.MaterialDivider
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentBottom="true"
-                                app:dividerColor="@color/black"
-                                app:dividerThickness="1dp" />
+                            </LinearLayout>
 
                         </RelativeLayout>
 
@@ -533,41 +523,40 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp">
 
-                            <com.google.android.material.card.MaterialCardView
-                                app:cardCornerRadius="@dimen/_6sdp"
-                                app:cardBackgroundColor="@color/primaryColor"
-                                android:layout_width="@dimen/_30sdp"
-                                android:layout_height="@dimen/_30sdp">
+                            <LinearLayout
+                                android:gravity="center"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/_4sdp"
+                                    android:background="@drawable/ic_transaction" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="@dimen/_20sdp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text="History Transaction"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp" />
 
 
                                 <ImageView
-                                    android:layout_gravity="center"
-                                    android:padding="@dimen/_4sdp"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"
                                     android:layout_centerVertical="true"
-                                    android:background="@drawable/ic_transaction"
-                                    />
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/_4sdp"
+                                    android:background="@drawable/ic_back" />
 
-
-                            </com.google.android.material.card.MaterialCardView>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="@dimen/_50sdp"
-                                android:fontFamily="@font/poppins_medium"
-                                android:text="History Transaction"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_12sdp" />
-
-                            <com.google.android.material.divider.MaterialDivider
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentBottom="true"
-                                app:dividerColor="@color/black"
-                                app:dividerThickness="1dp" />
+                            </LinearLayout>
 
                         </RelativeLayout>
 
@@ -580,40 +569,40 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp">
 
-                            <com.google.android.material.card.MaterialCardView
-                                app:cardCornerRadius="@dimen/_6sdp"
-                                app:cardBackgroundColor="@color/primaryColor"
-                                android:layout_width="@dimen/_30sdp"
-                                android:layout_height="@dimen/_30sdp">
+                            <LinearLayout
+                                android:gravity="center"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp">
 
                                 <ImageView
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"
+                                    android:layout_centerVertical="true"
                                     android:layout_gravity="center"
-                                    android:padding="@dimen/_4sdp"
-                                    android:layout_width="wrap_content"
+                                    android:layout_marginLeft="@dimen/_4sdp"
+                                    android:background="@drawable/ic_user" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
-                                    android:background="@drawable/ic_user"
-                                    />
+                                    android:layout_marginLeft="@dimen/_20sdp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text="My Profile"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp" />
 
 
-                            </com.google.android.material.card.MaterialCardView>
+                                <ImageView
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/_4sdp"
+                                    android:background="@drawable/ic_back" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="@dimen/_50sdp"
-                                android:fontFamily="@font/poppins_medium"
-                                android:text="My Profile"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_12sdp" />
-
-                            <com.google.android.material.divider.MaterialDivider
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentBottom="true"
-                                app:dividerColor="@color/black"
-                                app:dividerThickness="1dp" />
+                            </LinearLayout>
 
                         </RelativeLayout>
 
@@ -626,42 +615,39 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp">
 
-                            <com.google.android.material.card.MaterialCardView
-                                app:cardCornerRadius="@dimen/_6sdp"
-                                app:cardBackgroundColor="@color/primaryColor"
-                                android:layout_width="@dimen/_30sdp"
-                                android:layout_height="@dimen/_30sdp">
-
+                            <LinearLayout
+                                android:gravity="center"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp">
 
                                 <ImageView
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"
+                                    android:layout_centerVertical="true"
                                     android:layout_gravity="center"
-                                    android:layout_margin="@dimen/_8sdp"
-                                    android:layout_width="wrap_content"
+                                    android:layout_marginLeft="@dimen/_4sdp"
+                                    android:background="@drawable/lock_ic" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
-                                    android:background="@drawable/lock_ic"
-                                    />
+                                    android:layout_marginLeft="@dimen/_20sdp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text="Set Password"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp" />
 
+                                <ImageView
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/_4sdp"
+                                    android:background="@drawable/ic_back" />
 
-                            </com.google.android.material.card.MaterialCardView>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="@dimen/_50sdp"
-                                android:fontFamily="@font/poppins_medium"
-                                android:text="Set Password"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_12sdp" />
-
-                            <com.google.android.material.divider.MaterialDivider
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentBottom="true"
-                                app:dividerColor="@color/black"
-                                app:dividerThickness="1dp" />
-
+                            </LinearLayout>
                         </RelativeLayout>
 
                         <Space
@@ -673,43 +659,39 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp">
 
-                            <com.google.android.material.card.MaterialCardView
-                                app:cardCornerRadius="@dimen/_6sdp"
-                                app:cardBackgroundColor="@color/primaryColor"
-                                android:layout_width="@dimen/_30sdp"
-                                android:layout_height="@dimen/_30sdp">
+                            <LinearLayout
+                                android:gravity="center"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp">
 
                                 <ImageView
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"
+                                    android:layout_centerVertical="true"
                                     android:layout_gravity="center"
-                                    android:padding="@dimen/_4sdp"
-                                    android:layout_margin="@dimen/_7sdp"
-                                    android:layout_width="wrap_content"
+                                    android:layout_marginLeft="@dimen/_4sdp"
+                                    android:background="@drawable/update_bank_ic" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
-                                    android:background="@drawable/update_bank_ic"
-                                    android:backgroundTint="@color/white"
-                                    />
+                                    android:layout_marginLeft="@dimen/_20sdp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text="Update Bank Details"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp" />
 
+                                <ImageView
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/_4sdp"
+                                    android:background="@drawable/ic_back" />
 
-
-                            </com.google.android.material.card.MaterialCardView>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="@dimen/_50sdp"
-                                android:fontFamily="@font/poppins_medium"
-                                android:text="Update Bank Details"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_12sdp" />
-
-                            <com.google.android.material.divider.MaterialDivider
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentBottom="true"
-                                app:dividerColor="@color/black"
-                                app:dividerThickness="1dp" />
+                            </LinearLayout>
 
                         </RelativeLayout>
 
@@ -722,43 +704,38 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp">
 
-                            <com.google.android.material.card.MaterialCardView
-                                app:cardCornerRadius="@dimen/_6sdp"
-                                app:cardBackgroundColor="@color/primaryColor"
-                                android:layout_width="@dimen/_30sdp"
-                                android:layout_height="@dimen/_30sdp">
+                            <LinearLayout
+                                android:gravity="center"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp">
 
                                 <ImageView
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"
+                                    android:layout_centerVertical="true"
                                     android:layout_gravity="center"
-                                    android:padding="@dimen/_4sdp"
-                                    android:layout_margin="@dimen/_8sdp"
-                                    android:layout_width="wrap_content"
+                                    android:layout_marginLeft="@dimen/_4sdp"
+                                    android:background="@drawable/ic_bank" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
-                                    android:background="@drawable/ic_bank"
-                                    android:backgroundTint="@color/white"
-                                    />
+                                    android:layout_marginLeft="@dimen/_20sdp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text="My Bank Account"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp" />
 
-
-
-                            </com.google.android.material.card.MaterialCardView>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="@dimen/_50sdp"
-                                android:fontFamily="@font/poppins_medium"
-                                android:text="My Bank Account"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_12sdp" />
-
-                            <com.google.android.material.divider.MaterialDivider
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentBottom="true"
-                                app:dividerColor="@color/black"
-                                app:dividerThickness="1dp" />
+                                <ImageView
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/_4sdp"
+                                    android:background="@drawable/ic_back" />
+                            </LinearLayout>
 
                         </RelativeLayout>
 
@@ -853,33 +830,41 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp">
 
-                            <com.google.android.material.card.MaterialCardView
-                                app:cardCornerRadius="@dimen/_6sdp"
-                                app:cardBackgroundColor="@color/primaryColor"
-                                android:layout_width="@dimen/_30sdp"
-                                android:layout_height="@dimen/_30sdp">
+                            <LinearLayout
+                                android:gravity="center"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/_4sdp"
+                                    android:background="@drawable/ic_log"
+                                    android:backgroundTint="@color/primaryColor" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="@dimen/_20sdp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text="Logout"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp" />
 
 
                                 <ImageView
-                                    android:layout_gravity="center"
-                                    android:padding="@dimen/_4sdp"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"
                                     android:layout_centerVertical="true"
-                                    android:background="@drawable/ic_log"
-                                    />
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/_4sdp"
+                                    android:background="@drawable/ic_back" />
 
-                            </com.google.android.material.card.MaterialCardView>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="@dimen/_50sdp"
-                                android:fontFamily="@font/poppins_medium"
-                                android:text="Logout"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/_12sdp" />
+                            </LinearLayout>
 
 
                         </RelativeLayout>
@@ -893,7 +878,7 @@
 
             </RelativeLayout>
 
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
 
 
     </RelativeLayout>

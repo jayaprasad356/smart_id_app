@@ -7,23 +7,19 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentManager;
 
 import com.app.smart_id_maker.R;
-import com.app.smart_id_maker.fragment.BlankFragment;
-import com.app.smart_id_maker.fragment.JobFragment;
+import com.app.smart_id_maker.fragment.HomeFragment;
+import com.app.smart_id_maker.fragment.ExtraIncomeFragment;
 import com.app.smart_id_maker.fragment.NewProfileFragment;
 import com.app.smart_id_maker.fragment.TeamFragment;
 import com.app.smart_id_maker.fragment.WalletFragment;
@@ -73,39 +69,7 @@ public class MainActivity extends AppCompatActivity {
             showReadNotificationPopup();
         }
 
-        //importUrl();
-
-//
-//        if (NOTIFY_CHAT != null) {
-//            if (NOTIFY_CHAT.equals("join_chat")) {
-//                checkJoining();
-//            }else {
-//                navbar.setSelectedItemId(R.id.Support);
-//                fm.beginTransaction().replace(R.id.Container, new TicketFragment()).commit();
-//
-//
-//            }
-//
-//
-//        } else {
-//             if (session.getData(Constant.STATUS).equals("0")) {
-//                fm.beginTransaction().replace(R.id.Container, new InFoFragment()).commitAllowingStateLoss();
-//            } else {
-//                if (session.getData(Constant.TASK_TYPE).equals("champion")) {
-//                    fm.beginTransaction().replace(R.id.Container, new FindMissingFragment()).commit();
-//                } else {
-//                    fm.beginTransaction().replace(R.id.Container, new HomeFragment()).commit();
-//                }
-//            }
-//
-//        }
-
-
-
-        fm.beginTransaction().replace(R.id.Container, new BlankFragment()).commit();
-
-
-
+        fm.beginTransaction().replace(R.id.Container, new HomeFragment()).commit();
 
         navbar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -126,10 +90,10 @@ public class MainActivity extends AppCompatActivity {
                         }
                         break;
                     case R.id.Home:
-                        fm.beginTransaction().replace(R.id.Container, new BlankFragment()).commitAllowingStateLoss();
+                        fm.beginTransaction().replace(R.id.Container, new HomeFragment()).commitAllowingStateLoss();
                         break;
                     case R.id.job:
-                        fm.beginTransaction().replace(R.id.Container, new JobFragment()).commitAllowingStateLoss();
+                        fm.beginTransaction().replace(R.id.Container, new ExtraIncomeFragment()).commitAllowingStateLoss();
                         break;
                 }
                 return true;

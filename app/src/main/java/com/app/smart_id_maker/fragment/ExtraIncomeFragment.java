@@ -9,12 +9,12 @@ import androidx.fragment.app.Fragment;
 
 import com.app.smart_id_maker.R;
 
-public class JobFragment extends Fragment {
+public class ExtraIncomeFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_job, container, false);
+        return inflater.inflate(R.layout.fragment_extra_income, container, false);
     }
 }

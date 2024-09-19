@@ -72,6 +72,28 @@
     <string name="msgDownloadFile">Downloading %1$s</string>
     <string name="strEmptyMsg">You can\'t send empty message</string>
     <string name="repayment_list">Repayment List</string>
+    <string name="sync_now">Sync Now</string>
+    <string name="wallet_balance">Wallet Balance</string>
+    <string name="today_codes">Today Codes</string>
+    <string name="total_codes">Total Codes</string>
+    <string name="working_days">Working Days</string>
+    <string name="school_name">School Name</string>
+    <string name="abcd_high_school">ABCD High School</string>
+    <string name="roll_number">Roll Number</string>
+    <string name="student_name">Student Name</string>
+    <string name="create">Create</string>
+    <string name="get_link">Get Link</string>
+    <string name="nandha">Nandha</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="id_card_created_successfully">ID Card Created Successfully</string>
+    <string name="back">Back</string>
+    <string name="abcd_40_days_plan_2999">ABCD 40 Days Plan (₹ 2999)</string>
+    <string name="per_code">Per Code</string>
+    <string name="per_day_earning">Per Day Earning</string>
+    <string name="daily_target">Daily Target</string>
+    <string name="activate_plan">Activate Plan</string>
+    <string name="total_data">Total Data</string>
+    <string name="today_data">Today Data</string>
 
     <string-array name="my_spinner_values">
         <item>Select Amount</item>
