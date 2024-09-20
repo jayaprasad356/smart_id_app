@@ -1,9 +1,14 @@
 pluginManagement {
     repositories {
-        gradlePluginPortal()
-        google()
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
         mavenCentral()
-        maven { url 'https://jitpack.io' }
+        gradlePluginPortal()
     }
 }
 dependencyResolutionManagement {
@@ -13,8 +18,12 @@ dependencyResolutionManagement {
         mavenCentral()
         jcenter()
         maven { url 'https://jitpack.io' }
+        maven {
+            url 'https://maven.zohodl.com'
+        }
     }
-    rootProject.name = "Smart ID maker"
-    include ':app',':record-view'
-
 }
+
+rootProject.name = "Smart ID maker"
+    include ':app'
+

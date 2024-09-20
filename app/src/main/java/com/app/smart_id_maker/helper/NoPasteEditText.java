@@ -1,4 +1,4 @@
-package com.app.smart_id_maker;
+package com.app.smart_id_maker.helper;
 
 import android.content.Context;
 import android.text.InputFilter;

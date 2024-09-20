@@ -16,10 +16,7 @@
     <style name="MenuStyle" parent="Theme.AppCompat.Light">
         <item name="android:background">@color/white</item>
     </style>
-    <style name="MyCustomPickerTheme" parent="MultiContactPicker.Azure">
-        <item name="colorPrimary">@color/colorPrimaryDark</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    </style>
+
 
     <style name="MineCustomTabText" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">16sp</item>
