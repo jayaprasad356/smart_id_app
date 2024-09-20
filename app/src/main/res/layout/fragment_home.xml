@@ -414,13 +414,23 @@
                         android:textSize="@dimen/_10sdp"
                         android:fontFamily="@font/poppins_regular"/>
 
-                    <EditText
+                        <com.app.smart_id_maker.NoPasteEditText
                         android:id="@+id/edSchoolName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:longClickable="false"
+                        android:importantForAutofill="no"
+                        android:textIsSelectable="false"
                         android:background="@drawable/ed_bg"
-                        android:padding="@dimen/_10sdp" />
+                        android:padding="@dimen/_10sdp"/>
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/edSchoolName"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:longClickable="false"-->
+<!--                        android:background="@drawable/ed_bg"-->
+<!--                        android:padding="@dimen/_10sdp" />-->
 
                         <Space
                             android:layout_width="match_parent"
