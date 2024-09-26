@@ -1,14 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ProfileFragment.WithdrawalFragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+        android:background="@color/primaryColor"
+        android:id="@+id/rlToolbar"
+        android:padding="@dimen/_10sdp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+
+        <ImageButton
+            android:id="@+id/ibBack"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:background="@drawable/ic_arrow_back"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:layout_marginStart="@dimen/_14sdp"
+            android:layout_toEndOf="@+id/ibBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/withdrawal"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="@dimen/_14sdp"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlToolbar">
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                >
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingVertical="@dimen/_14sdp">
+
+                    <TextView
+                        android:id="@+id/tvBalance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Available Balance = ₹0"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvminumumRedeem"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Minimum Redeem = 250"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10sdp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Enter Amount"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            />
+
+                        <EditText
+                            android:id="@+id/etAmount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp"
+                            android:inputType="number"
+                            android:maxLength="5"
+                            />
+                    </LinearLayout>
+
+                    <RadioGroup
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:orientation="horizontal">
+                        <RadioButton
+                            android:id="@+id/rbBanktransfer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:text="Bank Transfer"/>
+                        <RadioButton
+                            android:id="@+id/rbCash"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Cash Payment"/>
+                    </RadioGroup>
+
+
+
+                    <Button
+                        android:id="@+id/btnWithdrawal"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp"
+                        android:text="Withdrawal"
+                        android:textAllCaps="false"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        />
+
+
+                </LinearLayout>
+
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

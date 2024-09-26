@@ -414,7 +414,7 @@
                         android:textSize="@dimen/_10sdp"
                         android:fontFamily="@font/poppins_regular"/>
 
-                        <com.app.smart_id_maker.NoPasteEditText
+                        <com.app.smart_id_maker.helper.NoPasteEditText
                         android:id="@+id/edSchoolName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

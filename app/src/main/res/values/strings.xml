@@ -94,6 +94,13 @@
     <string name="activate_plan">Activate Plan</string>
     <string name="total_data">Total Data</string>
     <string name="today_data">Today Data</string>
+    <string name="withdrawal">Withdrawal</string>
+    <string name="withdrawal_history">Withdrawal History</string>
+    <string name="transaction_history">Transaction History</string>
+    <string name="my_profile">My Profile</string>
+    <string name="set_password">Set Password</string>
+    <string name="update_bank_detail">Update Bank Detail</string>
+    <string name="my_bank_account">My Bank Account</string>
 
     <string-array name="my_spinner_values">
         <item>Select Amount</item>

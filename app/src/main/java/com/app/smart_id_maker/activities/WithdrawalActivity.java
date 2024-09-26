@@ -142,9 +142,6 @@ public class WithdrawalActivity extends AppCompatActivity {
     }
 
     private void redeemlist() {
-
-
-
         HashMap<String, String> params = new HashMap<>();
         params.put(Constant.USER_ID,session.getData(Constant.USER_ID));
         ApiConfig.RequestToVolley((result, response) -> {

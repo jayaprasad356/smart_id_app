@@ -497,7 +497,7 @@
                                     android:layout_centerVertical="true"
                                     android:layout_marginLeft="@dimen/_20sdp"
                                     android:fontFamily="@font/poppins_medium"
-                                    android:text="Withdraw History"
+                                    android:text="@string/withdrawal_history"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_12sdp" />
 
@@ -519,7 +519,7 @@
                             android:layout_height="@dimen/_10sdp" />
 
                         <RelativeLayout
-                            android:id="@+id/rlhistory"
+                            android:id="@+id/rlTransectionHistory"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp">
 
@@ -543,7 +543,7 @@
                                     android:layout_centerVertical="true"
                                     android:layout_marginLeft="@dimen/_20sdp"
                                     android:fontFamily="@font/poppins_medium"
-                                    android:text="History Transaction"
+                                    android:text="@string/transaction_history"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_12sdp" />
 
