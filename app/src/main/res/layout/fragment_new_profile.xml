@@ -20,7 +20,7 @@
                         <com.google.android.material.card.MaterialCardView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="@dimen/_14sdp"
+                            android:layout_marginHorizontal="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_14sdp"
                             android:layout_marginBottom="@dimen/_10sdp"
                             app:cardBackgroundColor="@color/white"
@@ -105,10 +105,41 @@
                                             <LinearLayout
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
-                                                android:orientation="horizontal"
-                                                android:weightSum="3">
+                                                android:orientation="horizontal">
+
+<!--                                                <RelativeLayout-->
+<!--                                                    android:layout_width="match_parent"-->
+<!--                                                    android:layout_height="wrap_content"-->
+<!--                                                    android:layout_weight="1">-->
+
+<!--                                                    <LinearLayout-->
+<!--                                                        android:layout_width="match_parent"-->
+<!--                                                        android:layout_height="wrap_content"-->
+<!--                                                        android:orientation="vertical">-->
+
+<!--                                                        <TextView-->
+<!--                                                            android:id="@+id/tvPlanActivate"-->
+<!--                                                            android:layout_width="match_parent"-->
+<!--                                                            android:layout_height="wrap_content"-->
+<!--                                                            android:fontFamily="@font/poppins_semibold"-->
+<!--                                                            android:gravity="center"-->
+<!--                                                            android:text=""-->
+<!--                                                            android:textColor="@color/black"-->
+<!--                                                            android:textSize="@dimen/_12sdp" />-->
+
+<!--                                                        <TextView-->
+<!--                                                            android:layout_width="match_parent"-->
+<!--                                                            android:layout_height="wrap_content"-->
+<!--                                                            android:fontFamily="@font/poppins_regular"-->
+<!--                                                            android:gravity="center"-->
+<!--                                                            android:text="@string/plan_activate"-->
+<!--                                                            android:textColor="@color/white"-->
+<!--                                                            android:textSize="@dimen/_10sdp" />-->
+
+<!--                                                    </LinearLayout>-->
 
 
+<!--                                                </RelativeLayout>-->
                                                 <RelativeLayout
                                                     android:layout_width="match_parent"
                                                     android:layout_height="wrap_content"
@@ -120,7 +151,7 @@
                                                         android:orientation="vertical">
 
                                                         <TextView
-                                                            android:id="@+id/tvTotalIncome"
+                                                            android:id="@+id/tvTotalCodesIncome"
                                                             android:layout_width="match_parent"
                                                             android:layout_height="wrap_content"
                                                             android:fontFamily="@font/poppins_semibold"
@@ -134,41 +165,7 @@
                                                             android:layout_height="wrap_content"
                                                             android:fontFamily="@font/poppins_regular"
                                                             android:gravity="center"
-                                                            android:text="Total income"
-                                                            android:textColor="@color/white"
-                                                            android:textSize="@dimen/_10sdp" />
-
-                                                    </LinearLayout>
-
-
-                                                </RelativeLayout>
-
-                                                <RelativeLayout
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_weight="1">
-
-                                                    <LinearLayout
-                                                        android:layout_width="match_parent"
-                                                        android:layout_height="wrap_content"
-                                                        android:orientation="vertical">
-
-                                                        <TextView
-                                                            android:id="@+id/tvTotalRecharge"
-                                                            android:layout_width="match_parent"
-                                                            android:layout_height="wrap_content"
-                                                            android:fontFamily="@font/poppins_semibold"
-                                                            android:gravity="center"
-                                                            android:text=""
-                                                            android:textColor="@color/black"
-                                                            android:textSize="@dimen/_12sdp" />
-
-                                                        <TextView
-                                                            android:layout_width="match_parent"
-                                                            android:layout_height="wrap_content"
-                                                            android:fontFamily="@font/poppins_regular"
-                                                            android:gravity="center"
-                                                            android:text="Total recharge"
+                                                            android:text="@string/total_codes_income"
                                                             android:textColor="@color/white"
                                                             android:textSize="@dimen/_10sdp" />
 
@@ -193,7 +190,7 @@
                                                         android:orientation="vertical">
 
                                                         <TextView
-                                                            android:id="@+id/tvTotalAssests"
+                                                            android:id="@+id/tvReferralIncome"
                                                             android:layout_width="match_parent"
                                                             android:layout_height="wrap_content"
                                                             android:fontFamily="@font/poppins_semibold"
@@ -207,7 +204,7 @@
                                                             android:layout_height="wrap_content"
                                                             android:fontFamily="@font/poppins_regular"
                                                             android:gravity="center"
-                                                            android:text="Total assests"
+                                                            android:text="@string/referral_income"
                                                             android:textColor="@color/white"
                                                             android:textSize="@dimen/_10sdp" />
 
@@ -223,7 +220,6 @@
                                                 android:id="@+id/llWithdraw"
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
-                                                android:layout_marginTop="@dimen/_20sdp"
                                                 android:orientation="horizontal"
                                                 android:weightSum="3">
 
@@ -239,7 +235,7 @@
                                                         android:orientation="vertical">
 
                                                         <TextView
-                                                            android:id="@+id/tvTotalWithdrawal"
+                                                            android:id="@+id/tvTotalEarning"
                                                             android:layout_width="match_parent"
                                                             android:layout_height="wrap_content"
                                                             android:fontFamily="@font/poppins_semibold"
@@ -253,7 +249,7 @@
                                                             android:layout_height="wrap_content"
                                                             android:fontFamily="@font/poppins_regular"
                                                             android:gravity="center"
-                                                            android:text="Total withdraw"
+                                                            android:text="@string/total_earning"
                                                             android:textColor="@color/white"
                                                             android:textSize="@dimen/_10sdp" />
 
@@ -273,7 +269,7 @@
                                                         android:orientation="vertical">
 
                                                         <TextView
-                                                            android:id="@+id/tvTodayIncome"
+                                                            android:id="@+id/tvTodayEarning"
                                                             android:layout_width="match_parent"
                                                             android:layout_height="wrap_content"
                                                             android:fontFamily="@font/poppins_semibold"
@@ -287,7 +283,7 @@
                                                             android:layout_height="wrap_content"
                                                             android:fontFamily="@font/poppins_regular"
                                                             android:gravity="center"
-                                                            android:text="Today's income"
+                                                            android:text="@string/today_s_earning"
                                                             android:textColor="@color/white"
                                                             android:textSize="@dimen/_10sdp" />
 
@@ -307,7 +303,7 @@
                                                         android:orientation="vertical">
 
                                                         <TextView
-                                                            android:id="@+id/tvTeamIncome"
+                                                            android:id="@+id/tvWalletBalance"
                                                             android:layout_width="match_parent"
                                                             android:layout_height="wrap_content"
                                                             android:fontFamily="@font/poppins_semibold"
@@ -321,7 +317,7 @@
                                                             android:layout_height="wrap_content"
                                                             android:fontFamily="@font/poppins_regular"
                                                             android:gravity="center"
-                                                            android:text="Team income"
+                                                            android:text="@string/wallet_balance"
                                                             android:textColor="@color/white"
                                                             android:textSize="@dimen/_10sdp" />
 
@@ -362,7 +358,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_4sdp"
                     android:layout_marginBottom="@dimen/_24sdp"
                     app:cardBackgroundColor="@color/white"
@@ -467,15 +463,16 @@
 
                         </RelativeLayout>
 
-                        <Space
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_10sdp" />
+<!--                        <Space-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="@dimen/_10sdp" />-->
 
 
                         <RelativeLayout
                             android:id="@+id/rlwithdrawhistory"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/_40sdp">
+                            android:layout_height="@dimen/_40sdp"
+                            android:visibility="gone">
 
                             <LinearLayout
                                 android:gravity="center"
@@ -695,49 +692,49 @@
 
                         </RelativeLayout>
 
-                        <Space
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_10sdp" />
+<!--                        <Space-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="@dimen/_10sdp" />-->
 
-                        <RelativeLayout
-                            android:id="@+id/rlmyBank"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/_40sdp">
+<!--                        <RelativeLayout-->
+<!--                            android:id="@+id/rlmyBank"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="@dimen/_40sdp">-->
 
-                            <LinearLayout
-                                android:gravity="center"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_40sdp">
+<!--                            <LinearLayout-->
+<!--                                android:gravity="center"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="@dimen/_40sdp">-->
 
-                                <ImageView
-                                    android:layout_width="@dimen/_22sdp"
-                                    android:layout_height="@dimen/_22sdp"
-                                    android:layout_centerVertical="true"
-                                    android:layout_gravity="center"
-                                    android:layout_marginLeft="@dimen/_4sdp"
-                                    android:background="@drawable/ic_bank" />
+<!--                                <ImageView-->
+<!--                                    android:layout_width="@dimen/_22sdp"-->
+<!--                                    android:layout_height="@dimen/_22sdp"-->
+<!--                                    android:layout_centerVertical="true"-->
+<!--                                    android:layout_gravity="center"-->
+<!--                                    android:layout_marginLeft="@dimen/_4sdp"-->
+<!--                                    android:background="@drawable/ic_bank" />-->
 
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_weight="1"
-                                    android:layout_height="wrap_content"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginLeft="@dimen/_20sdp"
-                                    android:fontFamily="@font/poppins_medium"
-                                    android:text="My Bank Account"
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/_12sdp" />
+<!--                                <TextView-->
+<!--                                    android:layout_width="0dp"-->
+<!--                                    android:layout_weight="1"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_centerVertical="true"-->
+<!--                                    android:layout_marginLeft="@dimen/_20sdp"-->
+<!--                                    android:fontFamily="@font/poppins_medium"-->
+<!--                                    android:text="My Bank Account"-->
+<!--                                    android:textColor="@color/black"-->
+<!--                                    android:textSize="@dimen/_12sdp" />-->
 
-                                <ImageView
-                                    android:layout_width="@dimen/_22sdp"
-                                    android:layout_height="@dimen/_22sdp"
-                                    android:layout_centerVertical="true"
-                                    android:layout_gravity="center"
-                                    android:layout_marginLeft="@dimen/_4sdp"
-                                    android:background="@drawable/ic_back" />
-                            </LinearLayout>
+<!--                                <ImageView-->
+<!--                                    android:layout_width="@dimen/_22sdp"-->
+<!--                                    android:layout_height="@dimen/_22sdp"-->
+<!--                                    android:layout_centerVertical="true"-->
+<!--                                    android:layout_gravity="center"-->
+<!--                                    android:layout_marginLeft="@dimen/_4sdp"-->
+<!--                                    android:background="@drawable/ic_back" />-->
+<!--                            </LinearLayout>-->
 
-                        </RelativeLayout>
+<!--                        </RelativeLayout>-->
 
                         <Space
                             android:visibility="gone"
@@ -880,6 +877,25 @@
 
         </androidx.core.widget.NestedScrollView>
 
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp">
+
+    <!-- Add Floating Action Button here -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnFloatingAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/_10sdp"
+        android:contentDescription="Add"
+        app:srcCompat="@drawable/ic_chat"
+        tools:ignore="HardcodedText,ObsoleteLayoutParam" /> <!-- Replace with your own icon -->
 
     </RelativeLayout>
 

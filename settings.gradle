@@ -24,6 +24,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Smart ID maker"
+rootProject.name = "Ai-Di"
     include ':app'
 

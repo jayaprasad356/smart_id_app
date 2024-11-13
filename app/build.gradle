@@ -3,16 +3,14 @@ plugins {
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
     id 'org.jetbrains.kotlin.android'
-
-
 }
 
 android {
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.app.smart_id_maker"
-        minSdk 21
+        applicationId "com.app.ai_di"
+        minSdk 23
         targetSdk 34
         versionCode 18
         versionName "18.0"
@@ -30,26 +28,29 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
     viewBinding {
         enabled = true
     }
-
+    namespace "com.app.ai_di"
 
 }
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.7.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.activity:activity:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
+    implementation 'androidx.activity:activity-ktx:1.9.3'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
     // kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.25"
 
-    implementation platform('com.google.firebase:firebase-bom:28.4.2')
+    implementation platform('com.google.firebase:firebase-bom:33.5.1')
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-messaging'
@@ -58,11 +59,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage'
 
     implementation 'com.github.delight-im:Android-AdvancedWebView:v3.2.1'
+    implementation 'com.zoho.salesiq:mobilisten:8.0.5'
 
-
-    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
     implementation 'com.github.aabhasr1:OtpView:v1.1.2'
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'com.github.bumptech.glide:glide:4.15.0'
     implementation 'com.android.volley:volley:1.2.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.vanniktech:emoji-ios:0.7.0'

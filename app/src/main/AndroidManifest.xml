@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.app.smart_id_maker">
+    package="com.app.ai_di">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -22,7 +22,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-        android:name="com.app.smart_id_maker.helper.ApiConfig"
+        android:name="com.app.ai_di.helper.ApiConfig"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -31,31 +31,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ABCDApp"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31">
-        <activity
-            android:name="com.app.smart_id_maker.activities.InviteActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.app.smart_id_maker.activities.TransactionActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.app.smart_id_maker.activities.MybanckActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.app.smart_id_maker.activities.SetPasswordActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.app.smart_id_maker.activities.MyProfileActivity"
-            android:exported="false" />
+        tools:targetApi="31"
+        tools:replace="android:dataExtractionRules,android:fullBackupContent">
 
         <activity
-            android:name="com.app.smart_id_maker.activities.WithdrawalStatusActivity"
+            android:name="com.app.ai_di.activities.WithdrawalStatusActivity"
             android:exported="false" />
 
 
 
         <activity
-            android:name="com.app.smart_id_maker.activities.CheckInActivity"
+            android:name="com.app.ai_di.activities.CheckInActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -65,17 +51,12 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/admob_app_id" />
-
-
         <activity
-            android:name="com.app.smart_id_maker.activities.UpdateBankActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.app.smart_id_maker.activities.ImportDataActivity"
+            android:name="com.app.ai_di.activities.ImportDataActivity"
             android:exported="false" />
 
         <activity
-            android:name="com.app.smart_id_maker.activities.SplashActivity"
+            android:name="com.app.ai_di.activities.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -83,24 +64,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity
-            android:name="com.app.smart_id_maker.activities.WithdrawalActivity"
+            android:name="com.app.ai_di.activities.LoginActivity"
             android:exported="true" />
         <activity
-            android:name="com.app.smart_id_maker.activities.LoginActivity"
-            android:exported="true" />
-        <activity
-            android:name="com.app.smart_id_maker.activities.SignUpActivity"
+            android:name="com.app.ai_di.activities.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name="com.app.smart_id_maker.activities.MainActivity"
+            android:name="com.app.ai_di.activities.MainActivity"
             android:exported="true" />
 
 
         <service
-            android:name="com.app.smart_id_maker.helper.MyFirebaseMessagingService"
+            android:name="com.app.ai_di.helper.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

@@ -7,7 +7,7 @@
 
     android:orientation="vertical"
 
-    tools:context=".Activity.LoginActivity">
+    tools:context=".activities.LoginActivity">
 
 
     <ScrollView
@@ -238,17 +238,17 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnLogin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginTop="@dimen/_24sdp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="Sign in"
-                    android:textAllCaps="false"
-                    android:textSize="@dimen/_12sdp"
-                    app:backgroundTint="@null"
                     android:layout_marginHorizontal="@dimen/_30sdp"
-                    android:background="@drawable/button_gradient_bg" />
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:text="@string/sign_in"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp"
+                    android:textAllCaps="false"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/enamble_disable_button"/>
 
 
 

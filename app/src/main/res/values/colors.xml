@@ -23,6 +23,7 @@
     <color name="green">#388E3C</color>
     <color name="red">#D32F2F</color>
     <color name="light_pink">#FE9781</color>
+    <color name="logo_blue">#004AAD</color>
     <color name="light_blue">#8195FE</color>
 
     <color name="primaryLightColor">#0288D1</color>
@@ -72,6 +73,9 @@
     <color name="grey_400">#bdbdbd</color>
     <color name="yellow_50">#fffde7</color>
     <color name="san_marino">#4371AF</color>
+
+    <color name="gold_light">#FFD700</color>
+    <color name="gold_dark">#DAA520</color>
 
 
 </resources>

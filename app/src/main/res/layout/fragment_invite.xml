@@ -19,15 +19,15 @@
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
             android:background="@drawable/ic_arrow_back"
-            />
+            android:contentDescription="@string/todo" />
 
         <TextView
-            android:layout_marginLeft="@dimen/_14sdp"
-            android:layout_toRightOf="@+id/ibBack"
+            android:layout_marginStart="@dimen/_14sdp"
+            android:layout_toEndOf="@+id/ibBack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:text="Invite Friends"
+            android:text="@string/invite_friends"
             android:fontFamily="@font/poppins_medium"
             android:textSize="@dimen/_14sdp"
             />
@@ -42,7 +42,7 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_14sdp"
             android:layout_marginBottom="@dimen/_10sdp"
             app:cardBackgroundColor="@color/white"
@@ -58,6 +58,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:contentDescription="@string/todo"
                     android:src="@drawable/refer_friend_im"
                     android:adjustViewBounds="true"
                     android:layout_marginVertical="@dimen/_10sdp"/>
@@ -66,12 +67,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginHorizontal="@dimen/_20sdp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="Refer and Earn\n10% Commission"
+                    android:text="@string/refer_and_earn_2000_generated_id_s_helps_to_achieve_monthly_target"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_18sdp" />
+                    android:textSize="@dimen/_14sdp"
+                    tools:ignore="ObsoleteLayoutParam" />
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -83,7 +84,7 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnReferText"
                         android:layout_width="0dp"
-                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_medium"
@@ -111,7 +112,7 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnRefer"
                         android:layout_width="0dp"
-                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_medium"

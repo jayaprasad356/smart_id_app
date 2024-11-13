@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.HomeFragment"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
     android:background="@color/BGColorBlue"
-    >
+    tools:context=".fragment.HomeFragment">
 
     <LinearLayout
         android:id="@+id/llWaiting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <com.google.android.material.progressindicator.CircularProgressIndicator
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:indeterminate="true"
-            app:indicatorColor="@color/white"
+            app:indicatorColor="@color/primaryColor"
             app:indicatorSize="@dimen/_20sdp"
             app:trackThickness="@dimen/_2sdp" />
 
@@ -30,9 +31,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Please Wait..."
-            android:textColor="@color/white"
-            android:textSize="@dimen/_20sdp" />
+            android:text="@string/please_wait"
+            android:textColor="@color/primaryColor"
+            android:textSize="@dimen/_15sdp"
+            android:fontFamily="@font/poppins_medium"/>
 
     </LinearLayout>
 
@@ -51,14 +53,59 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/rlSelectPlan">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_14sdp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardUseCompatPadding="false">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_8sdp"
+                    app:cardBackgroundColor="@color/primaryLightestColor"
+                    app:cardUseCompatPadding="false">
+
+                    <TextView
+                        android:id="@+id/tvPlanName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:text=""
+                        android:textColor="@color/textColor"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/_12sdp"/>
+
+<!--                <Spinner-->
+<!--                    android:id="@+id/dropdownSpinner"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="@dimen/_10sdp"-->
+<!--                    android:backgroundTint="@color/logo_blue"-->
+<!--                    android:spinnerMode="dropdown"/>-->
+
+                </com.google.android.material.card.MaterialCardView>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/rlSync">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_14sdp"
-                android:layout_marginTop="@dimen/_14sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_14sdp"
                 app:cardBackgroundColor="@color/white"
                 app:cardUseCompatPadding="false">
 
@@ -94,14 +141,14 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/wallet_balance"
+                                    android:text="@string/earning_wallet"
                                     android:textColor="@color/textColor"
                                     android:fontFamily="@font/poppins_bold"
                                     android:layout_gravity="center"
                                     android:textSize="@dimen/_8sdp"/>
 
                                 <TextView
-                                    android:id="@+id/tvBalance"
+                                    android:id="@+id/tvEarningWallet"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
@@ -148,7 +195,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/working_days"
+                                    android:text="@string/worked_days"
                                     android:fontFamily="@font/poppins_bold"
                                     android:textColor="@color/textColor"
                                     android:textSize="@dimen/_10sdp"/>
@@ -265,7 +312,7 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:id="@+id/btnsyncNow"
+                        android:id="@+id/btnSyncNow"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_30sdp"
                         android:text="@string/sync_now"
@@ -275,7 +322,7 @@
                         android:textAllCaps="false"
                         android:enabled="false"
                         app:backgroundTint="@null"
-                        android:background="@drawable/button_bg"/>
+                        android:background="@drawable/enamble_disable_button"/>
 <!--                    <TextView-->
 <!--                        android:id="@+id/tvsync_unique_id"-->
 <!--                        android:layout_width="wrap_content"-->
@@ -297,7 +344,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_190sdp"
                 android:background="@drawable/im_bank_bg"
-                android:layout_marginHorizontal="@dimen/_14sdp"
+                android:layout_marginHorizontal="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_4sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:padding="@dimen/_20sdp">
@@ -310,13 +357,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/school_name"
+                        android:text="@string/institute_name"
                         android:fontFamily="@font/poppins_regular"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_10sdp"
                         android:includeFontPadding="false"/>
 
                     <TextView
+                        android:id="@+id/tvSchoolName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/abcd_high_school"
@@ -329,13 +377,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Student Name"
+                        android:text="@string/student_name"
                         android:fontFamily="@font/poppins_regular"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_10sdp"
                         android:includeFontPadding="false"/>
 
                     <TextView
+                        android:id="@+id/tvStudentName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Nandha"
@@ -348,13 +397,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Roll Number"
+                        android:text="@string/roll_number"
                         android:fontFamily="@font/poppins_regular"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_10sdp"
                         android:includeFontPadding="false"/>
 
                     <TextView
+                        android:id="@+id/tvRollNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="123456"
@@ -367,13 +417,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Date of Birth"
+                        android:text="@string/date_of_birth"
                         android:fontFamily="@font/poppins_regular"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_10sdp"
                         android:includeFontPadding="false"/>
 
                     <TextView
+                        android:id="@+id/tvDOB"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="12345678"
@@ -394,7 +445,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_4sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
                     app:cardBackgroundColor="@color/white"
@@ -409,20 +460,20 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/school_name"
+                        android:text="@string/institute_name"
                         android:textColor="@color/grayColor"
                         android:textSize="@dimen/_10sdp"
                         android:fontFamily="@font/poppins_regular"/>
 
-                        <com.app.smart_id_maker.helper.NoPasteEditText
+                        <com.app.ai_di.helper.NoPasteEditText
                         android:id="@+id/edSchoolName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:longClickable="false"
                         android:importantForAutofill="no"
-                        android:textIsSelectable="false"
                         android:background="@drawable/ed_bg"
-                        android:padding="@dimen/_10sdp"/>
+                            android:inputType="none"
+                        android:padding="@dimen/_10sdp" />
 
 <!--                    <EditText-->
 <!--                        android:id="@+id/edSchoolName"-->
@@ -444,13 +495,15 @@
                         android:textSize="@dimen/_10sdp"
                         android:fontFamily="@font/poppins_regular"/>
 
-                    <EditText
-                        android:id="@+id/edStudentName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:longClickable="false"
-                        android:background="@drawable/ed_bg"
-                        android:padding="@dimen/_10sdp" />
+                        <com.app.ai_di.helper.NoPasteEditText
+                            android:id="@+id/edStudentName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:longClickable="false"
+                            android:importantForAutofill="no"
+                            android:textIsSelectable="false"
+                            android:background="@drawable/ed_bg"
+                            android:padding="@dimen/_10sdp"/>
 
                         <Space
                             android:layout_width="match_parent"
@@ -464,13 +517,16 @@
                         android:textSize="@dimen/_10sdp"
                         android:fontFamily="@font/poppins_regular"/>
 
-                    <EditText
-                        android:id="@+id/edRollNumber"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:longClickable="false"
-                        android:background="@drawable/ed_bg"
-                        android:padding="@dimen/_10sdp" />
+                        <com.app.ai_di.helper.NoPasteEditText
+                            android:id="@+id/edRollNumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:longClickable="false"
+                            android:importantForAutofill="no"
+                            android:textIsSelectable="false"
+                            android:background="@drawable/ed_bg"
+                            android:padding="@dimen/_10sdp"
+                            android:inputType="number"/>
 
                         <Space
                             android:layout_width="match_parent"
@@ -491,107 +547,128 @@
                             android:orientation="horizontal"
                             android:weightSum="8">
 
-                            <EditText
+                            <com.app.ai_di.helper.NoPasteEditText
                                 android:id="@+id/dob_edit_box1"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"
                                 android:layout_weight="1"
-                                android:background="@drawable/edittext_curve_bg"
-                                android:gravity="center"
+                                android:longClickable="false"
+                                android:importantForAutofill="no"
+                                android:textIsSelectable="false"
+                                android:background="@drawable/ed_bg"
+                                android:padding="@dimen/_10sdp"
                                 android:inputType="number"
                                 android:layout_marginEnd="@dimen/_4sdp"
-                                android:maxLength="1"
-                                android:textSize="@dimen/_20sdp" />
+                                android:maxLength="1"/>
 
-                            <EditText
+<!--                            <EditText-->
+<!--                                android:id="@+id/dob_edit_box1"-->
+<!--                                android:layout_width="0dp"-->
+<!--                                android:layout_height="@dimen/_35sdp"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:background="@drawable/ed_bg"-->
+<!--                                android:gravity="center"-->
+<!--                                android:inputType="number"-->
+<!--                                android:layout_marginEnd="@dimen/_4sdp"-->
+<!--                                android:maxLength="1"/>-->
+
+                            <com.app.ai_di.helper.NoPasteEditText
                                 android:id="@+id/dob_edit_box2"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"
                                 android:layout_weight="1"
-                                android:background="@drawable/edittext_curve_bg"
-                                android:gravity="center"
+                                android:longClickable="false"
+                                android:importantForAutofill="no"
+                                android:textIsSelectable="false"
+                                android:background="@drawable/ed_bg"
+                                android:padding="@dimen/_10sdp"
                                 android:inputType="number"
                                 android:layout_marginEnd="@dimen/_4sdp"
-                                android:maxLength="1"
-                                android:textSize="@dimen/_20sdp" />
+                                android:maxLength="1"/>
 
-                            <EditText
+                            <com.app.ai_di.helper.NoPasteEditText
                                 android:id="@+id/dob_edit_box3"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"
-                                android:layout_marginEnd="@dimen/_4sdp"
                                 android:layout_weight="1"
-                                android:background="@drawable/edittext_curve_bg"
-                                android:gravity="center"
-                                android:inputType="number"
                                 android:longClickable="false"
-                                android:maxLength="1"
-                                android:textSize="@dimen/_20sdp" />
+                                android:importantForAutofill="no"
+                                android:textIsSelectable="false"
+                                android:background="@drawable/ed_bg"
+                                android:padding="@dimen/_10sdp"
+                                android:inputType="number"
+                                android:layout_marginEnd="@dimen/_4sdp"
+                                android:maxLength="1"/>
 
-                            <EditText
+                            <com.app.ai_di.helper.NoPasteEditText
                                 android:id="@+id/dob_edit_box4"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"
-                                android:layout_marginEnd="@dimen/_4sdp"
                                 android:layout_weight="1"
-                                android:background="@drawable/edittext_curve_bg"
-                                android:gravity="center"
-                                android:inputType="number"
                                 android:longClickable="false"
-                                android:maxLength="1"
-                                android:textSize="@dimen/_20sdp" />
+                                android:importantForAutofill="no"
+                                android:textIsSelectable="false"
+                                android:background="@drawable/ed_bg"
+                                android:padding="@dimen/_10sdp"
+                                android:inputType="number"
+                                android:layout_marginEnd="@dimen/_4sdp"
+                                android:maxLength="1"/>
 
-                            <EditText
+                            <com.app.ai_di.helper.NoPasteEditText
                                 android:id="@+id/dob_edit_box5"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"
-                                android:layout_marginEnd="@dimen/_4sdp"
                                 android:layout_weight="1"
-                                android:background="@drawable/edittext_curve_bg"
-                                android:gravity="center"
-                                android:inputType="number"
                                 android:longClickable="false"
-                                android:maxLength="1"
-                                android:textSize="@dimen/_20sdp" />
+                                android:importantForAutofill="no"
+                                android:textIsSelectable="false"
+                                android:background="@drawable/ed_bg"
+                                android:padding="@dimen/_10sdp"
+                                android:inputType="number"
+                                android:layout_marginEnd="@dimen/_4sdp"
+                                android:maxLength="1"/>
 
-                            <EditText
+                            <com.app.ai_di.helper.NoPasteEditText
                                 android:id="@+id/dob_edit_box6"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"
-                                android:layout_marginEnd="@dimen/_4sdp"
                                 android:layout_weight="1"
-                                android:background="@drawable/edittext_curve_bg"
-                                android:gravity="center"
-                                android:inputType="number"
                                 android:longClickable="false"
-                                android:maxLength="1"
-                                android:textSize="@dimen/_20sdp" />
+                                android:importantForAutofill="no"
+                                android:textIsSelectable="false"
+                                android:background="@drawable/ed_bg"
+                                android:padding="@dimen/_10sdp"
+                                android:inputType="number"
+                                android:layout_marginEnd="@dimen/_4sdp"
+                                android:maxLength="1"/>
 
-                            <EditText
+                            <com.app.ai_di.helper.NoPasteEditText
                                 android:id="@+id/dob_edit_box7"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"
-                                android:layout_marginEnd="@dimen/_4sdp"
                                 android:layout_weight="1"
-                                android:background="@drawable/edittext_curve_bg"
-                                android:gravity="center"
-                                android:inputType="number"
                                 android:longClickable="false"
-                                android:maxLength="1"
-                                android:textSize="@dimen/_20sdp" />
+                                android:importantForAutofill="no"
+                                android:textIsSelectable="false"
+                                android:background="@drawable/ed_bg"
+                                android:padding="@dimen/_10sdp"
+                                android:inputType="number"
+                                android:layout_marginEnd="@dimen/_4sdp"
+                                android:maxLength="1"/>
 
-                            <EditText
+                            <com.app.ai_di.helper.NoPasteEditText
                                 android:id="@+id/dob_edit_box8"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"
                                 android:layout_weight="1"
-                                android:background="@drawable/edittext_curve_bg"
-                                android:gravity="center"
-                                android:inputType="number"
                                 android:longClickable="false"
-                                android:maxLength="1"
-                                android:textSize="@dimen/_20sdp" />
-
+                                android:importantForAutofill="no"
+                                android:textIsSelectable="false"
+                                android:background="@drawable/ed_bg"
+                                android:padding="@dimen/_10sdp"
+                                android:inputType="number"
+                                android:layout_marginEnd="@dimen/_4sdp"
+                                android:maxLength="1"/>
 
                         </LinearLayout>
 
@@ -600,11 +677,33 @@
                 </com.google.android.material.card.MaterialCardView>
             </RelativeLayout>
 
+            <LinearLayout
+                android:id="@+id/llCreateLoader"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:background="@drawable/enamble_disable_button"
+                android:layout_marginHorizontal="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginBottom="@dimen/_30sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp">
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:indeterminate="true"
+                    app:indicatorColor="@color/white"
+                    app:indicatorSize="@dimen/_20sdp"
+                    app:trackThickness="@dimen/_2sdp" />
+
+            </LinearLayout>
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btCreate"
                 android:layout_marginHorizontal="@dimen/_14sdp"
                 android:layout_marginTop="@dimen/_4sdp"
-                android:layout_marginBottom="@dimen/_24sdp"
+                android:layout_marginBottom="@dimen/_30sdp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_35sdp"
                 android:text="@string/create"
@@ -613,7 +712,11 @@
                 android:textSize="@dimen/_12sdp"
                 android:textAllCaps="false"
                 app:backgroundTint="@null"
-                android:background="@drawable/button_bg"/>
+                android:background="@drawable/enamble_disable_button"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp"/>
 
 
         </LinearLayout>

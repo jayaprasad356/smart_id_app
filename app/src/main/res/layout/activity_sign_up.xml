@@ -6,20 +6,15 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
-    tools:context=".Activity.SignUpActivity">
-
+    tools:context=".activities.SignUpActivity"
+    android:background="@color/BGColorBlue">
 
     <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/_10sdp"
         android:padding="@dimen/_10sdp"
-
-        >
-
-
-
+        android:layout_gravity="center_vertical">
 
         <ImageView
             android:id="@+id/backbtn"
@@ -28,32 +23,27 @@
             android:src="@drawable/ic_baseline_arrow_back_24"
             app:tint="@color/black" />
 
-
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_10sdp"
-            android:text="Create an account"
+            android:text="@string/create_an_account"
             android:textColor="@color/black"
             android:gravity="center"
             android:textSize="@dimen/_12sdp"
             android:fontFamily="@font/poppins_bold"
             android:textStyle="bold" />
 
-
     </RelativeLayout>
-
-
-
-
 
     <ScrollView
         android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginHorizontal="@dimen/_20sdp">
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_25sdp">
 
 
         <LinearLayout
@@ -62,17 +52,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical"
-            >
-
-
-
-
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Name"
+                android:text="@string/name"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins_regular"
                 />
@@ -99,9 +84,17 @@
 
                 />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+
             <EditText
                 android:id="@+id/EtPhoneNo"
-                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_marginRight="@dimen/_10sdp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ed_bg"
                 android:hint="Phone Number"
@@ -111,6 +104,64 @@
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins_regular"
                 android:textSize="@dimen/_12sdp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSendOtp"
+                android:layout_width="@dimen/_85sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:text="@string/send_otp"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_10sdp"
+                android:textAllCaps="false"
+                app:backgroundTint="@null"
+                android:background="@drawable/enamble_disable_button"/>
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="Verify OTP"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_regular" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+
+                <EditText
+                    android:id="@+id/EtVerifyOtp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ed_bg"
+                    android:hint="OTP"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:inputType="number"
+                    android:fontFamily="@font/poppins_regular"
+                    android:padding="@dimen/_10sdp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnVerifyOtp"
+                    android:layout_width="@dimen/_85sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:text="Verify"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10sdp"
+                    android:textAllCaps="false"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/enamble_disable_button"/>
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -227,22 +278,20 @@
                 android:fontFamily="@font/poppins_regular"
                 android:textSize="@dimen/_12sdp" />
 
-
-
-
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSignup"
+                android:layout_marginHorizontal="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_24sdp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/button_gradient_bg"
+                android:layout_height="@dimen/_35sdp"
+                android:text="@string/sign_up"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sdp"
+                android:textAllCaps="false"
                 app:backgroundTint="@null"
-                android:text="Sign Up" />
-
+                android:background="@drawable/enamble_disable_button"/>
 
         </LinearLayout>
-
-
     </ScrollView>
 </RelativeLayout>

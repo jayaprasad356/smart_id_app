@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/BGColorBlue"
+    tools:context=".fragment.ExtraIncomeFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:id="@+id/btnRecharge"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_35sdp"
+            android:text="Recharge"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp"
+            android:textAllCaps="false"
+            app:backgroundTint="@null"
+            android:background="@drawable/button_gradient_bg"
+            tools:ignore="HardcodedText"
+            app:icon="@drawable/recharge_plus_im"
+            app:iconPadding="@dimen/_4sdp"
+            app:iconSize="@dimen/_20sdp"
+            app:iconGravity="textStart"
+            app:iconTint="@null"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/btnRecharge"
+        android:id="@+id/rvPlanList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="ObsoleteLayoutParam" />
+
+    </RelativeLayout>
+
+</FrameLayout>

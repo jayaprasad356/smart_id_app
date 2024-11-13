@@ -20,7 +20,7 @@
         android:layout_height="@dimen/_50sdp"
         android:layout_alignParentBottom="true"
         app:elevation="@dimen/_7sdp"
-        app:itemIconSize="@dimen/_25sdp"
+        app:itemIconSize="@dimen/_20sdp"
         app:itemIconTint="@drawable/bottom_navigation_item_selector"
         app:itemTextColor="@drawable/bottom_navigation_item_selector"
         app:labelVisibilityMode="labeled"

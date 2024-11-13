@@ -58,6 +58,7 @@
                             >
 
                             <TextView
+                                android:id="@+id/tvSchoolName"
                                 android:layout_marginTop="@dimen/_30sdp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -101,6 +102,7 @@
                                 android:includeFontPadding="false"/>
 
                             <TextView
+                                android:id="@+id/tvStudentName"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="NANDHA"
@@ -120,6 +122,7 @@
                                 android:includeFontPadding="false"/>
 
                             <TextView
+                                android:id="@+id/tvRollNumber"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="123456"
@@ -139,6 +142,7 @@
                                 android:includeFontPadding="false"/>
 
                             <TextView
+                                android:id="@+id/tvDOB"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="12.12.2000"
