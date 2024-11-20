@@ -8,12 +8,16 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,6 +34,10 @@ import com.app.ai_di.helper.Session;
 import com.app.ai_di.model.PlanListModel;
 import com.google.android.material.button.MaterialButton;
 import com.google.gson.Gson;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -49,6 +57,14 @@ public class JobsFragment extends Fragment {
     Session session;
     Activity activity;
 
+    private YouTubePlayerView youtubePlayerView;
+    private LinearLayout llWaiting;
+    private RelativeLayout rlPlanView;
+    private YouTubePlayer youTubePlayerInstance;
+    MaterialButton btnRecharge;
+    MaterialButton btnFAQ;
+    private boolean isPlayerReady = false;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,7 +73,84 @@ public class JobsFragment extends Fragment {
         activity = getActivity();
         session = new Session(activity);
 
+        // Initialize YouTubePlayerView
+        youtubePlayerView = view.findViewById(R.id.youtubePlayerView);
+        llWaiting = view.findViewById(R.id.llWaiting);
+        rlPlanView = view.findViewById(R.id.rlPlanView);
+        btnFAQ = view.findViewById(R.id.btnFAQ);
+
+        llWaiting.setVisibility(View.VISIBLE);
+        rlPlanView.setVisibility(View.GONE);
+
+        btnFAQ.setOnClickListener(
+                v -> {
+                    String url = Constant.FQD_URL; // Replace with your demo video URL
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(url));
+                    startActivity(intent);
+                }
+        );
+
+        // Observe lifecycle to automatically manage player state
+        getLifecycle().addObserver(youtubePlayerView);
+
+        // Set up YouTubePlayerListener
+        youtubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+                youTubePlayerInstance = youTubePlayer;
+                isPlayerReady = true; // Mark player as ready
+                Log.d("YouTubePlayer", "Player is ready");
+
+                String videoId = "6RC_0H4875w"; // Use only the video ID
+//                String videoId = "WrU4jt1KXnI"; // Use only the video ID
+//                String videoId = "dB4AbjyDU2o"; // Use only the video ID
+                youTubePlayerInstance.cueVideo(videoId, 0f); // Load video at 0 seconds without autoplay
+            }
+
+            @Override
+            public void onError(@NonNull YouTubePlayer youTubePlayer, @NonNull PlayerConstants.PlayerError error) {
+                Toast.makeText(activity, "Error: " + error.toString(), Toast.LENGTH_SHORT).show();
+                Log.e("YouTubePlayer", "Error loading video: " + error.toString());
+            }
+        });
+
         return view;
+    }
+
+    // Only attempt to play video if the player is ready
+    private void playVideo() {
+        if (isPlayerReady && youTubePlayerInstance != null) {
+            youTubePlayerInstance.play(); // Play the video
+        } else {
+            Log.d("YouTubePlayer", "Player is not ready yet");
+        }
+    }
+
+    // Only attempt to pause video if the player is ready
+    private void pauseVideo() {
+        if (isPlayerReady && youTubePlayerInstance != null) {
+            youTubePlayerInstance.pause(); // Pause the video
+        } else {
+            Log.d("YouTubePlayer", "Player is not ready yet");
+        }
+    }
+
+    // Only attempt to seek video if the player is ready
+    private void seekTo(float seconds) {
+        if (isPlayerReady && youTubePlayerInstance != null) {
+            youTubePlayerInstance.seekTo(seconds); // Seek to the specified time
+        } else {
+            Log.d("YouTubePlayer", "Player is not ready yet");
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (youtubePlayerView != null) {
+            youtubePlayerView.release(); // Release the player when the view is destroyed
+        }
     }
 
     @Override
@@ -67,7 +160,7 @@ public class JobsFragment extends Fragment {
         // Initialize RecyclerView
         rvPlanList = view.findViewById(R.id.rvPlanList);
         rvPlanList.setLayoutManager(new LinearLayoutManager(getContext()));
-        MaterialButton btnRecharge = view.findViewById(R.id.btnRecharge);
+        btnRecharge = view.findViewById(R.id.btnRecharge);
 
         // Initialize the plan list
         planListModel = new ArrayList<>();
@@ -109,6 +202,14 @@ public class JobsFragment extends Fragment {
                             jobPlanAdapter.notifyDataSetChanged();
                         }
 
+                        llWaiting.setVisibility(View.VISIBLE);
+                        rlPlanView.setVisibility(View.GONE);
+                        new Handler().postDelayed(() -> {
+                            llWaiting.setVisibility(View.GONE);
+                            rlPlanView.setVisibility(View.VISIBLE);
+                            btnRecharge.setOnClickListener(v -> showRechargeDialog());
+                            btnRecharge.setText("Recharge ₹" + session.getData(Constant.RECHARGE));
+                        }, 2000);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -130,6 +231,7 @@ public class JobsFragment extends Fragment {
 
         ImageButton btClose = dialogView.findViewById(R.id.btClose);
         MaterialButton btRechargePayment = dialogView.findViewById(R.id.btRechargePayment);
+        TextView btWatchDemo = dialogView.findViewById(R.id.btWatchDemo); // Initialize btWatchDemo
 
         btClose.setOnClickListener(v -> dialog.dismiss());
 
@@ -140,8 +242,14 @@ public class JobsFragment extends Fragment {
             startActivity(intent);
         });
 
+        btWatchDemo.setOnClickListener(v -> {
+            String url = Constant.RECHARGE_DEMO_VIDEO_URL; // Replace with your demo video URL
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(url));
+            startActivity(intent);
+        });
+
         dialog.show();
     }
-
 }
 

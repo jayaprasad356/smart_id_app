@@ -32,7 +32,7 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
-    TextView btnSignUp;
+    TextView btnSignUp, btnForgotPassword;
     EditText EtPhoneNumber,EtPassword;
     MaterialButton btnLogin;
     Session session;
@@ -53,6 +53,7 @@ public class LoginActivity extends AppCompatActivity implements PopupMenu.OnMenu
         EtPhoneNumber = findViewById(R.id.EtPhoneNumber);
         EtPassword = findViewById(R.id.EtPassword);
         btnSignUp = findViewById(R.id.btnSignUp);
+        btnForgotPassword = findViewById(R.id.btnForgotPassword);
         imgMenu=findViewById(R.id.imgMenu);
         whatsppjoin = findViewById(R.id.whatsppjoin);
 
@@ -60,6 +61,10 @@ public class LoginActivity extends AppCompatActivity implements PopupMenu.OnMenu
         whatsppjoin.setOnClickListener(view -> openWhatsApp());
         btnSignUp.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+            startActivity(intent);
+        });
+        btnForgotPassword.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, ForgoPasswordActivity.class);
             startActivity(intent);
         });
         btnLogin.setOnClickListener(new View.OnClickListener() {

@@ -52,6 +52,34 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_alignParentEnd="true"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:id="@+id/btnNotification"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_35sdp"
+                android:text="Notification"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sdp"
+                android:textAllCaps="false"
+                app:backgroundTint="@null"
+                android:background="@drawable/button_bg"
+                tools:ignore="HardcodedText"
+                app:icon="@drawable/notification_ic"
+                app:iconPadding="@dimen/_4sdp"
+                app:iconSize="@dimen/_18sdp"
+                app:iconGravity="textStart"
+                app:iconTint="@color/white"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/rlSelectPlan">
 
@@ -59,7 +87,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_14sdp"
                     app:cardBackgroundColor="@color/white"
                     app:cardUseCompatPadding="false">
 

@@ -70,7 +70,7 @@ public class Session {
             String app_version,
             String per_code_cost,
             String per_code_val,
-            String worked_days,
+//            String worked_days,
             String recharge,
             String total_assets,
             String bonus_wallet,
@@ -80,7 +80,8 @@ public class Session {
             String total_codes_income,
             String total_refer_income,
             String today_earnings,
-            String total_earnings
+            String total_earnings,
+            String min_withdrawal
 //            String planName,
 //            String planDescription,
 //            String planValidity,
@@ -116,7 +117,7 @@ public class Session {
         editor.putString(Constant.APP_VERSION, app_version);
         editor.putString(Constant.PER_CODE_COST, per_code_cost);
         editor.putString(Constant.PER_CODE_VAL, per_code_val);
-        editor.putString(Constant.WORKED_DAYS, worked_days);
+//        editor.putString(Constant.WORKED_DAYS, worked_days);
         editor.putString(Constant.RECHARGE, recharge);
         editor.putString(Constant.TOTAL_ASSETS, total_assets);
         editor.putString(Constant.BONUS_WALLET, bonus_wallet);
@@ -127,6 +128,7 @@ public class Session {
         editor.putString(Constant.TOTAL_REFERRAL_INCOME, total_refer_income);
         editor.putString(Constant.TODAY_EARNINGS, today_earnings);
         editor.putString(Constant.TOTAL_EARNINGS, total_earnings);
+        editor.putString(Constant.MIN_WITHDRAWAL, min_withdrawal);
 //        editor.putString(Constant.PLAN_NAME, planName);
 //        editor.putString(Constant.PLAN_DESCRIPTION, planDescription);
 //        editor.putString(Constant.PLAN_VALIDITY, planValidity);

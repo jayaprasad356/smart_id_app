@@ -135,10 +135,10 @@ public class ApiConfig extends Application {
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         EmojiManager.install(new IosEmojiProvider());
 
-        ZohoSalesIQ.init(this,
-                "5spwCGjIKo%2Fz6ssVNakmHbMTvtsszyor90%2BhrhHmnNgJcnpMvghcPXmu4dO6kxpO_in",
-                "4%2Fd2z2OovwP9rRaj3CO5TQtzMKPKxu%2FFaEkvD5l3RKcCLPKYaPjW%2B%2BzKEVzDx8I3UedpF6j3RR3PecllV1z3JrF3PMI%2BXoxRDSvLRDVerhOt%2FtApSWo%2FVw%3D%3D");
-        ZohoSalesIQ.showLauncher(true);
+//        ZohoSalesIQ.init(this,
+//                "5spwCGjIKo%2Fz6ssVNakmHbMTvtsszyor90%2BhrhHmnNgJcnpMvghcPXmu4dO6kxpO_in",
+//                "4%2Fd2z2OovwP9rRaj3CO5TQtzMKPKxu%2FFaEkvD5l3RKcCLPKYaPjW%2B%2BzKEVzDx8I3UedpF6j3RR3PecllV1z3JrF3PMI%2BXoxRDSvLRDVerhOt%2FtApSWo%2FVw%3D%3D");
+//        ZohoSalesIQ.showLauncher(true);
 //        // Replace these values with your Zoho SalesIQ App Key and Access Key
 //        String appKey = "YOUR_APP_KEY";
 //        String accessKey = "YOUR_ACCESS_KEY";

@@ -13,10 +13,16 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Constant {
-    public static final String MainBaseUrl = "https://smartidmaker.graymatterworks.com/";
+//    public static final String MainBaseUrl = "https://smartidmaker.graymatterworks.com/";
     public static final String RECHARGE_URL = "https://www.slveenterprises.org/product/31904496/ID-Making-Professional-Course";
+    public static final String RECHARGE_DEMO_VIDEO_URL = "https://youtu.be/VeX9sWYHgUs?si=vkKtlY0U1EykB43g";
+    public static final String FQD_URL = "https://aidiapp.in/information.php";
+    public static final String WITHDRAWAL_DEMO_VIDEO_URL = "https://youtu.be/rL7GRdXq6Gg?si=Jqt4FBuh0D7KLId4";
     public static final String WHATSAPP_URL = "https://whatsapp.com/channel/0029VawJ9ZtJpe8ecl0Vb13w";
-    //public static final String MainBaseUrl = "https://abcd.greymatterworks.in/";
+    public static final String MainBaseUrl = " https://admin.aidiapp.in/";
+
+
+
     //public static final String MainBaseUrl = "http://192.168.43.38/fortune/";
     //public static final String MainBaseUrl = "https://demofortune.graymatterworks.com/";
     //public static final String MainBaseUrl = "https://demo.smart_id_maker.in/";
@@ -52,6 +58,9 @@ public class Constant {
     public static final String URLS_LIST_URL = BaseUrl + "urls_list.php";
 
     public static final String REFERALSLIST = BaseUrl + "referalslist.php";
+    public static final String MY_PLAN_LIST = BaseUrl + "my_plan_list.php";
+    public static final String FORGOT_PASSWORD = BaseUrl + "forgot_password.php";
+    public static final String DATA_LIST = BaseUrl + "data_list.php";
     public static final String ADD_WALLET = BaseUrl + "add-wallet.php";
 
     public static final String PER_CODE_VAL = "per_code_val";

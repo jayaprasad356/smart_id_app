@@ -6,9 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <LinearLayout
         android:background="@color/primaryColor"
         android:id="@+id/rlToolbar"
+        android:orientation="horizontal"
         android:padding="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -24,7 +25,8 @@
         <TextView
             android:layout_marginStart="@dimen/_14sdp"
             android:layout_toEndOf="@+id/ibBack"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:text="@string/withdrawal"
@@ -32,7 +34,19 @@
             android:textSize="@dimen/_14sdp"
             />
 
-    </RelativeLayout>
+        <!-- Watch Demo Text -->
+        <TextView
+            android:id="@+id/btWatchDemo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="end"
+            android:text="@string/watch_demo"
+            android:textColor="@color/logo_blue"
+            android:textSize="@dimen/_10sdp"
+            android:fontFamily="@font/poppins_medium" />
+
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -288,6 +302,17 @@
                             android:padding="@dimen/_10sdp"
                             android:maxLength="5"
                             android:inputType="number"/>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/withdrawal_timing_10_am_to_6_pm_on_working_days_only"
+                            android:textColor="@color/grayColor"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:textSize="@dimen/_8sdp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textAlignment="center"/>
                     </LinearLayout>
 
                     <RadioGroup
@@ -324,6 +349,18 @@
                         android:textAllCaps="false"
                         app:backgroundTint="@null"
                         android:background="@drawable/button_bg"/>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/your_withdrawal_will_be_paid_within_24hrs_from_the_time_of_withdrawal_done"
+                        android:textColor="@color/red"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginHorizontal="@dimen/_10sdp"
+                        android:textSize="@dimen/_8sdp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textAlignment="center"/>
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/btnWithdrawalLoader"

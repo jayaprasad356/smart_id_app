@@ -1,11 +1,15 @@
 package com.app.ai_di.activities
 
+import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.KeyEventDispatcher
 import androidx.fragment.app.FragmentManager
 import com.app.ai_di.R
 import com.app.ai_di.databinding.ActivityMainBinding
@@ -13,15 +17,16 @@ import com.app.ai_di.fragment.ExtraIncomeFragment
 import com.app.ai_di.fragment.HomeFragment
 import com.app.ai_di.fragment.JobsFragment
 import com.app.ai_di.fragment.NewProfileFragment
+import com.app.ai_di.fragment.NotificationFragment
 import com.app.ai_di.helper.ApiConfig
 import com.app.ai_di.helper.Constant
 import com.app.ai_di.helper.DatabaseHelper
 import com.app.ai_di.helper.Session
 import com.app.ai_di.model.PlanListModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.components.Component
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.messaging.FirebaseMessaging
-import com.zoho.commons.ChatComponent
+import com.google.gson.Gson
 import com.zoho.commons.InitConfig
 import com.zoho.livechat.android.listeners.InitListener
 import com.zoho.salesiqembed.ZohoSalesIQ
@@ -97,6 +102,99 @@ class MainActivity : AppCompatActivity() {
 
         initializeZohoSalesIQ()
 
+        loadNotification()
+
+    }
+
+    // Method to hide the BottomNavigationView
+    fun hideBottomNavigation() {
+        navbar?.visibility = View.GONE
+    }
+
+    // Method to show the BottomNavigationView
+    fun showBottomNavigation() {
+        navbar?.visibility = View.VISIBLE
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun loadNotification() {
+        val params: MutableMap<String, String> = HashMap()
+        params[Constant.USER_ID] = session!!.getData(Constant.USER_ID)
+
+        ApiConfig.RequestToVolley({ result: Boolean, response: String? ->
+            if (result) {
+                try {
+                    val jsonObject = JSONObject(response)
+                    if (jsonObject.getBoolean(Constant.SUCCESS)) {
+                        val jsonArray = jsonObject.getJSONArray(Constant.DATA)
+                        val gson = Gson()
+
+                        val notificationId = session!!.getData("notification_id")
+
+                        if (notificationId.isEmpty() && notificationId == null) {
+                            session!!.setData("notification_id", "0")
+                            Log.d("notificationId", "notificationId " + notificationId)
+                        } else {
+                            if (jsonArray.length() > 0) {
+                            // Get the first item in the array
+                            val firstNotificationObject = jsonArray.getJSONObject(0)
+
+                            // Extract the 'id' from the first notification
+                            val firstNotificationId = firstNotificationObject.getString("id")
+
+                            // Store the 'id' in the session
+                            session!!.setData("notification_id", firstNotificationId)
+
+                             val latestNotificationId = session!!.getData("notification_id")
+
+                            // Optional: Log or show the stored ID for verification
+                            Log.d("Notification ID", latestNotificationId)
+                                if (notificationId < latestNotificationId){
+                                    showNotificationDialog()
+                                }
+                            }
+                        }
+                    }
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+            }
+        }, this@MainActivity, Constant.NOTIFICATION_LIST_URL, params, true)
+    }
+
+    private fun showNotificationDialog() {
+        val inflater = layoutInflater
+        val dialogView = inflater.inflate(R.layout.dialog_notification, null)
+
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setCancelable(false) // Disable the back button
+            .create()
+
+        // Prevent closing when tapping outside the dialog
+        dialog.setCanceledOnTouchOutside(false)
+
+        val btRead = dialogView.findViewById<MaterialButton>(R.id.btRead)
+
+        btRead.setOnClickListener {
+            // Navigate to NotificationFragment
+            val notificationFragment = NotificationFragment()
+            val fragmentManager = supportFragmentManager
+            val transaction = fragmentManager.beginTransaction()
+
+            // Optional: Add a transition animation
+            transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
+
+            // Replace the current fragment with NotificationFragment
+            transaction.replace(R.id.Container, notificationFragment)
+            transaction.addToBackStack(null) // Optional: Add to backstack to allow going back
+            transaction.commit()
+
+            // Dismiss the dialog after navigating
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     fun userDetails() {
@@ -141,7 +239,7 @@ class MainActivity : AppCompatActivity() {
                             userObject.getString(Constant.APP_VERSION),
                             userObject.getString(Constant.PER_CODE_COST),
                             userObject.getString(Constant.PER_CODE_VAL),
-                            userObject.getString(Constant.WORKED_DAYS),
+//                            userObject.getString(Constant.WORKED_DAYS),
                             userObject.getString(Constant.RECHARGE),
                             userObject.getString(Constant.TOTAL_ASSETS),
                             userObject.getString(Constant.BONUS_WALLET),
@@ -152,6 +250,7 @@ class MainActivity : AppCompatActivity() {
                             userObject.getString(Constant.TOTAL_REFERRAL_INCOME),
                             userObject.getString(Constant.TODAY_EARNINGS),
                             userObject.getString(Constant.TOTAL_EARNINGS),
+                            userObject.getString(Constant.MIN_WITHDRAWAL),
 //                            planObject.getString("name"),
 //                            planObject.getString("description"),
 //                            planObject.getString("validity"),

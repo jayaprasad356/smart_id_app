@@ -1,5 +1,7 @@
 package com.app.ai_di.ProfileFragment
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -92,6 +94,13 @@ class WithdrawalFragment : Fragment() {
         binding.btnAddBonusToWallet.setOnClickListener {
             addToMainBalance("bonus_wallet")
         }
+
+        binding.btWatchDemo.setOnClickListener(View.OnClickListener { v: View? ->
+            val url = Constant.WITHDRAWAL_DEMO_VIDEO_URL
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.setData(Uri.parse(url))
+            startActivity(intent)
+        })
 
         return binding.root
     }

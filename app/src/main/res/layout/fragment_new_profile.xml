@@ -105,8 +105,154 @@
                                             <LinearLayout
                                                 android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
-                                                android:orientation="horizontal">
+                                                android:orientation="horizontal"
+                                                android:layout_marginRight="@dimen/_10sdp">
 
+                                                <LinearLayout
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:orientation="vertical"
+                                                    android:layout_marginRight="@dimen/_5sdp">
+
+                                                    <TextView
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:fontFamily="@font/poppins_regular"
+                                                        android:gravity="start"
+                                                        android:text="@string/total_id_earnings"
+                                                        android:textColor="@color/white"
+                                                        android:textSize="@dimen/_12sdp" />
+
+                                                    <TextView
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:fontFamily="@font/poppins_regular"
+                                                        android:gravity="start"
+                                                        android:text="@string/total_refer_earnings"
+                                                        android:textColor="@color/white"
+                                                        android:textSize="@dimen/_12sdp" />
+
+                                                    <TextView
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:fontFamily="@font/poppins_regular"
+                                                        android:gravity="start"
+                                                        android:text="@string/wallet_balance"
+                                                        android:textColor="@color/white"
+                                                        android:textSize="@dimen/_12sdp" />
+
+                                                </LinearLayout>
+
+                                                <LinearLayout
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:orientation="vertical"
+                                                    android:layout_marginRight="@dimen/_5sdp">
+
+                                                    <TextView
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:text="-"
+                                                        android:fontFamily="@font/poppins_bold"
+                                                        android:textColor="@color/white"
+                                                        android:textSize="@dimen/_12sdp" />
+
+                                                    <TextView
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:text="-"
+                                                        android:fontFamily="@font/poppins_bold"
+                                                        android:textColor="@color/white"
+                                                        android:textSize="@dimen/_12sdp" />
+
+                                                    <TextView
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:text="-"
+                                                        android:fontFamily="@font/poppins_bold"
+                                                        android:textColor="@color/white"
+                                                        android:textSize="@dimen/_12sdp" />
+
+                                                </LinearLayout>
+
+                                                <LinearLayout
+                                                    android:layout_weight="1"
+                                                    android:layout_width="0dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:orientation="vertical">
+
+                                                    <TextView
+                                                        android:id="@+id/tvTotalCodesIncome"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:fontFamily="@font/poppins_semibold"
+                                                        android:gravity="end"
+                                                        android:text=""
+                                                        android:textColor="@color/black"
+                                                        android:textSize="@dimen/_12sdp" />
+
+                                                    <TextView
+                                                        android:id="@+id/tvReferralIncome"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:fontFamily="@font/poppins_semibold"
+                                                        android:gravity="end"
+                                                        android:text=""
+                                                        android:textColor="@color/black"
+                                                        android:textSize="@dimen/_12sdp" />
+
+                                                    <TextView
+                                                        android:id="@+id/tvWalletBalance"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:fontFamily="@font/poppins_semibold"
+                                                        android:gravity="end"
+                                                        android:text=""
+                                                        android:textColor="@color/black"
+                                                        android:textSize="@dimen/_12sdp" />
+
+                                                </LinearLayout>
+
+                                            </LinearLayout>
+
+<!--                                            <LinearLayout-->
+<!--                                                android:layout_width="match_parent"-->
+<!--                                                android:layout_height="wrap_content"-->
+<!--                                                android:orientation="horizontal">-->
+
+<!--&lt;!&ndash;                                                <RelativeLayout&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                    android:layout_weight="1">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                                    <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;                                                        android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                        android:orientation="vertical">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                                        <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            android:id="@+id/tvPlanActivate"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            android:fontFamily="@font/poppins_semibold"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            android:gravity="center"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            android:text=""&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            android:textColor="@color/black"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            android:textSize="@dimen/_12sdp" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                                        <TextView&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            android:fontFamily="@font/poppins_regular"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            android:gravity="center"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            android:text="@string/plan_activate"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            android:textColor="@color/white"&ndash;&gt;-->
+<!--&lt;!&ndash;                                                            android:textSize="@dimen/_10sdp" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                                    </LinearLayout>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                                                </RelativeLayout>&ndash;&gt;-->
 <!--                                                <RelativeLayout-->
 <!--                                                    android:layout_width="match_parent"-->
 <!--                                                    android:layout_height="wrap_content"-->
@@ -118,7 +264,7 @@
 <!--                                                        android:orientation="vertical">-->
 
 <!--                                                        <TextView-->
-<!--                                                            android:id="@+id/tvPlanActivate"-->
+<!--                                                            android:id="@+id/tvTotalCodesIncome"-->
 <!--                                                            android:layout_width="match_parent"-->
 <!--                                                            android:layout_height="wrap_content"-->
 <!--                                                            android:fontFamily="@font/poppins_semibold"-->
@@ -132,7 +278,7 @@
 <!--                                                            android:layout_height="wrap_content"-->
 <!--                                                            android:fontFamily="@font/poppins_regular"-->
 <!--                                                            android:gravity="center"-->
-<!--                                                            android:text="@string/plan_activate"-->
+<!--                                                            android:text="@string/total_codes_income"-->
 <!--                                                            android:textColor="@color/white"-->
 <!--                                                            android:textSize="@dimen/_10sdp" />-->
 
@@ -140,194 +286,161 @@
 
 
 <!--                                                </RelativeLayout>-->
-                                                <RelativeLayout
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_weight="1">
 
-                                                    <LinearLayout
-                                                        android:layout_width="match_parent"
-                                                        android:layout_height="wrap_content"
-                                                        android:orientation="vertical">
+<!--                                                &lt;!&ndash;                                <RelativeLayout&ndash;&gt;-->
+<!--                                                &lt;!&ndash;                                    android:layout_width="1dp"&ndash;&gt;-->
+<!--                                                &lt;!&ndash;                                    android:layout_height="match_parent"&ndash;&gt;-->
+<!--                                                &lt;!&ndash;                                    android:background="@color/black" />&ndash;&gt;-->
 
-                                                        <TextView
-                                                            android:id="@+id/tvTotalCodesIncome"
-                                                            android:layout_width="match_parent"
-                                                            android:layout_height="wrap_content"
-                                                            android:fontFamily="@font/poppins_semibold"
-                                                            android:gravity="center"
-                                                            android:text=""
-                                                            android:textColor="@color/black"
-                                                            android:textSize="@dimen/_12sdp" />
+<!--                                                <RelativeLayout-->
+<!--                                                    android:layout_width="match_parent"-->
+<!--                                                    android:layout_height="wrap_content"-->
+<!--                                                    android:layout_weight="1">-->
 
-                                                        <TextView
-                                                            android:layout_width="match_parent"
-                                                            android:layout_height="wrap_content"
-                                                            android:fontFamily="@font/poppins_regular"
-                                                            android:gravity="center"
-                                                            android:text="@string/total_codes_income"
-                                                            android:textColor="@color/white"
-                                                            android:textSize="@dimen/_10sdp" />
+<!--                                                    <LinearLayout-->
+<!--                                                        android:layout_width="match_parent"-->
+<!--                                                        android:layout_height="wrap_content"-->
+<!--                                                        android:orientation="vertical">-->
 
-                                                    </LinearLayout>
+<!--                                                        <TextView-->
+<!--                                                            android:id="@+id/tvReferralIncome"-->
+<!--                                                            android:layout_width="match_parent"-->
+<!--                                                            android:layout_height="wrap_content"-->
+<!--                                                            android:fontFamily="@font/poppins_semibold"-->
+<!--                                                            android:gravity="center"-->
+<!--                                                            android:text=""-->
+<!--                                                            android:textColor="@color/black"-->
+<!--                                                            android:textSize="@dimen/_12sdp" />-->
 
+<!--                                                        <TextView-->
+<!--                                                            android:layout_width="match_parent"-->
+<!--                                                            android:layout_height="wrap_content"-->
+<!--                                                            android:fontFamily="@font/poppins_regular"-->
+<!--                                                            android:gravity="center"-->
+<!--                                                            android:text="@string/referral_income"-->
+<!--                                                            android:textColor="@color/white"-->
+<!--                                                            android:textSize="@dimen/_10sdp" />-->
 
-                                                </RelativeLayout>
-
-                                                <!--                                <RelativeLayout-->
-                                                <!--                                    android:layout_width="1dp"-->
-                                                <!--                                    android:layout_height="match_parent"-->
-                                                <!--                                    android:background="@color/black" />-->
-
-                                                <RelativeLayout
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_weight="1">
-
-                                                    <LinearLayout
-                                                        android:layout_width="match_parent"
-                                                        android:layout_height="wrap_content"
-                                                        android:orientation="vertical">
-
-                                                        <TextView
-                                                            android:id="@+id/tvReferralIncome"
-                                                            android:layout_width="match_parent"
-                                                            android:layout_height="wrap_content"
-                                                            android:fontFamily="@font/poppins_semibold"
-                                                            android:gravity="center"
-                                                            android:text=""
-                                                            android:textColor="@color/black"
-                                                            android:textSize="@dimen/_12sdp" />
-
-                                                        <TextView
-                                                            android:layout_width="match_parent"
-                                                            android:layout_height="wrap_content"
-                                                            android:fontFamily="@font/poppins_regular"
-                                                            android:gravity="center"
-                                                            android:text="@string/referral_income"
-                                                            android:textColor="@color/white"
-                                                            android:textSize="@dimen/_10sdp" />
-
-                                                    </LinearLayout>
+<!--                                                    </LinearLayout>-->
 
 
-                                                </RelativeLayout>
+<!--                                                </RelativeLayout>-->
 
 
-                                            </LinearLayout>
+<!--                                            </LinearLayout>-->
 
-                                            <LinearLayout
-                                                android:id="@+id/llWithdraw"
-                                                android:layout_width="match_parent"
-                                                android:layout_height="wrap_content"
-                                                android:orientation="horizontal"
-                                                android:weightSum="3">
-
-
-                                                <RelativeLayout
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_weight="1">
-
-                                                    <LinearLayout
-                                                        android:layout_width="match_parent"
-                                                        android:layout_height="wrap_content"
-                                                        android:orientation="vertical">
-
-                                                        <TextView
-                                                            android:id="@+id/tvTotalEarning"
-                                                            android:layout_width="match_parent"
-                                                            android:layout_height="wrap_content"
-                                                            android:fontFamily="@font/poppins_semibold"
-                                                            android:gravity="center"
-                                                            android:text=""
-                                                            android:textColor="@color/black"
-                                                            android:textSize="@dimen/_12sdp" />
-
-                                                        <TextView
-                                                            android:layout_width="match_parent"
-                                                            android:layout_height="wrap_content"
-                                                            android:fontFamily="@font/poppins_regular"
-                                                            android:gravity="center"
-                                                            android:text="@string/total_earning"
-                                                            android:textColor="@color/white"
-                                                            android:textSize="@dimen/_10sdp" />
-
-                                                    </LinearLayout>
+<!--                                            <LinearLayout-->
+<!--                                                android:id="@+id/llWithdraw"-->
+<!--                                                android:layout_width="match_parent"-->
+<!--                                                android:layout_height="wrap_content"-->
+<!--                                                android:orientation="horizontal"-->
+<!--                                                android:weightSum="3">-->
 
 
-                                                </RelativeLayout>
+<!--                                                <RelativeLayout-->
+<!--                                                    android:layout_width="match_parent"-->
+<!--                                                    android:layout_height="wrap_content"-->
+<!--                                                    android:layout_weight="1">-->
 
-                                                <RelativeLayout
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_weight="1">
+<!--                                                    <LinearLayout-->
+<!--                                                        android:layout_width="match_parent"-->
+<!--                                                        android:layout_height="wrap_content"-->
+<!--                                                        android:orientation="vertical">-->
 
-                                                    <LinearLayout
-                                                        android:layout_width="match_parent"
-                                                        android:layout_height="wrap_content"
-                                                        android:orientation="vertical">
+<!--                                                        <TextView-->
+<!--                                                            android:id="@+id/tvTotalEarning"-->
+<!--                                                            android:layout_width="match_parent"-->
+<!--                                                            android:layout_height="wrap_content"-->
+<!--                                                            android:fontFamily="@font/poppins_semibold"-->
+<!--                                                            android:gravity="center"-->
+<!--                                                            android:text=""-->
+<!--                                                            android:textColor="@color/black"-->
+<!--                                                            android:textSize="@dimen/_12sdp" />-->
 
-                                                        <TextView
-                                                            android:id="@+id/tvTodayEarning"
-                                                            android:layout_width="match_parent"
-                                                            android:layout_height="wrap_content"
-                                                            android:fontFamily="@font/poppins_semibold"
-                                                            android:gravity="center"
-                                                            android:text=""
-                                                            android:textColor="@color/black"
-                                                            android:textSize="@dimen/_12sdp" />
+<!--                                                        <TextView-->
+<!--                                                            android:layout_width="match_parent"-->
+<!--                                                            android:layout_height="wrap_content"-->
+<!--                                                            android:fontFamily="@font/poppins_regular"-->
+<!--                                                            android:gravity="center"-->
+<!--                                                            android:text="@string/total_earning"-->
+<!--                                                            android:textColor="@color/white"-->
+<!--                                                            android:textSize="@dimen/_10sdp" />-->
 
-                                                        <TextView
-                                                            android:layout_width="match_parent"
-                                                            android:layout_height="wrap_content"
-                                                            android:fontFamily="@font/poppins_regular"
-                                                            android:gravity="center"
-                                                            android:text="@string/today_s_earning"
-                                                            android:textColor="@color/white"
-                                                            android:textSize="@dimen/_10sdp" />
-
-                                                    </LinearLayout>
+<!--                                                    </LinearLayout>-->
 
 
-                                                </RelativeLayout>
+<!--                                                </RelativeLayout>-->
 
-                                                <RelativeLayout
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_weight="1">
+<!--                                                <RelativeLayout-->
+<!--                                                    android:layout_width="match_parent"-->
+<!--                                                    android:layout_height="wrap_content"-->
+<!--                                                    android:layout_weight="1">-->
 
-                                                    <LinearLayout
-                                                        android:layout_width="match_parent"
-                                                        android:layout_height="wrap_content"
-                                                        android:orientation="vertical">
+<!--                                                    <LinearLayout-->
+<!--                                                        android:layout_width="match_parent"-->
+<!--                                                        android:layout_height="wrap_content"-->
+<!--                                                        android:orientation="vertical">-->
 
-                                                        <TextView
-                                                            android:id="@+id/tvWalletBalance"
-                                                            android:layout_width="match_parent"
-                                                            android:layout_height="wrap_content"
-                                                            android:fontFamily="@font/poppins_semibold"
-                                                            android:gravity="center"
-                                                            android:text=""
-                                                            android:textColor="@color/black"
-                                                            android:textSize="@dimen/_12sdp" />
+<!--                                                        <TextView-->
+<!--                                                            android:id="@+id/tvTodayEarning"-->
+<!--                                                            android:layout_width="match_parent"-->
+<!--                                                            android:layout_height="wrap_content"-->
+<!--                                                            android:fontFamily="@font/poppins_semibold"-->
+<!--                                                            android:gravity="center"-->
+<!--                                                            android:text=""-->
+<!--                                                            android:textColor="@color/black"-->
+<!--                                                            android:textSize="@dimen/_12sdp" />-->
 
-                                                        <TextView
-                                                            android:layout_width="match_parent"
-                                                            android:layout_height="wrap_content"
-                                                            android:fontFamily="@font/poppins_regular"
-                                                            android:gravity="center"
-                                                            android:text="@string/wallet_balance"
-                                                            android:textColor="@color/white"
-                                                            android:textSize="@dimen/_10sdp" />
+<!--                                                        <TextView-->
+<!--                                                            android:layout_width="match_parent"-->
+<!--                                                            android:layout_height="wrap_content"-->
+<!--                                                            android:fontFamily="@font/poppins_regular"-->
+<!--                                                            android:gravity="center"-->
+<!--                                                            android:text="@string/today_s_earning"-->
+<!--                                                            android:textColor="@color/white"-->
+<!--                                                            android:textSize="@dimen/_10sdp" />-->
 
-                                                    </LinearLayout>
-
-
-                                                </RelativeLayout>
+<!--                                                    </LinearLayout>-->
 
 
-                                            </LinearLayout>
+<!--                                                </RelativeLayout>-->
+
+<!--                                                <RelativeLayout-->
+<!--                                                    android:layout_width="match_parent"-->
+<!--                                                    android:layout_height="wrap_content"-->
+<!--                                                    android:layout_weight="1">-->
+
+<!--                                                    <LinearLayout-->
+<!--                                                        android:layout_width="match_parent"-->
+<!--                                                        android:layout_height="wrap_content"-->
+<!--                                                        android:orientation="vertical">-->
+
+<!--                                                        <TextView-->
+<!--                                                            android:id="@+id/tvWalletBalance"-->
+<!--                                                            android:layout_width="match_parent"-->
+<!--                                                            android:layout_height="wrap_content"-->
+<!--                                                            android:fontFamily="@font/poppins_semibold"-->
+<!--                                                            android:gravity="center"-->
+<!--                                                            android:text=""-->
+<!--                                                            android:textColor="@color/black"-->
+<!--                                                            android:textSize="@dimen/_12sdp" />-->
+
+<!--                                                        <TextView-->
+<!--                                                            android:layout_width="match_parent"-->
+<!--                                                            android:layout_height="wrap_content"-->
+<!--                                                            android:fontFamily="@font/poppins_regular"-->
+<!--                                                            android:gravity="center"-->
+<!--                                                            android:text="@string/wallet_balance"-->
+<!--                                                            android:textColor="@color/white"-->
+<!--                                                            android:textSize="@dimen/_10sdp" />-->
+
+<!--                                                    </LinearLayout>-->
+
+
+<!--                                                </RelativeLayout>-->
+
+
+<!--                                            </LinearLayout>-->
 
                                         </LinearLayout>
 

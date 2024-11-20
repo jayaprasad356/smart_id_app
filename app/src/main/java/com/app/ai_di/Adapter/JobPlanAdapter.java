@@ -4,6 +4,7 @@ import static com.app.ai_di.helper.Constant.SUCCESS;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -131,7 +132,11 @@ public class JobPlanAdapter extends RecyclerView.Adapter<JobPlanAdapter.PlanView
                 holder.btActivatePlan.setVisibility(View.VISIBLE);
                 holder.btActivatePlan.setText("Start work");
                 holder.btActivatePlan.setBackgroundResource(R.drawable.disabled_button_bg);
-                holder.btActivatePlan.setEnabled(false);
+                holder.btActivatePlan.setOnClickListener(
+                        view -> {
+                            activatedPlan();
+                        }
+                );
                 Log.d("START_WORK", "START_WORK 5");
             }
             Log.d("START_WORK", "START_WORK 6");
@@ -184,6 +189,18 @@ public class JobPlanAdapter extends RecyclerView.Adapter<JobPlanAdapter.PlanView
     public int getItemCount() {
         return planListModels.size();
     }
+
+    private void activatedPlan() {
+        // Create an AlertDialog
+        new AlertDialog.Builder(activity)
+                .setMessage("Hi, Please Sync 50 ID's In Home Screen To Start Another Work Or Logout & Login Again To Change The Work.")
+                .setNegativeButton("Cancel", (dialog, which) -> {
+                    // User canceled - dismiss the dialog
+                    dialog.dismiss();
+                })
+                .show();
+    }
+
 
     public static class PlanViewHolder extends RecyclerView.ViewHolder {
         TextView tvPlanName, tvPerCode, tvMonthlyEarning, tvMonthlyTarget, tvDescription;

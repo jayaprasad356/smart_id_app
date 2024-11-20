@@ -94,7 +94,7 @@ public class SplashActivity extends AppCompatActivity {
                             if (Integer.parseInt(currentversion) >= Integer.parseInt(latestVersion)) {
                                 GotoActivity();
                             } else {
-                                updateAlertDialog();
+                                updateAlertDialog(link);
                             }
                         }
 
@@ -165,7 +165,7 @@ public class SplashActivity extends AppCompatActivity {
         session.setData(Constant.LEVEL, userDetails.optString(Constant.LEVEL, ""));
     }
 
-    private void updateAlertDialog() {
+    private void updateAlertDialog(String url) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("New update Available");
         builder.setMessage(description);
@@ -174,19 +174,22 @@ public class SplashActivity extends AppCompatActivity {
         builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+//                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
 
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.addCategory(Intent.CATEGORY_HOME);
-                startActivity(intent);
-                finish();
-            }
-        });
+//        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                Intent intent = new Intent(Intent.ACTION_MAIN);
+//                intent.addCategory(Intent.CATEGORY_HOME);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
         builder.show();
     }
 

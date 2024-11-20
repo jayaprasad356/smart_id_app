@@ -7,10 +7,60 @@
     android:background="@color/BGColorBlue"
     tools:context=".fragment.ExtraIncomeFragment">
 
+
+
+    <LinearLayout
+        android:id="@+id/llWaiting"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:ignore="UselessParent"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            app:indicatorColor="@color/primaryColor"
+            app:indicatorSize="@dimen/_20sdp"
+            app:trackThickness="@dimen/_2sdp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/please_wait"
+            android:textColor="@color/primaryColor"
+            android:textSize="@dimen/_15sdp"
+            android:fontFamily="@font/poppins_medium"/>
+
+    </LinearLayout>
+
     <RelativeLayout
+        android:id="@+id/rlPlanView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:ignore="UselessParent">
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnFAQ"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_35sdp"
+            android:text="@string/faq"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp"
+            android:textAllCaps="false"
+            app:backgroundTint="@null"
+            android:background="@drawable/button_bg"/>
 
         <com.google.android.material.button.MaterialButton
             android:layout_alignParentEnd="true"
@@ -34,9 +84,17 @@
             app:iconGravity="textStart"
             app:iconTint="@null"/>
 
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:layout_below="@+id/btnRecharge"
+            android:id="@+id/youtubePlayerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            tools:ignore="MissingClass" />
+
 
         <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@+id/btnRecharge"
+        android:layout_below="@+id/youtubePlayerView"
         android:id="@+id/rvPlanList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

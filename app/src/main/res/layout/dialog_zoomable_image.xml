@@ -1,0 +1,52 @@
+<!-- res/layout/dialog_zoomable_image.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <ImageButton
+        android:id="@+id/btnClose"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:background="@drawable/remove_ic"
+        android:contentDescription="Close"
+        tools:ignore="HardcodedText"
+        android:layout_gravity="end"
+        android:layout_margin="@dimen/_10sdp"/>
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/photoView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_margin="@dimen/_10sdp"
+        >
+
+        <Button
+            android:id="@+id/btnZoomIn"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_weight="1"
+            android:text="@string/zoom_in"
+            android:layout_marginEnd="@dimen/_5sdp"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/btnZoomOut"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_weight="1"
+            android:text="@string/zoom_out"
+            android:layout_marginStart="@dimen/_5sdp"
+            tools:ignore="ButtonStyle" />
+    </LinearLayout>
+</LinearLayout>

@@ -92,6 +92,7 @@ public class SignUpActivity extends AppCompatActivity {
         //  binding.otpView =  000000
 
         if (otp.equals(etOtp.getText().toString().trim())) {
+            findViewById(R.id.btnVerifyOtp).setBackgroundResource(R.drawable.button_green_bg);
             Toast.makeText(activity, "verified successfully", Toast.LENGTH_SHORT).show();
             isVerified = true;
         }
@@ -125,7 +126,7 @@ public class SignUpActivity extends AppCompatActivity {
             int month = c.get(Calendar.MONTH);
             int day = c.get(Calendar.DAY_OF_MONTH);
 
-            DatePickerDialog datePickerDialog = new DatePickerDialog(
+            @SuppressLint("SetTextI18n") DatePickerDialog datePickerDialog = new DatePickerDialog(
                     SignUpActivity.this,
                     (view, year1, monthOfYear, dayOfMonth) -> edDOB.setText(year1 + "-" + (monthOfYear + 1) + "-" + dayOfMonth),
                     year, month, day);
@@ -134,6 +135,8 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void setupButtonListeners() {
+        findViewById(R.id.btnSendOtp).setBackgroundResource(R.drawable.button_bg);
+        findViewById(R.id.btnSendOtp).setEnabled(true);
         findViewById(R.id.btnSignup).setOnClickListener(v -> validateAndRegister());
         findViewById(R.id.btnSendOtp).setOnClickListener(v -> btnSentOTP());
         findViewById(R.id.btnVerifyOtp).setOnClickListener(v -> otpVerification());
@@ -147,6 +150,7 @@ public class SignUpActivity extends AppCompatActivity {
                 if (enteredOtp.equals("011011")) {
                     // If the default OTP is entered, bypass the actual OTP verification
 //                        login();
+                    findViewById(R.id.btnVerifyOtp).setBackgroundResource(R.drawable.button_green_bg);
                     Toast.makeText(activity, "verified successfully", Toast.LENGTH_SHORT).show();
                     isVerified = true;
                 } else {
@@ -430,6 +434,9 @@ public class SignUpActivity extends AppCompatActivity {
         ApiConfig.RequestToVolley((result, response) -> {
             if (result) {
                 Toast.makeText(this, "OTP Sent Successfully", Toast.LENGTH_SHORT).show();
+                findViewById(R.id.btnSendOtp).setBackgroundResource(R.drawable.disabled_button_bg);
+                findViewById(R.id.btnSendOtp).setEnabled(false);
+                etPhoneNo.setEnabled(false);
             } else {
                 // Toast.makeText(this, , Toast.LENGTH_SHORT).show()
                 Toast.makeText(this, "OTP Failed", Toast.LENGTH_SHORT).show();
