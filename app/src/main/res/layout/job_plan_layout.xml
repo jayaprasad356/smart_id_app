@@ -62,6 +62,15 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:elevation="0dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardElevation="0dp"
+                        app:cardUseCompatPadding="false"
+                        app:cardCornerRadius="8dp">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -87,6 +96,7 @@
                         app:backgroundTint="@null"
                         android:background="@color/primaryColor" />
                 </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
 
                 <LinearLayout
                     android:layout_width="match_parent"

@@ -4,6 +4,9 @@ import static com.app.ai_di.helper.Constant.SUCCESS;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,10 +14,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,6 +39,10 @@ import com.google.android.material.button.MaterialButton;
 import com.app.ai_di.helper.Session;
 import com.google.android.material.card.MaterialCardView;
 import com.google.gson.Gson;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,6 +58,11 @@ public class ExtraIncomeFragment extends Fragment {
     Session session;
     Activity activity;
     private ReferTargetAdapter referTargetAdapter;
+    private LinearLayout llWaiting;
+    private NestedScrollView frame;
+    private YouTubePlayerView youtubePlayerView;
+    private YouTubePlayer youTubePlayerInstance;
+    private boolean isPlayerReady = false;
     private final List<RefersTargetModel> refersTargetModel = new ArrayList<>(); // Initialize here
 
     @Override
@@ -69,6 +84,15 @@ public class ExtraIncomeFragment extends Fragment {
         RecyclerView rvSlabList = view.findViewById(R.id.rvSlabList);
         MaterialButton btActivatePlan = view.findViewById(R.id.btActivatePlan);
         MaterialCardView mcActivatePlan = view.findViewById(R.id.mcActivatePlan);
+        MaterialButton btnRefer = view.findViewById(R.id.btnRefer);
+        MaterialButton btnReferText = view.findViewById(R.id.btnReferText);
+        youtubePlayerView = view.findViewById(R.id.youtubePlayerView);
+
+        llWaiting = view.findViewById(R.id.llWaiting);
+        frame = view.findViewById(R.id.frame);
+
+        llWaiting.setVisibility(View.VISIBLE);
+        frame.setVisibility(View.GONE);
 
         rvSlabList.setLayoutManager(new LinearLayoutManager(activity));
         referTargetAdapter = new ReferTargetAdapter(activity, refersTargetModel, this);
@@ -76,17 +100,111 @@ public class ExtraIncomeFragment extends Fragment {
 
         mcActivatePlan.setVisibility(View.VISIBLE);
 
-        loadSlabs();
+        loadSlabs(false);
 
         btActivatePlan.setOnClickListener(v -> activatedExtraIncomePlan());
 
-        List<ExtraPlanModel> extraPlans = session.getExtraPlanData();
-
-        if (extraPlans != null || !extraPlans.isEmpty()) {
+        // Check saved extra plans and adjust UI accordingly
+        List<ExtraPlanModel> extraPlansData = session.getExtraPlanData();
+        if (extraPlansData != null && !extraPlansData.isEmpty()) {
             mcActivatePlan.setVisibility(View.GONE);
         } else {
             mcActivatePlan.setVisibility(View.VISIBLE);
         }
+
+        setupReferButton(btnRefer, btnReferText);
+
+        // Observe lifecycle to automatically manage player state
+        getLifecycle().addObserver(youtubePlayerView);
+
+        // Set up YouTubePlayerListener
+        youtubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+                youTubePlayerInstance = youTubePlayer;
+                isPlayerReady = true; // Mark player as ready
+                Log.d("YouTubePlayer", "Player is ready");
+
+                String videoId = "6RC_0H4875w"; // Use only the video ID
+//                String videoId = "WrU4jt1KXnI"; // Use only the video ID
+//                String videoId = "dB4AbjyDU2o"; // Use only the video ID
+                youTubePlayerInstance.cueVideo(videoId, 0f); // Load video at 0 seconds without autoplay
+            }
+
+            @Override
+            public void onError(@NonNull YouTubePlayer youTubePlayer, @NonNull PlayerConstants.PlayerError error) {
+                Toast.makeText(activity, "Error: " + error.toString(), Toast.LENGTH_SHORT).show();
+                Log.e("YouTubePlayer", "Error loading video: " + error.toString());
+            }
+        });
+    }
+
+    private void setupReferButton(MaterialButton btnRefer, MaterialButton btnReferText) {
+        final String[] referCode = {session.getData(Constant.REFER_CODE)};
+        String baseUrl = "https://aidiapp.in/";
+
+        if (referCode[0] != null) {
+            btnRefer.setOnClickListener(v -> shareTextAndUrl(
+                    "Click this link to join Ai-Di App ☺️\nUse My Refer Code " + referCode[0] + " While Creating Account.", baseUrl));
+            btnReferText.setText(referCode[0]);
+        } else {
+            btnRefer.setOnClickListener(v -> shareTextAndUrl(
+                    "Click this link to join Ai-Di App ☺️\nUse My Refer Code ID123 While Creating Account.", baseUrl));
+            btnReferText.setText("123456");
+        }
+
+        btnReferText.setOnClickListener(v -> {
+            if (referCode[0] == null || referCode[0].isEmpty()) {
+                referCode[0] = "123456"; // Default refer code
+            }
+
+            ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("Refer Code", referCode[0]);
+            clipboard.setPrimaryClip(clip);
+
+        });
+    }
+
+    // Only attempt to play video if the player is ready
+    private void playVideo() {
+        if (isPlayerReady && youTubePlayerInstance != null) {
+            youTubePlayerInstance.play(); // Play the video
+        } else {
+            Log.d("YouTubePlayer", "Player is not ready yet");
+        }
+    }
+
+    // Only attempt to pause video if the player is ready
+    private void pauseVideo() {
+        if (isPlayerReady && youTubePlayerInstance != null) {
+            youTubePlayerInstance.pause(); // Pause the video
+        } else {
+            Log.d("YouTubePlayer", "Player is not ready yet");
+        }
+    }
+
+    // Only attempt to seek video if the player is ready
+    private void seekTo(float seconds) {
+        if (isPlayerReady && youTubePlayerInstance != null) {
+            youTubePlayerInstance.seekTo(seconds); // Seek to the specified time
+        } else {
+            Log.d("YouTubePlayer", "Player is not ready yet");
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (youtubePlayerView != null) {
+            youtubePlayerView.release(); // Release the player when the view is destroyed
+        }
+    }
+
+    private void shareTextAndUrl(String message, String url) {
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, message + "\n" + url);
+        startActivity(Intent.createChooser(shareIntent, "Share via"));
     }
 
     private void activatedExtraIncomePlan() {
@@ -119,8 +237,9 @@ public class ExtraIncomeFragment extends Fragment {
         Log.d("EXTRA_INCOME_PLAN_ACTIVATE", "EXTRA_INCOME_PLAN_ACTIVATE params: " + params);
     }
 
-    public void loadSlabs() {
+    public void loadSlabs(boolean reload) {
         Map<String, String> params = new HashMap<>();
+        params.put(Constant.USER_ID, session.getData(Constant.USER_ID));
         ApiConfig.RequestToVolley((result, response) -> {
             if (result) {
                 try {
@@ -139,11 +258,20 @@ public class ExtraIncomeFragment extends Fragment {
                             refersTargetModel.add(group);
                         }
 
-                        // Notify the adapter of data changes
-                        referTargetAdapter.notifyDataSetChanged();
+                        if(reload) {
+                            referTargetAdapter.notifyDataSetChanged();
+                        }
+
+                        llWaiting.setVisibility(View.VISIBLE);
+                        frame.setVisibility(View.GONE);
+                        new Handler().postDelayed(() -> {
+                            llWaiting.setVisibility(View.GONE);
+                            frame.setVisibility(View.VISIBLE);
+                        }, 2000);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Log.d("REFER_TARGET_URL", "REFER_TARGET_URL E: " + e.getMessage());
                 }
             }
         }, activity, Constant.REFER_TARGET_URL, params, true);

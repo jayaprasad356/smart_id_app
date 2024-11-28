@@ -67,9 +67,16 @@ public class ReferTargetAdapter extends RecyclerView.Adapter<ReferTargetAdapter.
 
         holder.btClaimSlab.setText("claim ₹" + refersTargetModel.getBonus());
 
-        holder.btClaimSlab.setOnClickListener(view -> {
-            claimSlabPlan(refersTargetModel.getId());
-        });
+        if (Objects.equals(refersTargetModel.getStatus(), "1")) {
+            holder.btClaimSlab.setBackgroundResource(R.drawable.button_bg);
+            holder.btClaimSlab.setEnabled(true);
+            holder.btClaimSlab.setOnClickListener(view -> {
+                claimSlabPlan(refersTargetModel.getId());
+            });
+        } else {
+            holder.btClaimSlab.setBackgroundResource(R.drawable.disabled_button_bg);
+            holder.btClaimSlab.setEnabled(false);
+        }
     }
 
     @Override
@@ -77,10 +84,10 @@ public class ReferTargetAdapter extends RecyclerView.Adapter<ReferTargetAdapter.
         return refersTargetModels.size();
     }
 
-    private void claimSlabPlan(String planId) {
+    private void claimSlabPlan(String referId) {
         Map<String, String> params = new HashMap<>();
         params.put(Constant.USER_ID, session.getData(Constant.USER_ID));
-        params.put(Constant.EXTRA_CLAIM_PLAN_ID, planId);
+        params.put(Constant.REFER_ID, referId);
 
         ApiConfig.RequestToVolley((result, response) -> {
             if (result) {
@@ -89,7 +96,7 @@ public class ReferTargetAdapter extends RecyclerView.Adapter<ReferTargetAdapter.
                     String message = jsonObject.getString(com.app.ai_di.helper.Constant.MESSAGE);
                     if (jsonObject.getBoolean(Constant.SUCCESS)) {
                         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
-                        extraIncomeFragment.loadSlabs();
+                        extraIncomeFragment.loadSlabs(true);
                         if (activity instanceof MainActivity) {
                             ((MainActivity) activity).userDetails();
                         }
@@ -101,10 +108,10 @@ public class ReferTargetAdapter extends RecyclerView.Adapter<ReferTargetAdapter.
                     e.printStackTrace();
                 }
             }
-        }, activity, Constant.EXTRA_INCOME_PLAN_ACTIVATE, params, true);
+        }, activity, Constant.CLAIM_EXTRA_INCOME, params, true);
 
-        Log.d("EXTRA_INCOME_PLAN_ACTIVATE", "EXTRA_INCOME_PLAN_ACTIVATE: " + Constant.EXTRA_INCOME_PLAN_ACTIVATE);
-        Log.d("EXTRA_INCOME_PLAN_ACTIVATE", "EXTRA_INCOME_PLAN_ACTIVATE params: " + params);
+        Log.d("CLAIM_EXTRA_INCOME", "CLAIM_EXTRA_INCOME: " + Constant.CLAIM_EXTRA_INCOME);
+        Log.d("CLAIM_EXTRA_INCOME", "CLAIM_EXTRA_INCOME params: " + params);
     }
 
     public static class referTargetAdapterViewHolder extends RecyclerView.ViewHolder {

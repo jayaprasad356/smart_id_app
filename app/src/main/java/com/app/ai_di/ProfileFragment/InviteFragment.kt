@@ -1,5 +1,8 @@
 package com.app.ai_di.ProfileFragment
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -50,12 +53,23 @@ Use My Refer Code ${session.getData(Constant.REFER_CODE)} While Creating Account
             )
         }
 
+        var referCode = session.getData(Constant.REFER_CODE)
+
         // Check if session and data are not null, then set the text
         if (session.getData(Constant.REFER_CODE) != null) {
             binding.btnReferText.text = session.getData(Constant.REFER_CODE)
         } else {
             binding.btnReferText.text = "123456"
         }
+
+        binding.btnReferText.setOnClickListener(View.OnClickListener { v: View? ->
+            if (session.getData(Constant.REFER_CODE) == null || session.getData(Constant.REFER_CODE).isEmpty()) {
+                referCode = "123456" // Default refer code
+            }
+            val clipboard = requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("Refer Code", referCode)
+            clipboard.setPrimaryClip(clip)
+        })
 
         return binding.root
 

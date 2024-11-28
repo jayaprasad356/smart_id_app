@@ -16,8 +16,8 @@
 
     <item
         android:id="@+id/Team"
-        android:icon="@drawable/menu_team"
-        android:title="Extra Income" />
+        android:icon="@drawable/grow_ic"
+        android:title="Grow With us" />
 
     <item
         android:id="@+id/Profile"

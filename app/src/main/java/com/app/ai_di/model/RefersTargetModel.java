@@ -5,17 +5,20 @@ public class RefersTargetModel {
     private String title;
     private String refer_count;
     private String bonus;
+    private String status;
 
     public RefersTargetModel(
             String id,
             String title,
             String refer_count,
-            String bonus
+            String bonus,
+            String status
     ) {
         this.id = id;
         this.title = title;
         this.refer_count = refer_count;
         this.bonus = bonus;
+        this.status = status;
     }
 
     public String getId() {
@@ -48,5 +51,13 @@ public class RefersTargetModel {
 
     public void setBonus(String bonus) {
         this.bonus = bonus;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

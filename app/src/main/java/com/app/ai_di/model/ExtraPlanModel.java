@@ -5,18 +5,21 @@ public class ExtraPlanModel {
     private String name;
     private String description;
     private String price;
+    private String status;
 
     // Constructor, getters, and setters
     public ExtraPlanModel(
             String id,
             String name,
             String description,
-            String price
+            String price,
+            String status
     ) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
+        this.status = status;
     }
 
     public String getId() {
@@ -49,5 +52,13 @@ public class ExtraPlanModel {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

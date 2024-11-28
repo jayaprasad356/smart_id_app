@@ -3,8 +3,6 @@ package com.app.ai_di.activities
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -306,6 +304,8 @@ class MainActivity : AppCompatActivity() {
 
                         Log.d("Plan", "Plan extra_plan_activated")
 
+                        Log.d("Plan", "Parsing extra_plan_activated")
+
                         // Parse and save plan data
                         val extraPlanArray = userObject.getJSONArray("extra_plan_activated")
                         val extraPlans = mutableListOf<ExtraPlanModel>()
@@ -313,14 +313,17 @@ class MainActivity : AppCompatActivity() {
                             val extraPlanObject = extraPlanArray.getJSONObject(i)
                             val extraPlan = ExtraPlanModel(
                                 extraPlanObject.getString("id"),
-                                extraPlanObject.getString("title"),
-                                extraPlanObject.getString("refer_count"),
-                                extraPlanObject.getString("bonus"),
+                                extraPlanObject.optString("name", "N/A"),
+                                extraPlanObject.optString("description", "N/A"),
+                                extraPlanObject.optString("price", "0"),
+                                "0" // Default status
                             )
                             extraPlans.add(extraPlan)
                         }
+
                         // Save the list of plans in session
-                        session!!.setExtraPlanData(extraPlans)
+                        session?.setExtraPlanData(extraPlans)
+
 
                     } else {
                         Toast.makeText(

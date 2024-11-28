@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,8 @@ import com.app.ai_di.helper.ApiConfig;
 import com.app.ai_di.helper.Constant;
 import com.app.ai_di.helper.Session;
 import com.app.ai_di.model.PlanListModel;
+import com.bumptech.glide.Glide;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.google.android.material.button.MaterialButton;
 
 import org.json.JSONException;
@@ -66,6 +70,13 @@ public class JobPlanAdapter extends RecyclerView.Adapter<JobPlanAdapter.PlanView
         holder.tvMonthlyTarget.setText(plan.getMonthly_codes());
         holder.tvDescription.setText(plan.getDescription());
 
+        // Load image using Glide (or any other image loading library)
+        Glide.with(activity)
+                .load(plan.getImage()) // Assuming `getImage()` returns a URL or URI
+                .placeholder(R.drawable.image_icon) // Optional: Add a placeholder
+                .error(R.drawable.image_icon) // Optional: Add an error image
+                .into(holder.ivImage);
+
         if (plan.getDescription().isEmpty()){
             holder.tvDescription.setVisibility(View.GONE);
         } else {
@@ -93,6 +104,11 @@ public class JobPlanAdapter extends RecyclerView.Adapter<JobPlanAdapter.PlanView
 //                holder.tvMore.setText("More");
 //            }
 //        });
+
+        // Activate plan button logic
+        holder.btnZoom.setOnClickListener(view -> {
+            dialogZoomable(plan.getImage());
+        });
 
         // Activate plan button logic
         holder.btActivatePlan.setOnClickListener(view -> {
@@ -155,6 +171,60 @@ public class JobPlanAdapter extends RecyclerView.Adapter<JobPlanAdapter.PlanView
         }
     }
 
+    public void dialogZoomable(String imageUrl) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity); // Context: Activity
+        LayoutInflater inflater = activity.getLayoutInflater(); // LayoutInflater
+        View dialogView = inflater.inflate(R.layout.dialog_zoomable_image, null);
+
+        com.github.chrisbanes.photoview.PhotoView photoView = dialogView.findViewById(R.id.photoView);
+
+        // Load image with Glide
+        Glide.with(activity)
+                .load(imageUrl)
+                .placeholder(R.drawable.image_icon)
+                .error(R.drawable.image_icon)
+                .into(photoView);
+
+        // Initialize buttons
+        Button btnZoomIn = dialogView.findViewById(R.id.btnZoomIn);
+        Button btnZoomOut = dialogView.findViewById(R.id.btnZoomOut);
+        ImageButton btnClose = dialogView.findViewById(R.id.btnClose);
+
+        builder.setView(dialogView);
+        AlertDialog dialog = builder.create();
+
+        // **Zoom In Button**
+        btnZoomIn.setOnClickListener(v -> {
+            float currentScale = photoView.getScale();
+            float maxScale = photoView.getMaximumScale();
+            float newScale = Math.min(currentScale * 1.2f, maxScale); // Clamp to maxScale
+            photoView.setScale(newScale, true);
+        });
+
+        // **Zoom Out Button**
+        btnZoomOut.setOnClickListener(v -> {
+            float currentScale = photoView.getScale();
+            float minScale = photoView.getMinimumScale();
+            float newScale = Math.max(currentScale / 1.2f, minScale); // Clamp to minScale
+            photoView.setScale(newScale, true);
+        });
+
+        // **Close Button**
+        btnClose.setOnClickListener(v -> {
+            if (dialog.isShowing()) {
+                dialog.dismiss();
+            }
+        });
+
+        // Set rounded corner background
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_background);
+        }
+
+        // Display the dialog
+        dialog.show();
+    }
+
     private void activatedPlan(String planId) {
         Map<String, String> params = new HashMap<>();
         params.put(Constant.USER_ID, session.getData(Constant.USER_ID));
@@ -204,7 +274,8 @@ public class JobPlanAdapter extends RecyclerView.Adapter<JobPlanAdapter.PlanView
 
     public static class PlanViewHolder extends RecyclerView.ViewHolder {
         TextView tvPlanName, tvPerCode, tvMonthlyEarning, tvMonthlyTarget, tvDescription;
-        MaterialButton btActivatePlan;
+        MaterialButton btActivatePlan, btnZoom;
+        PhotoView ivImage;
 
         public PlanViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -213,7 +284,9 @@ public class JobPlanAdapter extends RecyclerView.Adapter<JobPlanAdapter.PlanView
             tvMonthlyEarning = itemView.findViewById(R.id.tvMonthlyEarning);
             tvMonthlyTarget = itemView.findViewById(R.id.tvMonthlyTarget);
             btActivatePlan = itemView.findViewById(R.id.btActivatePlan);
+            btnZoom = itemView.findViewById(R.id.btnZoom);
             tvDescription = itemView.findViewById(R.id.tvDescription);
+            ivImage = itemView.findViewById(R.id.ivImage);
 //            tvMore = itemView.findViewById(R.id.tvMore);
         }
     }

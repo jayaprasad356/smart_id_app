@@ -32,6 +32,7 @@ public class Constant {
     public static final String USER_DETAILS_API = BaseUrl + "userdetails.php";
     public static final String ACTIVATE_PLAN = BaseUrl + "activate_plan.php";
     public static final String EXTRA_INCOME_PLAN_ACTIVATE = BaseUrl + "extra_income_plan_activate.php";
+    public static final String CLAIM_EXTRA_INCOME = BaseUrl + "claim_extra_income.php";
     public static final String PLAN_LIST_URL = BaseUrl + "plan_list.php";
     public static final String REFER_TARGET_URL = BaseUrl + "refers_target_list.php";
     public static final String SYNC_CODE = BaseUrl + "sync_code.php";
@@ -93,6 +94,7 @@ public class Constant {
     public static final String Wallet_TYPE = "wallet_type";
     public static final String PLAN_ID = "plan_id";
     public static final String EXTRA_CLAIM_PLAN_ID = "extra_claim_plan_id";
+    public static final String REFER_ID = "refer_id";
     public static final String MOBILE = "mobile";
     public static final String SYNC_UNIQUE_ID = "sync_unique_id";
     public static final String STUDENT_NAME = "student_name";

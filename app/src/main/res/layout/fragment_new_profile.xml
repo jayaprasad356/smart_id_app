@@ -511,7 +511,7 @@
                                     android:layout_centerVertical="true"
                                     android:layout_marginLeft="@dimen/_20sdp"
                                     android:fontFamily="@font/poppins_medium"
-                                    android:text="Invite Friend"
+                                    android:text="Refer &amp; Earn"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_12sdp" />
 
