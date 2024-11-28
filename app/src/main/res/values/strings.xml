@@ -167,6 +167,32 @@
     <string name="dob">DOB</string>
     <string name="leave_date">Leave date</string>
     <string name="description">Description</string>
+    <string name="enter_description">Enter description</string>
+    <string name="reason">Reason</string>
+    <string name="enter_reason">Enter Reason</string>
+    <string name="submit">Submit</string>
+    <string name="mobile_number">Mobile number</string>
+    <string name="register_date">Register date</string>
+    <string name="advanced_plan_600_nstandard_plan_400_nbasic_plan_300_ntrail_plan_5">Advanced Plan - ₹ 600 \nStandard Plan - ₹ 400 \nBasic Plan - ₹ 300 \nTrail plan - ₹ 5</string>
+    <string name="refer_amp_earn"><![CDATA[Refer & Earn]]></string>
+    <string name="my_refer">My Refer</string>
+    <string name="unlock_work_from_home_customer_support_job_monthly_salary_up_to_12000">Unlock Work From Home Customer Support Job - Monthly Salary up to 12000</string>
+    <string name="charges_99_for_application">Charges ₹ 99 For Application</string>
+    <string name="slabs">Slabs</string>
+    <string name="bonus">Bonus</string>
+    <string name="work_from_home_customer_support_job_up_to_12000_pm_salary">Work From Home - Customer Support Job up to 12000 PM Salary</string>
+    <string name="note_1_complete_refers_slabs">
+    <![CDATA[Note:\n\u20031. Complete Refers Slabs In 2 Months To Avail The Benefit & Job.\n\u20032. Bonus can be claimed only if you have applied for the job by paying ₹99.]]>
+</string>
+    <string name="job_role_of_customer_support">Job role of customer support</string>
+    <string name="handling_users_queries_helping_users_on_joining_reporting_to_manager_on_daily_activities"><![CDATA[\u20031. Handling users queries.\n\u20032. Helping users on joining.\n\u20033. Reporting to manager on daily activities.]]></string>
+    <string name="work_days">Work days</string>
+    <string name="holidays">Holidays</string>
+    <string name="mon_sat">Mon - Sat</string>
+    <string name="sunday_amp_government_holidays"><![CDATA[Sunday & Government Holidays]]></string>
+    <string name="free_trail_earnings_30_days">Free Trail Earnings- 30 Days</string>
+    <string name="basic_plan_2999">Basic Plan - ₹ 2999</string>
+    <string name="standard_plan_3999">Standard Plan - ₹ 3999</string>
 
     <string-array name="my_spinner_values">
         <item>Select Amount</item>

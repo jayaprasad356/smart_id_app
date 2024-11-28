@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 import com.app.ai_di.activities.LoginActivity;
+import com.app.ai_di.model.ExtraPlanModel;
 import com.app.ai_di.model.PlanListModel;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
@@ -152,6 +153,22 @@ public class Session {
         Gson gson = new Gson();
         String json = pref.getString("plan_activated", null);
         Type type = new TypeToken<List<PlanListModel>>() {}.getType();
+        return gson.fromJson(json, type);
+    }
+
+    // Method to store a list of Plan objects as JSON
+    public void setExtraPlanData(List<ExtraPlanModel> extraPlanModel) {
+        Gson gson = new Gson();
+        String json = gson.toJson(extraPlanModel);
+        editor.putString("extra_plan_activated", json);
+        editor.commit();
+    }
+
+    // Method to retrieve a list of Plan objects from JSON
+    public List<ExtraPlanModel> getExtraPlanData() {
+        Gson gson = new Gson();
+        String json = pref.getString("extra_plan_activated", null);
+        Type type = new TypeToken<List<ExtraPlanModel>>() {}.getType();
         return gson.fromJson(json, type);
     }
 

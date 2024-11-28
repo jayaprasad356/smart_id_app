@@ -379,7 +379,8 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    tools:ignore="UselessParent">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -394,7 +395,7 @@
                         android:id="@+id/tvSchoolName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/abcd_high_school"
+                        android:text="No Network"
                         android:fontFamily="@font/poppins_bold"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_12sdp"
@@ -414,7 +415,7 @@
                         android:id="@+id/tvStudentName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nandha"
+                        android:text="No Network"
                         android:fontFamily="@font/poppins_bold"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_12sdp"
@@ -434,7 +435,7 @@
                         android:id="@+id/tvRollNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="123456"
+                        android:text="0000000"
                         android:fontFamily="@font/poppins_bold"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_12sdp"
@@ -454,7 +455,7 @@
                         android:id="@+id/tvDOB"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="12345678"
+                        android:text="00000000"
                         android:fontFamily="@font/poppins_bold"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_12sdp"

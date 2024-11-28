@@ -37,6 +37,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
         android:layout_below="@+id/rlToolbar">
 
         <com.google.android.material.card.MaterialCardView
@@ -58,7 +59,6 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/todo"
                     android:src="@drawable/refer_friend_im"
                     android:adjustViewBounds="true"
                     android:layout_marginVertical="@dimen/_10sdp"/>
@@ -67,12 +67,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="@string/refer_and_earn_2000_generated_id_s_helps_to_achieve_monthly_target"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/refer_amp_earn"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp"
                     tools:ignore="ObsoleteLayoutParam" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/advanced_plan_600_nstandard_plan_400_nbasic_plan_300_ntrail_plan_5"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp"
+                    tools:ignore="ObsoleteLayoutParam"
+                    android:layout_marginTop="@dimen/_5sdp"/>
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -84,7 +96,7 @@
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnReferText"
                         android:layout_width="0dp"
-                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_5sdp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_medium"
@@ -101,18 +113,14 @@
                         app:iconTint="@color/primaryColor"
                         app:iconSize="@dimen/_12sdp"
                         app:iconGravity="textStart"
-                        app:iconPadding="@dimen/_4sdp"
-                        >
-
+                        app:iconPadding="@dimen/_4sdp">
 
                     </com.google.android.material.button.MaterialButton>
-
-
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnRefer"
                         android:layout_width="0dp"
-                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginLeft="@dimen/_5sdp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_medium"
@@ -130,7 +138,6 @@
                 </LinearLayout>
 
             </LinearLayout>
-
 
         </com.google.android.material.card.MaterialCardView>
 

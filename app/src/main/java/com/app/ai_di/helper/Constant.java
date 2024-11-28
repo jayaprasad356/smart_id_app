@@ -13,13 +13,13 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Constant {
-//    public static final String MainBaseUrl = "https://smartidmaker.graymatterworks.com/";
+    public static final String MainBaseUrl = "https://smartidmaker.graymatterworks.com/";
     public static final String RECHARGE_URL = "https://www.slveenterprises.org/product/31904496/ID-Making-Professional-Course";
     public static final String RECHARGE_DEMO_VIDEO_URL = "https://youtu.be/VeX9sWYHgUs?si=vkKtlY0U1EykB43g";
     public static final String FQD_URL = "https://aidiapp.in/information.php";
     public static final String WITHDRAWAL_DEMO_VIDEO_URL = "https://youtu.be/rL7GRdXq6Gg?si=Jqt4FBuh0D7KLId4";
     public static final String WHATSAPP_URL = "https://whatsapp.com/channel/0029VawJ9ZtJpe8ecl0Vb13w";
-    public static final String MainBaseUrl = " https://admin.aidiapp.in/";
+//    public static final String MainBaseUrl = "https://admin.aidiapp.in/";
 
 
 
@@ -31,7 +31,9 @@ public class Constant {
     public static final String LOGIN_URL = BaseUrl + "login.php";
     public static final String USER_DETAILS_API = BaseUrl + "userdetails.php";
     public static final String ACTIVATE_PLAN = BaseUrl + "activate_plan.php";
+    public static final String EXTRA_INCOME_PLAN_ACTIVATE = BaseUrl + "extra_income_plan_activate.php";
     public static final String PLAN_LIST_URL = BaseUrl + "plan_list.php";
+    public static final String REFER_TARGET_URL = BaseUrl + "refers_target_list.php";
     public static final String SYNC_CODE = BaseUrl + "sync_code.php";
     public static final String CHANGE_PASSWORD = BaseUrl + "change_password.php";
     public static final String UPDATE_BANK_URL = BaseUrl + "updatebank.php";
@@ -49,6 +51,8 @@ public class Constant {
     public static final String CHANGE_DEVICE_LIST_URL = BaseUrl + "change_device.php";
     public static final String APPUPDATE_URL = BaseUrl + "appupdate.php";
     public static final String TRNSACTION_LIST_URL = BaseUrl + "transaction_lists.php";
+    public static final String MY_TEAM = BaseUrl + "my_team.php";
+    public static final String LEAVE_LIST_URL = BaseUrl + "leave_lists.php";
     public static final String BANK_DETAILS_URL = BaseUrl + "bank_details.php";
     public static final String SETTINGS_URL = BaseUrl + "settings.php";
     public static final String CHAMPION_TASK_TRIAL = BaseUrl + "championtask_trial.php";
@@ -88,6 +92,7 @@ public class Constant {
     public static final String IS_PLAN_CHANGE = "is_plan_change";
     public static final String Wallet_TYPE = "wallet_type";
     public static final String PLAN_ID = "plan_id";
+    public static final String EXTRA_CLAIM_PLAN_ID = "extra_claim_plan_id";
     public static final String MOBILE = "mobile";
     public static final String SYNC_UNIQUE_ID = "sync_unique_id";
     public static final String STUDENT_NAME = "student_name";

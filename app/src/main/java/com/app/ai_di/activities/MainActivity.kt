@@ -22,14 +22,20 @@ import com.app.ai_di.helper.ApiConfig
 import com.app.ai_di.helper.Constant
 import com.app.ai_di.helper.DatabaseHelper
 import com.app.ai_di.helper.Session
+import com.app.ai_di.model.ExtraPlanModel
 import com.app.ai_di.model.PlanListModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.gson.Gson
+import com.onesignal.OneSignal
+import com.onesignal.debug.LogLevel
 import com.zoho.commons.InitConfig
 import com.zoho.livechat.android.listeners.InitListener
 import com.zoho.salesiqembed.ZohoSalesIQ
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -43,6 +49,8 @@ class MainActivity : AppCompatActivity() {
     var databaseHelper: DatabaseHelper? = null
 
     lateinit var binding: ActivityMainBinding
+
+    val ONESIGNAL_APP_ID = "8a35ee53-39e8-4a3b-9a40-b13b32eb2045"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -104,6 +112,17 @@ class MainActivity : AppCompatActivity() {
 
         loadNotification()
 
+        initializeOneSignal()
+
+    }
+
+    private fun initializeOneSignal() {
+        OneSignal.Debug.logLevel = LogLevel.VERBOSE
+        OneSignal.initWithContext(this, ONESIGNAL_APP_ID)
+        CoroutineScope(Dispatchers.IO).launch {
+            OneSignal.Notifications.requestPermission(false)
+        }
+        OneSignal.login("${session!!.getData(Constant.USER_ID)}")
     }
 
     // Method to hide the BottomNavigationView
@@ -284,6 +303,24 @@ class MainActivity : AppCompatActivity() {
                         }
                         // Save the list of plans in session
                         session!!.setPlanData(plans)
+
+                        Log.d("Plan", "Plan extra_plan_activated")
+
+                        // Parse and save plan data
+                        val extraPlanArray = userObject.getJSONArray("extra_plan_activated")
+                        val extraPlans = mutableListOf<ExtraPlanModel>()
+                        for (i in 0 until extraPlanArray.length()) {
+                            val extraPlanObject = extraPlanArray.getJSONObject(i)
+                            val extraPlan = ExtraPlanModel(
+                                extraPlanObject.getString("id"),
+                                extraPlanObject.getString("title"),
+                                extraPlanObject.getString("refer_count"),
+                                extraPlanObject.getString("bonus"),
+                            )
+                            extraPlans.add(extraPlan)
+                        }
+                        // Save the list of plans in session
+                        session!!.setExtraPlanData(extraPlans)
 
                     } else {
                         Toast.makeText(

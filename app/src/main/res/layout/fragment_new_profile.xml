@@ -532,6 +532,54 @@
                             android:layout_height="@dimen/_10sdp" />
 
                         <RelativeLayout
+                            android:gravity="center"
+                            android:id="@+id/rlRefers"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_40sdp">
+
+                            <LinearLayout
+                                android:gravity="center"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/_4sdp"
+                                    android:background="@drawable/refer_ic"
+                                    android:backgroundTint="@color/primaryColor"/>
+
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="@dimen/_20sdp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text="My Refers"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp" />
+
+
+                                <ImageView
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/_4sdp" android:background="@drawable/ic_back" />
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_10sdp" />
+
+                        <RelativeLayout
                             android:id="@+id/rlWithdraw"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp">
@@ -560,6 +608,58 @@
                                     android:layout_marginLeft="@dimen/_20sdp"
                                     android:fontFamily="@font/poppins_medium"
                                     android:text="Withdrawal"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp" />
+
+
+                                <ImageView
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/_4sdp"
+                                    android:background="@drawable/ic_back" />
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_10sdp"
+                            android:visibility="gone"/>
+
+                        <RelativeLayout
+                            android:visibility="gone"
+                            android:id="@+id/rlApplyLeave"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_40sdp">
+
+
+
+                            <LinearLayout
+                                android:gravity="center"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_22sdp"
+                                    android:layout_height="@dimen/_22sdp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/_4sdp"
+                                    android:background="@drawable/leave_letter_ic"
+                                    android:backgroundTint="@color/primaryColor"/>
+
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="@dimen/_20sdp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text="Apply Leave"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_12sdp" />
 

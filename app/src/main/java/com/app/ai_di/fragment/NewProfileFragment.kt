@@ -9,8 +9,10 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.app.ai_di.ProfileFragment.ApplyLeaveFragment
 import com.app.ai_di.ProfileFragment.InviteFragment
 import com.app.ai_di.ProfileFragment.MyBankFragment
+import com.app.ai_di.ProfileFragment.MyReferFragment
 import com.app.ai_di.ProfileFragment.SetPasswordFragment
 import com.app.ai_di.ProfileFragment.TransactionHistoryFragment
 import com.app.ai_di.ProfileFragment.UpdateBankFragment
@@ -35,10 +37,12 @@ class NewProfileFragment : Fragment() {
 
 //    var rlwithdrawhistory: RelativeLayout? = null
     var rlTransectionHistory: RelativeLayout? = null
+    var rlApplyLeave: RelativeLayout? = null
     var rlUpdateprofile: RelativeLayout? = null
     var rlChangepassword: RelativeLayout? = null
 //    var rlmyBank: RelativeLayout? = null
     var rlInvite: RelativeLayout? = null
+    var rlRefers: RelativeLayout? = null
     var rlLogout: RelativeLayout? = null
     var rlWithdraw: RelativeLayout? = null
     var rlUpdateBank: RelativeLayout? = null
@@ -67,23 +71,27 @@ class NewProfileFragment : Fragment() {
         val transaction = fragmentManager.beginTransaction()
         val inviteFragment = InviteFragment()
         val withdrawalFragment = WithdrawalFragment()
+        val myReferFragment = MyReferFragment()
         val withdrawalHistoryFragment = WithdrawalHistoryFragment()
         val transactionHistoryFragment = TransactionHistoryFragment()
         val myProfileFragment = UpdateProfileFragment()
         val setPasswordFragment = SetPasswordFragment()
         val updateBankFragment = UpdateBankFragment()
         val myBankFragment = MyBankFragment()
+//        val applyLeaveFragment = ApplyLeaveFragment()
 
         tvName!!.setText(session!!.getData(Constant.NAME))
         tvMobile!!.setText(session!!.getData(Constant.MOBILE))
 
 //        rlwithdrawhistory = root.findViewById(R.id.rlwithdrawhistory)
         rlTransectionHistory = root.findViewById(R.id.rlTransectionHistory)
+//        rlApplyLeave = root.findViewById(R.id.rlApplyLeave)
         rlUpdateprofile = root.findViewById(R.id.rlUpdateprofile)
         rlChangepassword = root.findViewById(R.id.rlChangepassword)
 //        rlmyBank = root.findViewById(R.id.rlmyBank)
         rlLogout = root.findViewById(R.id.rlLogout)
         rlInvite = root.findViewById(R.id.rlInvite)
+        rlRefers = root.findViewById(R.id.rlRefers)
         rlWithdraw = root.findViewById(R.id.rlWithdraw)
         rlUpdateBank = root.findViewById(R.id.rlUpdateBank)
 //        tvPlanActivate = root.findViewById(R.id.tvPlanActivate)
@@ -122,9 +130,23 @@ class NewProfileFragment : Fragment() {
             transaction.commit()
         })
 
+//        rlApplyLeave!!.setOnClickListener(View.OnClickListener {
+//            // Replace current fragment with updateBankFragment
+//            transaction.replace(R.id.Container, applyLeaveFragment)
+//            transaction.addToBackStack(null) // Optional: Add to backstack to allow going back
+//            transaction.commit()
+//        })
+
         rlWithdraw!!.setOnClickListener(View.OnClickListener {
             // Replace current fragment with withdrawalFragment
             transaction.replace(R.id.Container, withdrawalFragment)
+            transaction.addToBackStack(null) // Optional: Add to backstack to allow going back
+            transaction.commit()
+        })
+
+        rlRefers!!.setOnClickListener(View.OnClickListener {
+            // Replace current fragment with withdrawalFragment
+            transaction.replace(R.id.Container, myReferFragment)
             transaction.addToBackStack(null) // Optional: Add to backstack to allow going back
             transaction.commit()
         })
