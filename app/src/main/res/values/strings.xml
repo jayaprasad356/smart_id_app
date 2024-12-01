@@ -95,6 +95,7 @@
     <string name="per_month_earning">Per Month Earning</string>
     <string name="monthly_target">Monthly Target</string>
     <string name="activate_plan">Activate Plan</string>
+    <string name="activate_pla_99">Activate Grow Plan</string>
     <string name="total_data">Total Data</string>
     <string name="today_data">Today Data</string>
     <string name="withdrawal">Withdrawal</string>
@@ -193,6 +194,7 @@
     <string name="free_trail_earnings_30_days">Free Trail Earnings- 30 Days</string>
     <string name="basic_plan_2999">Basic Plan - ₹ 2999</string>
     <string name="standard_plan_3999">Standard Plan - ₹ 3999</string>
+    <string name="slab_bonus_is_only_for_referring_to_paid_plans">Slab Bonus Is Only For Referring To Paid Plans.</string>
 
     <string-array name="my_spinner_values">
         <item>Select Amount</item>

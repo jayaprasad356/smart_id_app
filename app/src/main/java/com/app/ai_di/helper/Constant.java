@@ -13,13 +13,13 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Constant {
-    public static final String MainBaseUrl = "https://smartidmaker.graymatterworks.com/";
+//    public static final String MainBaseUrl = "https://smartidmaker.graymatterworks.com/";
     public static final String RECHARGE_URL = "https://www.slveenterprises.org/product/31904496/ID-Making-Professional-Course";
     public static final String RECHARGE_DEMO_VIDEO_URL = "https://youtu.be/VeX9sWYHgUs?si=vkKtlY0U1EykB43g";
     public static final String FQD_URL = "https://aidiapp.in/information.php";
     public static final String WITHDRAWAL_DEMO_VIDEO_URL = "https://youtu.be/rL7GRdXq6Gg?si=Jqt4FBuh0D7KLId4";
     public static final String WHATSAPP_URL = "https://whatsapp.com/channel/0029VawJ9ZtJpe8ecl0Vb13w";
-//    public static final String MainBaseUrl = "https://admin.aidiapp.in/";
+    public static final String MainBaseUrl = "https://admin.aidiapp.in/";
 
 
 

@@ -4,6 +4,7 @@ import static com.app.ai_di.helper.Constant.SUCCESS;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -125,9 +126,7 @@ public class ExtraIncomeFragment extends Fragment {
                 isPlayerReady = true; // Mark player as ready
                 Log.d("YouTubePlayer", "Player is ready");
 
-                String videoId = "6RC_0H4875w"; // Use only the video ID
-//                String videoId = "WrU4jt1KXnI"; // Use only the video ID
-//                String videoId = "dB4AbjyDU2o"; // Use only the video ID
+                String videoId = "0kzUu1WUPII"; // Use only the video ID
                 youTubePlayerInstance.cueVideo(videoId, 0f); // Load video at 0 seconds without autoplay
             }
 
@@ -137,6 +136,17 @@ public class ExtraIncomeFragment extends Fragment {
                 Log.e("YouTubePlayer", "Error loading video: " + error.toString());
             }
         });
+    }
+
+    private void activatedPlanSuccess() {
+        // Create an AlertDialog
+        new AlertDialog.Builder(activity)
+                .setMessage("Congratulations, You have activated Grow plan")
+                .setNegativeButton("Cancel", (dialog, which) -> {
+                    // User canceled - dismiss the dialog
+                    dialog.dismiss();
+                })
+                .show();
     }
 
     private void setupReferButton(MaterialButton btnRefer, MaterialButton btnReferText) {
@@ -218,11 +228,17 @@ public class ExtraIncomeFragment extends Fragment {
                     JSONObject jsonObject = new JSONObject(response);
                     String message = jsonObject.getString(com.app.ai_di.helper.Constant.MESSAGE);
                     if (jsonObject.getBoolean(Constant.SUCCESS)) {
-                        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
+                        activatedPlanSuccess();
                         if (activity instanceof MainActivity) {
                             ((MainActivity) activity).userDetails();
                         }
-                        referTargetAdapter.notifyDataSetChanged();
+                        llWaiting.setVisibility(View.VISIBLE);
+                        frame.setVisibility(View.GONE);
+                        new Handler().postDelayed(() -> {
+                            referTargetAdapter.notifyDataSetChanged();
+                            llWaiting.setVisibility(View.GONE);
+                            frame.setVisibility(View.VISIBLE);
+                        }, 2000);
                     } else {
                         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
                     }

@@ -204,7 +204,7 @@
                         android:layout_marginBottom="@dimen/_10sdp"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_35sdp"
-                        android:text="@string/activate_plan"
+                        android:text="@string/activate_pla_99"
                         android:fontFamily="@font/poppins_semibold"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_12sdp"
@@ -223,6 +223,17 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     tools:ignore="MissingClass,ObsoleteLayoutParam" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/slab_bonus_is_only_for_referring_to_paid_plans"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10sdp"
+                    tools:ignore="ObsoleteLayoutParam" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
