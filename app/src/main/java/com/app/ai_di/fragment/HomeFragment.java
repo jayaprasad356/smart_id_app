@@ -20,6 +20,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -92,10 +93,12 @@ public class HomeFragment extends Fragment {
 
     List<DemoCodeData> demoList;
 
+    View root;
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+         root = inflater.inflate(R.layout.fragment_home, container, false);
         activity = getActivity();
         session = new Session(activity);
 
@@ -400,7 +403,6 @@ public class HomeFragment extends Fragment {
     }
 
 
-
     private boolean isalidVDate(String date) {
         return date.matches(Constant.DATE_OF_BIRTH_PATTERN);
     }
@@ -409,17 +411,27 @@ public class HomeFragment extends Fragment {
         btnSyncNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                codeCount = 0;
-//                session.clearData(Constant.CODE_COUNT);
-//                session.setData(Constant.CODE_COUNT, String.valueOf(codeCount));
-                syncNowApi();
+                // Show the progress bar
+                ProgressBar progressBar = root.findViewById(R.id.progressBar);
+                progressBar.setVisibility(View.VISIBLE);
+
+                // Start a 3-second timer
+                new Handler().postDelayed(() -> {
+                    // Hide the progress bar
+                    progressBar.setVisibility(View.GONE);
+//                    codeCount = 0;
+//                    session.clearData(Constant.CODE_COUNT);
+//                    session.setData(Constant.CODE_COUNT,
+
+                    syncNowApi();
+                }, 3000); // 3-second delay
             }
         });
     }
 
     private void initialCodeCount() {
 
-        Log.d("initialCodeCount","session.getData(Constant.START_WORK): " + session.getData(Constant.START_WORK));
+        Log.d("initialCodeCount", "session.getData(Constant.START_WORK): " + session.getData(Constant.START_WORK));
 
         if (!session.getData(Constant.START_WORK).isEmpty() && session.getData(Constant.START_WORK) != null) {
             myPlanListApi();
@@ -443,10 +455,10 @@ public class HomeFragment extends Fragment {
         tvTodayCodes.setText(todayCodes != null ? todayCodes : "N/A");
         tvTotalCodes.setText(totalCodes != null ? totalCodes : "N/A");
 
-        Log.d("initialCodeCount","earningWallet: " + earningWallet);
-        Log.d("initialCodeCount","TODAY_CODES: " + todayCodes);
-        Log.d("initialCodeCount","TOTAL_CODES: " + totalCodes);
-        Log.d("selected_plan_id","selected_plan_id: " + isPlanSelected);
+        Log.d("initialCodeCount", "earningWallet: " + earningWallet);
+        Log.d("initialCodeCount", "TODAY_CODES: " + todayCodes);
+        Log.d("initialCodeCount", "TOTAL_CODES: " + totalCodes);
+        Log.d("selected_plan_id", "selected_plan_id: " + isPlanSelected);
 
         codeCount = session.getData(Constant.CODE_COUNT).isEmpty() ? 0 : Integer.parseInt(session.getData(Constant.CODE_COUNT));
         tvCodes.setText(String.valueOf(codeCount));
@@ -467,44 +479,45 @@ public class HomeFragment extends Fragment {
 
     public void syncNowApi() {
         Map<String, String> params = new HashMap<>();
-            params.put(Constant.USER_ID, session.getData(Constant.USER_ID));
+        params.put(Constant.USER_ID, session.getData(Constant.USER_ID));
 //        params.put(Constant.PLAN_ID, "1");
-            params.put(Constant.PLAN_ID, session.getData(Constant.START_WORK));
-            ApiConfig.RequestToVolley((result, response) -> {
-                if (result) {
-                    try {
-                        JSONObject jsonObject = new JSONObject(response);
-                        String message = jsonObject.getString("message");
-                        if (jsonObject.getBoolean(SUCCESS)) {
+        params.put(Constant.PLAN_ID, session.getData(Constant.START_WORK));
+        ApiConfig.RequestToVolley((result, response) -> {
+            if (result) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String message = jsonObject.getString("message");
+                    if (jsonObject.getBoolean(SUCCESS)) {
 //                        JSONArray jsonArray = jsonObject.getJSONArray(Constant.DATA);
-                            Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show();
-                            if (activity instanceof MainActivity) {
-                                ((MainActivity) activity).userDetails();
-                            }
-                            codeCount = 0;
-                            session.clearData(Constant.CODE_COUNT);
-                            session.setData(Constant.CODE_COUNT, String.valueOf(codeCount));
-                            llWaiting.setVisibility(View.VISIBLE);
-                            frame.setVisibility(View.GONE);
-                            new Handler().postDelayed(() -> {
-                                llWaiting.setVisibility(View.GONE);
-                                frame.setVisibility(View.VISIBLE);
-                                initialCodeCount();
-                            }, 2000);
-                        } else {
-                            Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show();
+                        if (activity instanceof MainActivity) {
+                            ((MainActivity) activity).userDetails();
                         }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        Log.d("SYNC_CODE", "SYNC_CODE Error: " + e.getMessage());
-                        Toast.makeText(requireActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                        codeCount = 0;
+                        session.clearData(Constant.CODE_COUNT);
+                        session.setData(Constant.CODE_COUNT, String.valueOf(codeCount));
+                        llWaiting.setVisibility(View.VISIBLE);
+                        frame.setVisibility(View.GONE);
+                        new Handler().postDelayed(() -> {
+                            llWaiting.setVisibility(View.GONE);
+                            frame.setVisibility(View.VISIBLE);
+                            initialCodeCount();
+                        }, 2000);
+                    } else {
+                        Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show();
                     }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.d("SYNC_CODE", "SYNC_CODE Error: " + e.getMessage());
+                    Toast.makeText(requireActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-            }, requireActivity(), Constant.SYNC_CODE, params, true);
+            }
+        }, requireActivity(), Constant.SYNC_CODE, params, true);
 
-            Log.d("SYNC_CODE", "SYNC_CODE: " + Constant.SYNC_CODE);
-            Log.d("SYNC_CODE", "SYNC_CODE params: " + params);
+        Log.d("SYNC_CODE", "SYNC_CODE: " + Constant.SYNC_CODE);
+        Log.d("SYNC_CODE", "SYNC_CODE params: " + params);
     }
+
     public void myPlanListApi() {
         if (!isAdded()) return;  // Check if the fragment is attached before proceeding
 
@@ -573,7 +586,8 @@ public class HomeFragment extends Fragment {
     private void setupEditTextAutoMoveAndClear(EditText currentEditText, final EditText previousEditText, final EditText nextEditText) {
         currentEditText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -585,7 +599,8 @@ public class HomeFragment extends Fragment {
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {}
+            public void afterTextChanged(Editable editable) {
+            }
         });
     }
 

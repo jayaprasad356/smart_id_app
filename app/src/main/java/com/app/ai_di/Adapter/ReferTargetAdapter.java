@@ -70,10 +70,13 @@ public class ReferTargetAdapter extends RecyclerView.Adapter<ReferTargetAdapter.
         if (Objects.equals(refersTargetModel.getStatus(), "1")) {
             holder.btClaimSlab.setBackgroundResource(R.drawable.button_bg);
             holder.btClaimSlab.setEnabled(true);
-            holder.btClaimSlab.setOnClickListener(view -> {
-                claimSlabPlan(refersTargetModel.getId());
-            });
-        } else {
+            holder.btClaimSlab.setOnClickListener(view -> {claimSlabPlan(refersTargetModel.getId());});
+        } else if (Objects.equals(refersTargetModel.getStatus(), "2")){
+            holder.btClaimSlab.setBackgroundResource(R.drawable.claimed_button_bg);
+            holder.btClaimSlab.setText("claimed");
+            holder.btClaimSlab.setEnabled(false);
+        }
+        else {
             holder.btClaimSlab.setBackgroundResource(R.drawable.disabled_button_bg);
             holder.btClaimSlab.setEnabled(false);
         }

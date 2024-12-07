@@ -301,7 +301,9 @@
                             android:background="@drawable/ed_bg"
                             android:padding="@dimen/_10sdp"
                             android:maxLength="5"
-                            android:inputType="number"/>
+                            android:inputType="number"
+                            android:imeOptions="actionDone" />
+
 
 
                         <TextView

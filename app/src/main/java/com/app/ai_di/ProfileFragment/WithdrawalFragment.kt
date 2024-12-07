@@ -1,5 +1,6 @@
 package com.app.ai_di.ProfileFragment
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -8,14 +9,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.ai_di.Adapter.RedeemedAdapter
+import com.app.ai_di.R
 import com.app.ai_di.activities.MainActivity
 import com.app.ai_di.databinding.FragmentWithdrawalBinding
 import com.app.ai_di.helper.ApiConfig
 import com.app.ai_di.helper.Constant
+import com.app.ai_di.helper.NoPasteEditText
 import com.app.ai_di.helper.Session
 import com.app.ai_di.model.Redeem
 import com.google.gson.Gson
@@ -53,6 +59,25 @@ class WithdrawalFragment : Fragment() {
         // Set Back Button Listener
         binding.ibBack.setOnClickListener {
             requireActivity().onBackPressed()
+        }
+
+
+        view?.findViewById<View>(R.id.main)?.setOnTouchListener { _, _ ->
+            hideKeyboard()
+            false // Return false to let other touch events proceed
+        }
+
+        binding.etAmount.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                // Close the keyboard
+                hideKeyboard()
+
+                // Perform any additional actions if needed
+//                Toast.makeText(requireActivity(), "Done clicked", Toast.LENGTH_SHORT).show()
+                true
+            } else {
+                false
+            }
         }
 
         // Set Withdrawal Button Listener
@@ -242,4 +267,11 @@ class WithdrawalFragment : Fragment() {
         Log.d("WITHDRAWAL_URL","WITHDRAWAL_URL: ${Constant.WITHDRAWAL_URL}")
         Log.d("WITHDRAWAL_URL","WITHDRAWAL_URL params: $params")
     }
+
+    private fun hideKeyboard() {
+        val inputMethodManager = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val view = requireActivity().currentFocus ?: View(requireContext())
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
 }
