@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
 
-    val ONESIGNAL_APP_ID = "8a35ee53-39e8-4a3b-9a40-b13b32eb2045"
+    val ONESIGNAL_APP_ID = "85ada94e-336d-4bd3-8f32-d58f0d09bc75"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -112,6 +112,8 @@ class MainActivity : AppCompatActivity() {
 
         initializeOneSignal()
 
+        initializeSettings()
+
     }
 
     private fun initializeOneSignal() {
@@ -120,7 +122,7 @@ class MainActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             OneSignal.Notifications.requestPermission(false)
         }
-        OneSignal.login("${session!!.getData(Constant.USER_ID)}")
+        OneSignal.login(session!!.getData(Constant.USER_ID))
     }
 
     // Method to hide the BottomNavigationView
@@ -378,6 +380,35 @@ class MainActivity : AppCompatActivity() {
         super.onStop()
         userDetails()
         walletApi()
+    }
+
+
+    fun initializeSettings() {
+        val params: Map<String, String> = java.util.HashMap()
+
+        ApiConfig.RequestToVolley({ result: Boolean, response: String? ->
+            if (result) {
+                try {
+                    val jsonObject = JSONObject(response)
+                    val message = jsonObject.getString("message")
+                    val growVideo = jsonObject.getString("grow_video")
+                    val jobVideo = jsonObject.getString("job_video")
+
+                    session!!.setData(Constant.GROW_VIDEO, growVideo)
+                    session!!.setData(Constant.JOB_VIDEO, jobVideo)
+
+                    if (jsonObject.getBoolean("success")) {
+                        val jsonArray = jsonObject.getJSONArray("data")
+                    } else {
+                        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                    }
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                    Log.d("DATA_LIST", "DATA_LIST Error: " + e.message)
+                    Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }, this, Constant.SETTINGS_URL, params, true)
     }
 
     private fun initializeZohoSalesIQ() {

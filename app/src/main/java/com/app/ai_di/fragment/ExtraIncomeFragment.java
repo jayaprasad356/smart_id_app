@@ -126,8 +126,18 @@ public class ExtraIncomeFragment extends Fragment {
                 isPlayerReady = true; // Mark player as ready
                 Log.d("YouTubePlayer", "Player is ready");
 
-                String videoId = "91C9epbUXks"; // Use only the video ID
-                youTubePlayerInstance.cueVideo(videoId, 0f); // Load video at 0 seconds without autoplay
+                String videoUrl = session.getData(Constant.GROW_VIDEO); // Your video URL
+                Log.d("YouTubePlayer", "Player is ready: " +  videoUrl);
+
+                // Extract video ID from the URL
+                String videoId = extractVideoIdFromUrl(videoUrl);
+
+                if (videoId != null) {
+                    // Load the video at 0 seconds without autoplay
+                    youTubePlayerInstance.cueVideo(videoId, 0f);
+                } else {
+                    Toast.makeText(activity, "Invalid video URL", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
@@ -136,6 +146,31 @@ public class ExtraIncomeFragment extends Fragment {
                 Log.e("YouTubePlayer", "Error loading video: " + error.toString());
             }
         });
+    }
+    // Method to extract the video ID from a URL
+    private String extractVideoIdFromUrl(String videoUrl) {
+        if (videoUrl == null || videoUrl.trim().isEmpty()) {
+            return null;
+        }
+
+        String videoId = null;
+
+        // Check if the URL contains "v=" parameter
+        if (videoUrl.contains("v=")) {
+            String[] parts = videoUrl.split("v=");
+            if (parts.length > 1) {
+                String[] idParts = parts[1].split("&"); // Handle any additional parameters
+                videoId = idParts[0];
+            }
+        } else if (videoUrl.contains("youtu.be/")) {
+            // Handle shortened YouTube URLs
+            String[] parts = videoUrl.split("youtu.be/");
+            if (parts.length > 1) {
+                videoId = parts[1];
+            }
+        }
+
+        return videoId;
     }
 
     private void activatedPlanSuccess() {

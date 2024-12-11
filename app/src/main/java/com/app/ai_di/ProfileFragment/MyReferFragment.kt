@@ -68,12 +68,13 @@ class MyReferFragment : Fragment() {
 
                             val basicPlan = plansObject.optString("Basic Plan - ₹ 2999", "0")
                             val standardPlan = plansObject.optString("Standard Plan - ₹ 3999", "0")
-                            val freeTrail = plansObject.optString("Free Trail Earnings- 30 Days", "0")
+                            val freeTrail = plansObject.optString("Free Trail Earning - 4 Days", "0")
+                            val advancedPlan = plansObject.optString("Advanced Plan - ₹5999", "0")
 
                             val mobile = jsonObject1.optString("mobile", "N/A")
                             val joinedDate = jsonObject1.optString("joined_date", "N/A")
 
-                            val referPlan = ReferPlansModel(basicPlan, standardPlan, freeTrail, mobile, joinedDate)
+                            val referPlan = ReferPlansModel(basicPlan, standardPlan, advancedPlan, freeTrail, mobile, joinedDate)
                             referPlans.add(referPlan)
                         }
 

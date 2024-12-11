@@ -1,23 +1,19 @@
 package com.app.ai_di.fragment;
 
 import static com.app.ai_di.helper.Constant.SUCCESS;
-import static com.zoho.livechat.android.provider.ZohoLDContentProvider.dbHelper;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.os.AsyncTask;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.HandlerThread;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -31,20 +27,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.app.ai_di.Adapter.JobPlanAdapter;
 import com.app.ai_di.R;
 import com.app.ai_di.activities.MainActivity;
 import com.app.ai_di.helper.ApiConfig;
 import com.app.ai_di.helper.Constant;
-import com.app.ai_di.helper.DatabaseHelper;
-import com.app.ai_di.helper.SQLDatabaseHelper;
 import com.app.ai_di.helper.Session;
 import com.app.ai_di.model.DemoCodeData;
-import com.app.ai_di.model.PlanListModel;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
-import com.google.gson.Gson;
-import com.zoho.salesiqembed.ZohoSalesIQ;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,15 +42,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Random;
-import java.util.Set;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class HomeFragment extends Fragment {
 
@@ -87,18 +71,17 @@ public class HomeFragment extends Fragment {
     int codeCount = 0;
     final int MAX_CODE_COUNT = 50;
     String isPlanSelected;
-    SQLDatabaseHelper sqlDatabaseHelper;
-
     private int lastIndex = -1;
-
     List<DemoCodeData> demoList;
+    private int currentIndex = 0;
+
 
     View root;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-         root = inflater.inflate(R.layout.fragment_home, container, false);
+        root = inflater.inflate(R.layout.fragment_home, container, false);
         activity = getActivity();
         session = new Session(activity);
 
@@ -124,8 +107,6 @@ public class HomeFragment extends Fragment {
         rlSelectPlan = root.findViewById(R.id.rlSelectPlan);
         tvPlanName = root.findViewById(R.id.tvPlanName);
 
-        sqlDatabaseHelper = new SQLDatabaseHelper(activity);
-
         // Initialize DOB EditTexts
         dobEditBox1 = root.findViewById(R.id.dob_edit_box1);
         dobEditBox2 = root.findViewById(R.id.dob_edit_box2);
@@ -141,7 +122,7 @@ public class HomeFragment extends Fragment {
 
         fetchSessionDataAndInitialize();
 //        initialCodeCount();
-        initializeDemoList();
+//        initializeDemoList();
 //        setDemoData();
         setDobEdit();
 //        setBtCreate();
@@ -163,8 +144,61 @@ public class HomeFragment extends Fragment {
             transaction.commit();
         });
 
+        // Retrieve the saved data list
+        List<DemoCodeData> savedDataList = session.getDemoDataList();
+
+        // Retrieve the currentIndex from SharedPreferences
+        SharedPreferences prefs = activity.getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        currentIndex = prefs.getInt("currentIndex", 0);
+
+        // Check if data is available
+        if (savedDataList != null && !savedDataList.isEmpty()) {
+            // Ensure currentIndex is within bounds
+            if (currentIndex >= savedDataList.size()) {
+                session.clearData("extra_plan_activated");
+                Log.d("DATA_CLEARED", "Stored data has been cleared.");
+                initializeDemoList();
+                currentIndex = 0; // Loop back to the first item
+            }
+
+            // Display the current item
+            updateUIWithData(savedDataList.get(currentIndex));
+
+            // Increment and save the updated index
+            currentIndex++;
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putInt("currentIndex", currentIndex);
+            editor.apply();
+        } else {
+            Log.d("DATA_ERROR", "savedDataList is null or empty.");
+            initializeDemoList();
+
+            new Handler().postDelayed(() -> {
+                List<DemoCodeData> retryData = session.getDemoDataList();
+                updateUIWithData(retryData.get(5));
+            }, 2000);
+        }
+
         return root;
     }
+
+    private void updateUIWithData(DemoCodeData data) {
+        Log.d("SAVED_DATA",
+                "ID: " + data.getId() +
+                        ", College: " + data.getCollege() +
+                        ", Name: " + data.getName() +
+                        ", Batch: " + data.getBatchNumber() +
+                        ", Date: " + data.getDate());
+
+        tvSchoolName.setText(data.getCollege());
+        tvStudentName.setText(data.getName());
+        tvRollNumber.setText(data.getBatchNumber());
+        tvDOB.setText(data.getDate());
+
+        // Set up additional logic, if required
+        setBtCreate(data.getCollege(), data.getName(), data.getBatchNumber(), data.getDate());
+    }
+
 
     private void planName() {
         String startWorkPlanName = session.getData(Constant.START_WORK_PLAN_NAME);
@@ -191,26 +225,51 @@ public class HomeFragment extends Fragment {
                         JSONArray jsonArray = jsonObject.getJSONArray("data");
 
                         // Ensure the array has at least one item
-                        if (jsonArray.length() > 0) {
-                            JSONObject firstItem = jsonArray.getJSONObject(0);
+//                        if (jsonArray.length() > 0) {
+//                            JSONObject firstItem = jsonArray.getJSONObject(0);
+//
+//                            // Extract the fields from the first object
+//                            String college = firstItem.getString("college");
+//                            String name = firstItem.getString("name");
+//                            String batchNumber = firstItem.getString("batch_number");
+//                            String date = firstItem.getString("date");
+//
+//                            // Set data to TextViews
+//                            tvSchoolName.setText(college);
+//                            tvStudentName.setText(name);
+//                            tvRollNumber.setText(batchNumber);
+//                            tvDOB.setText(date);
+//
+//                            // Set up additional logic, if required
+//                            setBtCreate(college, name, batchNumber, date);
+//                        } else {
+//                            Toast.makeText(requireActivity(), "No data available", Toast.LENGTH_SHORT).show();
+//                        }
 
-                            // Extract the fields from the first object
-                            String college = firstItem.getString("college");
-                            String name = firstItem.getString("name");
-                            String batchNumber = firstItem.getString("batch_number");
-                            String date = firstItem.getString("date");
-
-                            // Set data to TextViews
-                            tvSchoolName.setText(college);
-                            tvStudentName.setText(name);
-                            tvRollNumber.setText(batchNumber);
-                            tvDOB.setText(date);
-
-                            // Set up additional logic, if required
-                            setBtCreate(college, name, batchNumber, date);
-                        } else {
-                            Toast.makeText(requireActivity(), "No data available", Toast.LENGTH_SHORT).show();
+                        // Parse JSON array into a list of DemoCodeData
+                        List<DemoCodeData> dataList = new ArrayList<>();
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject item = jsonArray.getJSONObject(i);
+                            DemoCodeData demoCodeData = new DemoCodeData();
+                            demoCodeData.setId(item.getInt("id"));
+                            demoCodeData.setCollege(item.getString("college"));
+                            demoCodeData.setName(item.getString("name"));
+                            demoCodeData.setBatchNumber(item.getString("batch_number"));
+                            demoCodeData.setDate(item.getString("date"));
+                            dataList.add(demoCodeData);
                         }
+
+                        // Save the list in session
+                        session.setDemoDataList(dataList);
+
+//                        // Set the first item's data to TextViews as an example
+//                        if (!dataList.isEmpty()) {
+//                            DemoCodeData firstItem = dataList.get(0);
+//                            tvSchoolName.setText(firstItem.getCollege());
+//                            tvStudentName.setText(firstItem.getName());
+//                            tvRollNumber.setText(firstItem.getBatchNumber());
+//                            tvDOB.setText(firstItem.getDate());
+//                        }
                     } else {
                         Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show();
                     }
@@ -221,9 +280,6 @@ public class HomeFragment extends Fragment {
                 }
             }
         }, requireActivity(), Constant.DATA_LIST, params, true);
-
-        Log.d("DATA_LIST", "DATA_LIST: " + Constant.DATA_LIST);
-        Log.d("DATA_LIST", "DATA_LIST params: " + params);
     }
 
 //    private void dropDown() {
@@ -286,11 +342,12 @@ public class HomeFragment extends Fragment {
 //        }
 //    }
 
-//    private void initializeDemoList() {
+//    private void noDemoList() {
 //        demoList = new ArrayList<>(Arrays.asList(
-//                new DemoCodeData("1", "AAKASH PU COLLEGE", "KAJAL CHAVAN", "2034", "2009-01-01"),
-//                new DemoCodeData("2", "AARALGOUDAR PU COLLEGE", "AKSHATA VIJAY B", "2088", "2009-01-02"),
-//                new DemoCodeData("3", "AB JATTI COMP PU COLLEGE", "KAVERI PAWAR", "2151", "2009-01-03"),
+//                new DemoCodeData(1, "SSJ INDP PU COLLEGE", "AISHWARYA M S", "7459508", "2009-08-25"),
+//                new DemoCodeData(2, "AKSHAMALA PU COLLEGE", "SHWETHA H M", "9504325", "2009-08-21"),
+//                new DemoCodeData(3, "SRI GS PU COLLEGE", "YASHASWINI H K", "31959846", "2009-06-27"),
+//                ...
 //                ));
 //    }
 
@@ -563,7 +620,7 @@ public class HomeFragment extends Fragment {
 
     private void incrementCodeCount() {
         if (codeCount < MAX_CODE_COUNT) {
-            codeCount++;
+            codeCount++ ;
             tvCodes.setText(String.valueOf(codeCount));
             int progressPercentage = (codeCount * 100) / MAX_CODE_COUNT;
             cbCodes.setProgress(progressPercentage);

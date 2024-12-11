@@ -158,6 +158,17 @@
                 android:textSize="@dimen/_12sdp"
                 />
 
+            <TextView
+                android:id="@+id/tvAdvancedPlan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/advanced_plan_5999"
+                android:textColor="@color/logo_blue"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="@dimen/_12sdp"
+                />
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

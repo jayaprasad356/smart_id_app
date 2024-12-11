@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "806844618259",
-    "project_id": "next-gen-74543",
-    "storage_bucket": "next-gen-74543.appspot.com"
+    "project_number": "182242225822",
+    "project_id": "ai-di-6f729",
+    "storage_bucket": "ai-di-6f729.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:806844618259:android:1e83f0cdc46b97172951e6",
+        "mobilesdk_app_id": "1:182242225822:android:7f8c34ebe3ba8b0e5fd58f",
         "android_client_info": {
           "package_name": "com.app.ai_di"
         }
@@ -15,83 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDitn6O8KPyQ9qGjvh9Tgn3-PJNm15xiBE"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:806844618259:android:a2cad31b353fc6a72951e6",
-        "android_client_info": {
-          "package_name": "com.fallgan.customerapp"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDitn6O8KPyQ9qGjvh9Tgn3-PJNm15xiBE"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:806844618259:android:33a8b5398cecb13b2951e6",
-        "android_client_info": {
-          "package_name": "com.fallgan.deliveryapp"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDitn6O8KPyQ9qGjvh9Tgn3-PJNm15xiBE"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:806844618259:android:fc147a397ed084cc2951e6",
-        "android_client_info": {
-          "package_name": "com.nextgen.nextgen"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDitn6O8KPyQ9qGjvh9Tgn3-PJNm15xiBE"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:806844618259:android:cafa6a5ee56475322951e6",
-        "android_client_info": {
-          "package_name": "com.smart_id_maker.app"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDitn6O8KPyQ9qGjvh9Tgn3-PJNm15xiBE"
+          "current_key": "AIzaSyBXS9Yp1VidXl_1Ulud4VvOO7WIjwA419o"
         }
       ],
       "services": {

@@ -2,13 +2,14 @@ package com.app.ai_di.model;
 
 
 public class ReferPlansModel {
-    private String basicPlan, standardPlan, freeTrail, mobile, joinedDate;
+    private String basicPlan, standardPlan, advancedPlan, freeTrail, mobile, joinedDate;
 
     public ReferPlansModel() {}
 
-    public ReferPlansModel(String basicPlan, String standardPlan, String freeTrail, String mobile, String joinedDate) {
+    public ReferPlansModel(String basicPlan, String standardPlan, String advancedPlan, String freeTrail, String mobile, String joinedDate) {
         this.basicPlan = basicPlan;
         this.standardPlan = standardPlan;
+        this.advancedPlan = advancedPlan;
         this.freeTrail = freeTrail;
         this.mobile = mobile;
         this.joinedDate = joinedDate;
@@ -28,6 +29,14 @@ public class ReferPlansModel {
 
     public void setStandardPlan(String standardPlan) {
         this.standardPlan = standardPlan;
+    }
+
+    public String getAdvancedPlan() {
+        return advancedPlan;
+    }
+
+    public void setAdvancedPlan(String advancedPlan) {
+        this.advancedPlan = advancedPlan;
     }
 
     public String getFreeTrail() {

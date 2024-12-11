@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 import com.app.ai_di.activities.LoginActivity;
+import com.app.ai_di.model.DemoCodeData;
 import com.app.ai_di.model.ExtraPlanModel;
 import com.app.ai_di.model.PlanListModel;
 import com.google.common.reflect.TypeToken;
@@ -169,6 +170,20 @@ public class Session {
         Gson gson = new Gson();
         String json = pref.getString("extra_plan_activated", null);
         Type type = new TypeToken<List<ExtraPlanModel>>() {}.getType();
+        return gson.fromJson(json, type);
+    }
+
+    public void setDemoDataList(List<DemoCodeData> demoCodeData) {
+        Gson gson = new Gson();
+        String json = gson.toJson(demoCodeData);
+        editor.putString("demo_code_data", json);
+        editor.commit();
+    }
+
+    public List<DemoCodeData> getDemoDataList() {
+        Gson gson = new Gson();
+        String json = pref.getString("demo_code_data", null);
+        Type type = new TypeToken<List<DemoCodeData>>() {}.getType();
         return gson.fromJson(json, type);
     }
 

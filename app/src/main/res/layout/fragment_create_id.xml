@@ -40,34 +40,34 @@
                     <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:layout_gravity="start"
                         android:layout_margin="@dimen/_10sdp">
 
                         <ImageView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:contentDescription="TODO"
+                            android:contentDescription="@string/todo"
                             android:src="@drawable/id_bg"
-                            android:adjustViewBounds="true" />
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitXY"/>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            android:gravity="center"
-                            >
+                            android:orientation="vertical">
 
                             <TextView
                                 android:id="@+id/tvSchoolName"
                                 android:layout_marginTop="@dimen/_30sdp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/abcd_high_school"
+                                android:text=""
                                 android:fontFamily="@font/poppins_semibold"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/_14sdp"
                                 android:layout_gravity="center"
-                                android:includeFontPadding="false"/>
+                                android:includeFontPadding="false"
+                                android:textAlignment="center"/>
 
                             <com.google.android.material.card.MaterialCardView
                                 android:layout_width="@dimen/_100sdp"
@@ -79,7 +79,8 @@
                                 android:elevation="@dimen/_10sdp"
                                 app:cardCornerRadius="@dimen/_100sdp"
                                 app:cardBackgroundColor="@color/secondaryLightColor"
-                                app:cardUseCompatPadding="false">
+                                app:cardUseCompatPadding="false"
+                                android:layout_gravity="center">
 
                                 <ImageView
                                     android:layout_gravity="center"
@@ -88,11 +89,12 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:src="@drawable/profile_im"
-                                    android:adjustViewBounds="true" />
+                                    android:adjustViewBounds="true"/>
 
                             </com.google.android.material.card.MaterialCardView>
 
                             <TextView
+                                android:layout_gravity="center"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/student_name"
@@ -102,10 +104,11 @@
                                 android:includeFontPadding="false"/>
 
                             <TextView
+                                android:layout_gravity="center"
                                 android:id="@+id/tvStudentName"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="NANDHA"
+                                android:text=""
                                 android:fontFamily="@font/poppins_bold"
                                 android:textColor="@color/textColor"
                                 android:textSize="@dimen/_12sdp"
@@ -113,6 +116,7 @@
                                 android:includeFontPadding="false"/>
 
                             <TextView
+                                android:layout_gravity="center"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/roll_number"
@@ -122,10 +126,11 @@
                                 android:includeFontPadding="false"/>
 
                             <TextView
+                                android:layout_gravity="center"
                                 android:id="@+id/tvRollNumber"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="123456"
+                                android:text=""
                                 android:fontFamily="@font/poppins_bold"
                                 android:textColor="@color/textColor"
                                 android:textSize="@dimen/_12sdp"
@@ -133,6 +138,7 @@
                                 android:includeFontPadding="false"/>
 
                             <TextView
+                                android:layout_gravity="center"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/date_of_birth"
@@ -142,10 +148,11 @@
                                 android:includeFontPadding="false"/>
 
                             <TextView
+                                android:layout_gravity="center"
                                 android:id="@+id/tvDOB"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="12.12.2000"
+                                android:text=""
                                 android:fontFamily="@font/poppins_bold"
                                 android:textColor="@color/textColor"
                                 android:textSize="@dimen/_12sdp"

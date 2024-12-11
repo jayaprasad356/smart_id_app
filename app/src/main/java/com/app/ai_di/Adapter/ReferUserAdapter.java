@@ -48,6 +48,7 @@ public class ReferUserAdapter extends RecyclerView.Adapter<ReferUserAdapter.refe
         holder.tvFreePlan.setVisibility(View.GONE);
         holder.tvBasicPlan.setVisibility(View.GONE);
         holder.tvStandardPlan.setVisibility(View.GONE);
+        holder.tvAdvancedPlan.setVisibility(View.GONE);
 
         if (Objects.equals(referPlansModel.getFreeTrail(), "1")) {
             holder.llPlanView.setVisibility(View.VISIBLE);
@@ -63,6 +64,11 @@ public class ReferUserAdapter extends RecyclerView.Adapter<ReferUserAdapter.refe
             holder.llPlanView.setVisibility(View.VISIBLE);
             holder.tvStandardPlan.setVisibility(View.VISIBLE);
         }
+
+        if (Objects.equals(referPlansModel.getAdvancedPlan(), "1")) {
+            holder.llPlanView.setVisibility(View.VISIBLE);
+            holder.tvAdvancedPlan.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -71,7 +77,7 @@ public class ReferUserAdapter extends RecyclerView.Adapter<ReferUserAdapter.refe
     }
 
     public static class referUserAdapterViewHolder extends RecyclerView.ViewHolder {
-        TextView tvMobileNumber, tvRegisterDate, tvFreePlan, tvBasicPlan, tvStandardPlan;
+        TextView tvMobileNumber, tvRegisterDate, tvFreePlan, tvBasicPlan, tvStandardPlan, tvAdvancedPlan;
 
         LinearLayout llPlanView;
 
@@ -82,6 +88,7 @@ public class ReferUserAdapter extends RecyclerView.Adapter<ReferUserAdapter.refe
             tvFreePlan = itemView.findViewById(R.id.tvFreePlan);
             tvBasicPlan = itemView.findViewById(R.id.tvBasicPlan);
             tvStandardPlan = itemView.findViewById(R.id.tvStandardPlan);
+            tvAdvancedPlan = itemView.findViewById(R.id.tvAdvancedPlan);
             llPlanView = itemView.findViewById(R.id.llPlanView);
         }
     }

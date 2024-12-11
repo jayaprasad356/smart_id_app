@@ -1,60 +1,64 @@
 package com.app.ai_di.model;
 
 public class DemoCodeData {
-    private String id;
-    private String schoolName;
-    private String studentName;
-    private String rollNumber;
-    private String dateOfBirth;
+    private Integer id;
+    private String college;
+    private String name;
+    private String batchNumber;
+    private String date;
 
     // Constructor
-    public DemoCodeData(String id, String schoolName, String studentName, String rollNumber, String dateOfBirth) {
+    public DemoCodeData(Integer id, String college, String name, String batchNumber, String date) {
         this.id = id;
-        this.schoolName = schoolName;
-        this.studentName = studentName;
-        this.rollNumber = rollNumber;
-        this.dateOfBirth = dateOfBirth;
+        this.college = college;
+        this.name = name;
+        this.batchNumber = batchNumber;
+        this.date = date;
+    }
+
+    public DemoCodeData() {
+
     }
 
     // Getters and Setters
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getSchoolName() {
-        return schoolName;
+    public String getCollege() {
+        return college;
     }
 
-    public void setSchoolName(String schoolName) {
-        this.schoolName = schoolName;
+    public void setCollege(String college) {
+        this.college = college;
     }
 
-    public String getStudentName() {
-        return studentName;
+    public String getName() {
+        return name;
     }
 
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getRollNumber() {
-        return rollNumber;
+    public String getBatchNumber() {
+        return batchNumber;
     }
 
-    public void setRollNumber(String rollNumber) {
-        this.rollNumber = rollNumber;
+    public void setBatchNumber(String batchNumber) {
+        this.batchNumber = batchNumber;
     }
 
-    public String getDateOfBirth() {
-        return dateOfBirth;
+    public String getDate() {
+        return date;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setDate(String date) {
+        this.date = date;
     }
 }
 
