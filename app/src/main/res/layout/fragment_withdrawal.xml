@@ -294,7 +294,7 @@
                             android:textSize="@dimen/_10sdp"
                             android:fontFamily="@font/poppins_regular"/>
 
-                        <com.app.ai_di.helper.NoPasteEditText
+                        <com.gmwapp.slv_aidi.helper.NoPasteEditText
                             android:id="@+id/etAmount"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.app.ai_di">
+    package="com.gmwapp.slv_aidi">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -25,7 +25,7 @@
         tools:ignore="ProtectedPermissions" />
 
     <application
-        android:name="com.app.ai_di.helper.ApiConfig"
+        android:name="com.gmwapp.slv_aidi.helper.ApiConfig"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -38,13 +38,13 @@
         tools:replace="android:dataExtractionRules,android:fullBackupContent">
 
         <activity
-            android:name="com.app.ai_di.activities.WithdrawalStatusActivity"
+            android:name="com.gmwapp.slv_aidi.activities.WithdrawalStatusActivity"
             android:exported="false" />
 
 
 
         <activity
-            android:name="com.app.ai_di.activities.CheckInActivity"
+            android:name="com.gmwapp.slv_aidi.activities.CheckInActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -55,11 +55,11 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/admob_app_id" />
         <activity
-            android:name="com.app.ai_di.activities.ImportDataActivity"
+            android:name="com.gmwapp.slv_aidi.activities.ImportDataActivity"
             android:exported="false" />
 
         <activity
-            android:name="com.app.ai_di.activities.SplashActivity"
+            android:name="com.gmwapp.slv_aidi.activities.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -68,21 +68,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.app.ai_di.activities.LoginActivity"
+            android:name="com.gmwapp.slv_aidi.activities.LoginActivity"
             android:exported="true" />
         <activity
-            android:name="com.app.ai_di.activities.SignUpActivity"
+            android:name="com.gmwapp.slv_aidi.activities.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name="com.app.ai_di.activities.MainActivity"
+            android:name="com.gmwapp.slv_aidi.activities.MainActivity"
             android:exported="true" />
         <activity
-            android:name="com.app.ai_di.activities.ForgoPasswordActivity"
+            android:name="com.gmwapp.slv_aidi.activities.ForgoPasswordActivity"
             android:exported="true" />
 
 
         <service
-            android:name="com.app.ai_di.helper.MyFirebaseMessagingService"
+            android:name="com.gmwapp.slv_aidi.helper.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

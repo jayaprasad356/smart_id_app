@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "182242225822",
-    "project_id": "ai-di-6f729",
-    "storage_bucket": "ai-di-6f729.firebasestorage.app"
+    "project_number": "909762205579",
+    "project_id": "aidi-1d27e",
+    "storage_bucket": "aidi-1d27e.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:182242225822:android:7f8c34ebe3ba8b0e5fd58f",
+        "mobilesdk_app_id": "1:909762205579:android:7240901edd81db53e2018e",
         "android_client_info": {
-          "package_name": "com.app.ai_di"
+          "package_name": "com.gmwapp.slv_aidi"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBXS9Yp1VidXl_1Ulud4VvOO7WIjwA419o"
+          "current_key": "AIzaSyABB440Mh2hr3azmeJcSYH0yXhtajwCrSA"
         }
       ],
       "services": {

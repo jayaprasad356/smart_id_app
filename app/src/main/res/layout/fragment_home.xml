@@ -491,7 +491,7 @@
                         android:textSize="@dimen/_10sdp"
                         android:fontFamily="@font/poppins_regular"/>
 
-                        <com.app.ai_di.helper.NoPasteEditText
+                        <com.gmwapp.slv_aidi.helper.NoPasteEditText
                         android:id="@+id/edSchoolName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -521,7 +521,7 @@
                         android:textSize="@dimen/_10sdp"
                         android:fontFamily="@font/poppins_regular"/>
 
-                        <com.app.ai_di.helper.NoPasteEditText
+                        <com.gmwapp.slv_aidi.helper.NoPasteEditText
                             android:id="@+id/edStudentName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -543,7 +543,7 @@
                         android:textSize="@dimen/_10sdp"
                         android:fontFamily="@font/poppins_regular"/>
 
-                        <com.app.ai_di.helper.NoPasteEditText
+                        <com.gmwapp.slv_aidi.helper.NoPasteEditText
                             android:id="@+id/edRollNumber"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -573,7 +573,7 @@
                             android:orientation="horizontal"
                             android:weightSum="8">
 
-                            <com.app.ai_di.helper.NoPasteEditText
+                            <com.gmwapp.slv_aidi.helper.NoPasteEditText
                                 android:id="@+id/dob_edit_box1"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"
@@ -600,7 +600,7 @@
 <!--                                android:layout_marginEnd="@dimen/_4sdp"-->
 <!--                                android:maxLength="1"/>-->
 
-                            <com.app.ai_di.helper.NoPasteEditText
+                            <com.gmwapp.slv_aidi.helper.NoPasteEditText
                                 android:id="@+id/dob_edit_box2"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"
@@ -616,7 +616,7 @@
                                 android:layout_marginEnd="@dimen/_4sdp"
                                 android:maxLength="1"/>
 
-                            <com.app.ai_di.helper.NoPasteEditText
+                            <com.gmwapp.slv_aidi.helper.NoPasteEditText
                                 android:id="@+id/dob_edit_box3"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"
@@ -632,7 +632,7 @@
                                 android:layout_marginEnd="@dimen/_4sdp"
                                 android:maxLength="1"/>
 
-                            <com.app.ai_di.helper.NoPasteEditText
+                            <com.gmwapp.slv_aidi.helper.NoPasteEditText
                                 android:id="@+id/dob_edit_box4"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"
@@ -648,7 +648,7 @@
                                 android:layout_marginEnd="@dimen/_4sdp"
                                 android:maxLength="1"/>
 
-                            <com.app.ai_di.helper.NoPasteEditText
+                            <com.gmwapp.slv_aidi.helper.NoPasteEditText
                                 android:id="@+id/dob_edit_box5"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"
@@ -664,7 +664,7 @@
                                 android:layout_marginEnd="@dimen/_4sdp"
                                 android:maxLength="1"/>
 
-                            <com.app.ai_di.helper.NoPasteEditText
+                            <com.gmwapp.slv_aidi.helper.NoPasteEditText
                                 android:id="@+id/dob_edit_box6"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"
@@ -680,7 +680,7 @@
                                 android:layout_marginEnd="@dimen/_4sdp"
                                 android:maxLength="1"/>
 
-                            <com.app.ai_di.helper.NoPasteEditText
+                            <com.gmwapp.slv_aidi.helper.NoPasteEditText
                                 android:id="@+id/dob_edit_box7"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"
@@ -696,7 +696,7 @@
                                 android:layout_marginEnd="@dimen/_4sdp"
                                 android:maxLength="1"/>
 
-                            <com.app.ai_di.helper.NoPasteEditText
+                            <com.gmwapp.slv_aidi.helper.NoPasteEditText
                                 android:id="@+id/dob_edit_box8"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/_35sdp"

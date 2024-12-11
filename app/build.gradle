@@ -9,11 +9,11 @@ android {
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.app.ai_di"
+        applicationId "com.gmwapp.slv_aidi"
         minSdk 23
         targetSdk 34
-        versionCode 22
-        versionName "22.0"
+        versionCode 23
+        versionName "23.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -28,13 +28,18 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(23) // Change based on your Java version
+        }
+    }
     kotlinOptions {
         jvmTarget = "1.8"
     }
     viewBinding {
         enabled = true
     }
-    namespace "com.app.ai_di"
+    namespace "com.gmwapp.slv_aidi"
 
 }
 
@@ -50,14 +55,14 @@ dependencies {
     // kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.25"
 
-    implementation platform('com.google.firebase:firebase-bom:33.6.0')
+    implementation platform('com.google.firebase:firebase-bom:33.7.0')
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-messaging'
     implementation 'com.google.firebase:firebase-crashlytics'
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.google.firebase:firebase-storage'
-    implementation 'com.onesignal:OneSignal:[5.0.0, 5.99.99]'
+    implementation 'com.onesignal:OneSignal:5.1.25'
 
     implementation 'com.github.delight-im:Android-AdvancedWebView:v3.2.1'
     implementation 'com.zoho.salesiq:mobilisten:8.0.5'
