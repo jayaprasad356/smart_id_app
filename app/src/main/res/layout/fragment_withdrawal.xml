@@ -48,10 +48,17 @@
 
     </LinearLayout>
 
-    <RelativeLayout
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:visibility="visible"
         android:layout_below="@+id/rlToolbar">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_height="wrap_content"
@@ -408,5 +415,7 @@
         </LinearLayout>
 
     </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>

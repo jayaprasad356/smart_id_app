@@ -172,10 +172,15 @@ public class HomeFragment extends Fragment {
             Log.d("DATA_ERROR", "savedDataList is null or empty.");
             initializeDemoList();
 
-            new Handler().postDelayed(() -> {
-                List<DemoCodeData> retryData = session.getDemoDataList();
-                updateUIWithData(retryData.get(5));
-            }, 2000);
+            tvSchoolName.setText("SSJ INDP PU COLLEGE");
+            tvStudentName.setText("AISHWARYA M S");
+            tvRollNumber.setText("7459508");
+            tvDOB.setText("2009-08-25");
+
+//            new Handler().postDelayed(() -> {
+//                List<DemoCodeData> retryData = session.getDemoDataList();
+//                updateUIWithData(retryData.get(5));
+//            }, 2000);
         }
 
         return root;
