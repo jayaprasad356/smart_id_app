@@ -19,6 +19,7 @@ public class Constant {
     public static final String FQD_URL = "https://aidiapp.in/information.php";
     public static final String WITHDRAWAL_DEMO_VIDEO_URL = "https://youtu.be/rL7GRdXq6Gg?si=Jqt4FBuh0D7KLId4";
     public static final String WHATSAPP_URL = "https://whatsapp.com/channel/0029VawJ9ZtJpe8ecl0Vb13w";
+    public static final String PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.gmwapp.slv_aidi";
     public static final String MainBaseUrl = "https://admin.aidiapp.in/";
 
 

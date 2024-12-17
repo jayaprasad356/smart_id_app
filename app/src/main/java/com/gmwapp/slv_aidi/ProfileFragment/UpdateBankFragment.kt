@@ -1,6 +1,7 @@
 package com.gmwapp.slv_aidi.ProfileFragment
 
 import android.os.Bundle
+import android.text.InputFilter
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -31,12 +32,26 @@ class UpdateBankFragment : Fragment() {
         // Hide Bottom Navigation
         (requireActivity() as MainActivity).binding.bottomNavigation.visibility = View.GONE
 
+        // Set character limit for etHolderName to 25
+        binding.etHolderName.filters = arrayOf(InputFilter.LengthFilter(25))
+
         // Set initial values in EditTexts from session data
         binding.etAccountNumber.setText(session.getData(Constant.ACCOUNT_NUM))
         binding.etHolderName.setText(session.getData(Constant.HOLDER_NAME))
         binding.etBankName.setText(session.getData(Constant.BANK))
         binding.etBranch.setText(session.getData(Constant.BRANCH))
         binding.etIfsc.setText(session.getData(Constant.IFSC))
+
+        // Apply InputFilters to etBankName and etBranch
+        val textOnlyFilter = InputFilter { source, _, _, _, _, _ ->
+            if (source.toString().matches(Regex("^[a-zA-Z ]*$"))) {
+                null // Accept the input
+            } else {
+                "" // Reject invalid input
+            }
+        }
+        binding.etBankName.filters = arrayOf(textOnlyFilter)
+        binding.etBranch.filters = arrayOf(textOnlyFilter)
 
         // Load bank details from the API
         bankDetailsApi()
@@ -55,6 +70,8 @@ class UpdateBankFragment : Fragment() {
     }
 
     private fun validateAndSubmitBankDetails() {
+        val textOnlyRegex = Regex("^[a-zA-Z ]+$")
+        val ifscCodeRegex = Regex("^[A-Za-z0-9]{4}0[A-Za-z0-9]{6}\$")
         // Validate user input
         when {
             binding.etAccountNumber.text.toString().trim().isEmpty() -> {
@@ -65,6 +82,14 @@ class UpdateBankFragment : Fragment() {
                 binding.etIfsc.error = "Please enter IFSC code"
                 binding.etIfsc.requestFocus()
             }
+            binding.etIfsc.text.toString().trim().length != 11 -> {
+                binding.etIfsc.error = "IFSC code must be 11 characters"
+                binding.etIfsc.requestFocus()
+            }
+            !binding.etIfsc.text.toString().trim().matches(ifscCodeRegex) -> {
+                binding.etIfsc.error = "Invalid IFSC code format (5th letter must be 0)"
+                binding.etIfsc.requestFocus()
+            }
             binding.etHolderName.text.toString().trim().isEmpty() -> {
                 binding.etHolderName.error = "Please enter holder name"
                 binding.etHolderName.requestFocus()
@@ -73,8 +98,16 @@ class UpdateBankFragment : Fragment() {
                 binding.etBankName.error = "Please enter bank name"
                 binding.etBankName.requestFocus()
             }
+            !binding.etBankName.text.toString().matches(textOnlyRegex) -> {
+                Toast.makeText(requireContext(), "Bank name must contain only letters", Toast.LENGTH_SHORT).show()
+                binding.etBankName.requestFocus()
+            }
             binding.etBranch.text.toString().trim().isEmpty() -> {
                 binding.etBranch.error = "Please enter branch"
+                binding.etBranch.requestFocus()
+            }
+            !binding.etBranch.text.toString().matches(textOnlyRegex) -> {
+                Toast.makeText(requireContext(), "Branch name must contain only letters", Toast.LENGTH_SHORT).show()
                 binding.etBranch.requestFocus()
             }
             else -> {

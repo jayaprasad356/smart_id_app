@@ -37,7 +37,7 @@ class InviteFragment : Fragment() {
         // Set click listener for the "Refer" button
         if (session != null && session.getData(Constant.REFER_CODE) != null) {
             binding.btnRefer.setOnClickListener(View.OnClickListener { v: View? ->
-                val baseUrl = "https://aidiapp.in/" // Replace with your actual base URL
+                val baseUrl = Constant.PLAY_STORE_URL // Replace with your actual base URL
                 shareTextAndUrl(
                     """Click this link to join Ai-Di App ☺️
 Use My Refer Code ${session.getData(Constant.REFER_CODE)} While Creating Account.""", baseUrl

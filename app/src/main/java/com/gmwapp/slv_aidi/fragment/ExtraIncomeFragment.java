@@ -179,7 +179,8 @@ public class ExtraIncomeFragment extends Fragment {
 
     private void setupReferButton(MaterialButton btnRefer, MaterialButton btnReferText) {
         final String[] referCode = {session.getData(Constant.REFER_CODE)};
-        String baseUrl = "https://aidiapp.in/";
+        String baseUrl = Constant.PLAY_STORE_URL;
+//        String baseUrl = "https://aidiapp.in/";
 
         if (referCode[0] != null) {
             btnRefer.setOnClickListener(v -> shareTextAndUrl(
