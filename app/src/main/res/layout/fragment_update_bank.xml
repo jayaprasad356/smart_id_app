@@ -19,7 +19,7 @@
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
             android:background="@drawable/ic_arrow_back"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/todo" />
 
         <TextView
             android:layout_marginStart="@dimen/_14sdp"
@@ -138,7 +138,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Branch"
+            android:text="@string/branch"
             android:textColor="@color/grayColor"
             android:textSize="@dimen/_10sdp"
             android:fontFamily="@font/poppins_regular"/>

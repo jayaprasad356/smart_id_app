@@ -69,6 +69,11 @@ public class ReferUserAdapter extends RecyclerView.Adapter<ReferUserAdapter.refe
             holder.llPlanView.setVisibility(View.VISIBLE);
             holder.tvAdvancedPlan.setVisibility(View.VISIBLE);
         }
+
+        if (Objects.equals(referPlansModel.getPremiumPlan(), "1")) {
+            holder.llPlanView.setVisibility(View.VISIBLE);
+            holder.tvPremiumPlan.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -77,7 +82,7 @@ public class ReferUserAdapter extends RecyclerView.Adapter<ReferUserAdapter.refe
     }
 
     public static class referUserAdapterViewHolder extends RecyclerView.ViewHolder {
-        TextView tvMobileNumber, tvRegisterDate, tvFreePlan, tvBasicPlan, tvStandardPlan, tvAdvancedPlan;
+        TextView tvMobileNumber, tvRegisterDate, tvFreePlan, tvBasicPlan, tvStandardPlan, tvAdvancedPlan, tvPremiumPlan;
 
         LinearLayout llPlanView;
 
@@ -89,6 +94,7 @@ public class ReferUserAdapter extends RecyclerView.Adapter<ReferUserAdapter.refe
             tvBasicPlan = itemView.findViewById(R.id.tvBasicPlan);
             tvStandardPlan = itemView.findViewById(R.id.tvStandardPlan);
             tvAdvancedPlan = itemView.findViewById(R.id.tvAdvancedPlan);
+            tvPremiumPlan = itemView.findViewById(R.id.tvPremiumPlan);
             llPlanView = itemView.findViewById(R.id.llPlanView);
         }
     }

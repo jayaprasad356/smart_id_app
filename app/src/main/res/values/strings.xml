@@ -196,6 +196,8 @@
     <string name="standard_plan_3999">Standard Plan - ₹ 3999</string>
     <string name="slab_bonus_is_only_for_referring_to_paid_plans">Slab Bonus Is Only For Referring To Paid Plans.</string>
     <string name="advanced_plan_5999">Advanced Plan - ₹5999</string>
+    <string name="branch">Branch</string>
+    <string name="premium_plan_11999">Premium Plan - ₹ 11999</string>
 
     <string-array name="my_spinner_values">
         <item>Select Amount</item>

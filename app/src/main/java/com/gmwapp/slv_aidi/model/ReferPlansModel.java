@@ -2,14 +2,15 @@ package com.gmwapp.slv_aidi.model;
 
 
 public class ReferPlansModel {
-    private String basicPlan, standardPlan, advancedPlan, freeTrail, mobile, joinedDate;
+    private String basicPlan, standardPlan, advancedPlan, premiumPlan, freeTrail, mobile, joinedDate;
 
     public ReferPlansModel() {}
 
-    public ReferPlansModel(String basicPlan, String standardPlan, String advancedPlan, String freeTrail, String mobile, String joinedDate) {
+    public ReferPlansModel(String basicPlan, String standardPlan, String advancedPlan, String premiumPlan, String freeTrail, String mobile, String joinedDate) {
         this.basicPlan = basicPlan;
         this.standardPlan = standardPlan;
         this.advancedPlan = advancedPlan;
+        this.premiumPlan = premiumPlan;
         this.freeTrail = freeTrail;
         this.mobile = mobile;
         this.joinedDate = joinedDate;
@@ -37,6 +38,14 @@ public class ReferPlansModel {
 
     public void setAdvancedPlan(String advancedPlan) {
         this.advancedPlan = advancedPlan;
+    }
+
+    public String getPremiumPlan() {
+        return premiumPlan;
+    }
+
+    public void setPremiumPlan(String premiumPlan) {
+        this.premiumPlan = premiumPlan;
     }
 
     public String getFreeTrail() {
