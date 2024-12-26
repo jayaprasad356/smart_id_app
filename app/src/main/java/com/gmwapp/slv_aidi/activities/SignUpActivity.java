@@ -427,6 +427,10 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void sendOtp(String otp, String phoneNumber) {
         Map<String, String> params = new HashMap<>();
+        params.put(Constant.MOBILE, phoneNumber);
+        params.put(Constant.COUNTRY_CODE, "91");
+        params.put(Constant.OTP, otp);
+
         ApiConfig.RequestToVolley((result, response) -> {
             if (result) {
                 Toast.makeText(this, "OTP Sent Successfully", Toast.LENGTH_SHORT).show();
@@ -434,10 +438,26 @@ public class SignUpActivity extends AppCompatActivity {
                 findViewById(R.id.btnSendOtp).setEnabled(false);
                 etPhoneNo.setEnabled(false);
             } else {
-                // Toast.makeText(this, , Toast.LENGTH_SHORT).show()
                 Toast.makeText(this, "OTP Failed", Toast.LENGTH_SHORT).show();
             }
-        }, SignUpActivity.this, Constant.getOTPUrl("64045a300411033f", phoneNumber, otp), params, true);
+        }, SignUpActivity.this, Constant.OTP_URL, params, true);
+        Log.d("OTP_URL", "OTP_URL: " + Constant.OTP_URL);
+        Log.d("OTP_URL", "OTP_URL params: " + params);
     }
+
+//    private void sendOtp(String otp, String phoneNumber) {
+//        Map<String, String> params = new HashMap<>();
+//        ApiConfig.RequestToVolley((result, response) -> {
+//            if (result) {
+//                Toast.makeText(this, "OTP Sent Successfully", Toast.LENGTH_SHORT).show();
+//                findViewById(R.id.btnSendOtp).setBackgroundResource(R.drawable.disabled_button_bg);
+//                findViewById(R.id.btnSendOtp).setEnabled(false);
+//                etPhoneNo.setEnabled(false);
+//            } else {
+//                // Toast.makeText(this, , Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, "OTP Failed", Toast.LENGTH_SHORT).show();
+//            }
+//        }, SignUpActivity.this, Constant.getOTPUrl("64045a300411033f", phoneNumber, otp), params, true);
+//    }
 
 }
