@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.gmwapp.slv_aidi.ProfileFragment.ExtraIncomeFragment
 import com.gmwapp.slv_aidi.ProfileFragment.InviteFragment
 import com.gmwapp.slv_aidi.ProfileFragment.MyBankFragment
 import com.gmwapp.slv_aidi.ProfileFragment.MyReferFragment
@@ -42,6 +43,7 @@ class NewProfileFragment : Fragment() {
 //    var rlmyBank: RelativeLayout? = null
     var rlInvite: RelativeLayout? = null
     var rlRefers: RelativeLayout? = null
+    var rlGrowWithUs: RelativeLayout? = null
     var rlLogout: RelativeLayout? = null
     var rlWithdraw: RelativeLayout? = null
     var rlUpdateBank: RelativeLayout? = null
@@ -76,6 +78,8 @@ class NewProfileFragment : Fragment() {
         val myProfileFragment = UpdateProfileFragment()
         val setPasswordFragment = SetPasswordFragment()
         val updateBankFragment = UpdateBankFragment()
+        val levelIncomeFragment = LevelIncomeFragment()
+        val extraIncomeFragment = ExtraIncomeFragment()
         val myBankFragment = MyBankFragment()
 //        val applyLeaveFragment = ApplyLeaveFragment()
 
@@ -91,6 +95,7 @@ class NewProfileFragment : Fragment() {
         rlLogout = root.findViewById(R.id.rlLogout)
         rlInvite = root.findViewById(R.id.rlInvite)
         rlRefers = root.findViewById(R.id.rlRefers)
+        rlGrowWithUs = root.findViewById(R.id.rlGrowWithUs)
         rlWithdraw = root.findViewById(R.id.rlWithdraw)
         rlUpdateBank = root.findViewById(R.id.rlUpdateBank)
 //        tvPlanActivate = root.findViewById(R.id.tvPlanActivate)
@@ -146,6 +151,13 @@ class NewProfileFragment : Fragment() {
         rlRefers!!.setOnClickListener(View.OnClickListener {
             // Replace current fragment with withdrawalFragment
             transaction.replace(R.id.Container, myReferFragment)
+            transaction.addToBackStack(null) // Optional: Add to backstack to allow going back
+            transaction.commit()
+        })
+
+        rlGrowWithUs!!.setOnClickListener(View.OnClickListener {
+            // Replace current fragment with withdrawalFragment
+            transaction.replace(R.id.Container, extraIncomeFragment)
             transaction.addToBackStack(null) // Optional: Add to backstack to allow going back
             transaction.commit()
         })
@@ -209,8 +221,8 @@ class NewProfileFragment : Fragment() {
         val initConfig = InitConfig()
         ZohoSalesIQ.init(
             requireActivity().application,
-            "5spwCGjIKo%2Fz6ssVNakmHbMTvtsszyor90%2BhrhHmnNgJcnpMvghcPXmu4dO6kxpO_in",
-            "4%2Fd2z2OovwP9rRaj3CO5TQtzMKPKxu%2FFaEkvD5l3RKcCLPKYaPjW%2B%2BzKEVzDx8I3UedpF6j3RR3PecllV1z3JrF3PMI%2BXoxRDSvLRDVerhOt%2FtApSWo%2FVw%3D%3D",
+            Constant.ZOHO_API_KEY,
+            Constant.ZOHO_ACCESS_KEY,
         initConfig,
             object :
                 InitListener {

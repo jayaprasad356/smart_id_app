@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+    <LinearLayout
+        android:id="@+id/ll_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
+
+        <!-- Define the header row with TextViews -->
+        <TextView
+            android:id="@+id/tvSerialNumber"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="wrap_content"
+            android:text="@string/s_no"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/_10sdp"
+            android:textAlignment="center"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:layout_marginHorizontal="@dimen/_2sdp"/>
+
+        <View
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="match_parent"
+            android:background="@color/grey_10" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/_10sdp"
+            android:textAlignment="center"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:layout_marginHorizontal="@dimen/_2sdp"/>
+
+        <View
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="match_parent"
+            android:background="@color/grey_10" />
+
+        <TextView
+            android:id="@+id/tvMobileNumber"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:text="@string/mobile_number"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/_10sdp"
+            android:textAlignment="center"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:layout_marginHorizontal="@dimen/_2sdp"/>
+
+        <View
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="match_parent"
+            android:background="@color/grey_10" />
+
+        <TextView
+            android:id="@+id/tvRegisteredDate"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:text="@string/registered_date"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/_10sdp"
+            android:textAlignment="center"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:layout_marginHorizontal="@dimen/_2sdp"/>
+
+        <View
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="match_parent"
+            android:background="@color/grey_10" />
+
+        <TextView
+            android:id="@+id/tvTotalIncome"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:text="@string/total_income"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/_10sdp"
+            android:textAlignment="center"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:layout_marginHorizontal="@dimen/_2sdp"/>
+
+        <View
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="match_parent"
+            android:background="@color/grey_10" />
+
+        <TextView
+            android:id="@+id/tvLevelIncome"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:text="@string/my_level_income"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/_10sdp"
+            android:textAlignment="center"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:layout_marginHorizontal="@dimen/_2sdp"/>
+
+    </LinearLayout>
+
+    <View
+        app:layout_constraintTop_toBottomOf="@+id/ll_data"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/grey_10"
+        tools:ignore="UnknownId" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

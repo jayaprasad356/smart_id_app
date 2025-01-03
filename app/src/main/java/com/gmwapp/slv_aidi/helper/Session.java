@@ -83,7 +83,9 @@ public class Session {
             String total_refer_income,
             String today_earnings,
             String total_earnings,
-            String min_withdrawal
+            String min_withdrawal,
+            String free_plan_status,
+            String paid_plan_status
 //            String planName,
 //            String planDescription,
 //            String planValidity,
@@ -131,6 +133,8 @@ public class Session {
         editor.putString(Constant.TODAY_EARNINGS, today_earnings);
         editor.putString(Constant.TOTAL_EARNINGS, total_earnings);
         editor.putString(Constant.MIN_WITHDRAWAL, min_withdrawal);
+        editor.putString(Constant.FREE_PLAN_STATUS, free_plan_status);
+        editor.putString(Constant.PAID_PLAN_STATUS, paid_plan_status);
 //        editor.putString(Constant.PLAN_NAME, planName);
 //        editor.putString(Constant.PLAN_DESCRIPTION, planDescription);
 //        editor.putString(Constant.PLAN_VALIDITY, planValidity);

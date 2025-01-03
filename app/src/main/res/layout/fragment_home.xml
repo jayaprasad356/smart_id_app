@@ -54,37 +54,42 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            <com.google.android.material.button.MaterialButton
-                android:layout_alignParentEnd="true"
-                android:layout_marginHorizontal="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:id="@+id/btnNotification"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_35sdp"
-                android:text="Notification"
-                android:fontFamily="@font/poppins_semibold"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_12sdp"
-                android:textAllCaps="false"
-                app:backgroundTint="@null"
-                android:background="@drawable/button_bg"
-                tools:ignore="HardcodedText"
-                app:icon="@drawable/notification_ic"
-                app:iconPadding="@dimen/_4sdp"
-                app:iconSize="@dimen/_18sdp"
-                app:iconGravity="textStart"
-                app:iconTint="@color/white"/>
+<!--            <com.google.android.material.button.MaterialButton-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_marginHorizontal="@dimen/_10sdp"-->
+<!--                android:layout_marginTop="@dimen/_10sdp"-->
+<!--                android:layout_marginBottom="@dimen/_10sdp"-->
+<!--                android:id="@+id/btnNotification"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="@dimen/_35sdp"-->
+<!--                android:text="Notification"-->
+<!--                android:fontFamily="@font/poppins_semibold"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="@dimen/_12sdp"-->
+<!--                android:textAllCaps="false"-->
+<!--                app:backgroundTint="@null"-->
+<!--                android:background="@drawable/button_bg"-->
+<!--                tools:ignore="HardcodedText"-->
+<!--                app:icon="@drawable/notification_ic"-->
+<!--                app:iconPadding="@dimen/_4sdp"-->
+<!--                app:iconSize="@dimen/_18sdp"-->
+<!--                app:iconGravity="textStart"-->
+<!--                app:iconTint="@color/white"/>-->
 
             </RelativeLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/rlSelectPlan">
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="end"
+                android:layout_gravity="center">
 
                 <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
+                    android:id="@+id/rlSelectPlan"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_10sdp"
                     app:cardBackgroundColor="@color/white"
@@ -106,7 +111,8 @@
                         android:textColor="@color/textColor"
                         android:fontFamily="@font/poppins_bold"
                         android:layout_gravity="center"
-                        android:textSize="@dimen/_12sdp"/>
+                        android:textSize="@dimen/_12sdp"
+                        android:textAlignment="center"/>
 
 <!--                <Spinner-->
 <!--                    android:id="@+id/dropdownSpinner"-->
@@ -120,7 +126,22 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
-            </RelativeLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:id="@+id/btnNotification"
+                    android:layout_width="@dimen/_45sdp"
+                    android:layout_height="match_parent"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/button_bg"
+                    tools:ignore="HardcodedText"
+                    app:icon="@drawable/notification_ic"
+                    app:iconPadding="0dp"
+                    app:iconSize="@dimen/_18sdp"
+                    app:iconGravity="textStart"
+                    app:iconTint="@color/white" />
+
+            </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"

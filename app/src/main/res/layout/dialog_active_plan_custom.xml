@@ -1,0 +1,93 @@
+<!-- res/layout/dialog_recharge_custom.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/_5sdp">
+
+    <!-- Title and Close Button Row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_margin="@dimen/_5sdp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            app:cardElevation="2dp"
+            app:cardCornerRadius="10dp"
+            android:backgroundTint="@color/colorGray">
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/app_logo"
+                android:contentDescription="Close"
+                tools:ignore="HardcodedText" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvDialogTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/congratulations"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginStart="@dimen/_10sdp"/>
+
+        <ImageButton
+            android:id="@+id/btClose"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:background="@drawable/remove_ic"
+            android:contentDescription="Close"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="2dp"
+        android:layout_margin="@dimen/_5sdp"
+        app:cardCornerRadius="10dp"
+        android:backgroundTint="@color/primaryLightestColor">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/you_have_earned_5_for_the_day"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold"
+            android:textColor="@color/logo_blue"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginVertical="@dimen/_5sdp"
+            android:textAlignment="center"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Guide Text -->
+    <TextView
+        android:id="@+id/tvDialogMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/earn_unlimited_by_activating_plans"
+        android:textSize="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:textColor="@color/gray"
+        android:fontFamily="@font/poppins_medium"
+        android:layout_marginHorizontal="@dimen/_5sdp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPlanList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

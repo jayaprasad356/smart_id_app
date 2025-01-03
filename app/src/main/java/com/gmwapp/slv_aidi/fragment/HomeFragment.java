@@ -4,8 +4,11 @@ import static com.gmwapp.slv_aidi.helper.Constant.SUCCESS;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -15,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -26,15 +30,22 @@ import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.gmwapp.slv_aidi.Adapter.JobPlanAdapter;
+import com.gmwapp.slv_aidi.Adapter.PlanListAdapter;
 import com.gmwapp.slv_aidi.R;
 import com.gmwapp.slv_aidi.activities.MainActivity;
 import com.gmwapp.slv_aidi.helper.ApiConfig;
 import com.gmwapp.slv_aidi.helper.Constant;
 import com.gmwapp.slv_aidi.helper.Session;
 import com.gmwapp.slv_aidi.model.DemoCodeData;
+import com.gmwapp.slv_aidi.model.PlanListModel;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,6 +55,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class HomeFragment extends Fragment {
 
@@ -63,7 +75,7 @@ public class HomeFragment extends Fragment {
     TextView tvCodes, tvEarningWallet, tvTodayCodes, tvTotalCodes, tvWorkingDays, tvPlanName;
     TextView tvSchoolName, tvStudentName, tvRollNumber, tvDOB;
     LinearLayout llWaiting;
-    RelativeLayout rlSelectPlan;
+    MaterialCardView rlSelectPlan;
     NestedScrollView frame;
     Spinner dropdownSpinner;
 
@@ -73,6 +85,9 @@ public class HomeFragment extends Fragment {
     private int lastIndex = -1;
     List<DemoCodeData> demoList;
     private int currentIndex = 0;
+    private PlanListAdapter planListAdapter;
+    private List<PlanListModel> planListModel;
+//    private RecyclerView rvPlanList;
 
 
     View root;
@@ -116,6 +131,8 @@ public class HomeFragment extends Fragment {
         dobEditBox7 = root.findViewById(R.id.dob_edit_box7);
         dobEditBox8 = root.findViewById(R.id.dob_edit_box8);
 
+        planListModel = new ArrayList<>();
+
         llWaiting.setVisibility(View.VISIBLE);
         frame.setVisibility(View.GONE);
 
@@ -126,6 +143,8 @@ public class HomeFragment extends Fragment {
         setDobEdit();
 //        setBtCreate();
         setBtSyncNow();
+
+        loadPlans();
 
         // Set OnClickListener for btnNotification
         btnNotification.setOnClickListener(v -> {
@@ -176,6 +195,8 @@ public class HomeFragment extends Fragment {
             tvStudentName.setText("AISHWARYA M S");
             tvRollNumber.setText("7459508");
             tvDOB.setText("2009-08-25");
+
+            setBtCreate("SSJ INDP PU COLLEGE", "AISHWARYA M S", "7459508", "2009-08-25");
 
 //            new Handler().postDelayed(() -> {
 //                List<DemoCodeData> retryData = session.getDemoDataList();
@@ -575,6 +596,13 @@ public class HomeFragment extends Fragment {
             }
         }, requireActivity(), Constant.SYNC_CODE, params, true);
 
+        String free_status = session.getData(Constant.FREE_PLAN_STATUS);
+        String paid_status = session.getData(Constant.PAID_PLAN_STATUS);
+
+        if(Objects.equals(free_status, "1") && Objects.equals(paid_status, "0")) {
+            showPlanListDialog();
+        }
+
         Log.d("SYNC_CODE", "SYNC_CODE: " + Constant.SYNC_CODE);
         Log.d("SYNC_CODE", "SYNC_CODE params: " + params);
     }
@@ -673,6 +701,69 @@ public class HomeFragment extends Fragment {
             planName();
 //            dropDown();
         }, 2000);
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void loadPlans() {
+        Map<String, String> params = new HashMap<>();
+        params.put(Constant.USER_ID, session.getData(Constant.USER_ID));
+        ApiConfig.RequestToVolley((result, response) -> {
+            if (result) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.getBoolean(SUCCESS)) {
+                        JSONArray jsonArray = jsonObject.getJSONArray(Constant.DATA);
+                        Gson g = new Gson();
+
+                        // Clear the plan list before adding new data
+                        planListModel.clear();
+
+                        // Parse response and add to plan list
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                            PlanListModel group = g.fromJson(jsonObject1.toString(), PlanListModel.class);
+                            planListModel.add(group);
+                        }
+
+                        // Set adapter after data is loaded
+//                        planListAdapter = new PlanListAdapter(activity, planListModel, this);
+//                        rvPlanList.setAdapter(planListAdapter);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, activity, Constant.PLAN_LIST_URL, params, true);
+
+        Log.d("PLAN_LIST_URL", "PLAN_LIST_URL: " + Constant.PLAN_LIST_URL);
+        Log.d("PLAN_LIST_URL", "PLAN_LIST_URL params: " + params);
+    }
+
+    private void showPlanListDialog() {
+
+        // Inflate custom dialog layout
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        View dialogView = inflater.inflate(R.layout.dialog_active_plan_custom, null);
+
+        // Initialize RecyclerView in the dialog layout
+        RecyclerView rvPlanList = dialogView.findViewById(R.id.rvPlanList);
+        rvPlanList.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        // Set up the adapter with your data
+        PlanListAdapter planListAdapter = new PlanListAdapter(activity, planListModel, this);
+        rvPlanList.setAdapter(planListAdapter);
+
+        // Create and show the AlertDialog
+        AlertDialog dialog = new AlertDialog.Builder(getContext())
+                .setView(dialogView)
+                .create();
+
+        // Close button action
+        ImageButton btClose = dialogView.findViewById(R.id.btClose);
+        btClose.setOnClickListener(v -> dialog.dismiss());
+
+        // Show dialog
+        dialog.show();
     }
 }
 

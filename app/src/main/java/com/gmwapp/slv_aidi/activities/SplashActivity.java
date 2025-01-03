@@ -91,7 +91,7 @@ public class SplashActivity extends AppCompatActivity {
                             if (Integer.parseInt(currentversion) >= Integer.parseInt(latestVersion)) {
                                 GotoActivity();
                             } else {
-                                updateAlertDialog(link);
+                                updateAlertDialog(link, description);
                             }
                         }
 
@@ -162,7 +162,7 @@ public class SplashActivity extends AppCompatActivity {
         session.setData(Constant.LEVEL, userDetails.optString(Constant.LEVEL, ""));
     }
 
-    private void updateAlertDialog(String url) {
+    private void updateAlertDialog(String url,String description) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("New update Available");
         builder.setMessage(description);

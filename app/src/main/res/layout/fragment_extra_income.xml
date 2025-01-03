@@ -6,6 +6,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/BGColorBlue">
 
+    <RelativeLayout
+        android:background="@color/primaryColor"
+        android:id="@+id/rlToolbar"
+        android:padding="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints">
+
+
+        <ImageButton
+            android:id="@+id/ibBack"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:background="@drawable/ic_arrow_back"
+            android:contentDescription="@string/todo" />
+
+        <TextView
+            android:layout_marginStart="@dimen/_14sdp"
+            android:layout_toEndOf="@+id/ibBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/grow_with_us"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="@dimen/_14sdp"
+            />
+
+    </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/llWaiting"
         android:layout_width="match_parent"
@@ -44,7 +77,10 @@
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginBottom="@dimen/_5sdp"
         android:visibility="visible"
-        tools:ignore="MissingConstraints">
+        android:layout_below="@+id/rlToolbar"
+        app:layout_constraintTop_toBottomOf="@id/rlToolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -58,7 +94,8 @@
             android:layout_marginHorizontal="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_14sdp"
             app:cardBackgroundColor="@color/white"
-            app:cardUseCompatPadding="false">
+            app:cardUseCompatPadding="false"
+            android:visibility="gone">
 
 
             <LinearLayout

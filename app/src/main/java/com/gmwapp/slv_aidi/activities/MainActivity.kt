@@ -9,9 +9,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
+import com.gmwapp.slv_aidi.fragment.LevelIncomeFragment
 import com.gmwapp.slv_aidi.R
 import com.gmwapp.slv_aidi.databinding.ActivityMainBinding
-import com.gmwapp.slv_aidi.fragment.ExtraIncomeFragment
 import com.gmwapp.slv_aidi.fragment.HomeFragment
 import com.gmwapp.slv_aidi.fragment.JobsFragment
 import com.gmwapp.slv_aidi.fragment.NewProfileFragment
@@ -93,7 +93,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.job -> fm!!.beginTransaction().replace(
                     R.id.Container, JobsFragment()).commitAllowingStateLoss()
                 R.id.Team -> fm!!.beginTransaction().replace(
-                    R.id.Container, ExtraIncomeFragment()).commitAllowingStateLoss()
+                    R.id.Container, LevelIncomeFragment()).commitAllowingStateLoss()
+//                    R.id.Container, ExtraIncomeFragment()).commitAllowingStateLoss()
                 R.id.Profile -> fm!!.beginTransaction().replace(
                     R.id.Container, NewProfileFragment()).commitAllowingStateLoss()
             }
@@ -270,6 +271,8 @@ class MainActivity : AppCompatActivity() {
                             userObject.getString(Constant.TODAY_EARNINGS),
                             userObject.getString(Constant.TOTAL_EARNINGS),
                             userObject.getString(Constant.MIN_WITHDRAWAL),
+                            userObject.getString(Constant.FREE_PLAN),
+                            userObject.getString(Constant.PAID_PLAN),
 //                            planObject.getString("name"),
 //                            planObject.getString("description"),
 //                            planObject.getString("validity"),
@@ -297,6 +300,9 @@ class MainActivity : AppCompatActivity() {
                                 planObject.getString("price"),
                                 planObject.getString("type"),
                                 planObject.getString("min_refers"),
+                                "0",
+                                planObject.getString("sub_description"),
+                                planObject.getString("active_link"),
                                 0
                             )
                             plans.add(plan)

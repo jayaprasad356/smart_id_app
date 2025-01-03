@@ -2,12 +2,12 @@
     <item
         android:id="@+id/Home"
         android:icon="@drawable/menu_home"
-        android:title="Home" />
+        android:title="@string/home" />
 
     <item
         android:id="@+id/job"
         android:icon="@drawable/menu_job"
-        android:title="Job" />
+        android:title="@string/job" />
 
 <!--    <item-->
 <!--        android:id="@+id/Wallet"-->
@@ -17,10 +17,10 @@
     <item
         android:id="@+id/Team"
         android:icon="@drawable/grow_ic"
-        android:title="Grow With us" />
+        android:title="@string/level_income" />
 
     <item
         android:id="@+id/Profile"
         android:icon="@drawable/menu_user"
-        android:title="Profile" />
+        android:title="@string/profile" />
 </menu>

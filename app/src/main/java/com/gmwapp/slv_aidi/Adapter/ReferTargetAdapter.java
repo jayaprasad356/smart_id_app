@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.gmwapp.slv_aidi.R;
 import com.gmwapp.slv_aidi.activities.MainActivity;
-import com.gmwapp.slv_aidi.fragment.ExtraIncomeFragment;
+import com.gmwapp.slv_aidi.ProfileFragment.ExtraIncomeFragment;
 import com.gmwapp.slv_aidi.helper.ApiConfig;
 import com.gmwapp.slv_aidi.helper.Constant;
 import com.gmwapp.slv_aidi.helper.Session;

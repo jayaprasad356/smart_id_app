@@ -12,6 +12,9 @@ public class PlanListModel {
     private String price;
     private String type;
     private String min_refers;
+    private String num_sync;
+    private String sub_description;
+    private String active_link;
     private Integer status;
 
     // Constructor, getters, and setters
@@ -27,6 +30,9 @@ public class PlanListModel {
             String price,
             String type,
             String min_refers,
+            String num_sync,
+            String sub_description,
+            String active_link,
             Integer status
     ) {
         this.id = id;
@@ -39,6 +45,9 @@ public class PlanListModel {
         this.per_code_cost = per_code_cost;
         this.price = price;
         this.type = type;
+        this.num_sync = num_sync;
+        this.sub_description = sub_description;
+        this.active_link = active_link;
         this.min_refers = min_refers;
         this.status = status;
     }
@@ -129,6 +138,30 @@ public class PlanListModel {
 
     public void setMin_refers(String min_refers) {
         this.min_refers = min_refers;
+    }
+
+    public String getNum_sync() {
+        return num_sync;
+    }
+
+    public void setNum_sync(String num_sync) {
+        this.num_sync = num_sync;
+    }
+
+    public String getSub_description() {
+        return sub_description;
+    }
+
+    public void setSub_description(String sub_description) {
+        this.sub_description = sub_description;
+    }
+
+    public String getActive_link() {
+        return active_link;
+    }
+
+    public void setActive_link(String active_link) {
+        this.active_link = active_link;
     }
 
     public Integer getStatus() {

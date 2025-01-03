@@ -314,6 +314,7 @@
         
 
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/whatsppjoin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -343,5 +344,17 @@
 
 </RelativeLayout>
     </ScrollView>
+
+    <!-- Add Floating Action Button here -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnFloatingAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/_10sdp"
+        android:contentDescription="Add"
+        app:srcCompat="@drawable/ic_chat"
+        tools:ignore="HardcodedText,ObsoleteLayoutParam" /> <!-- Replace with your own icon -->
 
 </RelativeLayout>

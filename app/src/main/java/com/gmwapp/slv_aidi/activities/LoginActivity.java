@@ -22,6 +22,10 @@ import com.gmwapp.slv_aidi.R;
 import com.gmwapp.slv_aidi.helper.ApiConfig;
 import com.gmwapp.slv_aidi.helper.Constant;
 import com.gmwapp.slv_aidi.helper.Session;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.zoho.commons.InitConfig;
+import com.zoho.livechat.android.listeners.InitListener;
+import com.zoho.salesiqembed.ZohoSalesIQ;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,6 +44,7 @@ public class LoginActivity extends AppCompatActivity implements PopupMenu.OnMenu
     String Mobile,Password;
     ImageView imgMenu;
     LinearLayout whatsppjoin;
+    FloatingActionButton btnFloatingAction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +61,7 @@ public class LoginActivity extends AppCompatActivity implements PopupMenu.OnMenu
         btnForgotPassword = findViewById(R.id.btnForgotPassword);
         imgMenu=findViewById(R.id.imgMenu);
         whatsppjoin = findViewById(R.id.whatsppjoin);
+        btnFloatingAction = findViewById(R.id.btnFloatingAction);
 
         imgMenu.setOnClickListener(view -> showpopup(view));
         whatsppjoin.setOnClickListener(view -> openWhatsApp());
@@ -84,6 +90,33 @@ public class LoginActivity extends AppCompatActivity implements PopupMenu.OnMenu
             }
         });
 
+        initializeZohoSalesIQ();
+
+        btnFloatingAction.setOnClickListener(v -> ZohoSalesIQ.Chat.show());
+
+    }
+
+    private void initializeZohoSalesIQ() {
+        InitConfig initConfig = new InitConfig();
+        ZohoSalesIQ.init(
+                getApplication(),
+                Constant.ZOHO_API_KEY,
+                Constant.ZOHO_ACCESS_KEY,
+                initConfig,
+                new InitListener() {
+                    @Override
+                    public void onInitSuccess() {
+                        // Initialization successful
+                        Log.d("ZohoSalesIQ", "Initialization successful");
+                    }
+
+                    @Override
+                    public void onInitError(int errorCode, String errorMessage) {
+                        // Handle initialization errors
+                        Log.e("ZohoSalesIQ", "Initialization failed: " + errorMessage);
+                    }
+                }
+        );
     }
     private void openWhatsApp() {
         String url = Constant.WHATSAPP_URL;

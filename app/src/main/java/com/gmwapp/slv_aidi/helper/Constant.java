@@ -20,6 +20,8 @@ public class Constant {
     public static final String WITHDRAWAL_DEMO_VIDEO_URL = "https://youtu.be/rL7GRdXq6Gg?si=Jqt4FBuh0D7KLId4";
     public static final String WHATSAPP_URL = "https://whatsapp.com/channel/0029VawJ9ZtJpe8ecl0Vb13w";
     public static final String PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.gmwapp.slv_aidi";
+    public static final String ZOHO_API_KEY = "5spwCGjIKo9MXeJ2dkU8w0NmVLDim0iOdTmghD8gr0X3M139Vd3n7VeUtG2mB9ta_in";
+    public static final String ZOHO_ACCESS_KEY = "xHGPBNAi6lDz6gXI7WkYM2bZU9ZUKhjBNVVWEgMrGlT1D7GdxbzXs3kUA4LqV%2FJpCLJ7uFqkmdKG69kLbNjf7rrj5xl9gR3B7A1R%2B4i9ZbOZAG1jlgcjMg%3D%3D";
     public static final String MainBaseUrl = "https://admin.aidiapp.in/";
 
 
@@ -35,6 +37,7 @@ public class Constant {
     public static final String EXTRA_INCOME_PLAN_ACTIVATE = BaseUrl + "extra_income_plan_activate.php";
     public static final String CLAIM_EXTRA_INCOME = BaseUrl + "claim_extra_income.php";
     public static final String PLAN_LIST_URL = BaseUrl + "plan_list.php";
+    public static final String TEAM_LIST_URL = BaseUrl + "team_list.php";
     public static final String REFER_TARGET_URL = BaseUrl + "refers_target_list.php";
     public static final String SYNC_CODE = BaseUrl + "sync_code.php";
     public static final String CHANGE_PASSWORD = BaseUrl + "change_password.php";
@@ -200,6 +203,10 @@ public class Constant {
     public static final String CATEGORY = "category";
     public static final String SYNC_CODES = "sync_codes";
     public static final String MIN_WITHDRAWAL = "min_withdrawal";
+    public static final String FREE_PLAN_STATUS = "free_plan_status";
+    public static final String FREE_PLAN = "free_plan";
+    public static final String PAID_PLAN = "paid_plan";
+    public static final String PAID_PLAN_STATUS = "paid_plan_status";
     public static final String AD_STATUS = "ad_status";
     public static final String REWARD = "reward";
     public static final String AD_SHOW_TIME = "ad_show_time";
