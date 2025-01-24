@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -90,6 +91,7 @@ public class ImportDataActivity extends AppCompatActivity {
             //pass url
         }, activity, Constant.IMPORT_DATA_URL, params,true);
 
-
+        Log.d("IMPORT_DATA_URL","IMPORT_DATA_URL: " + Constant.IMPORT_DATA_URL);
+        Log.d("IMPORT_DATA_URL","IMPORT_DATA_URL params: " + params);
     }
 }

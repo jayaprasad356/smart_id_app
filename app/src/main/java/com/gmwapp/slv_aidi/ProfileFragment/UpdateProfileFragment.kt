@@ -1,6 +1,7 @@
 package com.gmwapp.slv_aidi.ProfileFragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -122,6 +123,9 @@ class UpdateProfileFragment : Fragment() {
                 }
             }
         }, requireActivity(), Constant.UPDATE_PROFILE, params, true)
+
+        Log.d("UPDATE_PROFILE","UPDATE_PROFILE: ${Constant.UPDATE_PROFILE}")
+        Log.d("UPDATE_PROFILE","UPDATE_PROFILE params: $params")
     }
 
     private fun profileDetails() {

@@ -1,6 +1,7 @@
 package com.gmwapp.slv_aidi.ProfileFragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -71,6 +72,9 @@ class SetPasswordFragment : Fragment() {
                 }
             }
         }, requireActivity(), Constant.CHANGE_PASSWORD, params, true)
+
+        Log.d("CHANGE_PASSWORD", "CHANGE_PASSWORD: " + Constant.CHANGE_PASSWORD)
+        Log.d("CHANGE_PASSWORD", "CHANGE_PASSWORD params: $params")
     }
 
 }

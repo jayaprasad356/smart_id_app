@@ -9,13 +9,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
-import com.gmwapp.slv_aidi.fragment.LevelIncomeFragment
 import com.gmwapp.slv_aidi.R
 import com.gmwapp.slv_aidi.databinding.ActivityMainBinding
 import com.gmwapp.slv_aidi.fragment.HomeFragment
 import com.gmwapp.slv_aidi.fragment.JobsFragment
 import com.gmwapp.slv_aidi.fragment.NewProfileFragment
 import com.gmwapp.slv_aidi.fragment.NotificationFragment
+import com.gmwapp.slv_aidi.fragment.OutsourceJobFragment
 import com.gmwapp.slv_aidi.helper.ApiConfig
 import com.gmwapp.slv_aidi.helper.Constant
 import com.gmwapp.slv_aidi.helper.DatabaseHelper
@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.job -> fm!!.beginTransaction().replace(
                     R.id.Container, JobsFragment()).commitAllowingStateLoss()
                 R.id.Team -> fm!!.beginTransaction().replace(
-                    R.id.Container, LevelIncomeFragment()).commitAllowingStateLoss()
+                    R.id.Container, OutsourceJobFragment()).commitAllowingStateLoss()
 //                    R.id.Container, ExtraIncomeFragment()).commitAllowingStateLoss()
                 R.id.Profile -> fm!!.beginTransaction().replace(
                     R.id.Container, NewProfileFragment()).commitAllowingStateLoss()
@@ -180,6 +180,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }, this@MainActivity, Constant.NOTIFICATION_LIST_URL, params, true)
+
+        Log.d("NOTIFICATION_LIST_URL","NOTIFICATION_LIST_URL: ${Constant.NOTIFICATION_LIST_URL}")
+        Log.d("NOTIFICATION_LIST_URL","NOTIFICATION_LIST_URL params: $params")
     }
 
     private fun showNotificationDialog() {
@@ -273,6 +276,7 @@ class MainActivity : AppCompatActivity() {
                             userObject.getString(Constant.MIN_WITHDRAWAL),
                             userObject.getString(Constant.FREE_PLAN),
                             userObject.getString(Constant.PAID_PLAN),
+                            userObject.getString(Constant.AD_LINK),
 //                            planObject.getString("name"),
 //                            planObject.getString("description"),
 //                            planObject.getString("validity"),
@@ -303,6 +307,7 @@ class MainActivity : AppCompatActivity() {
                                 "0",
                                 planObject.getString("sub_description"),
                                 planObject.getString("active_link"),
+                                0,
                                 0
                             )
                             plans.add(plan)
@@ -410,11 +415,13 @@ class MainActivity : AppCompatActivity() {
                     }
                 } catch (e: JSONException) {
                     e.printStackTrace()
-                    Log.d("DATA_LIST", "DATA_LIST Error: " + e.message)
+                    Log.d("SETTINGS_URL", "SETTINGS_URL Error: " + e.message)
                     Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
                 }
             }
         }, this, Constant.SETTINGS_URL, params, true)
+        Log.d("SETTINGS_URL", "SETTINGS_URL: " + Constant.SETTINGS_URL)
+        Log.d("SETTINGS_URL", "SETTINGS_URL params: $params")
     }
 
     private fun initializeZohoSalesIQ() {

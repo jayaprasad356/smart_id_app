@@ -194,6 +194,8 @@ public class ForgoPasswordActivity extends AppCompatActivity {
                 showToast("Registration failed");
             }
         }, ForgoPasswordActivity.this, Constant.FORGOT_PASSWORD, params, true);
+        Log.d("FORGOT_PASSWORD", "FORGOT_PASSWORD: " + Constant.FORGOT_PASSWORD);
+        Log.d("FORGOT_PASSWORD", "FORGOT_PASSWORD params: " + params);
     }
 
     private void sendOtp(String otp, String phoneNumber) {

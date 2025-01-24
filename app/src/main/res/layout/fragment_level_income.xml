@@ -11,8 +11,7 @@
         android:id="@+id/rlToolbar"
         android:padding="@dimen/_10sdp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
+        android:layout_height="wrap_content">
 
 
         <ImageButton
@@ -323,6 +322,12 @@
                     android:id="@+id/rv_detail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_outsource_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"/>
 
                 </LinearLayout>
 

@@ -1,0 +1,290 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_14sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            app:cardElevation="@dimen/_4sdp"
+            android:elevation="@dimen/_4sdp"
+            app:cardBackgroundColor="@color/logo_blue"
+            app:cardUseCompatPadding="false">
+
+            <TextView
+                android:id="@+id/tvPlanName"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/abcd_40_days_plan_2999"
+                android:textAlignment="center"
+                android:fontFamily="@font/poppins_semibold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sdp"
+                android:includeFontPadding="false"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:elevation="@dimen/_4sdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="@dimen/_4sdp"
+            app:cardUseCompatPadding="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:baselineAligned="false"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:elevation="0dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardElevation="0dp"
+                        app:cardUseCompatPadding="false"
+                        app:cardCornerRadius="8dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@drawable/dialog_background">
+
+                            <com.github.chrisbanes.photoview.PhotoView
+                                android:id="@+id/ivImage"
+                                android:layout_width="@dimen/_80sdp"
+                                android:layout_height="@dimen/_60sdp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/app_logo" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnZoom"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_30sdp"
+                                android:text="@string/zoom"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_10sdp"
+                                android:textAllCaps="false"
+                                app:backgroundTint="@null"
+                                android:background="@color/primaryColor" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="vertical"
+                        android:weightSum="3"
+                        android:layout_marginStart="@dimen/_10sdp">
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                tools:ignore="UselessParent"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins_semibold"
+                                    android:includeFontPadding="false"
+                                    android:text="@string/per_day_earnings"
+                                    android:textAlignment="textStart"
+                                    android:textColor="@color/textColor"
+                                    android:textSize="@dimen/_8sdp" />
+
+                                <TextView
+                                    android:id="@+id/tvPerDayEarning"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textColor="@color/light_pink"
+                                    android:textSize="@dimen/_12sdp" />
+
+                            </LinearLayout>
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                tools:ignore="UselessParent"
+                                android:gravity="center"
+                                android:layout_marginTop="@dimen/_5sdp">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins_semibold"
+                                    android:includeFontPadding="false"
+                                    android:text="@string/per_month_earning"
+                                    android:textAlignment="textStart"
+                                    android:textColor="@color/textColor"
+                                    android:textSize="@dimen/_8sdp" />
+
+                                <TextView
+                                    android:id="@+id/tvMonthlyEarning"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textColor="@color/light_pink"
+                                    android:textSize="@dimen/_12sdp" />
+
+                            </LinearLayout>
+
+
+                        </RelativeLayout>
+
+                        <!--                                <RelativeLayout-->
+                        <!--                                    android:layout_width="1dp"-->
+                        <!--                                    android:layout_height="match_parent"-->
+                        <!--                                    android:background="@color/black" />-->
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                tools:ignore="UselessParent"
+                                android:gravity="start"
+                                android:layout_marginTop="@dimen/_5sdp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins_semibold"
+                                    android:includeFontPadding="false"
+                                    android:text="@string/active_date"
+                                    android:textAlignment="textStart"
+                                    android:textColor="@color/textColor"
+                                    android:textSize="@dimen/_8sdp" />
+
+                                <TextView
+                                    android:id="@+id/tvDate"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:gravity="center"
+                                    android:includeFontPadding="false"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textColor="@color/light_pink"
+                                    android:textSize="@dimen/_12sdp" />
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tvDescription"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:textColor="@color/textColor"-->
+<!--                    android:textSize="14sp"-->
+<!--                    android:layout_marginTop="@dimen/_10sdp"-->
+<!--                    android:layout_marginBottom="@dimen/_5sdp"/>-->
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tvMore"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginTop="4dp"-->
+                <!--                    android:text="More"-->
+                <!--                    android:textColor="@color/primaryColor"-->
+                <!--                    android:visibility="gone" />-->
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/_10sdp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btClaim"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_marginHorizontal="@dimen/_30sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:background="@drawable/button_bg"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/claim"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp"
+                        app:backgroundTint="@null" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
+
+</LinearLayout>

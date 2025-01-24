@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -137,6 +138,8 @@ public class NotificationFragment extends Fragment {
                 }
             }
         }, activity, Constant.NOTIFICATION_LIST_URL, params, true);
+        Log.d("NOTIFICATION_LIST_URL", "NOTIFICATION_LIST_URL: " + Constant.NOTIFICATION_LIST_URL);
+        Log.d("NOTIFICATION_LIST_URL", "NOTIFICATION_LIST_URL params: $params");
     }
 
     @Override

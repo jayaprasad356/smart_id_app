@@ -16,6 +16,7 @@ public class PlanListModel {
     private String sub_description;
     private String active_link;
     private Integer status;
+    private Integer worked_days;
 
     // Constructor, getters, and setters
     public PlanListModel(
@@ -33,7 +34,8 @@ public class PlanListModel {
             String num_sync,
             String sub_description,
             String active_link,
-            Integer status
+            Integer status,
+            Integer worked_days
     ) {
         this.id = id;
         this.name = name;
@@ -50,6 +52,7 @@ public class PlanListModel {
         this.active_link = active_link;
         this.min_refers = min_refers;
         this.status = status;
+        this.worked_days = worked_days;
     }
 
     public String getId() {
@@ -170,6 +173,14 @@ public class PlanListModel {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getWorked_days() {
+        return worked_days;
+    }
+
+    public void setWorked_days(Integer worked_days) {
+        this.worked_days = worked_days;
     }
 }
 

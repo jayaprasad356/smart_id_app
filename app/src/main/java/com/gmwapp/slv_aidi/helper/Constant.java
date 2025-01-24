@@ -34,12 +34,16 @@ public class Constant {
     public static final String LOGIN_URL = BaseUrl + "login.php";
     public static final String USER_DETAILS_API = BaseUrl + "userdetails.php";
     public static final String ACTIVATE_PLAN = BaseUrl + "activate_plan.php";
+    public static final String OUTSOURCE_ACTIVATE_PLAN = BaseUrl + "outsource_activate_plan.php";
     public static final String EXTRA_INCOME_PLAN_ACTIVATE = BaseUrl + "extra_income_plan_activate.php";
     public static final String CLAIM_EXTRA_INCOME = BaseUrl + "claim_extra_income.php";
     public static final String PLAN_LIST_URL = BaseUrl + "plan_list.php";
+    public static final String OUTSOURCE_PLAN_LIST = BaseUrl + "outsource_plan_list.php";
     public static final String TEAM_LIST_URL = BaseUrl + "team_list.php";
+    public static final String OUTSOURCE_TEAM_LIST_URL = BaseUrl + "outsource_team_list.php";
     public static final String REFER_TARGET_URL = BaseUrl + "refers_target_list.php";
     public static final String SYNC_CODE = BaseUrl + "sync_code.php";
+    public static final String OUTSOURCE_SYNC = BaseUrl + "outsource_sync.php";
     public static final String CHANGE_PASSWORD = BaseUrl + "change_password.php";
     public static final String UPDATE_BANK_URL = BaseUrl + "updatebank.php";
     public static final String WITHDRAWAL_URL = BaseUrl + "withdrawal.php";
@@ -54,6 +58,7 @@ public class Constant {
     public static final String WITHDRAWAL_LIST_URL = BaseUrl + "withdrawal_lists.php";
     public static final String ADD_MAIN_BALANCE = BaseUrl + "add_main_balance.php";
     public static final String NOTIFICATION_LIST_URL = BaseUrl + "notification_lists.php";
+    public static final String OUTSOURCE_USER_PLAN_LIST = BaseUrl + "outsource_user_plan_list.php";
     public static final String CHANGE_DEVICE_LIST_URL = BaseUrl + "change_device.php";
     public static final String APPUPDATE_URL = BaseUrl + "appupdate.php";
     public static final String TRNSACTION_LIST_URL = BaseUrl + "transaction_lists.php";
@@ -72,15 +77,14 @@ public class Constant {
     public static final String FORGOT_PASSWORD = BaseUrl + "forgot_password.php";
     public static final String DATA_LIST = BaseUrl + "data_list.php";
     public static final String ADD_WALLET = BaseUrl + "add-wallet.php";
-
-    public static final String PER_CODE_VAL = "per_code_val";
-
     public static final String APPLY_LEAVE_URL = BaseUrl + "applyleave.php";
     public static final String MYLEAVES_LIST_URL = BaseUrl + "myleaves_list.php";
 
 
 
     public static final String LEAVE_DATE = "leave_date";
+
+    public static final String PER_CODE_VAL = "per_code_val";
     public static final String REASON = "reason";
 
     public static final String TOTAL_LEAVES = "total_leaves";
@@ -95,9 +99,11 @@ public class Constant {
     public static final String USER_ID = "user_id";
     public static final String START_WORK = "start_work";
     public static final String START_WORK_PLAN_NAME = "start_work_plan_name";
+    public static final String START_WORK_PLAN_WORK_DAY = "start_work_plan_work_day";
     public static final String IS_PLAN_CHANGE = "is_plan_change";
     public static final String Wallet_TYPE = "wallet_type";
     public static final String PLAN_ID = "plan_id";
+    public static final String OUTSOURCE_USER_PLAN_ID = "outsource_user_plan_id";
     public static final String EXTRA_CLAIM_PLAN_ID = "extra_claim_plan_id";
     public static final String REFER_ID = "refer_id";
     public static final String MOBILE = "mobile";
@@ -206,6 +212,7 @@ public class Constant {
     public static final String FREE_PLAN_STATUS = "free_plan_status";
     public static final String FREE_PLAN = "free_plan";
     public static final String PAID_PLAN = "paid_plan";
+    public static final String AD_LINK = "ad_link";
     public static final String PAID_PLAN_STATUS = "paid_plan_status";
     public static final String AD_STATUS = "ad_status";
     public static final String REWARD = "reward";

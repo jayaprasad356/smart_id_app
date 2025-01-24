@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gmwapp.slv_aidi.Adapter.LevelDataAdapter
 import com.gmwapp.slv_aidi.Adapter.LevelTypeAdapter
+import com.gmwapp.slv_aidi.Adapter.OutsourceLevelDataAdapter
 import com.gmwapp.slv_aidi.activities.MainActivity
 import com.gmwapp.slv_aidi.databinding.FragmentLevelIncomeBinding
 import com.gmwapp.slv_aidi.helper.ApiConfig
@@ -35,10 +36,11 @@ class LevelIncomeFragment : Fragment() {
 
     private val itemList: MutableList<LevelIncomeList> = mutableListOf()
     private lateinit var adapter: LevelDataAdapter
+    private lateinit var outsourceAdapter: OutsourceLevelDataAdapter
 
     private val levelTypeList = listOf(
-        LevelTypeData("b", "Level 1"),
-        LevelTypeData("c", "Level 2"),
+        LevelTypeData("b", "Level 1 (5%)"),
+        LevelTypeData("c", "Level 2 (2%)"),
     )
 
     override fun onCreateView(
@@ -76,8 +78,14 @@ class LevelIncomeFragment : Fragment() {
         adapter = LevelDataAdapter(itemList)
         binding.rvDetail.adapter = adapter
 
+        // Initialize RecyclerView for Level Income List
+//        binding.rvOutsourceDetail.layoutManager = LinearLayoutManager(requireContext())
+//        outsourceAdapter = OutsourceLevelDataAdapter(itemList)
+//        binding.rvOutsourceDetail.adapter = outsourceAdapter
+
         // Load initial data
         teamList()
+//        outsourceTeamList()
 
         return binding.root
     }
@@ -161,11 +169,12 @@ Use My Refer Code ${referCode[0]} While Creating Account.""", baseUrl
                         binding.rvDetail.adapter = adapter
 
                     } else {
-                        Toast.makeText(
-                            requireContext(),
-                            jsonObject.getString("message"),
-                            Toast.LENGTH_SHORT
-                        ).show()
+//                        Toast.makeText(
+//                            requireContext(),
+//                            jsonObject.getString("message"),
+//                            Toast.LENGTH_SHORT
+//                        ).show()
+                        Log.d("TEAM_LIST_URL", "TEAM_LIST_URL TEST: " + jsonObject.getString("message"))
                     }
                 } catch (e: JSONException) {
                     e.printStackTrace()
@@ -175,11 +184,19 @@ Use My Refer Code ${referCode[0]} While Creating Account.""", baseUrl
 
                 binding.llWaiting.setVisibility(View.VISIBLE)
                 binding.frame.setVisibility(View.GONE)
-                Handler().postDelayed({
+                if(itemList.isNotEmpty()){
                     adapter.notifyDataSetChanged()
                     binding.llWaiting.setVisibility(View.GONE)
                     binding.frame.setVisibility(View.VISIBLE)
-                }, 2000)
+                }
+
+//                binding.llWaiting.setVisibility(View.VISIBLE)
+//                binding.frame.setVisibility(View.GONE)
+//                Handler().postDelayed({
+//                    adapter.notifyDataSetChanged()
+//                    binding.llWaiting.setVisibility(View.GONE)
+//                    binding.frame.setVisibility(View.VISIBLE)
+//                }, 2000)
 
                 if (itemList.isEmpty()) {
                     binding.tvNoData.visibility = View.VISIBLE
@@ -194,12 +211,79 @@ Use My Refer Code ${referCode[0]} While Creating Account.""", baseUrl
         Log.d("TEAM_LIST_URL", "TEAM_LIST_URL params: $params")
     }
 
+//    @SuppressLint("NotifyDataSetChanged")
+//    private fun outsourceTeamList() {
+//        val params: MutableMap<String, String> = HashMap()
+//        params[Constant.USER_ID] = session.getData(Constant.USER_ID)
+//        params[Constant.LEVEL] = session.getData(Constant.LEVEL)
+//
+//        ApiConfig.RequestToVolley({ result: Boolean, response: String? ->
+//            if (result) {
+//
+//                itemList.clear()
+//
+//                try {
+//                    val jsonObject = JSONObject(response!!)
+//
+//                    if (jsonObject.getBoolean("success")) {
+//                        val jsonArray = jsonObject.getJSONArray(Constant.DATA)
+//                        val g = Gson()
+//
+//                        for (i in 0 until jsonArray.length()) {
+//                            val jsonObject1: JSONObject = jsonArray.getJSONObject(i)
+//                            val group: LevelIncomeList = g.fromJson(
+//                                jsonObject1.toString(),
+//                                LevelIncomeList::class.java
+//                            )
+//                            itemList.add(group)
+//                        }
+//
+//                        // Initialize RecyclerView for Level Income List
+//                        binding.rvOutsourceDetail.layoutManager = LinearLayoutManager(requireContext())
+//                        outsourceAdapter = OutsourceLevelDataAdapter(itemList)
+//                        binding.rvOutsourceDetail.adapter = outsourceAdapter
+//
+//                    } else {
+////                        Toast.makeText(
+////                            requireContext(),
+////                            jsonObject.getString("message"),
+////                            Toast.LENGTH_SHORT
+////                        ).show()
+//
+//                        Log.d("OUTSOURCE_TEAM_LIST_URL", "OUTSOURCE_TEAM_LIST_URL: " + jsonObject.getString("message"))
+//                    }
+//                } catch (e: JSONException) {
+//                    e.printStackTrace()
+//                }
+//
+//                binding.llWaiting.setVisibility(View.VISIBLE)
+//                binding.frame.setVisibility(View.GONE)
+//                Handler().postDelayed({
+//                    outsourceAdapter.notifyDataSetChanged()
+//                    binding.llWaiting.setVisibility(View.GONE)
+//                    binding.frame.setVisibility(View.VISIBLE)
+//                }, 2000)
+//
+//                if (itemList.isEmpty()) {
+//                    binding.tvNoData.visibility = View.VISIBLE
+//                    binding.tvNoData.visibility = View.VISIBLE
+//                } else {
+//                    binding.tvNoData.visibility = View.GONE
+//                }
+//            }
+//        }, activity, Constant.OUTSOURCE_TEAM_LIST_URL, params, true)
+//
+//        Log.d("OUTSOURCE_TEAM_LIST_URL", "OUTSOURCE_TEAM_LIST_URL: " + Constant.OUTSOURCE_TEAM_LIST_URL)
+//        Log.d("OUTSOURCE_TEAM_LIST_URL", "OUTSOURCE_TEAM_LIST_URL params: $params")
+//    }
+
     private fun setupRecyclerView() {
         val levelTypeAdapter = LevelTypeAdapter(levelTypeList, object : LevelTypeAdapter.OnLevelSelectedListener {
             override fun onLevelSelected(levelId: String) {
                 // Update the session and reload data
                 session.setData(Constant.LEVEL, levelId)
                 teamList()
+//                outsourceTeamList()
             }
         })
 

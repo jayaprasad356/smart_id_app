@@ -44,6 +44,7 @@ class NewProfileFragment : Fragment() {
     var rlInvite: RelativeLayout? = null
     var rlRefers: RelativeLayout? = null
     var rlGrowWithUs: RelativeLayout? = null
+    var rlLevelIncome: RelativeLayout? = null
     var rlLogout: RelativeLayout? = null
     var rlWithdraw: RelativeLayout? = null
     var rlUpdateBank: RelativeLayout? = null
@@ -96,6 +97,7 @@ class NewProfileFragment : Fragment() {
         rlInvite = root.findViewById(R.id.rlInvite)
         rlRefers = root.findViewById(R.id.rlRefers)
         rlGrowWithUs = root.findViewById(R.id.rlGrowWithUs)
+        rlLevelIncome = root.findViewById(R.id.rlLevelIncome)
         rlWithdraw = root.findViewById(R.id.rlWithdraw)
         rlUpdateBank = root.findViewById(R.id.rlUpdateBank)
 //        tvPlanActivate = root.findViewById(R.id.tvPlanActivate)
@@ -151,6 +153,13 @@ class NewProfileFragment : Fragment() {
         rlRefers!!.setOnClickListener(View.OnClickListener {
             // Replace current fragment with withdrawalFragment
             transaction.replace(R.id.Container, myReferFragment)
+            transaction.addToBackStack(null) // Optional: Add to backstack to allow going back
+            transaction.commit()
+        })
+
+        rlLevelIncome!!.setOnClickListener(View.OnClickListener {
+            // Replace current fragment with withdrawalFragment
+            transaction.replace(R.id.Container, levelIncomeFragment)
             transaction.addToBackStack(null) // Optional: Add to backstack to allow going back
             transaction.commit()
         })

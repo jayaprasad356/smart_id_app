@@ -1,5 +1,6 @@
 package com.gmwapp.slv_aidi.fragment;
 
+import static android.app.Activity.RESULT_OK;
 import static com.gmwapp.slv_aidi.helper.Constant.SUCCESS;
 
 import android.annotation.SuppressLint;
@@ -10,14 +11,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
+import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -46,6 +51,9 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.gson.Gson;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -78,6 +86,7 @@ public class HomeFragment extends Fragment {
     MaterialCardView rlSelectPlan;
     NestedScrollView frame;
     Spinner dropdownSpinner;
+    YouTubePlayer mPlayer;
 
     int codeCount = 0;
     final int MAX_CODE_COUNT = 50;
@@ -144,7 +153,9 @@ public class HomeFragment extends Fragment {
 //        setBtCreate();
         setBtSyncNow();
 
-        loadPlans();
+//        loadPlans();
+
+//        showAdVideo("https://www.youtube.com/shorts/6RC_0H4875w");
 
         // Set OnClickListener for btnNotification
         btnNotification.setOnClickListener(v -> {
@@ -227,6 +238,7 @@ public class HomeFragment extends Fragment {
 
     private void planName() {
         String startWorkPlanName = session.getData(Constant.START_WORK_PLAN_NAME);
+        String workedDays = session.getData(Constant.START_WORK_PLAN_WORK_DAY);
         Log.d("START_WORK", "START_WORK startWorkPlanName: " + startWorkPlanName);
 
         if (startWorkPlanName.isEmpty()) {
@@ -234,6 +246,7 @@ public class HomeFragment extends Fragment {
         } else {
             rlSelectPlan.setVisibility(View.VISIBLE);
             tvPlanName.setText(startWorkPlanName);
+            tvWorkingDays.setText(String.valueOf(workedDays));
         }
     }
 
@@ -305,6 +318,8 @@ public class HomeFragment extends Fragment {
                 }
             }
         }, requireActivity(), Constant.DATA_LIST, params, true);
+        Log.d("DATA_LIST", "DATA_LIST: " + Constant.DATA_LIST);
+        Log.d("DATA_LIST", "OTP_URL params: " + params);
     }
 
 //    private void dropDown() {
@@ -515,9 +530,9 @@ public class HomeFragment extends Fragment {
 
         Log.d("initialCodeCount", "session.getData(Constant.START_WORK): " + session.getData(Constant.START_WORK));
 
-        if (!session.getData(Constant.START_WORK).isEmpty() && session.getData(Constant.START_WORK) != null) {
-            myPlanListApi();
-        }
+//        if (!session.getData(Constant.START_WORK).isEmpty() && session.getData(Constant.START_WORK) != null) {
+//            myPlanListApi();
+//        }
 
         String earningWallet = session.getData(Constant.EARNING_WALLET);
         String todayCodes = session.getData(Constant.TODAY_CODES);
@@ -607,48 +622,50 @@ public class HomeFragment extends Fragment {
         Log.d("SYNC_CODE", "SYNC_CODE params: " + params);
     }
 
-    public void myPlanListApi() {
-        if (!isAdded()) return;  // Check if the fragment is attached before proceeding
-
-        Map<String, String> params = new HashMap<>();
-        params.put(Constant.USER_ID, session.getData(Constant.USER_ID));
-        params.put(Constant.PLAN_ID, session.getData(Constant.START_WORK));
-
-        ApiConfig.RequestToVolley((result, response) -> {
-            if (result && isAdded()) {  // Ensure the fragment is still attached here
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    String message = jsonObject.getString("message");
-                    if (jsonObject.getBoolean(SUCCESS)) {
-                        JSONArray jsonArray = jsonObject.getJSONArray(Constant.DATA);
-                        if (jsonArray.length() > 0) {
-                            JSONObject planData = jsonArray.getJSONObject(0);
-                            int workedDays = planData.optInt("worked_days", 0);
-
-                            // Ensure TextView update only if fragment is attached
-                            if (isAdded()) {
-                                tvWorkingDays.setText(String.valueOf(workedDays));
-                            }
-                        } else {
-                            if (isAdded()) {
-                                tvWorkingDays.setText("N/A");
-                            }
-                        }
-                    } else {
-                        if (isAdded()) {
-                            Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Log.d("MY_PLAN_LIST", "MY_PLAN_LIST Error: " + e.getMessage());
-                    if (isAdded()) {
-                        Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-        }, getActivity(), Constant.MY_PLAN_LIST, params, true);
-    }
+//    public void myPlanListApi() {
+//        if (!isAdded()) return;  // Check if the fragment is attached before proceeding
+//
+//        Map<String, String> params = new HashMap<>();
+//        params.put(Constant.USER_ID, session.getData(Constant.USER_ID));
+//        params.put(Constant.PLAN_ID, session.getData(Constant.START_WORK));
+//
+//        ApiConfig.RequestToVolley((result, response) -> {
+//            if (result && isAdded()) {  // Ensure the fragment is still attached here
+//                try {
+//                    JSONObject jsonObject = new JSONObject(response);
+//                    String message = jsonObject.getString("message");
+//                    if (jsonObject.getBoolean(SUCCESS)) {
+//                        JSONArray jsonArray = jsonObject.getJSONArray(Constant.DATA);
+//                        if (jsonArray.length() > 0) {
+//                            JSONObject planData = jsonArray.getJSONObject(0);
+//                            int workedDays = planData.optInt("worked_days", 0);
+//
+//                            // Ensure TextView update only if fragment is attached
+//                            if (isAdded()) {
+//                                tvWorkingDays.setText(String.valueOf(workedDays));
+//                            }
+//                        } else {
+//                            if (isAdded()) {
+//                                tvWorkingDays.setText("N/A");
+//                            }
+//                        }
+//                    } else {
+//                        if (isAdded()) {
+//                            Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                    Log.d("MY_PLAN_LIST", "MY_PLAN_LIST Error: " + e.getMessage());
+//                    if (isAdded()) {
+//                        Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//            }
+//        }, getActivity(), Constant.MY_PLAN_LIST, params, true);
+//        Log.d("MY_PLAN_LIST", "MY_PLAN_LIST: " + Constant.MY_PLAN_LIST);
+//        Log.d("MY_PLAN_LIST", "MY_PLAN_LIST params: " + params);
+//    }
 
     private void incrementCodeCount() {
         if (codeCount < MAX_CODE_COUNT) {
@@ -764,6 +781,137 @@ public class HomeFragment extends Fragment {
 
         // Show dialog
         dialog.show();
+    }
+
+    private String extractVideoId(String url) {
+        String videoId = null;
+        try {
+            Uri uri = Uri.parse(url);
+
+            // Check if the URL is a regular YouTube video URL
+            if (uri.getQueryParameter("v") != null) {
+                videoId = uri.getQueryParameter("v");
+            }
+            // Check if the URL is a YouTube Shorts URL
+            else if (url.contains("/shorts/")) {
+                // Extract the video ID from the URL path (after "/shorts/")
+                String[] urlParts = url.split("/shorts/");
+                if (urlParts.length > 1) {
+                    videoId = urlParts[1];
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return videoId;
+    }
+
+    public static void enableDisableView(View view, boolean enabled) {
+        view.setEnabled(enabled);
+        if (view instanceof ViewGroup) {
+            ViewGroup group = (ViewGroup) view;
+            for (int idx = 0; idx < group.getChildCount(); idx++) {
+                enableDisableView(group.getChildAt(idx), enabled);
+            }
+        }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private void showAdVideo(String youtubeUrl) {
+        // Extract the video ID from the URL
+        String videoId = extractVideoId(youtubeUrl);
+        if (videoId == null || videoId.isEmpty()) {
+            Toast.makeText(getContext(), "Invalid YouTube URL", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Inflate custom dialog layout
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        View dialogView = inflater.inflate(R.layout.dialog_ad, null);
+
+        // Initialize YouTubePlayerView
+        YouTubePlayerView ytPlayerView = dialogView.findViewById(R.id.ytPlayerView);
+//        MaterialCardView cvDummy = dialogView.findViewById(R.id.cv_dummy);
+        getLifecycle().addObserver(ytPlayerView);
+        enableDisableView(ytPlayerView, true);
+
+        ytPlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(YouTubePlayer youTubePlayer) {
+                youTubePlayer.loadVideo(videoId, 0);
+            }
+        });
+
+        ytPlayerView.setOnTouchListener((view, motionEvent) -> {
+            switch (motionEvent.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    // Code for when the user touches the screen
+                    Log.d("YouTubePlayerView", "Touch event: ACTION_DOWN");
+                    break;
+
+                case MotionEvent.ACTION_MOVE:
+                    // Code for when the user moves their finger on the screen
+                    Log.d("YouTubePlayerView", "Touch event: ACTION_MOVE");
+                    break;
+
+                case MotionEvent.ACTION_UP:
+                    // Code for when the user lifts their finger off the screen
+                    Log.d("YouTubePlayerView", "Touch event: ACTION_UP");
+                    break;
+
+                default:
+                    break;
+            }
+            return true; // Return true to indicate the touch event is handled
+        });
+
+        // Create a FrameLayout to wrap YouTubePlayerView and intercept touch events
+//        FrameLayout touchInterceptor = dialogView.findViewById(R.id.touchInterceptor);
+//        cvDummy.setEnabled(false); // Consume the touch event to block interaction with the video
+
+        // Create and show the AlertDialog
+        AlertDialog dialog = new AlertDialog.Builder(getContext())
+                .setView(dialogView)
+                .setCancelable(false) // Prevent the dialog from being dismissed by tapping outside
+                .create();
+
+        // Initialize the close button and countdown TextView
+        ImageButton btClose = dialogView.findViewById(R.id.btClose);
+        TextView tvCountdown = dialogView.findViewById(R.id.tvCountdown);
+
+        btClose.setEnabled(false); // Disable the button initially
+        btClose.setAlpha(0.5f);    // Make it less visible when disabled
+
+        // Start a 40-second countdown
+        new CountDownTimer(40000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                // Update the countdown timer text
+                tvCountdown.setText((millisUntilFinished / 1000) + "");
+            }
+
+            public void onFinish() {
+                // Enable the button and update UI
+                btClose.setEnabled(true);
+                btClose.setAlpha(1.0f); // Make it fully visible
+                tvCountdown.setText("Skip");
+            }
+        }.start();
+
+        btClose.setOnClickListener(v -> {
+            dialog.dismiss();
+            ytPlayerView.release();
+        });
+
+        // Show dialog
+        dialog.show();
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, final Intent data) {
+        if (resultCode == RESULT_OK) {
+            mPlayer.play();
+        }
     }
 }
 

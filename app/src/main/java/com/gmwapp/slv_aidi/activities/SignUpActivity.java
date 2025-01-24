@@ -267,6 +267,9 @@ public class SignUpActivity extends AppCompatActivity {
                 showToast("Registration failed");
             }
         }, SignUpActivity.this, Constant.REGISTER_URL, params, true);
+
+        Log.d("REGISTER_URL","REGISTER_URL: " + Constant.REGISTER_URL);
+        Log.d("REGISTER_URL","REGISTER_URL params: " + params);
     }
 
     private void handleRegistrationResponse(String response) {

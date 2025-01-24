@@ -225,7 +225,7 @@ class WithdrawalFragment : Fragment() {
             }
         }, requireActivity(), Constant.ADD_MAIN_BALANCE, params, true)
 
-        Log.d("ADD_MAIN_BALANCE","ADD_MAIN_BALANCE: ${Constant.WITHDRAWAL_LIST_URL}")
+        Log.d("ADD_MAIN_BALANCE","ADD_MAIN_BALANCE: ${Constant.ADD_MAIN_BALANCE}")
         Log.d("ADD_MAIN_BALANCE","ADD_MAIN_BALANCE params: $params")
     }
 

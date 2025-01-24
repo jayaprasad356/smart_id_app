@@ -255,6 +255,8 @@ public class WalletFragment extends Fragment {
                 }
             }
         }, activity, Constant.TRNSACTION_LIST_URL, params, true);
+        Log.d("TRNSACTION_LIST_URL", "TRNSACTION_LIST_URL: " + Constant.TRNSACTION_LIST_URL);
+        Log.d("TRNSACTION_LIST_URL", "TRNSACTION_LIST_URL params: " + params);
     }
 
 
@@ -286,6 +288,9 @@ public class WalletFragment extends Fragment {
                     }
                 }
             }, activity, Constant.WALLET_URL, params, true);
+
+            Log.d("WALLET_URL","WALLET_URL: " + Constant.WALLET_URL);
+            Log.d("WALLET_URL","WALLET_URL params: " + params);
         }
     }
 }

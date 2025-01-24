@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -116,6 +117,9 @@ public class CheckInActivity extends AppCompatActivity {
                 Toast.makeText(this, response + result, Toast.LENGTH_SHORT).show();
             }
         }, activity, Constant.LOGIN_URL, params, true);
+
+        Log.d("LOGIN_URL", "LOGIN_URL: " + Constant.LOGIN_URL);
+        Log.d("LOGIN_URL", "LOGIN_URL params: $params");
     }
 
     private void showAlertdialog() {
@@ -156,6 +160,8 @@ public class CheckInActivity extends AppCompatActivity {
                 Toast.makeText(this, response + result, Toast.LENGTH_SHORT).show();
             }
         }, activity, Constant.CHANGE_DEVICE_LIST_URL, params, true);
+        Log.d("CHANGE_DEVICE_LIST_URL", "CHANGE_DEVICE_LIST_URL: " + Constant.CHANGE_DEVICE_LIST_URL);
+        Log.d("CHANGE_DEVICE_LIST_URL", "CHANGE_DEVICE_LIST_URL params: $params");
     }
 
     private void ApprovalAlertdialog(String msg) {

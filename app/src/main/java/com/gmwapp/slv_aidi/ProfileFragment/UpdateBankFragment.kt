@@ -158,6 +158,9 @@ class UpdateBankFragment : Fragment() {
                 }
             }
         }, requireActivity(), Constant.UPDATE_BANK_URL, params, true)
+
+        Log.d("UPDATE_BANK_URL", "UPDATE_BANK_URL: " + Constant.UPDATE_BANK_URL)
+        Log.d("UPDATE_BANK_URL", "UPDATE_BANK_URL params: $params")
     }
 
     private fun bankDetailsApi() {
@@ -182,5 +185,7 @@ class UpdateBankFragment : Fragment() {
                 }
             }
         }, requireActivity(), Constant.BANK_DETAILS_URL, params, true)
+        Log.d("BANK_DETAILS_URL", "BANK_DETAILS_URL: " + Constant.BANK_DETAILS_URL)
+        Log.d("BANK_DETAILS_URL", "BANK_DETAILS_URL params: $params")
     }
 }

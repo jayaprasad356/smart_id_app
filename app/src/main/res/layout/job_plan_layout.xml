@@ -120,6 +120,50 @@
                             android:gravity="center">
 
                             <TextView
+                                android:id="@+id/tvTitleCourseCharges"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:includeFontPadding="false"
+                                android:text="@string/course_charges"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/textColor"
+                                android:textSize="@dimen/_8sdp" />
+
+                            <TextView
+                                android:id="@+id/tvCourseCharges"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_bold"
+                                android:gravity="center"
+                                android:includeFontPadding="false"
+                                android:text=""
+                                android:textAlignment="center"
+                                android:textColor="@color/light_pink"
+                                android:textSize="@dimen/_12sdp" />
+
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="@dimen/_5sdp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            tools:ignore="UselessParent"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/tvTitlePerCode"
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
                                 android:layout_height="wrap_content"
@@ -161,6 +205,7 @@
                             android:layout_marginTop="@dimen/_5sdp">
 
                             <TextView
+                                android:id="@+id/tvTitleMonthEarning"
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
                                 android:layout_height="wrap_content"
@@ -207,6 +252,7 @@
                             android:layout_marginTop="@dimen/_5sdp">
 
                             <TextView
+                                android:id="@+id/tvTitleMonthlyTarget"
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
                                 android:layout_height="wrap_content"

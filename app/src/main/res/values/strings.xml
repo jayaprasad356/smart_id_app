@@ -174,7 +174,7 @@
     <string name="submit">Submit</string>
     <string name="mobile_number">Mobile number</string>
     <string name="register_date">Register date</string>
-    <string name="advanced_plan_600_nstandard_plan_400_nbasic_plan_300_ntrail_plan_5">Premium Plan - ₹ 4000\nAdvanced Plan - ₹ 600\nStandard Plan - ₹ 400\nBasic Plan - ₹ 300\nTrail plan - ₹ 5</string>
+    <string name="advanced_plan_600_nstandard_plan_400_nbasic_plan_300_ntrail_plan_5">Premium Plan - ₹ 2000\nAdvanced Plan - ₹ 600\nStandard Plan - ₹ 400\nBasic Plan - ₹ 300\nTrail plan - ₹ 5</string>
     <string name="refer_amp_earn"><![CDATA[Refer & Earn]]></string>
     <string name="my_refer">My Refer</string>
     <string name="unlock_work_from_home_customer_support_job_monthly_salary_up_to_12000"><![CDATA[By Referring more friends to Aidi App, Get Slab bonus & also opportunity to work as a customer support executive, from the comfort of your home in Aidi company - Salary Upto ₹ 12000 PM.]]></string>
@@ -211,6 +211,19 @@
     <string name="profile">Profile</string>
     <string name="job">Job</string>
     <string name="home">Home</string>
+    <string name="treding">Treding</string>
+    <string name="today_profit">Today Profit</string>
+    <string name="capital_amount">Capital Amount</string>
+    <string name="total_profit">Total Profit</string>
+    <string name="date">Date</string>
+    <string name="activate_free_earnings">Activate Free Earnings</string>
+    <string name="outsource_job">Outsource Job</string>
+    <string name="my_outsource_job">My Outsource Job</string>
+    <string name="active_date">Active Date</string>
+    <string name="claim">Claim</string>
+    <string name="per_day_earnings">Per Day Earnings</string>
+    <string name="course_charges">Course Charges</string>
+    <string name="my_activated_outsource">My Activated Outsource</string>
 
     <string-array name="my_spinner_values">
         <item>Select Amount</item>

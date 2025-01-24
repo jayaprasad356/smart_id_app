@@ -61,6 +61,7 @@ public class JobPlanAdapter extends RecyclerView.Adapter<JobPlanAdapter.PlanView
         PlanListModel plan = planListModels.get(position);
 
         holder.tvPlanName.setText(plan.getName());
+        holder.tvCourseCharges.setText("₹" + plan.getPrice());
         holder.tvPerCode.setText("₹" + plan.getPer_code_cost());
         holder.tvMonthlyEarning.setText("₹" + plan.getMonthly_earnings());
         holder.tvMonthlyTarget.setText(plan.getMonthly_codes());
@@ -131,6 +132,8 @@ public class JobPlanAdapter extends RecyclerView.Adapter<JobPlanAdapter.PlanView
                     Log.d("START_WORK", "START_WORK isPlanChange: " + session.getData(Constant.START_WORK));
                     session.setData(Constant.START_WORK_PLAN_NAME, plan.getName());
                     Log.d("START_WORK", "START_WORK isPlanChange: " + session.getData(Constant.START_WORK_PLAN_NAME));
+                    session.setData(Constant.START_WORK_PLAN_WORK_DAY, plan.getWorked_days().toString());
+                    Log.d("START_WORK", "START_WORK isPlanChange: " + session.getData(Constant.START_WORK_PLAN_WORK_DAY));
                     Toast.makeText(activity, "Start work with " + plan.getName(), Toast.LENGTH_SHORT).show();
                     // Navigate to home screen after activating plan
                     if (activity instanceof MainActivity) {
@@ -269,13 +272,14 @@ public class JobPlanAdapter extends RecyclerView.Adapter<JobPlanAdapter.PlanView
 
 
     public static class PlanViewHolder extends RecyclerView.ViewHolder {
-        TextView tvPlanName, tvPerCode, tvMonthlyEarning, tvMonthlyTarget, tvDescription;
+        TextView tvPlanName, tvCourseCharges, tvPerCode, tvMonthlyEarning, tvMonthlyTarget, tvDescription;
         MaterialButton btActivatePlan, btnZoom;
         PhotoView ivImage;
 
         public PlanViewHolder(@NonNull View itemView) {
             super(itemView);
             tvPlanName = itemView.findViewById(R.id.tvPlanName);
+            tvCourseCharges = itemView.findViewById(R.id.tvCourseCharges);
             tvPerCode = itemView.findViewById(R.id.tvPerCode);
             tvMonthlyEarning = itemView.findViewById(R.id.tvMonthlyEarning);
             tvMonthlyTarget = itemView.findViewById(R.id.tvMonthlyTarget);

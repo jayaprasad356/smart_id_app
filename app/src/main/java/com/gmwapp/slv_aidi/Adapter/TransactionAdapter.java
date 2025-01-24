@@ -66,6 +66,10 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
                 return "Cancelled withdrawal amount credited";
             case "admin_credit_balance":
                 return "Amount credited by admin";
+            case "level_income":
+                return "Level Income to Bonus Wallet";
+            case "outsource_earnings":
+                return "Outsource Earnings to Earning Wallet";
             default:
                 return "Transaction";
         }
