@@ -319,7 +319,7 @@ public class HomeFragment extends Fragment {
             }
         }, requireActivity(), Constant.DATA_LIST, params, true);
         Log.d("DATA_LIST", "DATA_LIST: " + Constant.DATA_LIST);
-        Log.d("DATA_LIST", "OTP_URL params: " + params);
+        Log.d("DATA_LIST", "DATA_LIST params: " + params);
     }
 
 //    private void dropDown() {
@@ -464,7 +464,7 @@ public class HomeFragment extends Fragment {
                         Toast.makeText(requireActivity(), "Activate the job plan and start the work", Toast.LENGTH_SHORT).show();
                     } else {
 //                        setDemoData();
-                        initializeDemoList();
+//                        initializeDemoList();
 
                         // Pass data to CreateIDFragment after a successful validation
                         CreateIDFragment createIDFragment = new CreateIDFragment();
