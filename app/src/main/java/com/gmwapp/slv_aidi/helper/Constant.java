@@ -28,7 +28,7 @@ public class Constant {
 
     //public static final String MainBaseUrl = "http://192.168.43.38/fortune/";
     //public static final String MainBaseUrl = "https://demofortune.graymatterworks.com/";
-    //public static final String MainBaseUrl = "https://demo.smart_id_maker.in/";
+//    public static final String MainBaseUrl = "https://demo.aidiapp.in/";
     public static final String BaseUrl = MainBaseUrl + "api/";
 
     public static final String LOGIN_URL = BaseUrl + "login.php";
@@ -145,6 +145,7 @@ public class Constant {
     public static final String DATA = "data";
     public static final String GROW_VIDEO = "grow_video";
     public static final String JOB_VIDEO = "job_video";
+    public static final String OUTSOURCE_JOB_VIDEO = "outsource_job_video";
     public static final String SETTINGS = "settings";
     public static final String BANK_DETAILS = "bank_details";
     public static final String USER_DETAILS = "user_details";

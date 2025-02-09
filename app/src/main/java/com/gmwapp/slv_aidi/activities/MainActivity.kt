@@ -404,9 +404,11 @@ class MainActivity : AppCompatActivity() {
                     val message = jsonObject.getString("message")
                     val growVideo = jsonObject.getString("grow_video")
                     val jobVideo = jsonObject.getString("job_video")
+                    val outsourceJobVideo = jsonObject.getString("outsource_job_video")
 
                     session!!.setData(Constant.GROW_VIDEO, growVideo)
                     session!!.setData(Constant.JOB_VIDEO, jobVideo)
+                    session!!.setData(Constant.OUTSOURCE_JOB_VIDEO, outsourceJobVideo)
 
                     if (jsonObject.getBoolean("success")) {
                         val jsonArray = jsonObject.getJSONArray("data")

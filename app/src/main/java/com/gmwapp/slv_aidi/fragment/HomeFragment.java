@@ -78,10 +78,11 @@ public class HomeFragment extends Fragment {
     EditText edSchoolName;
     EditText edStudentName;
     EditText edRollNumber;
+    EditText edPasskey;
     EditText dobEditBox1, dobEditBox2, dobEditBox3, dobEditBox4, dobEditBox5, dobEditBox6, dobEditBox7, dobEditBox8;
     CircularProgressIndicator cbCodes;
     TextView tvCodes, tvEarningWallet, tvTodayCodes, tvTotalCodes, tvWorkingDays, tvPlanName;
-    TextView tvSchoolName, tvStudentName, tvRollNumber, tvDOB;
+    TextView tvSchoolName, tvStudentName, tvRollNumber, tvDOB, tvPasskey;
     LinearLayout llWaiting;
     MaterialCardView rlSelectPlan;
     NestedScrollView frame;
@@ -116,6 +117,7 @@ public class HomeFragment extends Fragment {
         edSchoolName = root.findViewById(R.id.edSchoolName);
         edStudentName = root.findViewById(R.id.edStudentName);
         edRollNumber = root.findViewById(R.id.edRollNumber);
+        edPasskey = root.findViewById(R.id.edPasskey);
         cbCodes = root.findViewById(R.id.cbCodes);
         tvCodes = root.findViewById(R.id.tvCodes);
         tvEarningWallet = root.findViewById(R.id.tvEarningWallet);
@@ -126,6 +128,7 @@ public class HomeFragment extends Fragment {
         tvStudentName = root.findViewById(R.id.tvStudentName);
         tvRollNumber = root.findViewById(R.id.tvRollNumber);
         tvDOB = root.findViewById(R.id.tvDOB);
+        tvPasskey = root.findViewById(R.id.tvPasskey);
 //        dropdownSpinner = root.findViewById(R.id.dropdownSpinner);
         rlSelectPlan = root.findViewById(R.id.rlSelectPlan);
         tvPlanName = root.findViewById(R.id.tvPlanName);
@@ -183,12 +186,12 @@ public class HomeFragment extends Fragment {
         // Check if data is available
         if (savedDataList != null && !savedDataList.isEmpty()) {
             // Ensure currentIndex is within bounds
-            if (currentIndex >= savedDataList.size()) {
-                session.clearData("extra_plan_activated");
-                Log.d("DATA_CLEARED", "Stored data has been cleared.");
-                initializeDemoList();
-                currentIndex = 0; // Loop back to the first item
-            }
+                if (currentIndex >= savedDataList.size()) {
+                    session.clearData("extra_plan_activated");
+                    Log.d("DATA_CLEARED", "Stored data has been cleared.");
+                    initializeDemoList();
+                    currentIndex = 0; // Loop back to the first item
+                }
 
             // Display the current item
             updateUIWithData(savedDataList.get(currentIndex));
@@ -206,8 +209,9 @@ public class HomeFragment extends Fragment {
             tvStudentName.setText("AISHWARYA M S");
             tvRollNumber.setText("7459508");
             tvDOB.setText("2009-08-25");
+            tvPasskey.setText("A2fdK95@kP#z*1j!%8IL");
 
-            setBtCreate("SSJ INDP PU COLLEGE", "AISHWARYA M S", "7459508", "2009-08-25");
+            setBtCreate("SSJ INDP PU COLLEGE", "AISHWARYA M S", "7459508", "A2fdK95@kP#z*1j!%8IL", "2009-08-25");
 
 //            new Handler().postDelayed(() -> {
 //                List<DemoCodeData> retryData = session.getDemoDataList();
@@ -219,20 +223,48 @@ public class HomeFragment extends Fragment {
     }
 
     private void updateUIWithData(DemoCodeData data) {
+        Integer getId = data.getId();
+        String getCollege = data.getCollege();
+        String getName = data.getName();
+        String getBatchNumber = data.getBatchNumber();
+        String getPass_key = data.getPass_key();
+        String getDate = data.getDate();
+
         Log.d("SAVED_DATA",
-                "ID: " + data.getId() +
-                        ", College: " + data.getCollege() +
-                        ", Name: " + data.getName() +
-                        ", Batch: " + data.getBatchNumber() +
-                        ", Date: " + data.getDate());
+                "ID: " + getId +
+                        ", College: " + getCollege +
+                        ", Name: " + getName +
+                        ", Batch: " + getBatchNumber +
+                        ", Passkey: " + getPass_key +
+                        ", Date: " + getDate);
 
-        tvSchoolName.setText(data.getCollege());
-        tvStudentName.setText(data.getName());
-        tvRollNumber.setText(data.getBatchNumber());
-        tvDOB.setText(data.getDate());
+        if (getPass_key == null || getPass_key.isEmpty()) {
+            Log.d("DATA_ERROR", "savedDataList is null or empty.");
+            initializeDemoList();
 
-        // Set up additional logic, if required
-        setBtCreate(data.getCollege(), data.getName(), data.getBatchNumber(), data.getDate());
+            tvSchoolName.setText("SSJ INDP PU COLLEGE");
+            tvStudentName.setText("AISHWARYA M S");
+            tvRollNumber.setText("7459508");
+            tvDOB.setText("2009-08-25");
+            tvPasskey.setText("A2fdK95@kP#z*1j!%8IL");
+
+            setBtCreate("SSJ INDP PU COLLEGE", "AISHWARYA M S", "7459508", "A2fdK95@kP#z*1j!%8IL", "2009-08-25");
+
+//            new Handler().postDelayed(() -> {
+//                List<DemoCodeData> retryData = session.getDemoDataList();
+//                updateUIWithData(retryData.get(5));
+//            }, 2000);
+        } else {
+
+            tvSchoolName.setText(getCollege);
+            tvStudentName.setText(getName);
+            tvRollNumber.setText(getBatchNumber);
+            tvDOB.setText(getDate);
+            tvPasskey.setText(getPass_key);
+
+            // Set up additional logic, if required
+            setBtCreate(getCollege, getName, getBatchNumber, getPass_key, getDate);
+        }
     }
 
 
@@ -293,6 +325,7 @@ public class HomeFragment extends Fragment {
                             demoCodeData.setCollege(item.getString("college"));
                             demoCodeData.setName(item.getString("name"));
                             demoCodeData.setBatchNumber(item.getString("batch_number"));
+                            demoCodeData.setPass_key(item.getString("pass_key"));
                             demoCodeData.setDate(item.getString("date"));
                             dataList.add(demoCodeData);
                         }
@@ -417,15 +450,16 @@ public class HomeFragment extends Fragment {
         setupEditTextAutoMoveAndClear(dobEditBox8, dobEditBox7, null);
     }
 
-    private void setBtCreate(String schoolName, String studentName, String rollName, String dateOfBirth) {
+    private void setBtCreate(String schoolName, String studentName, String rollName, String passkey, String dateOfBirth) {
         btCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("VALUE", "VALUE: " + schoolName + ", " + studentName + ", " + rollName + ", " + dateOfBirth);
+                Log.d("VALUE", "VALUE: " + schoolName + ", " + studentName + ", " + rollName + ", " + dateOfBirth + ", " + passkey);
                 // Retrieve user inputs each time the button is clicked
                 String inputSchoolName = edSchoolName.getText().toString().trim();
                 String inputStudentName = edStudentName.getText().toString().trim();
                 String inputRollNumber = edRollNumber.getText().toString().trim();
+                String inputPasskey = edPasskey.getText().toString().trim();
 
                 // Construct and format the date of birth from individual input boxes
                 String dob = dobEditBox1.getText().toString().trim()
@@ -436,6 +470,8 @@ public class HomeFragment extends Fragment {
                         + dobEditBox6.getText().toString().trim() + "-"
                         + dobEditBox7.getText().toString().trim()
                         + dobEditBox8.getText().toString().trim();
+
+                Log.d("VALUE", "VALUE: " + dob);
 
                 // Format the DOB to match the expected format
                 String formattedDob = formatDOB(dob);
@@ -453,10 +489,14 @@ public class HomeFragment extends Fragment {
                     Toast.makeText(activity, "Please enter the roll number", Toast.LENGTH_SHORT).show();
                 } else if (!rollName.trim().equals(inputRollNumber.trim())) {
                     Toast.makeText(activity, "Roll Number does not match!", Toast.LENGTH_SHORT).show();
-                } else if (dob.isEmpty()) {
+                } else if (dob.isEmpty() || dob.equals("--")) {
                     Toast.makeText(activity, "Please enter the date of birth", Toast.LENGTH_SHORT).show();
                 } else if (!dateOfBirth.trim().equals(formattedDob.trim())) {
                     Toast.makeText(activity, "Date of Birth does not match!", Toast.LENGTH_SHORT).show();
+                } else if (inputPasskey.isEmpty()) {
+                    Toast.makeText(activity, "Please enter the passkey", Toast.LENGTH_SHORT).show();
+                } else if (!passkey.trim().equals(inputPasskey.trim())) {
+                    Toast.makeText(activity, "Passkey does not match!", Toast.LENGTH_SHORT).show();
                 } else {
                     String starWorkPlanId = session.getData(Constant.START_WORK);
 

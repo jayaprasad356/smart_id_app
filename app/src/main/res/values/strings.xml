@@ -191,7 +191,7 @@
     <string name="holidays">Holidays</string>
     <string name="mon_sat">Mon - Sat</string>
     <string name="sunday_amp_government_holidays"><![CDATA[Sunday & Government Holidays]]></string>
-    <string name="free_trail_earnings_30_days">Free Trail Earning - 4 Days</string>
+    <string name="free_trail_earnings_30_days">Free Trail Earning - 2 Days</string>
     <string name="basic_plan_2999">Basic Plan - ₹ 2999</string>
     <string name="standard_plan_3999">Standard Plan - ₹ 3999</string>
     <string name="slab_bonus_is_only_for_referring_to_paid_plans">Slab Bonus Is Only For Referring To Paid Plans.</string>
@@ -224,6 +224,9 @@
     <string name="per_day_earnings">Per Day Earnings</string>
     <string name="course_charges">Course Charges</string>
     <string name="my_activated_outsource">My Activated Outsource</string>
+    <string name="_00000_aaaaaaaaaa">A2fdK95@kP#z*1j!%8IL</string>
+    <string name="passkey">Passkey</string>
+    <string name="passkey_name">Passkey Name</string>
 
     <string-array name="my_spinner_values">
         <item>Select Amount</item>

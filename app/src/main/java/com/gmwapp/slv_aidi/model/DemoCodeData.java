@@ -5,14 +5,16 @@ public class DemoCodeData {
     private String college;
     private String name;
     private String batchNumber;
+    private String pass_key;
     private String date;
 
     // Constructor
-    public DemoCodeData(Integer id, String college, String name, String batchNumber, String date) {
+    public DemoCodeData(Integer id, String college, String name, String batchNumber, String pass_key, String date) {
         this.id = id;
         this.college = college;
         this.name = name;
         this.batchNumber = batchNumber;
+        this.pass_key = pass_key;
         this.date = date;
     }
 
@@ -51,6 +53,14 @@ public class DemoCodeData {
 
     public void setBatchNumber(String batchNumber) {
         this.batchNumber = batchNumber;
+    }
+
+    public String getPass_key() {
+        return pass_key;
+    }
+
+    public void setPass_key(String pass_key) {
+        this.pass_key = pass_key;
     }
 
     public String getDate() {

@@ -67,7 +67,7 @@ class MyReferFragment : Fragment() {
 
                             val basicPlan = plansObject.optString("Basic Plan - ₹ 2999", "0")
                             val standardPlan = plansObject.optString("Standard Plan - ₹ 3999", "0")
-                            val freeTrail = plansObject.optString("Free Trail Earning - Unlimited Days", "0")
+                            val freeTrail = plansObject.optString("Free Trail Earning - 2 Days", "0")
                             val advancedPlan = plansObject.optString("Advanced Plan - ₹5999", "0")
                             val premiumPlan = plansObject.optString("Premium Plan - ₹ 11999", "0")
 

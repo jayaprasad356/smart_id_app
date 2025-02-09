@@ -121,15 +121,16 @@ public class OutsourceJobFragment extends Fragment {
                 isPlayerReady = true; // Mark player as ready
                 Log.d("YouTubePlayer", "Player is ready");
 
-                String videoUrl = session.getData(Constant.JOB_VIDEO); // Your video URL
+//                String videoUrl = session.getData(Constant.OUTSOURCE_JOB_VIDEO); // Your video URL
+                String videoUrl = extractVideoId(session.getData(Constant.OUTSOURCE_JOB_VIDEO));; // Your video URL
                 Log.d("YouTubePlayer", "Player is ready: " +  videoUrl);
 
                 // Extract video ID from the URL
                 String videoId = extractVideoIdFromUrl(videoUrl);
 
-                if (videoId != null) {
+                if (videoUrl != null) {
                     // Load the video at 0 seconds without autoplay
-                    youTubePlayerInstance.cueVideo(videoId, 0f);
+                    youTubePlayerInstance.cueVideo(videoUrl, 0f);
                 } else {
                     Toast.makeText(activity, "Invalid video URL", Toast.LENGTH_SHORT).show();
                 }
@@ -143,6 +144,29 @@ public class OutsourceJobFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private String extractVideoId(String url) {
+        String videoId = null;
+        try {
+            Uri uri = Uri.parse(url);
+
+            // Check if the URL is a regular YouTube video URL
+            if (uri.getQueryParameter("v") != null) {
+                videoId = uri.getQueryParameter("v");
+            }
+            // Check if the URL is a YouTube Shorts URL
+            else if (url.contains("/shorts/")) {
+                // Extract the video ID from the URL path (after "/shorts/")
+                String[] urlParts = url.split("/shorts/");
+                if (urlParts.length > 1) {
+                    videoId = urlParts[1];
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return videoId;
     }
 
     // Method to extract the video ID from a URL
