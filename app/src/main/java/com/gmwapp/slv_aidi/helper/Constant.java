@@ -214,6 +214,7 @@ public class Constant {
     public static final String FREE_PLAN = "free_plan";
     public static final String PAID_PLAN = "paid_plan";
     public static final String AD_LINK = "ad_link";
+    public static final String REFUND_WALLET = "refund_wallet";
     public static final String PAID_PLAN_STATUS = "paid_plan_status";
     public static final String AD_STATUS = "ad_status";
     public static final String REWARD = "reward";

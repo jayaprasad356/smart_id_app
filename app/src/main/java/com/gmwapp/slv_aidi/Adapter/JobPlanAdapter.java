@@ -241,7 +241,8 @@ public class JobPlanAdapter extends RecyclerView.Adapter<JobPlanAdapter.PlanView
                             ((MainActivity) activity).userDetails();
                         }
                     } else {
-                        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity, "Please upload your course certificate to activate the plan", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     Toast.makeText(activity, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();

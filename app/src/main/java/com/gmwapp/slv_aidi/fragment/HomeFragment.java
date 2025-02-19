@@ -81,7 +81,7 @@ public class HomeFragment extends Fragment {
     EditText edPasskey;
     EditText dobEditBox1, dobEditBox2, dobEditBox3, dobEditBox4, dobEditBox5, dobEditBox6, dobEditBox7, dobEditBox8;
     CircularProgressIndicator cbCodes;
-    TextView tvCodes, tvEarningWallet, tvTodayCodes, tvTotalCodes, tvWorkingDays, tvPlanName;
+    TextView tvCodes, tvEarningWallet, tvRefundWallet, tvTodayCodes, tvTotalCodes, tvWorkingDays, tvPlanName;
     TextView tvSchoolName, tvStudentName, tvRollNumber, tvDOB, tvPasskey;
     LinearLayout llWaiting;
     MaterialCardView rlSelectPlan;
@@ -121,6 +121,7 @@ public class HomeFragment extends Fragment {
         cbCodes = root.findViewById(R.id.cbCodes);
         tvCodes = root.findViewById(R.id.tvCodes);
         tvEarningWallet = root.findViewById(R.id.tvEarningWallet);
+        tvRefundWallet = root.findViewById(R.id.tvRefundWallet);
         tvTodayCodes = root.findViewById(R.id.tvTodayCodes);
         tvTotalCodes = root.findViewById(R.id.tvTotalCodes);
         tvWorkingDays = root.findViewById(R.id.tvWorkingDays);
@@ -575,6 +576,7 @@ public class HomeFragment extends Fragment {
 //        }
 
         String earningWallet = session.getData(Constant.EARNING_WALLET);
+        String refundWallet = session.getData(Constant.REFUND_WALLET);
         String todayCodes = session.getData(Constant.TODAY_CODES);
         String totalCodes = session.getData(Constant.TOTAL_CODES);
 //        String planId = session.getData("selected_plan_id");
@@ -589,10 +591,12 @@ public class HomeFragment extends Fragment {
 //        }
 
         tvEarningWallet.setText("₹" + (earningWallet != null ? earningWallet : "0"));
+        tvRefundWallet.setText("₹" + (refundWallet != null ? refundWallet : "0"));
         tvTodayCodes.setText(todayCodes != null ? todayCodes : "N/A");
         tvTotalCodes.setText(totalCodes != null ? totalCodes : "N/A");
 
         Log.d("initialCodeCount", "earningWallet: " + earningWallet);
+        Log.d("initialCodeCount", "refundWallet: " + refundWallet);
         Log.d("initialCodeCount", "TODAY_CODES: " + todayCodes);
         Log.d("initialCodeCount", "TOTAL_CODES: " + totalCodes);
         Log.d("selected_plan_id", "selected_plan_id: " + isPlanSelected);

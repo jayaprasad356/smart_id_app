@@ -207,7 +207,8 @@ public class OutsourceJobPlanAdapter extends RecyclerView.Adapter<OutsourceJobPl
                             ((MainActivity) activity).userDetails();
                         }
                     } else {
-                        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity, "Please upload your course certificate to activate the plan", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     Toast.makeText(activity, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();

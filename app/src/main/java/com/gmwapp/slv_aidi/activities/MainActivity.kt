@@ -277,6 +277,7 @@ class MainActivity : AppCompatActivity() {
                             userObject.getString(Constant.FREE_PLAN),
                             userObject.getString(Constant.PAID_PLAN),
                             userObject.getString(Constant.AD_LINK),
+                            userObject.getString(Constant.REFUND_WALLET),
 //                            planObject.getString("name"),
 //                            planObject.getString("description"),
 //                            planObject.getString("validity"),

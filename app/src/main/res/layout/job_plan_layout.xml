@@ -108,6 +108,7 @@
 
 
                     <RelativeLayout
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
@@ -152,8 +153,7 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginTop="@dimen/_5sdp">
+                        android:layout_weight="1">
 
                         <LinearLayout
                             android:layout_width="match_parent"

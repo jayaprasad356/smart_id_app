@@ -63,6 +63,7 @@
             android:background="@drawable/button_bg"/>
 
         <com.google.android.material.button.MaterialButton
+            android:visibility="gone"
             android:layout_alignParentEnd="true"
             android:layout_marginHorizontal="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
@@ -85,7 +86,7 @@
             app:iconTint="@null"/>
 
         <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:layout_below="@+id/btnRecharge"
+            android:layout_below="@+id/btnFAQ"
             android:id="@+id/youtubePlayerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

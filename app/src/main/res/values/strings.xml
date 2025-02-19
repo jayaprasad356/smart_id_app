@@ -227,6 +227,7 @@
     <string name="_00000_aaaaaaaaaa">A2fdK95@kP#z*1j!%8IL</string>
     <string name="passkey">Passkey</string>
     <string name="passkey_name">Passkey Name</string>
+    <string name="refund_wallet">Refund Wallet</string>
 
     <string-array name="my_spinner_values">
         <item>Select Amount</item>
